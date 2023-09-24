@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
 const routes = [
+	/*
 	{
 		path: '/',
 		name: 'home',
@@ -42,7 +43,7 @@ const routes = [
 		path: '/qa',
 		name: 'qa',
 		component: () => import('../views/QA.vue'),
-	}
+	}*/
 ]
 
 const router = createRouter({
