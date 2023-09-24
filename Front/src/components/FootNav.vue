@@ -109,7 +109,6 @@
 		margin-top: -40px;
 	}
 	
-
 	.list-group {
 		justify-content: left;
 	}
