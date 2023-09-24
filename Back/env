@@ -1,0 +1,5 @@
+SECRET=WUDNykdKqBWp45ywGOFKGQbR2eXkNoo5bOcSeAjMJ1U7AnmZ5onTCtCBGOXp3whqzo9vMJbSbcUCvYdoN8hl0jfIlIWFrDcPn1WO
+BASEURL=http://localhost:3000
+CLIENTID=JFJ3tOSfbYa2MQ0VJdktMRT71LOsjSsY
+ISSUER=https://italento.us.auth0.com
+DATABASE_URL='mysql://tlp0dmeaxid5h0x64ogz:pscale_pw_qaMDRDTHbnX8K19lZT1zvtOtMF5BymLFGpbaBrxFsmB@aws.connect.psdb.cloud/italento?ssl={"rejectUnauthorized":true}'
