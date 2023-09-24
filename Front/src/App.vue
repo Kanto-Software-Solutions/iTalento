@@ -1,4 +1,5 @@
 <template>
+
 	<div id="Contenido" class="">
 		<NavComp />
 		<router-view v-slot="{ Component }">
