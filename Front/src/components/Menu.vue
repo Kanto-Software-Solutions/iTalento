@@ -15,6 +15,5 @@
 			</ul>
 		</li>
 		<a class="nav-link" href="#">Cómo funciona</a>
-		<a class="nav-link" href="#">Encuentra freelancers</a>
 	</div>
 </template>
