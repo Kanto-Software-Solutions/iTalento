@@ -32,8 +32,8 @@ const routes = [
 		component: () => import('../views/TermsCond.vue'),
 	},
 	{
-		path: '/pagos',
-		name: 'pagos',
+		path: '/pago',
+		name: 'pago',
 		component: () => import('../views/TermsPago.vue'),
 	},
 	{

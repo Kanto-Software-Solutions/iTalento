@@ -82,25 +82,6 @@
 					<router-link to="/" style="color: #0a0a0a">Apoyo </router-link>
 				</div>
 			</div>
-			<div class="containerR">
-				<div class="social-icons">
-					<a href="https://www.facebook.com/profile.php?id=61550128686980" target="_blank" class="social-icon" style="color: #87CEEB;">
-						<div class="custom-icon" style="background-color: #3b5998;">
-							<span style="color: #FFFFFF;">f</span>
-						</div>
-					</a>
-					<a href="https://twitter.com/iTalento_" target="_blank" class="social-icon">
-						<div class="custom-icon" style="background-color: #000000;">
-							<span style="color: #FFFFFF;">X</span>
-						</div>
-					</a>
-					<a href="https://www.youtube.com/channel/UCvjCcnsGpzyOhQtm9FLoNJg" target="_blank" class="social-icon">
-						<div class="custom-icon" style="background-color: #FF0000;">
-							<div class="triangle"></div>
-						</div>
-					</a>
-				</div>
-			</div>
 		</div>
 	</footer>
 </template>
