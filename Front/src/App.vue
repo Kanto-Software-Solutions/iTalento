@@ -4,6 +4,7 @@
 		<router-view v-slot="{ Component }">
 			<component :is="Component" :key="$route.path"></component>
 		</router-view>
+		<FootNav />
 	</div>
 
 	<div id="footer" class="navbar fixed-bottom bg-body-secondary p-0">
