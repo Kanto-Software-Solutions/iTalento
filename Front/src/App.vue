@@ -1,5 +1,11 @@
 <template>
-	<div id="Contenido" class="">
+	<div id="Contenido" class="container-xxl align-content-center m-0 p-0">
+		<router-link class="" to="/registro">
+			<button class="btn btn-primary w-100" type="button">
+				<i class="bi bi-terminal">
+				</i>
+			</button>
+		</router-link>
 		<NavComp />
 		<router-view v-slot="{ Component }">
 			<component :is="Component" :key="$route.path"></component>
