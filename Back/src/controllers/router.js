@@ -9,7 +9,8 @@ module.exports = router;
 /*
 router.get('/', (req, res) => {
 	console.log(req.oidc.isAuthenticated());
-	res.send('Bienvenido a la API de iTalento');
+	console.log(req.oidc.user);
+	res.send("Bienvenido al API de italento");
 });
 */
 

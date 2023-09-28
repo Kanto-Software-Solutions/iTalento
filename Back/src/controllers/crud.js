@@ -7,18 +7,18 @@ const route		= require('./router');
 //insertar datos base de datos
 exports.createUsuario = (req,res) =>{
 	const id = req.body.id;
-	const email = req.body.email;
+	const email = req.oidc.user.email;
 	const password = req.body.password;
 	const username = req.body.username;
-	const firstName = req.body.firstName;
-	const lastName = req.body.lastName;
+	const firstName = req.oidc.user.given_name;
+	const lastName = req.oidc.user.family_name;
 	const description = req.body.description;
-	const profileImage = req.body.profileImage;
+	const profileImage = req.oidc.user.picture;
 	const isBuyer = req.body.isBuyer;
 	const isBoth = req.body.isBoth;
 	const isFreelancer = req.body.isFreelancer;
 	const createdAt = req.body.createdAt;
-	conexion.query("INSERT INTO Usuario (id,email, password, username, firstName, lastName, description, profileImage, isBuyer, isBoth, isFreelancer, createdAt) VALUES ( '" + id + "' ,'" + email + "' , '" + password + "' ,'" + username + "' , '" + firstName + "' , '" + lastName + "' , " + description + ", " + profileImage + ", " + isBuyer + ", " + isBoth + ", " + isFreelancer + ", " + createdAt +")", (error, results) => {
+	conexion.query("INSERT INTO Usuario (id,email, password, username, firstName, lastName, decription, profileImage, isBuyer, isBoth, isFreelancer, createdAt) VALUES ( '" + id + "' ,'" + email + "' , '" + password + "' ,'" + username + "' , '" + firstName + "' , '" + lastName + "' , " + description + ", " + profileImage + ", " + isBuyer + ", " + isBoth + ", " + isFreelancer + ", " + createdAt +")", (error, results) => {
 		if(error){
 			console.log(error);
 		}else{
@@ -73,6 +73,36 @@ exports.createRed = (req,res) =>{
 	});
 }
 
+//update datos
+
+exports.updateUsuario = (req,res) =>{
+	const id = req.body.id;
+	const email = req.oidc.user.email;
+	const password = req.body.password;
+	const username = req.body.username;
+	const firstName = req.oidc.user.given_name;
+	const lastName = req.oidc.user.family_name;
+	const description = req.body.description;
+	const profileImage = req.oidc.user.picture;
+	const isBuyer = req.body.isBuyer;
+	const isBoth = req.body.isBoth;
+	const isFreelancer = req.body.isFreelancer;
+	const createdAt = req.body.createdAt;
+
+	let query = ('update usuario set id =' + id[0] + ' , email="'+email+'",password="'+password+ '", username = '+ username +' , firstName= '+firstName+', lastName = '+lastName+', description = '+description+', profileImage = '+profileImage + ', isBuyer = '+isBuyer + ', isBoth = '+isBoth + ', isFreelancer = '+isFreelancer + ' where id ='+id[0] );
+	conexion.query(query,(error,results)=>{
+		if(error){
+			console.log(error);
+		}else{
+			console.log("Se creó el usuario: " + firstName + " " + lastName);
+			res.redirect('/personas');
+		}
+	});
+}
+
+
+
+
 
 //Funciones de la base de datos
 const usuarios = (req,res) => {
@@ -80,7 +110,7 @@ const usuarios = (req,res) => {
 	const nombre = req.body.Nombre;
 	const contraseña = req.body.Contraseña;
 	
-	conexion.query("SELECT * FROM usuarios", (error,results) => {
+	conexion.query("SELECT * FROM usuario", (error,results) => {
 		if(error){
 			console.log(error);
 		}else{
@@ -96,7 +126,7 @@ const publicaciones = (req,res) => {
 	const autor = req.body.AutorID;
 	const contenido = req.body.Contenido;
 
-	conexion.query("SELECT * FROM publicaciones", (error,results) => {
+	conexion.query("SELECT * FROM publicacion", (error,results) => {
 		if(error){
 			console.log(error);
 		}else{
