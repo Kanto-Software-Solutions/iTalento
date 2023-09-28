@@ -8,7 +8,6 @@
 			<Menu />
 		</div>
 	</div>
-
 	<nav class="navbar navbar-expand-lg bg-body-secondary sticky-top p-0">
 		<div class="container-fluid">
 			<button id="BotonToggler" class="navbar-toggler p-0 border-0" type="button" data-bs-toggle="offcanvas"
@@ -30,15 +29,11 @@
 					aria-controls="buscar">
 					<i class="bi bi-search"></i>
 				</button>
-				<button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#buscar" aria-expanded="false"
-					aria-controls="buscar ">
+				<a class="router-link btn" type="button" href="/login">
 					<i class="bi bi-person"></i>
-				</button>
-			</div>		
+				</a>
+			</div>
 		</div>
-
-
-
 	</nav>
 	<div id="buscar" class="collapse container">
 		<div class="row justify-content-lg-center">

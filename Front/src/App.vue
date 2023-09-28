@@ -6,13 +6,9 @@
 		</router-view>
 		<FootNav />
 	</div>
-
 	<div id="footer" class="navbar fixed-bottom bg-body-secondary p-0">
 		<div id="f-about" class="d-flex nav-item justify-content-around w-75">
-			<router-link class="router-link nav-link" to="/about">FAQ</router-link>
-			<router-link class="router-link nav-link d-none d-md-block" to="/about">Quienes somos</router-link>
-			<router-link class="router-link nav-link d-none d-md-block" to="/about">Terminos y condiciones</router-link>
-			<router-link class="router-link nav-link d-none d-md-block" to="/about">Comunidad</router-link>
+			<router-link class="router-link nav-link" to="/about">iTalento - 2023</router-link>
 		</div>
 		<div id="f-redes" class="d-flex nav-item justify-content-end w-25">
 			<a class="rounded nav-link d-inline-block mx-1" href="https://www.facebook.com/profile.php?id=61550256754354">
