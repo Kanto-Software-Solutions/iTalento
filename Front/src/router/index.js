@@ -7,6 +7,11 @@ const routes = [
 		name: 'registro',
 		component: () => import('../views/Registro.vue'),
 	},
+	{
+		path: '/tyc',
+		name: 'terminos',
+		component: () => import('../views/TermsCond.vue'),
+	},
 	/*
 	{
 		path: '/',
@@ -29,11 +34,7 @@ const routes = [
 		name: 'profile',
 		component: () => import('../views/ProfileView.vue'),
 	},
-	{
-		path: '/terminos',
-		name: 'terminos',
-		component: () => import('../views/TermsCond.vue'),
-	},
+
 	{
 		path: '/pago',
 		name: 'pago',
