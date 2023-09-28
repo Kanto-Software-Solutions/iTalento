@@ -1,5 +1,5 @@
 <template>
-	<div class="container-md bg-danger">
+	<div class="container-xxl p-0">
 		<div class="card rounded-0">
 			<div class="card-header">
 				<h6 class="text-center">Registro Nuevos usuarios</h6>
@@ -7,12 +7,23 @@
 			<div class="card-body">
 				<div id="formulacioRegistro">
 					<form action="/palRegistro">
-						<input id="fUsuario" type="" class="form-control m-1" aria-describedby="">
-						<input id="fCorreo" type="" class="form-control m-1" aria-describedby="">
-						<input id="fNombre" type="" class="form-control m-1" aria-describedby="">
-						<input id="fApellido" type="" class="form-control m-1" aria-describedby="">
-						<input id="fDescripcion" type="" class="form-control m-1" aria-describedby="">
-						<input id="fLinkedin" type="" class="form-control m-1" aria-describedby="">
+						<label for="fUsuario">Nombre de usuario:</label>
+						<input id="fUsuario" type="" class="form-control m-1" placeholder="@Tu_Usuario">
+						<label for="fCorreo">Correo electronico:</label>
+						<input id="fCorreo" type="email" class="form-control m-1" placeholder="Email">
+						<label for="fNombre1">Primer nombre:</label>
+						<input id="fNombre1" type="" class="form-control m-1" placeholder="Nombre 1">
+						<label for="fNombre2">Segundo nombre:</label>
+						<input id="fNombre2" type="" class="form-control m-1" placeholder="Nombre 2">
+						<label for="fApellido1">Primer apellido:</label>
+						<input id="fApellido1" type="" class="form-control m-1" placeholder="Apellido 1">
+						<label for="fApellido2">Segundo apellido:</label>
+						<input id="fApellido2" type="" class="form-control m-1" placeholder="Apellido 2">
+						<label for="fDescripcion">Sobre mi:</label>
+						<input id="fDescripcion" type="text" class="form-control m-1" placeholder="Cuentanos un poco sobre ti">
+						<label for="fLinkedin">Redes:</label>
+						<input id="fLinkedin" type="url" class="form-control m-1" placeholder="Linkedin">
+						<input id="fGitHub" type="url" class="form-control m-1" placeholder="Github">
 
 						<button type="submit" class="btn btn-primary m-1">Enviar</button>
 					</form>

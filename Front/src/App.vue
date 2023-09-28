@@ -1,5 +1,5 @@
 <template>
-	<div id="Contenido" class="container-xxl p-0">
+	<div id="Contenido" class="container-fluid p-0">
 		<router-link class="" to="/registro">
 			<button class="btn btn-primary w-100" type="button">
 				<i class="bi bi-terminal">
