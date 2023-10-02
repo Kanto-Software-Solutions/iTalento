@@ -110,7 +110,7 @@ const usuarios = (req,res) => {
 	const nombre = req.body.Nombre;
 	const contraseña = req.body.Contraseña;
 	
-	conexion.query("SELECT * FROM usuario", (error,results) => {
+	conexion.query("SELECT * FROM Usuario", (error,results) => {
 		if(error){
 			console.log(error);
 		}else{
