@@ -5,7 +5,7 @@
 			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 		</div>
 		<div class="offcanvas-body">
-			<Menu />
+			<MenuBarra />
 		</div>
 	</div>
 	<nav class="navbar navbar-expand-lg bg-body-secondary sticky-top p-0">
@@ -15,7 +15,7 @@
 				<img src="../assets/img/logo.png" height="30" img />
 			</button>
 			<div id="Menus" class="d-none d-lg-block">
-				<Menu />
+				<MenuBarra />
 			</div>
 			<div id="Titulo" class="">
 				<a class="nav-link" href="/">
@@ -48,11 +48,11 @@
 </template>
 
 <script>
-import Menu from '@/components/Menu.vue'
+import MenuBarra from '@/components/MenuBarra.vue'
 export default {
 	name: 'NavComp',
 	components: {
-		Menu
+		MenuBarra
 	},
 }
 </script>

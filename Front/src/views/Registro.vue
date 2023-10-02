@@ -67,7 +67,7 @@
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
-					<Tyc />
+					<TyC />
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">Lei los TyC</button>
@@ -77,11 +77,11 @@
 	</div>
 </template>
 <script>
-import Tyc from '@/components/tyc.vue'
+import TyC from '@/components/TyC.vue'
 export default {
 	name: 'Registro',
 	components: {
-		Tyc
+		TyC
 	},
 }
 </script>

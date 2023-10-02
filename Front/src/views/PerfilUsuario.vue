@@ -1,9 +1,9 @@
 <template>
-	<h2>Profile page</h2>
+	<h2>Perfil</h2>
 </template>
 
 <script>
 	export default {
-		name: 'ProfileView',
+		name: 'PerfilUsuario',
 	}
 </script>
