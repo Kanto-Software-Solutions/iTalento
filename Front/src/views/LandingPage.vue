@@ -1,18 +1,15 @@
 <template lang="">
-	<div class="position-relative">
-		<img src="../assets/img/FondoLanding.png" class="w      -100 position-absolute z-n1" alt="fondo" style="opacity:0.9;" >
-		<!---
-		-->
+	<div id="LandingMain" class="position-relative">
+		<div class="overflow-hidden">
+			<img src="../assets/img/FondoLanding.png" class="position-absolute z-n1 w-100 h-100 object-fit-cover" alt="fondo" style="opacity:0.8;" >
+		</div>
 		<div class="row m-1">
 			<div class="col-sm col h-100 m-1 align-self-center">
-				<div class = "w-75">
-					<p class="text-body text-start">
-						No te preocupes, en i-Talento tenemos lo que buscas para tus proyectos personales o tu empresa.
-					</p>
-					<p class="text-body text-start">
+					<p class="text-start fs-3" style="color: rgb(255,255,255,0.9)">
+						No te preocupes, en i-Talento
+						tenemos lo que buscas para tus proyectos personales o tu empresa.
 						Da un paso adelante y busca eso que necesitas.
 					</p>
-				</div>
 			</div>
 			<div class="col-sm h-100 align-self-end">
 				<div class="row m-1 d-none d-sm-block" style="height: 50vh">
@@ -26,12 +23,7 @@
 			</div>
 		</div>
 	</div>
-</template>
-<script>
-export default {
+	<div id="LandingPrincipales">
 
-}
-</script>
-<style lang="">
-	
-</style>
+	</div>
+</template>
