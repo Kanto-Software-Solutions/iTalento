@@ -7,11 +7,11 @@
 		<div class="row m-2">
 			<div class="col-sm col m-1 align-self-center d-flex justify-content-center">
 				<div class="" style="width: 75%;">
-					<p class="text-start fs-1 fw-bold" style="color: rgb(199, 199, 199)">
+					<p class="text-justify fs-1 fw-bold" style="color: rgb(199, 199, 199)">
 						No te preocupes, en i-Talento
 						tenemos lo que buscas para tus proyectos personales o tu empresa.
 					</p>
-					<p class="text-start fs-1 fw-bold" style="color: rgb(199, 199, 199)">
+					<p class="text-Justify fs-1 fw-bold" style="color: rgb(199, 199, 199)">
 						Da un paso adelante y busca eso que necesitas.
 					</p>
 					<ul class="text-body">
@@ -22,7 +22,7 @@
 				</div>
 			</div>
 			<div class="col-sm h-100 align-self-end">
-				<div class="row d-none d-sm-block" style="min-height: 75vh">
+				<div class="row d-none d-md-block" style="min-height: 75vh">
 					<!--Comodin de altura-->
 				</div>
 				<div class="row mx-auto my-5" style="width: 60%;">
@@ -43,9 +43,25 @@
 				<div class="card-body row" style="width: max-content;">
 					<div class="col" v-for="(item, i) in elements" :key="i">
 						<div class="col">
-							<CardCategoria :id=item.id :titulo=item.name :contenido=item.contenido :imagen=item.imagen ></CardCategoria>
+							<CardCategoria :id=item.id :titulo=item.name :contenido=item.contenido :imagen=item.imagen>
+							</CardCategoria>
 						</div>
 					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div>
+		<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img src="../assets/img/bullbasur.jpg" class="d-block" alt="...">
+				</div>
+				<div class="carousel-item">
+					<img src="../assets/img/charmander.jpg" class="d-block" alt="...">
+				</div>
+				<div class="carousel-item">
+					<img src="../assets/img/bullbasur.jpg" class="d-block" alt="...">
 				</div>
 			</div>
 		</div>
