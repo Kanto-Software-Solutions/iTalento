@@ -30,7 +30,7 @@
 	<div id="buscar" class="collapse container">
 		<div class="row justify-content-lg-center">
 			<form class="col-lg-auto d-flex w-100" role="search">
-				<input class="form-control m-1" type="search" placeholder="Search" aria-label="Search">
+				<input class="form-control m-1" type="search" placeholder="¿Que trabajo necesitas hoy?" aria-label="Search">
 				<button class="btn m-1 btn-outline-secondary" type="submit">
 					<i class="bi bi-search"></i>
 				</button>
