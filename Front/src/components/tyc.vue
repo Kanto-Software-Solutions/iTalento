@@ -4,9 +4,3 @@
 		<p class="">Bienvenido a iTalento.</p>
 	</div>
 </template>
-<script>
-export default {
-	name: 'TyC',
-	components: {},
-}
-</script>
