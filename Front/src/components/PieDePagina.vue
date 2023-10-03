@@ -33,7 +33,7 @@
 				</a>
 			</div>
 		</div>
-		<div class="row" style="height: 23px;">
+		<div class="row" style="height: 26px;">
 		</div>
 	</div>
 </template>

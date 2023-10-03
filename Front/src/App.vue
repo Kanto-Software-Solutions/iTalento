@@ -7,7 +7,7 @@
 			</button>
 		</router-link>
 		<BarraNavegacion />
-		<div class="container-xl">
+		<div class="container-xl p-0">
 			<router-view v-slot="{ Component }">
 				<component :is="Component" :key="$route.path"></component>
 			</router-view>
