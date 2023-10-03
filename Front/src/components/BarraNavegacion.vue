@@ -8,7 +8,7 @@
 			<MenuBarra />
 		</div>
 	</div>
-	<nav class="navbar navbar-expand-lg bg-body-secondary sticky-top">
+	<nav id="BarraNav" class="navbar navbar-expand-lg sticky-top" style="background-color: rgba(255, 255, 255, 0.5);">
 		<div class="d-flex justify-content-between w-100 mx-2">
 			<div id="BtnEscondido" class="d-block d-lg-none p-0 m-0 w-25">
 				<button id="BotonToggler" class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas"

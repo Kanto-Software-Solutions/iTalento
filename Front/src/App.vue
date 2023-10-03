@@ -1,12 +1,12 @@
 <template>
 	<div id="Contenido" class="container-fluid p-0">
-		<BarraNavegacion />
-		<div class="container-xl p-0">
+		<BarraNavegacion class=""/>
+		<div class="p-0">
 			<router-view v-slot="{ Component }">
 				<component :is="Component" :key="$route.path"></component>
 			</router-view>
 		</div>
-		<PieDePagina />
+		<PieDePagina class=""/>
 	</div>
 	<div id="footer" class="navbar fixed-bottom bg-body-secondary p-0 justify-content-center" style="height: 23px;">
 		<div id="f-about" class="">

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" id="main" data-bs-theme="">
+<html lang="es" id="main" data-bs-theme="ligth">
 
 <head>
 	<meta charset="utf-8">
@@ -28,15 +28,18 @@
 			const lightModeButton = document.getElementById('vbtn-blanco');
 			const darkModeButton = document.getElementById('vbtn-negro');
 
-			const imagenPPagina = document.getElementById('logoPPagina')
+			const imagenPPagina = document.getElementById('logoPPagina');
+			const barraNav = document.getElementById('BarraNav');
 
 			darkModeButton.addEventListener('click', () => {
 				document.documentElement.setAttribute('data-bs-theme', 'dark')
 				imagenPPagina.src = './assets/Logotipo_italentoBlanco.png'
+				barraNav.style = 'background-color: rgba(0, 0, 0, 0.5);'
 			});
 			lightModeButton.addEventListener('click', () => {
 				document.documentElement.setAttribute('data-bs-theme', 'ligth')
 				imagenPPagina.src = './assets/Logotipo_italentoNegro.png'
+				barraNav.style = 'background-color: rgba(255, 255, 255, 0.5);'
 			});
 		});
 	</script>

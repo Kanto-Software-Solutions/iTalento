@@ -11,12 +11,13 @@ const routes = [
 		name: 'terminos',
 		component: () => import('../views/TerminosYCondiciones.vue'),
 	},
-	/*
 	{
 		path: '/',
 		name: 'home',
-		component: HomeView,
+		component: () =>
+		import('../views/LandingPage.vue'),
 	},
+	/*
 	{
 		path: '/about',
 		name: 'about',
