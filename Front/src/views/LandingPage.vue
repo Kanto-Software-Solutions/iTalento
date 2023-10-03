@@ -1,5 +1,5 @@
-<template lang="">
-	<div id="LandingMain" class="position-relative">
+<template>
+	<div id="LandingMain" class="position-relative" >
 		<div class="overflow-hidden">
 			<img src="../assets/img/FondoLanding.png" class="position-absolute z-n1 w-100 h-100 object-fit-cover" alt="fondo" style="opacity:0.8;" >
 		</div>
