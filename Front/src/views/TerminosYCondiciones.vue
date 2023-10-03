@@ -1,13 +1,11 @@
 
 <template>
-	<div class="container-xl p-0">
-		<div class="card m-2">
-			<div class="card-header ">
-				Terminos y condiciones i Talento
-			</div>
-			<div class="card-body">
-				<TyC />
-			</div>
+	<div class="card m-2">
+		<div class="card-header ">
+			Terminos y condiciones i Talento
+		</div>
+		<div class="card-body">
+			<TyC />
 		</div>
 	</div>
 </template>

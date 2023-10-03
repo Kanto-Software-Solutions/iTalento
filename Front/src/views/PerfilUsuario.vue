@@ -3,7 +3,7 @@
 </template>
 
 <script>
-	export default {
-		name: 'PerfilUsuario',
-	}
+export default {
+	name: 'PerfilUsuario',
+}
 </script>

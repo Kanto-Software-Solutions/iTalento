@@ -18,22 +18,22 @@
 				<router-link to="/" style="color: #525252">Apoyo </router-link>
 			</div>
 			<div id="f-redes" class="d-flex nav-item justify-content-end w-25">
-			<a class="rounded nav-link d-inline-block mx-1" href="https://www.facebook.com/profile.php?id=61550256754354">
-				<i class="bi bi-facebook"></i>
-			</a>
-			<a class="rounded nav-link d-inline-block mx-1" href="https://twitter.com/iTalento_">
-				<i class="bi bi-twitter"></i>
-			</a>
-			<a class="rounded nav-link d-inline-block mx-1" href="https://www.instagram.com/italento_/">
-				<i class="bi bi-instagram"></i>
-			</a>
-			<a class="rounded nav-link d-inline-block mx-1" href="https://github.com/Kanto-Software-Solutions">
-				<i class="bi bi-github"></i>
-			</a>
+				<a class="rounded nav-link d-inline-block mx-1"
+					href="https://www.facebook.com/profile.php?id=61550256754354">
+					<i class="bi bi-facebook"></i>
+				</a>
+				<a class="rounded nav-link d-inline-block mx-1" href="https://twitter.com/iTalento_">
+					<i class="bi bi-twitter"></i>
+				</a>
+				<a class="rounded nav-link d-inline-block mx-1" href="https://www.instagram.com/italento_/">
+					<i class="bi bi-instagram"></i>
+				</a>
+				<a class="rounded nav-link d-inline-block mx-1" href="https://github.com/Kanto-Software-Solutions">
+					<i class="bi bi-github"></i>
+				</a>
+			</div>
 		</div>
-		</div>
-		<div class="row text-center align-items-center">
-
+		<div class="row" style="height: 23px;">
 		</div>
 	</div>
 </template>
