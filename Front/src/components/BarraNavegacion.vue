@@ -8,30 +8,22 @@
 			<MenuBarra />
 		</div>
 	</div>
-	<nav class="navbar navbar-expand-lg bg-body-secondary sticky-top p-0">
-		<div class="container-fluid">
-			<button id="BotonToggler" class="navbar-toggler p-0 border-0" type="button" data-bs-toggle="offcanvas"
-				data-bs-target="#Menu" aria-controls="elementosOcultos" aria-expanded="false">
-				<img src="../assets/img/logo.png" height="30" img />
-			</button>
-			<div id="Menus" class="d-none d-lg-block">
+	<nav class="navbar navbar-expand-lg bg-body-secondary sticky-top">
+		<div class="d-flex justify-content-between w-100 mx-2">
+			<div id="BtnEscondido" class="d-block d-lg-none p-0 m-0 w-25">
+				<button id="BotonToggler" class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas"
+					data-bs-target="#Menu" aria-controls="elementosOcultos" aria-expanded="false">
+					<img src="../assets/img/logo.png" height="30" img />
+				</button>
+			</div>
+			<div id="Menus" class="d-none d-lg-block w-25">
 				<MenuBarra />
 			</div>
 			<div id="Titulo" class="">
-				<a class="nav-link" href="/">
-					<strong>
-						i - Talento
-					</strong>
-				</a>
+				<Titulo />
 			</div>
-			<div id="Funciones" class="">
-				<button class="btn " type="button" data-bs-toggle="collapse" data-bs-target="#buscar" aria-expanded="false"
-					aria-controls="buscar">
-					<i class="bi bi-search"></i>
-				</button>
-				<a class="router-link btn" type="button" href="/login">
-					<i class="bi bi-person"></i>
-				</a>
+			<div id="Funciones" class="w-25">
+				<BtnIniciodeSesion />
 			</div>
 		</div>
 	</nav>
@@ -49,10 +41,15 @@
 
 <script>
 import MenuBarra from '@/components/MenuBarra.vue'
+import BtnIniciodeSesion from '@/components/BtnIniciodeSesion.vue';
+import Titulo from '@/components/Titulo.vue';
 export default {
 	name: 'NavComp',
 	components: {
-		MenuBarra
+		MenuBarra,
+		BtnIniciodeSesion,
+		Titulo,
+		
 	},
 }
 </script>
