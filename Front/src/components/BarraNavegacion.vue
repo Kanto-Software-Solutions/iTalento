@@ -20,7 +20,7 @@
 			<div id="Titulo" class="">
 				<a class="nav-link" href="/">
 					<strong>
-						<large>i - Talento</large>
+						i - Talento
 					</strong>
 				</a>
 			</div>
