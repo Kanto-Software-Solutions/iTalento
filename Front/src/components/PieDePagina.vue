@@ -1,9 +1,8 @@
 <template>
-	<div id="pieDepagina" class="container-md border-top border-secondary">
+	<div id="pieDepagina" class="container-md">
 		<div class="row text-center align-items-center">
 			<div class="imgiTalento col-sm align-content-center">
 				<img class="logo" id="logoPPagina" src="../assets/img/Logotipo_italentoNegro.png" width="100" alt="iTalento logo" />
-				<div class="text-body text-center text-nowrap">iTalento &#169;2023</div>
 			</div>
 			<div class="col-sm">
 				<router-link to="/" class="text-decoration-none text-body text-nowrap">Busca talento</router-link>
@@ -34,13 +33,15 @@
 				</div>
 			</div>
 		</div>
-		<div class="row m-1">
+		<div class="row m-1 border-top border-secondary">
 			<div class="col d-flex justify-content-start">
 				<div class="row">
 					<router-link to="/" class="col-sm text-decoration-none text-body m-1 text-nowrap"
 						style="font-size:small;">©2023 i-Talento</router-link>
 					<router-link to="/" class="col-sm text-decoration-none text-body m-1 text-nowrap"
 						style="font-size:small;">Términos y condiciones</router-link>
+					<router-link to="/" class="col-sm text-decoration-none text-body m-1 text-nowrap"
+						style="font-size:small;">Cookies</router-link>
 				</div>
 			</div>
 			<div class="col d-flex justify-content-end" style="height:40px;">
