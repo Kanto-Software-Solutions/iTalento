@@ -4,38 +4,40 @@
 			<img src="../assets/img/FondoLanding.png" class="position-absolute z-n1 w-100 h-100 object-fit-cover"
 				alt="fondo">
 		</div>
-		<div class="row m-2">
-			<div class="col-sm col m-1 align-self-center d-flex justify-content-center">
-				<div class="" style="width: 75%;">
-					<p class="text-justify fs-1 fw-bold" style="color: rgb(199, 199, 199)">
-						No te preocupes, en i-Talento
-						tenemos lo que buscas para tus proyectos personales o tu empresa.
-					</p>
-					<p class="text-Justify fs-1 fw-bold" style="color: rgb(199, 199, 199)">
-						Da un paso adelante y busca eso que necesitas.
-					</p>
-					<ul class="text-body">
-						<li style="color: rgb(199, 199, 199)">Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-						<li style="color: rgb(199, 199, 199)">Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-						<li style="color: rgb(199, 199, 199)">Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-					</ul>
+		<div class="container-xl">
+			<div class="row">
+				<div class="col-sm col m-1 align-self-center d-flex justify-content-center">
+					<div class="">
+						<p class="text-justify fs-1 fw-bold" style="color: rgb(199, 199, 199)">
+							No te preocupes, en i-Talento
+							tenemos lo que buscas para tus proyectos personales o tu empresa.
+						</p>
+						<p class="text-Justify fs-1 fw-bold" style="color: rgb(199, 199, 199)">
+							Da un paso adelante y busca eso que necesitas.
+						</p>
+						<ul class="text-body">
+							<li style="color: rgb(199, 199, 199)">Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+							<li style="color: rgb(199, 199, 199)">Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+							<li style="color: rgb(199, 199, 199)">Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+						</ul>
+					</div>
 				</div>
-			</div>
-			<div class="col-sm h-100 align-self-end">
-				<div class="row d-none d-md-block" style="min-height: 75vh">
-					<!--Comodin de altura-->
-				</div>
-				<div class="row mx-auto my-5" style="width: 60%;">
-					<button class="btn" type="button"
-						style="background-color: rgba(58, 58, 58, 0.4); color: rgb(199, 199, 199);">
-						Busca Talento
-					</button>
+				<div class="col-sm h-100 align-self-end">
+					<div class="row d-none d-md-block" style="min-height: 75vh">
+						<!--Comodin de altura-->
+					</div>
+					<div class="row mx-auto my-5" style="width: 60%;">
+						<button class="btn" type="button"
+							style="background-color: rgba(58, 58, 58, 0.4); color: rgb(199, 199, 199);">
+							Busca Talento
+						</button>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div id="LandingPrincipales">
-		<div class="card border-0 m-0 rounded-0">
+	<div id="LandingPrincipales" class="container-xl">
+		<div class="card border-0 border-bottom border-secondary m-0 rounded-0">
 			<div class="card-header border-0 m-0 rounded-0">
 				<h3 class="">Principales Categorias</h3>
 			</div>
@@ -51,24 +53,57 @@
 			</div>
 		</div>
 	</div>
-	<div>
-		<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-			<div class="carousel-inner">
-				<div class="carousel-item active">
-					<img src="../assets/img/bullbasur.jpg" class="d-block" alt="...">
+	<div id="LandingPValor" class="container-xl">
+		<div class="row g-1 m-1">
+			<div class="col-md card border-0">
+				<div class="card-header bg-transparent d-flex justify-content-between">
+					<h5 class="text-start align-self-center">Nosotros te apoyamos</h5>
+					<i class="bi bi-check2-circle" style="font-size: 30px;"></i>
 				</div>
-				<div class="carousel-item">
-					<img src="../assets/img/charmander.jpg" class="d-block" alt="...">
+				<div class="card-body">
+					<p class="">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+						labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+						laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+						voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+						non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</p>
 				</div>
-				<div class="carousel-item">
-					<img src="../assets/img/bullbasur.jpg" class="d-block" alt="...">
+			</div>
+			<div class="col-md card border-0">
+				<div class="card-header bg-transparent d-flex justify-content-between">
+					<h5 class="text-start align-self-center">Negocia de manera segura</h5>
+					<i class="bi bi-shield-fill-check align-self-center" style="font-size: 30px;"></i>
+				</div>
+				<div class="card-body">
+					<p class="">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+						labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+						laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+						voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+						non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</p>
+				</div>
+			</div>
+			<div class="col-md card border-0">
+				<div class="card-header bg-transparent d-flex justify-content-between">
+					<h5 class="text-start align-self-center">Encuentra oportunidades</h5>
+					<i class="bi bi-graph-up-arrow align-self-center" style="font-size: 30px;"></i>
+				</div>
+				<div class="card-body">
+					<p class="">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+						labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+						laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+						voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+						non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</p>
 				</div>
 			</div>
 		</div>
 	</div>
 </template>
 <script>
-import Vue from 'vue'
 import CardCategoria from '@/components/CardCategorias.vue'
 export default {
 	name: 'LandingPage',

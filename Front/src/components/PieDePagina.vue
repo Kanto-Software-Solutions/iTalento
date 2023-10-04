@@ -54,8 +54,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="" style="height: 26px;">
-	</div>
+	<div class="" style="height: 26px;"></div>
 </template>
 
 
