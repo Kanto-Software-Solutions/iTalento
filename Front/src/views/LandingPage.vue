@@ -7,7 +7,7 @@
 		<div class="container-xl">
 			<div class="row">
 				<div class="col-sm col m-1 align-self-center d-flex justify-content-center">
-					<div class="">
+					<div>
 						<p class="text-justify fs-1 fw-bold" style="color: rgb(199, 199, 199)">
 							No te preocupes, en i-Talento
 							tenemos lo que buscas para tus proyectos personales o tu empresa.
@@ -27,10 +27,9 @@
 						<!--Comodin de altura-->
 					</div>
 					<div class="row mx-auto my-5" style="width: 60%;">
-						<button class="btn" type="button"
-							style="background-color: rgba(58, 58, 58, 0.4); color: rgb(199, 199, 199);">
+						<router-link class="btn router-link" type="button" to="/" style="background-color: rgba(58, 58, 58, 0.4); color: rgb(199, 199, 199);">
 							Busca Talento
-						</button>
+						</router-link>
 					</div>
 				</div>
 			</div>
@@ -38,7 +37,7 @@
 	</div>
 	<div id="LandingPrincipales" class="container-xl">
 		<div class="card border-0 border-bottom border-secondary m-0 rounded-0">
-			<div class="card-header border-0 m-0 rounded-0">
+			<div class="card-header border-0 m-0 rounded-0 bg-transparent">
 				<h3 class="">Principales Categorias</h3>
 			</div>
 			<div class="overflow-x-scroll">
@@ -124,3 +123,5 @@ export default {
 	}),
 }
 </script>
+<style>
+</style>

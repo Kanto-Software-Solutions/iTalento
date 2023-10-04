@@ -28,16 +28,19 @@
 
 			const imagenPPagina = document.getElementById('logoPPagina');
 			const barraNav = document.getElementById('BarraNav');
+			const buscar = document.getElementById('bbuscar');
 
 			darkModeButton.addEventListener('click', () => {
 				document.documentElement.setAttribute('data-bs-theme', 'dark')
 				imagenPPagina.src = './assets/Logotipo_italentoBlanco.png'
 				barraNav.style = 'background-color: rgba(0, 0, 0, 0.7);'
+				buscar.style = 'background-color: rgba(0, 0, 0, 0.7);'
 			});
 			lightModeButton.addEventListener('click', () => {
 				document.documentElement.setAttribute('data-bs-theme', 'ligth')
 				imagenPPagina.src = './assets/Logotipo_italentoNegro.png'
 				barraNav.style = 'background-color: rgba(255, 255, 255, 0.9);'
+				buscar.style = 'background-color: rgba(255, 255, 255, 0.9);'
 			});
 		});
 	</script>

@@ -17,13 +17,13 @@ const routes = [
 		component: () =>
 		import('../views/LandingPage.vue'),
 	},
-	/*
 	{
-		path: '/about',
+		path: '/aboutUs',
 		name: 'about',
 		component: () =>
-			import('../views/AboutView.vue'),
+			import('../views/AboutUs.vue'),
 	},
+	/*
 	{
 		path: '/posts',
 		name: 'posts',

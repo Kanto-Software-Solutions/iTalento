@@ -8,7 +8,7 @@
 	</div>
 	<div id="footer" class="navbar fixed-bottom bg-body-secondary p-0 justify-content-center" style="height: 23px;">
 		<div id="f-about" class="">
-			<router-link class="router-link nav-link" to="/">iTalento - 2023</router-link>
+			<router-link class="router-link nav-link" to="/AboutUs">iTalento - 2023</router-link>
 		</div>
 	</div>
 </template>
