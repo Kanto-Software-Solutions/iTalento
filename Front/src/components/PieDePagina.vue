@@ -44,7 +44,7 @@
 						style="font-size:small;">Cookies</router-link>
 				</div>
 			</div>
-			<div class="col d-flex justify-content-end" style="height:40px;">
+			<div class="col d-flex justify-content-end m-1" style="height:40px;">
 				<div class="btn-group" role="group">
 					<input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-blanco" autocomplete="off" checked>
 					<label class="btn" for="vbtn-blanco"><i class="bi bi-lightbulb-fill"></i></label>
