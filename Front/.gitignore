@@ -1,16 +1,11 @@
 .DS_Store
-node_modules/
-dist/
-docs/_book
-test/
-*/src/public
+node_modules
+/dist
+
 
 # local env files
-*.env
-*.env.local
-*.env.*.local
-package-lock.json
-bundle.js
+.env.local
+.env.*.local
 
 # Log files
 npm-debug.log*
@@ -25,4 +20,5 @@ pnpm-debug.log*
 *.ntvs*
 *.njsproj
 *.sln
-*.sw*
+*.sw?
+node_modules
