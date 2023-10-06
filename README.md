@@ -1,5 +1,5 @@
 # iTalento
-### Plataforma Freelancer ###
+iTalento es una plataforma de Freelance desarrollada por Kanto Software Solutions en NodeJS, ExpressJS y VueJS.
 
 ## Iniciar front
 - cd front
