@@ -67,11 +67,30 @@ exports.createAbility = (req,res) =>{
 		if(error){
 			console.log(error);
 		}else{
-			console.log("Se agregó la red ");
-			res.redirect('/personas');
+			console.log("Se agregó el idioma ");
+			res.redirect('/home');
 		}
 	});
 }
+
+exports.createOrder = (req,res) =>{
+	const idOrder = req.body.idOrder;
+	const createdAt = req.body.createdAt;
+	const status = req.body.status;
+	const idUser = req.body.idUser;
+	const idGig = req.body.idGig;
+
+	conexion.query("INSERT INTO Ability (idOrder, createdAt, status,idUser,idGig) VALUES ( '" + idOrder + "' ,'" + createdAt + "' ,'" + status + "' ,'" + idUser + "' ,'" + idGig + ")", (error, results) => {
+		if(error){
+			console.log(error);
+		}else{
+			console.log("Se agregó el idioma ");
+			res.redirect('/home');
+		}
+	});
+}
+
+
 
 //update datos
 
