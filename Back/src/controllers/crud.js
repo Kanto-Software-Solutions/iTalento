@@ -5,25 +5,25 @@ const conexion	= require('./db');
 const route		= require('./router');
 
 //insertar datos base de datos
-exports.createUsuario = (req,res) =>{
-	const id = req.body.id;
+exports.createUser = (req,res) =>{
+	const idUser = req.body.id;
+	const names = req.oidc.user.family_name;
+	const lastNames = req.oidc.user.given_name;
 	const email = req.oidc.user.email;
-	const password = req.body.password;
-	const username = req.body.username;
-	const firstName = req.oidc.user.given_name;
-	const lastName = req.oidc.user.family_name;
-	const description = req.body.description;
+	const isVerified = req.body.id;
+	const nickname  = req.oidc.user.nickname;
 	const profileImage = req.oidc.user.picture;
-	const isBuyer = req.body.isBuyer;
-	const isBoth = req.body.isBoth;
-	const isFreelancer = req.body.isFreelancer;
-	const createdAt = req.body.createdAt;
-	conexion.query("INSERT INTO Usuario (id,email, password, username, firstName, lastName, decription, profileImage, isBuyer, isBoth, isFreelancer, createdAt) VALUES ( '" + id + "' ,'" + email + "' , '" + password + "' ,'" + username + "' , '" + firstName + "' , '" + lastName + "' , " + description + ", " + profileImage + ", " + isBuyer + ", " + isBoth + ", " + isFreelancer + ", " + createdAt +")", (error, results) => {
+	const isFreelancer = req.body.id;
+	const birthDate = req.body.id;
+	const country = req.body.id;
+	const acceptedTerms = req.body.id;
+	const personalId = req.body.id;
+	conexion.query("INSERT INTO User (idUser,names, lastNames, email, isVerified, nickname, profileImage, isFreelancer, birthDate, country, acceptedTerms, personalId) VALUES ( '" + idUser + "' ,'" + names + "' , '" + lastNames + "' ,'" + email + "' , '" + isVerified + "' , '" + nickname + "' , " + profileImage + ", " + isFreelancer + ", " + birthDate + ", " + country + ", " + acceptedTerms + ", " + personalId +")", (error, results) => {
 		if(error){
 			console.log(error);
 		}else{
 			console.log("Se creó el usuario: " + firstName + " " + lastName);
-			res.redirect('/personas');
+			res.redirect('/home');
 		}
 	});
 }
