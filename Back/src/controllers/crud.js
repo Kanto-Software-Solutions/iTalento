@@ -45,14 +45,25 @@ exports.createCertificate = (req,res) =>{
 	});
 }
 
+exports.createLanguaje = (req,res) =>{
+	const idLanguaje = req.body.idLanguaje;
+	const name = req.body.name;
 
+	conexion.query("INSERT INTO Languaje (idLanguaje, name) VALUES ( '" + idLanguaje + "' ,'" + name + ")", (error, results) => {
+		if(error){
+			console.log(error);
+		}else{
+			console.log("Se agregó el idioma ");
+			res.redirect('/home');
+		}
+	});
+}
 
-exports.createRed = (req,res) =>{
-	const id = req.body.id;
-	const nombreRed = req.body.nombreRed;
-	const linkRed = req.body.linkRed;
+exports.createAbility = (req,res) =>{
+	const idAbility = req.body.idAbility;
+	const name = req.body.name;
 
-	conexion.query("INSERT INTO Red (id, nombreRed, linkRed) VALUES ( '" + id + "' ,'" + nombreRed + "' , '" + linkRed + ")", (error, results) => {
+	conexion.query("INSERT INTO Ability (idAbility, name) VALUES ( '" + idAbility + "' ,'" + name + ")", (error, results) => {
 		if(error){
 			console.log(error);
 		}else{
