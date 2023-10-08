@@ -10,14 +10,14 @@ exports.createUser = (req,res) =>{
 	const names = req.oidc.user.family_name;
 	const lastNames = req.oidc.user.given_name;
 	const email = req.oidc.user.email;
-	const isVerified = req.body.id;
+	const isVerified = req.body.isVerified;
 	const nickname  = req.oidc.user.nickname;
 	const profileImage = req.oidc.user.picture;
-	const isFreelancer = req.body.id;
-	const birthDate = req.body.id;
-	const country = req.body.id;
-	const acceptedTerms = req.body.id;
-	const personalId = req.body.id;
+	const isFreelancer = req.body.isFreelancer;
+	const birthDate = req.body.birthDate;
+	const country = req.body.country;
+	const acceptedTerms = req.body.acceptedTerms;
+	const personalId = req.body.personalId;
 	conexion.query("INSERT INTO User (idUser,names, lastNames, email, isVerified, nickname, profileImage, isFreelancer, birthDate, country, acceptedTerms, personalId) VALUES ( '" + idUser + "' ,'" + names + "' , '" + lastNames + "' ,'" + email + "' , '" + isVerified + "' , '" + nickname + "' , " + profileImage + ", " + isFreelancer + ", " + birthDate + ", " + country + ", " + acceptedTerms + ", " + personalId +")", (error, results) => {
 		if(error){
 			console.log(error);
@@ -28,35 +28,24 @@ exports.createUser = (req,res) =>{
 	});
 }
 
-exports.createHabilidades = (req,res) =>{
-	const idHabilidades = req.body.id;
-	const nameH = req.body.id;
-	const lvl = req.body.id;
+exports.createCertificate = (req,res) =>{
+	const idCertificate = req.body.idCertificate;
+	const name = req.body.name;
+	const institution = req.body.institution;
+	const year = req.body.year;
 
-	conexion.query("INSERT INTO Habilidades (idHabilidades, nameH, lvl) VALUES ( '" + idHabilidades + "' ,'" + nameH + "' , '" + lvl + ")", (error, results) => {
+
+	conexion.query("INSERT INTO Certificate (idCertificate, name, institution, year) VALUES ( '" + idCertificate + "' ,'" + name + "' , '" + institution + "' , '" + year + ")", (error, results) => {
 		if(error){
 			console.log(error);
 		}else{
-			console.log("Se agregó la habilidad ");
-			res.redirect('/personas');
+			console.log("Se agregó el certificado ");
+			res.redirect('/home');
 		}
 	});
 }
 
-exports.createIdioma = (req,res) =>{
-	const idIdioma = req.body.idIdioma;
-	const nombreI = req.body.nombreI;
-	const lvlI = req.body.lvlI;
 
-	conexion.query("INSERT INTO Idioma (idIdioma, nombreI, lvlI) VALUES ( '" + idIdioma + "' ,'" + nombreI + "' , '" + lvlI + ")", (error, results) => {
-		if(error){
-			console.log(error);
-		}else{
-			console.log("Se agregó el idioma ");
-			res.redirect('/personas');
-		}
-	});
-}
 
 exports.createRed = (req,res) =>{
 	const id = req.body.id;
