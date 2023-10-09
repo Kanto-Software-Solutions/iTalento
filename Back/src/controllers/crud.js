@@ -80,16 +80,56 @@ exports.createOrder = (req,res) =>{
 	const idUser = req.body.idUser;
 	const idGig = req.body.idGig;
 
-	conexion.query("INSERT INTO Ability (idOrder, createdAt, status,idUser,idGig) VALUES ( '" + idOrder + "' ,'" + createdAt + "' ,'" + status + "' ,'" + idUser + "' ,'" + idGig + ")", (error, results) => {
+	conexion.query("INSERT INTO Order (idOrder, createdAt, status,idUser,idGig) VALUES ( '" + idOrder + "' ,'" + createdAt + "' ,'" + status + "' ,'" + idUser + "' ,'" + idGig + ")", (error, results) => {
 		if(error){
 			console.log(error);
 		}else{
-			console.log("Se agregó el idioma ");
+			console.log("Se agregó la orden ");
 			res.redirect('/home');
 		}
 	});
 }
 
+exports.createReview = (req,res) =>{
+	const idReview = req.body.idReview;
+	const User_idUser = req.body.User_idUser;
+	const Gig_idGig = req.body.Gig_idGig;
+	const createdAt = req.body.createdAt;
+	const rating = req.body.rating;
+	const title = req.body.title;
+	const description = req.body.description;
+
+	conexion.query("INSERT INTO Review (idReview, User_idUser, Gig_idGig,createdAt,rating,title,description) VALUES ( '" + idReview + "' ,'" + User_idUser + "' ,'" + Gig_idGig + "' ,'" + createdAt + "' ,'" + rating + "' ,'" + title + "' ,'" + description + ")", (error, results) => {
+		if(error){
+			console.log(error);
+		}else{
+			console.log("Se agregó la review ");
+			res.redirect('/home');
+		}
+	});
+}
+
+
+exports.createGig = (req,res) =>{
+	const idGig = req.body.idGig;
+	const name = req.body.name;
+	const description = req.body.description;
+	const createdAt = req.body.createdAt;
+	const Gigcol = req.body.Gigcol;
+	const idCategory = req.body.idCategory;
+	const idUser = req.body.idUser;
+	const price = req.body.price;
+	const deliveryDays = req.body.deliveryDays;
+
+	conexion.query("INSERT INTO Gig (idGig, name, description,createdAt,Gigcol,idCategory,idUser,price,deliveryDays) VALUES ( '" + idGig + "' ,'" + name + "' ,'" + description + "' ,'" + createdAt + "' ,'" + Gigcol + "' ,'" + idCategory + "' ,'" + idUser + "' ,'" + price + "' ,'" + deliveryDays + ")", (error, results) => {
+		if(error){
+			console.log(error);
+		}else{
+			console.log("Se agregó la review ");
+			res.redirect('/home');
+		}
+	});
+}
 
 
 //update datos
