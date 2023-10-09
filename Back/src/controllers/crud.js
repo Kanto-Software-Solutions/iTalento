@@ -125,7 +125,7 @@ exports.createGig = (req,res) =>{
 		if(error){
 			console.log(error);
 		}else{
-			console.log("Se agregó la review ");
+			console.log("Se agregó el gig ");
 			res.redirect('/home');
 		}
 	});
@@ -134,21 +134,21 @@ exports.createGig = (req,res) =>{
 
 //update datos
 
-exports.updateUsuario = (req,res) =>{
-	const id = req.body.id;
+exports.updateUser = (req,res) =>{
+	const idUser = req.body.id;
+	const names = req.oidc.user.family_name;
+	const lastNames = req.oidc.user.given_name;
 	const email = req.oidc.user.email;
-	const password = req.body.password;
-	const username = req.body.username;
-	const firstName = req.oidc.user.given_name;
-	const lastName = req.oidc.user.family_name;
-	const description = req.body.description;
+	const isVerified = req.body.isVerified;
+	const nickname  = req.oidc.user.nickname;
 	const profileImage = req.oidc.user.picture;
-	const isBuyer = req.body.isBuyer;
-	const isBoth = req.body.isBoth;
 	const isFreelancer = req.body.isFreelancer;
-	const createdAt = req.body.createdAt;
+	const birthDate = req.body.birthDate;
+	const country = req.body.country;
+	const acceptedTerms = req.body.acceptedTerms;
+	const personalId = req.body.personalId;
 
-	let query = ('update usuario set id =' + id[0] + ' , email="'+email+'",password="'+password+ '", username = '+ username +' , firstName= '+firstName+', lastName = '+lastName+', description = '+description+', profileImage = '+profileImage + ', isBuyer = '+isBuyer + ', isBoth = '+isBoth + ', isFreelancer = '+isFreelancer + ' where id ='+id[0] );
+	let query = ('update User set idUser =' + idUser[0] + ' , names="'+names+'",lastNames="'+lastNames+ '", email = '+ email +' , isVerified= '+isVerified+', nickname = '+nickname+', profileImage = '+profileImage+', isFreelancer = '+isFreelancer + ', birthDate = '+birthDate + ', country = '+country + ', acceptedTerms = '+acceptedTerms + ' personalId ='+personalId );
 	conexion.query(query,(error,results)=>{
 		if(error){
 			console.log(error);
