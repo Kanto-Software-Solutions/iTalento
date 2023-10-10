@@ -177,6 +177,21 @@ exports.updateCertificate = (req,res) =>{
 	});
 }
 
+exports.updateLanguaje = (req,res) =>{
+	const idLanguaje = req.body.idLanguaje;
+	const name = req.body.name;
+
+	let query = ('update Languaje set idLanguaje =' + idLanguaje + ' , name="'+name+'",institution="'+institution+ '", year = '+ year );
+	conexion.query(query,(error,results)=>{
+		if(error){
+			console.log(error);
+		}else{
+			console.log("Se actualizo el Lenguaje: " + names + " " + lastNames);
+			res.redirect('/home');
+		}
+	});
+}
+
 
 
 //Funciones de la base de datos
