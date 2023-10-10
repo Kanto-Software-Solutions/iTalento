@@ -246,6 +246,28 @@ exports.updateReview = (req,res) =>{
 	});
 }
 
+exports.updateGig = (req,res) =>{
+	const idGig = req.body.idGig;
+	const name = req.body.name;
+	const description = req.body.description;
+	const createdAt = req.body.createdAt;
+	const Gigcol = req.body.Gigcol;
+	const idCategory = req.body.idCategory;
+	const idUser = req.body.idUser;
+	const price = req.body.price;
+	const deliveryDays = req.body.deliveryDays;
+
+	let query = ('update Gig set idGig =' + idGig + ' , name="'+name+'",description="'+description+ '", createdAt = '+ createdAt + '", Gigcol = '+ Gigcol + '", idCategory = '+ idCategory + '", idUser = '+ idUser + '", price = '+ price + '", deliveryDays = '+ deliveryDays );
+	conexion.query(query,(error,results)=>{
+		if(error){
+			console.log(error);
+		}else{
+			console.log("Se actualizo el Gig: ");
+			res.redirect('/home');
+		}
+	});
+}
+
 
 
 //Funciones de la base de datos
