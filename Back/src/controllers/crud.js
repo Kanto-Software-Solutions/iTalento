@@ -181,7 +181,7 @@ exports.updateLanguaje = (req,res) =>{
 	const idLanguaje = req.body.idLanguaje;
 	const name = req.body.name;
 
-	let query = ('update Languaje set idLanguaje =' + idLanguaje + ' , name="'+name+'",institution="'+institution+ '", year = '+ year );
+	let query = ('update Languaje set idLanguaje =' + idLanguaje + ' , name="'+name);
 	conexion.query(query,(error,results)=>{
 		if(error){
 			console.log(error);
@@ -196,12 +196,31 @@ exports.updateAbility = (req,res) =>{
 	const idAbility = req.body.idAbility;
 	const name = req.body.name;
 
-	let query = ('update Ability set idAbility =' + idAbility + ' , name="'+name+'",institution="'+institution+ '", year = '+ year );
+	let query = ('update Ability set idAbility =' + idAbility + ' , name="'+name);
 	conexion.query(query,(error,results)=>{
 		if(error){
 			console.log(error);
 		}else{
 			console.log("Se actualizo la habilidad: " + names + " " + lastNames);
+			res.redirect('/home');
+		}
+	});
+}
+
+
+exports.updateOrder = (req,res) =>{
+	const idOrder = req.body.idOrder;
+	const createdAt = req.body.createdAt;
+	const status = req.body.status;
+	const idUser = req.body.idUser;
+	const idGig = req.body.idGig;
+
+	let query = ('update Order set idOrder =' + idOrder + ' , createdAt="'+createdAt+'",status="'+status+ '", idUser = '+ idUser + '", idGig = '+ idGig );
+	conexion.query(query,(error,results)=>{
+		if(error){
+			console.log(error);
+		}else{
+			console.log("Se actualizo la orden: " + names + " " + lastNames);
 			res.redirect('/home');
 		}
 	});
