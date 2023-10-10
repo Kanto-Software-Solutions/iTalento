@@ -192,6 +192,20 @@ exports.updateLanguaje = (req,res) =>{
 	});
 }
 
+exports.updateAbility = (req,res) =>{
+	const idAbility = req.body.idAbility;
+	const name = req.body.name;
+
+	let query = ('update Ability set idAbility =' + idAbility + ' , name="'+name+'",institution="'+institution+ '", year = '+ year );
+	conexion.query(query,(error,results)=>{
+		if(error){
+			console.log(error);
+		}else{
+			console.log("Se actualizo la habilidad: " + names + " " + lastNames);
+			res.redirect('/home');
+		}
+	});
+}
 
 
 //Funciones de la base de datos
