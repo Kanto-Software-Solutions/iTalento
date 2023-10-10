@@ -160,6 +160,22 @@ exports.updateUser = (req,res) =>{
 }
 
 
+exports.updateCertificate = (req,res) =>{
+	const idCertificate = req.body.idCertificate;
+	const name = req.body.name;
+	const institution = req.body.institution;
+	const year = req.body.year;
+
+	let query = ('update Certificate set idCertificate =' + idCertificate + ' , name="'+name+'",institution="'+institution+ '", year = '+ year );
+	conexion.query(query,(error,results)=>{
+		if(error){
+			console.log(error);
+		}else{
+			console.log("Se actualizo el certificados: " + names + " " + lastNames);
+			res.redirect('/home');
+		}
+	});
+}
 
 
 
@@ -177,6 +193,8 @@ const usuarios = (req,res) => {
 		}
 	});
 };
+
+
 
 
 
