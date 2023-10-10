@@ -153,8 +153,8 @@ exports.updateUser = (req,res) =>{
 		if(error){
 			console.log(error);
 		}else{
-			console.log("Se creó el usuario: " + firstName + " " + lastName);
-			res.redirect('/personas');
+			console.log("Se actualizo el usuario: " + names + " " + lastNames);
+			res.redirect('/home');
 		}
 	});
 }
