@@ -20,6 +20,16 @@ exports.getGigById = (req, res) => {
     });
 };
 
+exports.getGigByUser = (req, res) => {
+    conexion.query("SELECT * FROM Gig WHERE idUser = " + req.params.id, (error,results) => {
+        if(error){
+            console.log(error);
+        }else{
+            res.json({results:results});
+        }
+    });
+};
+
 exports.createGig = (req,res) =>{
 	const idGig = req.body.idGig;
 	const name = req.body.name;
