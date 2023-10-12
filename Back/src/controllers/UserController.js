@@ -10,6 +10,17 @@ exports.getAllUsers = (req,res) => {
 	});
 };
 
+exports.getUserById = (req,res) => {
+	conexion.query("SELECT * FROM User WHERE idUser =" + req.params.id, (error,results) => {
+		if(error){
+			console.log(error);
+            res.json(error);
+		}else{
+			res.json({results:results});
+		}
+	});
+};
+
 exports.createUser = (req,res) =>{
 	const idUser = req.body.id;
 	const names = req.oidc.user.family_name;

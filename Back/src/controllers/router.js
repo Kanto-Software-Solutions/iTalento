@@ -9,5 +9,6 @@ module.exports = router;
 
 //Segun el metodo de la peticion, se ejecuta la funcion correspondiente
 router.get('/usuarios', 		usuario.getAllUsers);
+router.get('/usuarios/:id',     usuario.getUserById);
 router.get('/publicaciones',	gig.getAllGigs);
 router.get('/test',				crud.test);

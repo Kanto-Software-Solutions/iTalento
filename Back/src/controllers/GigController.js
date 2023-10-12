@@ -11,7 +11,7 @@ exports.getAllGigs = (req,res) => {
 };
 
 exports.getGigById = (req, res) => {
-    conexion.query("SELECT * FROM Gig WHERE idUser = " + req.idUser, (error,results) => {
+    conexion.query("SELECT * FROM Gig WHERE idGig = " + req.params.id, (error,results) => {
         if(error){
             console.log(error);
         }else{
