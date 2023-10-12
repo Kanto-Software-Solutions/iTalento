@@ -8,6 +8,6 @@ const gig = require('./GigController');
 module.exports = router;
 
 //Segun el metodo de la peticion, se ejecuta la funcion correspondiente
-router.get('/usuarios', 		usuario.GetAllUsers);
-router.get('/publicaciones',	crud.publicaciones);
+router.get('/usuarios', 		usuario.getAllUsers);
+router.get('/publicaciones',	gig.getAllGigs);
 router.get('/test',				crud.test);
