@@ -19,6 +19,22 @@ const GigModel = {
       type: DataTypes.DATETIME,
       allowNull: false,
     },
+    idCategory: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: 'Category',
+            key: 'idCategory'
+        }
+    },
+    idUser: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: 'User',
+            key: 'idUser'
+        }
+    },
     price: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -33,7 +49,7 @@ const GigModel = {
 
   module.exports = {
     initialize: (sequelize) => {
-      this.model = sequelize.define("gig", GigModel);
+      this.model = sequelize.define("Gig", GigModel);
     },
   
     createGig: (gig) => {
