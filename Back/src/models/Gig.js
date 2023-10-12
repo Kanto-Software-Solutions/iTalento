@@ -1,58 +1,14 @@
-const { DataTypes } = require("sequelize");
+class Gig {
+  constructor(idGig, name, description, idCategory, idUser, price, deliveryDays){
+    this.idGig = idGig;
+    this.name = name;
+    this.description = description;
+    this.createdAt = Date.now();
+    this.idCategory = idCategory;
+    this.idUser = idUser;
+    this.price = price;
+    this.deliveryDays = deliveryDays;
+  }
+}
 
-// Not Finished
-const GigModel = {
-    idGig: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-      primaryKey: true,
-    },
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    description: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    createdAt: {
-      type: DataTypes.DATETIME,
-      allowNull: false,
-    },
-    idCategory: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: {
-            model: 'Category',
-            key: 'idCategory'
-        }
-    },
-    idUser: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: {
-            model: 'User',
-            key: 'idUser'
-        }
-    },
-    price: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      default: 0,
-    },
-    deliveryDays: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      default: 0,
-    }
-  };
-
-  module.exports = {
-    initialize: (sequelize) => {
-      this.model = sequelize.define("Gig", GigModel);
-    },
-  
-    createGig: (gig) => {
-      return this.model.create(gig);
-    }
-};
+exports.Gig = Gig;

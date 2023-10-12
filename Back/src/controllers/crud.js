@@ -1,7 +1,7 @@
 const express 	= require('express');
 const error 	= require('jquery');
 
-const conexion	= require('./db');
+const conexion	= require('../database/db');
 const route		= require('./router');
 
 //insertar datos base de datos
@@ -268,15 +268,10 @@ exports.updateGig = (req,res) =>{
 	});
 }
 
-
-
 //Funciones de la base de datos
 const usuarios = (req,res) => {
-	const id = req.body.id;
-	const nombre = req.body.Nombre;
-	const contraseña = req.body.Contraseña;
 	
-	conexion.query("SELECT * FROM Usuario", (error,results) => {
+	conexion.query("SELECT * FROM User", (error,results) => {
 		if(error){
 			console.log(error);
 		}else{
@@ -286,15 +281,9 @@ const usuarios = (req,res) => {
 };
 
 
-
-
-
 const publicaciones = (req,res) => {
-	const id = req.body.PublicacionID;
-	const autor = req.body.AutorID;
-	const contenido = req.body.Contenido;
 
-	conexion.query("SELECT * FROM publicacion", (error,results) => {
+	conexion.query("SELECT * FROM Gig", (error,results) => {
 		if(error){
 			console.log(error);
 		}else{
