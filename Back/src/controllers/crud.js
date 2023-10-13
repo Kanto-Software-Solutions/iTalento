@@ -23,16 +23,15 @@ exports.createCertificate = (req,res) =>{
 	});
 }
 
-exports.createLanguaje = (req,res) =>{
-	const idLanguaje = req.body.idLanguaje;
+exports.createLanguage = (req,res) =>{
+	const idLanguage = req.body.idLanguaje;
 	const name = req.body.name;
 
-	conexion.query("INSERT INTO Languaje (idLanguaje, name) VALUES ( '" + idLanguaje + "' ,'" + name + ")", (error, results) => {
+	conexion.query("INSERT INTO Language (idLanguage, name) VALUES ( '" + idLanguage + "' ,'" + name + ")", (error, results) => {
 		if(error){
 			console.log(error);
 		}else{
-			console.log("Se agregó el idioma ");
-			res.redirect('/home');
+			console.log("Se agregó el idioma");
 		}
 	});
 }
@@ -45,8 +44,7 @@ exports.createAbility = (req,res) =>{
 		if(error){
 			console.log(error);
 		}else{
-			console.log("Se agregó el idioma ");
-			res.redirect('/home');
+			console.log("Se agregó la habilidad");
 		}
 	});
 }

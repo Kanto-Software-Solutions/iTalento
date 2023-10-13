@@ -45,7 +45,6 @@ exports.createGig = (req,res) =>{
 			console.log(error);
 		}else{
 			console.log("Se agregó el gig ");
-			res.redirect('/home');
 		}
 	});
 }
@@ -67,7 +66,6 @@ exports.updateGig = (req,res) =>{
 			console.log(error);
 		}else{
 			console.log("Se actualizo el Gig: ");
-			res.redirect('/home');
 		}
 	});
 }
