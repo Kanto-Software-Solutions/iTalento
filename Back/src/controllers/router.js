@@ -5,6 +5,12 @@ const crud = require('./crud');
 const usuario = require('./UserController');
 const gig = require('./GigController');
 const categoria = require('./CategoryController');
+const habilidad = require('./AbilityController');
+const orden = require('./OrderController');
+const resenia = require('./ReviewController');
+const certificado = require('./CertificateController');
+const lenguaje = require('./LanguageController');
+
 //Permite ser usado en otros archivos
 module.exports = router;
 
