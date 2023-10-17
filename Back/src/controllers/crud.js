@@ -269,6 +269,8 @@ exports.updateGig = (req,res) =>{
 }
 
 
+//
+
 
 //Funciones de la base de datos
 const usuarios = (req,res) => {
