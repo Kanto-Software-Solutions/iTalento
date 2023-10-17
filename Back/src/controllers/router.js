@@ -22,11 +22,12 @@ var jsonParser = bodyParser.json()
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 //Segun el metodo de la peticion, se ejecuta la funcion correspondiente
-router.get('/usuarios', 		        usuario.getAllUsers);
-router.get('/usuarios/:id',             usuario.getUserById);
-router.post('/nuevo/usuario', urlencodedParser,          usuario.createUser);
-router.get('/publicaciones',	        gig.getAllGigs);
-router.get('/publicaciones/:id',	    gig.getGigById);
-router.get('/publicaciones/user/:id',   gig.getGigByUser);
-router.get('/categorias',               categoria.getAllCategories);
-router.get('/test',				        crud.test);
+router.get('/usuarios', 		                        usuario.getAllUsers);
+router.get('/usuarios/:id',                             usuario.getUserById);
+router.post('/nuevo/usuario',       urlencodedParser,   usuario.createUser);
+router.get('/publicaciones',	                        gig.getAllGigs);
+router.post('/nuevo/publicacion',   urlencodedParser,   gig.createGig);
+router.get('/publicaciones/:id',	                    gig.getGigById);
+router.get('/publicaciones/user/:id',                   gig.getGigByUser);
+router.get('/categorias',                               categoria.getAllCategories);
+router.get('/test',				                        crud.test);
