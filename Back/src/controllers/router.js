@@ -25,9 +25,11 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 router.get('/usuarios', 		                        usuario.getAllUsers);
 router.get('/usuarios/:id',                             usuario.getUserById);
 router.post('/nuevo/usuario',       urlencodedParser,   usuario.createUser);
+router.put('/editar/usuario/:id',   urlencodedParser,   usuario.updateUser);
 router.get('/publicaciones',	                        gig.getAllGigs);
 router.post('/nuevo/publicacion',   urlencodedParser,   gig.createGig);
 router.get('/publicaciones/:id',	                    gig.getGigById);
 router.get('/publicaciones/user/:id',                   gig.getGigByUser);
 router.get('/categorias',                               categoria.getAllCategories);
+router.post('/nuevo/categoria',     urlencodedParser,   categoria.createCategory);
 router.get('/test',				                        crud.test);
