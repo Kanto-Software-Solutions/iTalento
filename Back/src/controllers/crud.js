@@ -1,32 +1,10 @@
 const express 	= require('express');
 const error 	= require('jquery');
 
-const conexion	= require('./db');
+const conexion	= require('../database/db');
 const route		= require('./router');
 
 //insertar datos base de datos
-exports.createUser = (req,res) =>{
-	const idUser = req.body.id;
-	const names = req.oidc.user.family_name;
-	const lastNames = req.oidc.user.given_name;
-	const email = req.oidc.user.email;
-	const isVerified = req.body.isVerified;
-	const nickname  = req.oidc.user.nickname;
-	const profileImage = req.oidc.user.picture;
-	const isFreelancer = req.body.isFreelancer;
-	const birthDate = req.body.birthDate;
-	const country = req.body.country;
-	const acceptedTerms = req.body.acceptedTerms;
-	const personalId = req.body.personalId;
-	conexion.query("INSERT INTO User (idUser,names, lastNames, email, isVerified, nickname, profileImage, isFreelancer, birthDate, country, acceptedTerms, personalId) VALUES ( '" + idUser + "' ,'" + names + "' , '" + lastNames + "' ,'" + email + "' , '" + isVerified + "' , '" + nickname + "' , " + profileImage + ", " + isFreelancer + ", " + birthDate + ", " + country + ", " + acceptedTerms + ", " + personalId +")", (error, results) => {
-		if(error){
-			console.log(error);
-		}else{
-			console.log("Se creó el usuario: " + firstName + " " + lastName);
-			res.redirect('/home');
-		}
-	});
-}
 
 exports.createCertificate = (req,res) =>{
 	const idCertificate = req.body.idCertificate;
@@ -45,16 +23,15 @@ exports.createCertificate = (req,res) =>{
 	});
 }
 
-exports.createLanguaje = (req,res) =>{
-	const idLanguaje = req.body.idLanguaje;
+exports.createLanguage = (req,res) =>{
+	const idLanguage = req.body.idLanguaje;
 	const name = req.body.name;
 
-	conexion.query("INSERT INTO Languaje (idLanguaje, name) VALUES ( '" + idLanguaje + "' ,'" + name + ")", (error, results) => {
+	conexion.query("INSERT INTO Language (idLanguage, name) VALUES ( '" + idLanguage + "' ,'" + name + ")", (error, results) => {
 		if(error){
 			console.log(error);
 		}else{
-			console.log("Se agregó el idioma ");
-			res.redirect('/home');
+			console.log("Se agregó el idioma");
 		}
 	});
 }
@@ -67,8 +44,7 @@ exports.createAbility = (req,res) =>{
 		if(error){
 			console.log(error);
 		}else{
-			console.log("Se agregó el idioma ");
-			res.redirect('/home');
+			console.log("Se agregó la habilidad");
 		}
 	});
 }
@@ -110,54 +86,8 @@ exports.createReview = (req,res) =>{
 }
 
 
-exports.createGig = (req,res) =>{
-	const idGig = req.body.idGig;
-	const name = req.body.name;
-	const description = req.body.description;
-	const createdAt = req.body.createdAt;
-	const Gigcol = req.body.Gigcol;
-	const idCategory = req.body.idCategory;
-	const idUser = req.body.idUser;
-	const price = req.body.price;
-	const deliveryDays = req.body.deliveryDays;
-
-	conexion.query("INSERT INTO Gig (idGig, name, description,createdAt,Gigcol,idCategory,idUser,price,deliveryDays) VALUES ( '" + idGig + "' ,'" + name + "' ,'" + description + "' ,'" + createdAt + "' ,'" + Gigcol + "' ,'" + idCategory + "' ,'" + idUser + "' ,'" + price + "' ,'" + deliveryDays + ")", (error, results) => {
-		if(error){
-			console.log(error);
-		}else{
-			console.log("Se agregó el gig ");
-			res.redirect('/home');
-		}
-	});
-}
-
 
 //update datos
-
-exports.updateUser = (req,res) =>{
-	const idUser = req.body.id;
-	const names = req.oidc.user.family_name;
-	const lastNames = req.oidc.user.given_name;
-	const email = req.oidc.user.email;
-	const isVerified = req.body.isVerified;
-	const nickname  = req.oidc.user.nickname;
-	const profileImage = req.oidc.user.picture;
-	const isFreelancer = req.body.isFreelancer;
-	const birthDate = req.body.birthDate;
-	const country = req.body.country;
-	const acceptedTerms = req.body.acceptedTerms;
-	const personalId = req.body.personalId;
-
-	let query = ('update User set idUser =' + idUser[0] + ' , names="'+names+'",lastNames="'+lastNames+ '", email = '+ email +' , isVerified= '+isVerified+', nickname = '+nickname+', profileImage = '+profileImage+', isFreelancer = '+isFreelancer + ', birthDate = '+birthDate + ', country = '+country + ', acceptedTerms = '+acceptedTerms + ' personalId ='+personalId );
-	conexion.query(query,(error,results)=>{
-		if(error){
-			console.log(error);
-		}else{
-			console.log("Se actualizo el usuario: " + names + " " + lastNames);
-			res.redirect('/home');
-		}
-	});
-}
 
 
 exports.updateCertificate = (req,res) =>{
@@ -273,43 +203,10 @@ exports.updateGig = (req,res) =>{
 
 
 //Funciones de la base de datos
-const usuarios = (req,res) => {
-	const id = req.body.id;
-	const nombre = req.body.Nombre;
-	const contraseña = req.body.Contraseña;
-	
-	conexion.query("SELECT * FROM Usuario", (error,results) => {
-		if(error){
-			console.log(error);
-		}else{
-			res.json({results:results});
-		}
-	});
-};
-
-
-
-
-
-const publicaciones = (req,res) => {
-	const id = req.body.PublicacionID;
-	const autor = req.body.AutorID;
-	const contenido = req.body.Contenido;
-
-	conexion.query("SELECT * FROM publicacion", (error,results) => {
-		if(error){
-			console.log(error);
-		}else{
-			res.json({results:results});
-		}
-	});
-};
 
 const test = (req,res) => {
 		res.send("Test");
 };
 
 //Export para su uso en otros archivos
-exports.usuarios		= usuarios;
-exports.publicaciones	= publicaciones;
 exports.test			= test;
