@@ -23,23 +23,24 @@ exports.getUserById = (req,res) => {
 
 exports.createUser = (req,res) =>{
 	const idUser = req.body.id;
-	const names = req.oidc.user.family_name;
-	const lastNames = req.oidc.user.given_name;
-	const email = req.oidc.user.email;
+	const names = req.body.given_name;
+	const lastNames = req.body.family_name;
+	const email = req.body.email;
 	const isVerified = req.body.isVerified;
-	const nickname  = req.oidc.user.nickname;
-	const profileImage = req.oidc.user.picture;
+	const nickname  = req.body.nickname;
+	const profileImage = req.body.picture;
 	const isFreelancer = req.body.isFreelancer;
 	const birthDate = req.body.birthDate;
 	const country = req.body.country;
 	const acceptedTerms = req.body.acceptedTerms;
 	const personalId = req.body.personalId;
-	conexion.query("INSERT INTO User (idUser,names, lastNames, email, isVerified, nickname, profileImage, isFreelancer, birthDate, country, acceptedTerms, personalId) VALUES ( '" + idUser + "' ,'" + names + "' , '" + lastNames + "' ,'" + email + "' , '" + isVerified + "' , '" + nickname + "' , " + profileImage + ", " + isFreelancer + ", " + birthDate + ", " + country + ", " + acceptedTerms + ", " + personalId +")", (error, results) => {
+	console.log(req.body);
+	console.log(req.params);
+	conexion.query("INSERT INTO User (idUser,names, lastNames, email, isVerified, nickname, profileImage, isFreelancer, birthDate, country, acceptedTerms) VALUES ( '" + idUser + "' ,'" + names + "' , '" + lastNames + "' ,'" + email + "' , '" + isVerified + "' , '" + nickname + "' , " + profileImage + ", " + isFreelancer + ", " + birthDate + ", " + country + ", " + acceptedTerms + ")", (error, results) => {
 		if(error){
 			console.log(error);
 		}else{
-			console.log("Se creó el usuario: " + firstName + " " + lastName);
-			res.redirect('/home');
+			console.log("Se creó el usuario: " + names + " " + lastNames);
 		}
 	});
 }
