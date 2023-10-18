@@ -69,3 +69,16 @@ exports.updateUser = (req,res) =>{
 		}
 	});
 }
+
+
+exports.deleteUser = (req,res) => {
+	const idUser = req.body.id;
+	conexion.query('delete from User where id = '+ idUser , (error,results) =>{
+		if(error){
+			console.log(error);
+		}else{
+			console.log('Se elimino el User con ID' + idUser);
+			res.redirect('/home')
+		}
+	});
+}

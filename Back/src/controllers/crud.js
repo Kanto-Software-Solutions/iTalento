@@ -4,12 +4,6 @@ const error 	= require('jquery');
 const conexion	= require('../database/db');
 const route		= require('./router');
 
-//insertar datos base de datos
-
-//update datos
-
-
-//
 
 
 //Funciones de la base de datos
