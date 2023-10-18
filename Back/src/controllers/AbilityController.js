@@ -27,3 +27,15 @@ exports.updateAbility = (req,res) =>{
 		}
 	});
 }
+
+exports.deleteAbility= (req,res) => {
+	const idAbility = req.body.idAbility;
+	conexion.query('delete from Ability where id = '+ idAbility , (error,results) =>{
+		if(error){
+			console.log(error);
+		}else{
+			console.log('Se elimino la habilidad' + idAbility);
+			res.redirect('/home')
+		}
+	});
+}

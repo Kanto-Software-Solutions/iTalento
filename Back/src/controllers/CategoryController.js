@@ -27,7 +27,7 @@ exports.deleteCategory= (req,res) => {
 		if(error){
 			console.log(error);
 		}else{
-			console.log('Se elimino el Certificado' + req.body.name);
+			console.log('Se elimino la categoria' + req.body.name);
 			res.redirect('/home')
 		}
 	});
