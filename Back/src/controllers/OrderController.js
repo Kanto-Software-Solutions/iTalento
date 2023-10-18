@@ -41,7 +41,7 @@ exports.deleteOrder = (req,res) => {
 		if(error){
 			console.log(error);
 		}else{
-			console.log('Se elimino la orden' + idReview);
+			console.log('Se elimino la orden' + idOrder);
 			res.redirect('/home')
 		}
 	});

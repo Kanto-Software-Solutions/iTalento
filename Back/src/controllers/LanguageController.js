@@ -29,13 +29,13 @@ exports.updateLanguaje = (req,res) =>{
 	});
 }
 
-exports.deleteOrder = (req,res) => {
-	const idOrder = req.body.idOrder;
-	conexion.query('delete from Order where id = '+ idOrder , (error,results) =>{
+exports.deleteLanguaje = (req,res) => {
+	const idLanguaje = req.body.idLanguaje;
+	conexion.query('delete from Languaje where id = '+ idLanguaje , (error,results) =>{
 		if(error){
 			console.log(error);
 		}else{
-			console.log('Se elimino la orden' + idReview);
+			console.log('Se elimino el lenguaje' + idLanguaje);
 			res.redirect('/home')
 		}
 	});
