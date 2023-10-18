@@ -34,3 +34,15 @@ exports.updateCertificate = (req,res) =>{
 		}
 	});
 }
+
+exports.deleteCertificate= (req,res) => {
+	const idCertificate = req.body.idCertificate;
+	conexion.query('delete from Certificate where id = '+ idCertificate , (error,results) =>{
+		if(error){
+			console.log(error);
+		}else{
+			console.log('Se elimino el Certificado' + idCertificate);
+			res.redirect('/home')
+		}
+	});
+}
