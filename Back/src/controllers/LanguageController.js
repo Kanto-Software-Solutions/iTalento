@@ -28,3 +28,15 @@ exports.updateLanguaje = (req,res) =>{
 		}
 	});
 }
+
+exports.deleteOrder = (req,res) => {
+	const idOrder = req.body.idOrder;
+	conexion.query('delete from Order where id = '+ idOrder , (error,results) =>{
+		if(error){
+			console.log(error);
+		}else{
+			console.log('Se elimino la orden' + idReview);
+			res.redirect('/home')
+		}
+	});
+}

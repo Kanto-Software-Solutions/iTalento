@@ -38,3 +38,15 @@ exports.updateReview = (req,res) =>{
 		}
 	});
 }
+
+exports.deleteReview = (req,res) => {
+	const idReview = req.body.idReview;
+	conexion.query('delete from Review where id = '+ idReview , (error,results) =>{
+		if(error){
+			console.log(error);
+		}else{
+			console.log('Se elimino la review' + idReview);
+			res.redirect('/home')
+		}
+	});
+}
