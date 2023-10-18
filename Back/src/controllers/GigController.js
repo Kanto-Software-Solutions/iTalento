@@ -69,3 +69,15 @@ exports.updateGig = (req,res) =>{
 		}
 	});
 }
+
+exports.deleteGig= (req,res) => {
+	const idGig = req.body.idGig;
+	conexion.query('delete from Gig where id = '+ idGig , (error,results) =>{
+		if(error){
+			console.log(error);
+		}else{
+			console.log('Se elimino el Gig' + idGig);
+			res.redirect('/home')
+		}
+	});
+}
