@@ -46,7 +46,7 @@ exports.createUser = (req,res) =>{
 }
 
 exports.updateUser = (req,res) =>{
-	const idUser = req.body.id;
+	const idUser = req.params.id;
 	const names = req.oidc.user.family_name;
 	const lastNames = req.oidc.user.given_name;
 	const email = req.oidc.user.email;
