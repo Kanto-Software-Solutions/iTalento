@@ -19,3 +19,16 @@ exports.createCategory = (req,res) => {
 		}
 	});
 };
+
+
+exports.deleteCategory= (req,res) => {
+
+	conexion.query('delete from Category where id = '+ req.body.name , (error,results) =>{
+		if(error){
+			console.log(error);
+		}else{
+			console.log('Se elimino el Certificado' + req.body.name);
+			res.redirect('/home')
+		}
+	});
+}
