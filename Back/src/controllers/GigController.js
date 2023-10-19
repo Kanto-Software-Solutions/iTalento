@@ -56,7 +56,7 @@ exports.createGig = (req,res) =>{
 }
 
 exports.updateGig = (req,res) =>{
-	const idGig = req.body.idGig;
+	const idGig = req.params.idGig;
 	const name = req.body.name;
 	const description = req.body.description;
 	const createdAt = req.body.createdAt;
@@ -78,7 +78,7 @@ exports.updateGig = (req,res) =>{
 }
 
 exports.deleteGig= (req,res) => {
-	const idGig = req.body.idGig;
+	const idGig = req.params.idGig;
 	conexion.query('delete from Gig where id = '+ idGig , (error,results) =>{
 		if(error){
 			console.log(error);
