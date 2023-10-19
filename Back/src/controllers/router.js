@@ -33,5 +33,5 @@ router.get('/publicaciones/:id',	                    gig.getGigById);
 router.get('/publicaciones/user/:id',                   gig.getGigByUser);
 router.put('/editar/publicacion/:id',urlencodedParser,  gig.updateGig);
 router.get('/categorias',                               categoria.getAllCategories);
-router.post('/nuevo/categoria',     urlencodedParser,   categoria.createCategory);
+router.get('/categorias/:id',                           categoria.getCategoryById)
 router.get('/test',				                        crud.test);
