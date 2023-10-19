@@ -35,3 +35,4 @@ router.put('/editar/publicacion/:id',urlencodedParser,  gig.updateGig);
 router.get('/categorias',                               categoria.getAllCategories);
 router.post('/nuevo/categoria',     urlencodedParser,   categoria.createCategory);
 router.get('/test',				                        crud.test);
+router.post('/order/neworder/:id',   urlencodedParser,   orden.createOrder);
