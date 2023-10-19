@@ -14,7 +14,7 @@ exports.createReview = (req,res) =>{
 			console.log(error);
 		}else{
 			console.log("Se agregó la review ");
-			res.redirect('/home');
+			
 		}
 	});
 }
@@ -34,7 +34,7 @@ exports.updateReview = (req,res) =>{
 			console.log(error);
 		}else{
 			console.log("Se actualizo la review: ");
-			res.redirect('/home');
+			
 		}
 	});
 }
@@ -46,7 +46,7 @@ exports.deleteReview = (req,res) => {
 			console.log(error);
 		}else{
 			console.log('Se elimino la review' + idReview);
-			res.redirect('/home')
+			
 		}
 	});
 }

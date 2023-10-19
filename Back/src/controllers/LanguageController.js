@@ -24,7 +24,7 @@ exports.updateLanguaje = (req,res) =>{
 			console.log(error);
 		}else{
 			console.log("Se actualizo el Lenguaje: ");
-			res.redirect('/home');
+			
 		}
 	});
 }
@@ -36,7 +36,7 @@ exports.deleteLanguaje = (req,res) => {
 			console.log(error);
 		}else{
 			console.log('Se elimino el lenguaje' + idLanguaje);
-			res.redirect('/home')
+			
 		}
 	});
 }

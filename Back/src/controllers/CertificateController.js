@@ -30,7 +30,7 @@ exports.updateCertificate = (req,res) =>{
 			console.log(error);
 		}else{
 			console.log("Se actualizo el certificados: ");
-			res.redirect('/home');
+			
 		}
 	});
 }
@@ -42,7 +42,7 @@ exports.deleteCertificate= (req,res) => {
 			console.log(error);
 		}else{
 			console.log('Se elimino el Certificado' + idCertificate);
-			res.redirect('/home')
+			
 		}
 	});
 }

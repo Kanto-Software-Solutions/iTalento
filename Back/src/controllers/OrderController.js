@@ -12,7 +12,7 @@ exports.createOrder = (req,res) =>{
 			console.log(error);
 		}else{
 			console.log("Se agregó la orden ");
-			res.redirect('/home');
+			
 		}
 	});
 }
@@ -30,7 +30,7 @@ exports.updateOrder = (req,res) =>{
 			console.log(error);
 		}else{
 			console.log("Se actualizo la orden: ");
-			res.redirect('/home');
+			
 		}
 	});
 }
@@ -42,7 +42,7 @@ exports.deleteOrder = (req,res) => {
 			console.log(error);
 		}else{
 			console.log('Se elimino la orden' + idOrder);
-			res.redirect('/home')
+			
 		}
 	});
 }

@@ -65,7 +65,7 @@ exports.updateUser = (req,res) =>{
 			console.log(error);
 		}else{
 			console.log("Se actualizo el usuario: " + names + " " + lastNames);
-			res.redirect('/home');
+			
 		}
 	});
 }
@@ -78,7 +78,6 @@ exports.deleteUser = (req,res) => {
 			console.log(error);
 		}else{
 			console.log('Se elimino el User con ID' + idUser);
-			res.redirect('/home')
 		}
 	});
 }

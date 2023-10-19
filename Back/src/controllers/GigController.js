@@ -77,7 +77,7 @@ exports.deleteGig= (req,res) => {
 			console.log(error);
 		}else{
 			console.log('Se elimino el Gig' + idGig);
-			res.redirect('/home')
+			
 		}
 	});
 }

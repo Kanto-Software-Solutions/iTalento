@@ -23,7 +23,7 @@ exports.updateAbility = (req,res) =>{
 			console.log(error);
 		}else{
 			console.log("Se actualizo la habilidad: ");
-			res.redirect('/home');
+			
 		}
 	});
 }
@@ -35,7 +35,7 @@ exports.deleteAbility= (req,res) => {
 			console.log(error);
 		}else{
 			console.log('Se elimino la habilidad' + idAbility);
-			res.redirect('/home')
+			
 		}
 	});
 }

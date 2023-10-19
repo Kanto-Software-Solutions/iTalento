@@ -28,7 +28,7 @@ exports.deleteCategory= (req,res) => {
 			console.log(error);
 		}else{
 			console.log('Se elimino la categoria' + req.body.name);
-			res.redirect('/home')
+			
 		}
 	});
 }
