@@ -34,9 +34,7 @@ exports.createUser = (req,res) =>{
 	const country = req.body.country;
 	const acceptedTerms = req.body.acceptedTerms;
 	const personalId = req.body.personalId;
-	console.log(req.body);
-	console.log(req.params);
-	conexion.query("INSERT INTO User (idUser,names, lastNames, email, isVerified, nickname, profileImage, isFreelancer, birthDate, country, acceptedTerms) VALUES ( '" + idUser + "' ,'" + names + "' , '" + lastNames + "' ,'" + email + "' , '" + isVerified + "' , '" + nickname + "' , " + profileImage + ", " + isFreelancer + ", " + birthDate + ", " + country + ", " + acceptedTerms + ")", (error, results) => {
+	conexion.query("INSERT INTO User (idUser,names, lastNames, email, isVerified, nickname, profileImage, isFreelancer, birthDate, country, acceptedTerms, personalId) VALUES ( '" + idUser + "' ,'" + names + "' , '" + lastNames + "' ,'" + email + "' , '" + isVerified + "' , '" + nickname + "' , " + profileImage + ", " + isFreelancer + ", " + birthDate + ", " + country + ", " + acceptedTerms + ", " + personalId + ")", (error, results) => {
 		if(error){
 			console.log(error);
 		}else{
@@ -72,7 +70,7 @@ exports.updateUser = (req,res) =>{
 
 
 exports.deleteUser = (req,res) => {
-	const idUser = req.body.id;
+	const idUser = req.params.id;
 	conexion.query('delete from User where id = '+ idUser , (error,results) =>{
 		if(error){
 			console.log(error);
