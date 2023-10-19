@@ -23,17 +23,22 @@ const routes = [
 		component: () =>
 			import('../views/AboutUs.vue'),
 	},
+	{
+		path: '/buscar',
+		name: 'buscar',
+		component: () => import('../views/BusquedaServicios.vue'),
+	},
+	{
+		path: '/perfil',
+		name: 'perfil',
+		component: () => import('../views/PerfilUsuario.vue'),
+	},
+	{
+		path: '/login',
+		name: 'login',
+		component: () => import('../views/PerfilUsuario.vue'),
+	},
 	/*
-	{
-		path: '/posts',
-		name: 'posts',
-		component: () => import('../views/PostsView.vue'),
-	},
-	{
-		path: '/profile',
-		name: 'profile',
-		component: () => import('../views/ProfileView.vue'),
-	},
 
 	{
 		path: '/pago',

@@ -27,7 +27,7 @@
 						<!--Comodin de altura-->
 					</div>
 					<div class="row mx-auto my-5" style="width: 60%;">
-						<router-link class="btn router-link" type="button" to="/" style="background-color: rgba(58, 58, 58, 0.4); color: rgb(199, 199, 199);">
+						<router-link class="btn router-link" type="button" to="/buscar" style="background-color: rgba(58, 58, 58, 0.4); color: rgb(199, 199, 199);">
 							Busca Talento
 						</router-link>
 					</div>
