@@ -38,7 +38,7 @@
 							<select class="form-select" aria-label="Precio">
 								<option selected class="text-center" value="-1">Precio</option>
 								<option v-for="(item, i) in precios" class="text-center" :value=item.id>
-									$ -{{ item.name }}
+									$ {{ item.name }}
 								</option>
 							</select>
 						</div>

@@ -1,23 +1,61 @@
 <template>
 	<div class="container-xl">
-		<div class="row">
+		<div class="row p-1">
 			<usuario id="usuarioFicha" class="col-md-4" :id="usuario[0].id" :nickname="usuario[0].nickname"
-				:nombre="usuario[0].nombre" :apellido="usuario[0].apellido" :correo="usuario[0].correo"
-				:edad="usuario[0].edad" :imagenPerfil="usuario[0].imagenPerfil" :habilidades="usuario[0].habilidades"
-				:nivelRecomentdacion="usuario[0].nivelRecomentdacion" :lugar="usuario[0].lugar"
-				:fechaSuscripcion="usuario[0].fechaSuscripcion" :profesion="usuario[0].profesion" :cuentas="usuario[0].cuentas"></usuario>
-			<div id="usuarioInfo" class="col-md">
-				<div id="gigsUsuario" class="">
-					<div class="row g-0 m-1 overflow-visible justify-content-center">
-						<fichaGig class="col" v-for="g in gigs" :id=g.id :ida=g.ida :titulo=g.titulo :img1=g.img1
-							:img2=g.img2 :img3=g.img3 :fotoUsuario=g.fotoUsuario :nombreUsuario=g.nombreUsuario
-							:calificacion=g.calificacion :costo=g.costo accion="Mirar" />
+				:correo="usuario[0].correo" :edad="usuario[0].edad" :imagenPerfil="usuario[0].imagenPerfil"
+				:habilidades="usuario[0].habilidades" :nivelRecomentdacion="usuario[0].nivelRecomentdacion"
+				:lugar="usuario[0].lugar" :fechaSuscripcion="usuario[0].fechaSuscripcion" :profesion="usuario[0].profesion"
+				:cuentas="usuario[0].cuentas">
+			</usuario>
+			<div id="usuarioInfo" class="col-md  ms-1">
+				<h4 class="text-center p-3 " id="usuarioTitulo">
+					{{ usuario[0].nickname }}
+				</h4>
+				<ul class="nav  justify-content-center" id="myTab" role="usuarioTablist">
+					<li class="nav-item" role="presentation">
+						<button class="nav-link text-dark-emphasis active" id="gigsTab" data-bs-toggle="tab" data-bs-target="#usuarioGigs"
+							type="button" role="tab" aria-controls="usuarioGigs" aria-selected="true">Gigs</button>
+					</li>
+					<li class="nav-item" role="presentation">
+						<button class="nav-link text-dark-emphasis" id="profile-tab" data-bs-toggle="tab" data-bs-target="#usuarioDescp"
+							type="button" role="tab" aria-controls="usuarioDescp" aria-selected="false">Sobre mi</button>
+					</li>
+					<li class="nav-item" role="presentation">
+						<button class="nav-link text-dark-emphasis " id="contact-tab" data-bs-toggle="tab" data-bs-target="#usuarioTrabajos"
+							type="button" role="tab" aria-controls="usuarioTrabajos" aria-selected="false">Trabajos</button>
+					</li>
+				</ul>
+				<div class="tab-content" id="usuarioTabs">
+					<div class="tab-pane fade show active" id="usuarioGigs" role="tabpanel" aria-labelledby="usuarioGigs"
+						tabindex="0">
+						<div class="row g-0 m-1 overflow-visible justify-content-center">
+							<fichaGig class="col" v-for="g in gigs" :id=g.id :ida=g.ida :titulo=g.titulo :img1=g.img1
+								:img2=g.img2 :img3=g.img3 :fotoUsuario=g.fotoUsuario :nombreUsuario=g.nombreUsuario
+								:calificacion=g.calificacion :costo=g.costo accion="Editar" />
+						</div>
+					</div>
+					<div class="tab-pane fade p-2" id="usuarioDescp" role="tabpanel" aria-labelledby="profile-tab"
+						tabindex="1">
+						<h4>Sobre mi:</h4>
+						<h6>{{ usuario[0].nombre }} {{ usuario[0].apellido }} - {{ usuario[0].profesion }}</h6>
+						<p>{{ usuario[0].descripcion }}</p>
+						<h4>Contacto: </h4>
+						<h6>{{ usuario[0].correo }}</h6>
+					</div>
+					<div class="tab-pane fade" id="usuarioTrabajos" role="tabpanel" aria-labelledby="contact-tab"
+						tabindex="2">
+						<div class="m-1" title="Ke mirá 'bobo">
+							<img class="rounded" src="https://media.tenor.com/sFUpAcf_hjIAAAAd/bobo-messi.gif"
+								alt="Bobo Messi GIF - Bobo Messi GIFs" style="height: 75vh;">
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
 </template>
+
 
 <script>
 import usuario from '@/components/FichaUsuario.vue';
@@ -38,10 +76,11 @@ export default {
 			edad: "30",
 			imagenPerfil: "./assets/Andres.jpeg",
 			profesion: "Ingeniero de Sistemas",
-			habilidades: ["Fotografía", "Diseño Gráfico", "Programación", "Cocina","Ser guapo"],
+			habilidades: ["Fotografía", "Diseño Gráfico", "Programación", "Cocina", "Ser guapo"],
 			nivelRecomentdacion: "★★★★★",
 			lugar: "Bogotá D.C. Colombia",
 			fechaSuscripcion: "2023-10-18",
+			descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
 			cuentas: [
 				{
 					redSocial: "Twitter",

@@ -76,7 +76,7 @@ export default {
 <style>
 .tarjetaGigs {
 	max-width: 500px;
-	min-width: 270px;
+	min-width: 300px;
 	height: 300px;
 	margin: 2px;
 }

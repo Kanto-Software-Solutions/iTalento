@@ -38,23 +38,21 @@ const routes = [
 		name: 'login',
 		component: () => import('../views/PerfilUsuario.vue'),
 	},
-	/*
-
 	{
-		path: '/pago',
-		name: 'pago',
-		component: () => import('../views/TermsPago.vue'),
+		path: '/costostarifas',
+		name: 'costosytarifas',
+		component: () => import('../views/Costosytarifas.vue'),
 	},
 	{
-		path: '/privacidad',
-		name: 'privacidad',
-		component: () => import('../views/TermsPrivacidad.vue'),
+		path: '/funcionamiento',
+		name: 'funcionamiento',
+		component: () => import('../views/ComoFunciona.vue'),
 	},
 	{
-		path: '/qa',
-		name: 'qa',
-		component: () => import('../views/QA.vue'),
-	}*/
+		path: '/proximamente',
+		name: 'proximanente',
+		component: () => import('../views/Proximamente.vue'),
+	}
 ]
 
 const router = createRouter({
