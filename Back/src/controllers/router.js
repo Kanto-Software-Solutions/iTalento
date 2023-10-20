@@ -36,3 +36,8 @@ router.get('/categorias',                               categoria.getAllCategori
 router.get('/categorias/:id',                           categoria.getCategoryById)
 router.get('/test',				                        crud.test);
 router.post('/order/neworder/:id',   urlencodedParser,   orden.createOrder);
+router.post('/review/newreview',     urlencodedParser,  resenia.createReview);
+router.post('/certificate/newcertificate',     urlencodedParser,  certificado.createCertificate);
+router.post('/languaje/newlanguaje',     urlencodedParser,  lenguaje.createLanguage);
+
+
