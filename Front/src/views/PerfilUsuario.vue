@@ -44,7 +44,7 @@
 					</div>
 					<div class="tab-pane fade" id="usuarioTrabajos" role="tabpanel" aria-labelledby="contact-tab"
 						tabindex="2">
-						<div class="m-1" title="Ke mirá 'bobo">
+						<div class="m-1 text-center" title="Ke mirá 'bobo">
 							<img class="rounded" src="https://media.tenor.com/sFUpAcf_hjIAAAAd/bobo-messi.gif"
 								alt="Bobo Messi GIF - Bobo Messi GIFs" style="height: 75vh;">
 						</div>
