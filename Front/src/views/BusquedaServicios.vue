@@ -54,21 +54,34 @@
 		</form>
 	</div>
 	<div id="busquedaResultado" class="container-xl">
-		<div class="row g-0 m-1 overflow-visible justify-content-center">
-			<fichaGig class="col" v-for="g in gigs" :id=g.id :ida=g.ida :titulo=g.titulo :img1=g.img1
-				:img2=g.img2 :img3=g.img3 :fotoUsuario=g.fotoUsuario :nombreUsuario=g.nombreUsuario
-				:calificacion=g.calificacion :costo=g.costo accion="Mirar"/>
+		<cargando v-if="false"></cargando>
+		<div id="busquedaBuscar" v-if="true" class="text-center m-5 text-body-tertiary fw-light" >
+			<h2>
+				Ingresa un criterio de busqueda
+			</h2>
+		</div>
+		<div id="busquedaNoresultados" v-if="false" class="text-center m-5 text-body-tertiary fw-light" >
+			<h2>
+				No se encontraron resultados
+			</h2>
+		</div>
+		<div id="busquedaResultados" v-if="false" class="row g-0 m-1 overflow-visible justify-content-center">
+			<fichaGig class="col" v-for="g in gigs" :id=g.id :ida=g.ida :titulo=g.titulo :img1=g.img1 :img2=g.img2
+				:img3=g.img3 :fotoUsuario=g.fotoUsuario :nombreUsuario=g.nombreUsuario :calificacion=g.calificacion
+				:costo=g.costo accion="Mirar" />
 		</div>
 	</div>
 </template>
 <script>
 import botonBusqueda from '@/components/BotonBusqueda.vue';
 import fichaGig from '@/components/FichaGigs.vue'
+import cargando from '@/components/Cargando.vue'
 export default {
 	name: 'BusquedaServicios',
 	components: {
 		botonBusqueda,
 		fichaGig,
+		cargando,
 	},
 	data: () => ({
 		categorias: [

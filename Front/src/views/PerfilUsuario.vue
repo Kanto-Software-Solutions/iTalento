@@ -13,22 +13,31 @@
 				</h4>
 				<ul class="nav  justify-content-center" id="myTab" role="usuarioTablist">
 					<li class="nav-item" role="presentation">
-						<button class="nav-link text-dark-emphasis active" id="gigsTab" data-bs-toggle="tab" data-bs-target="#usuarioGigs"
-							type="button" role="tab" aria-controls="usuarioGigs" aria-selected="true">Gigs</button>
+						<button class="nav-link text-dark-emphasis active" id="gigsTab" data-bs-toggle="tab"
+							data-bs-target="#usuarioGigs" type="button" role="tab" aria-controls="usuarioGigs"
+							aria-selected="true">Gigs</button>
 					</li>
 					<li class="nav-item" role="presentation">
-						<button class="nav-link text-dark-emphasis" id="profile-tab" data-bs-toggle="tab" data-bs-target="#usuarioDescp"
-							type="button" role="tab" aria-controls="usuarioDescp" aria-selected="false">Sobre mi</button>
+						<button class="nav-link text-dark-emphasis" id="profile-tab" data-bs-toggle="tab"
+							data-bs-target="#usuarioDescp" type="button" role="tab" aria-controls="usuarioDescp"
+							aria-selected="false">Sobre mi</button>
 					</li>
 					<li class="nav-item" role="presentation">
-						<button class="nav-link text-dark-emphasis " id="contact-tab" data-bs-toggle="tab" data-bs-target="#usuarioTrabajos"
-							type="button" role="tab" aria-controls="usuarioTrabajos" aria-selected="false">Trabajos</button>
+						<button class="nav-link text-dark-emphasis " id="contact-tab" data-bs-toggle="tab"
+							data-bs-target="#usuarioTrabajos" type="button" role="tab" aria-controls="usuarioTrabajos"
+							aria-selected="false">Trabajos</button>
 					</li>
 				</ul>
 				<div class="tab-content" id="usuarioTabs">
 					<div class="tab-pane fade show active" id="usuarioGigs" role="tabpanel" aria-labelledby="usuarioGigs"
 						tabindex="0">
-						<div class="row g-0 m-1 overflow-visible justify-content-center">
+						<div v-if="true" id="perfilNoGigs" class="text-center m-5 text-body-tertiary fw-light">
+							<h2>
+								No tienes gigs publicados
+							</h2>
+							<h5 class="fst-italic text-decoration-underline" data-bs-toggle="modal" data-bs-target="#crearGig"> ¡Crea tu primer gig! </h5>
+						</div>
+						<div v-if="false" id="gigsPublicados" class="row g-0 m-1 overflow-visible justify-content-center">
 							<fichaGig class="col" v-for="g in gigs" :id=g.id :ida=g.ida :titulo=g.titulo :img1=g.img1
 								:img2=g.img2 :img3=g.img3 :fotoUsuario=g.fotoUsuario :nombreUsuario=g.nombreUsuario
 								:calificacion=g.calificacion :costo=g.costo accion="Editar" />
@@ -53,7 +62,6 @@
 			</div>
 		</div>
 	</div>
-
 </template>
 
 
