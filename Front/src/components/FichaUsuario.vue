@@ -16,8 +16,14 @@
 				<p>{{ lugar }}</p>
 				<p>Talento desde: {{ fechaSuscripcion }}</p>
 			</div>
-			<div class="container border-bottom my-1">
-				<h6>Habilidades: </h6>
+			<div class="border-bottom my-1">
+				<div class="d-flex justify-content-between">
+					<h6 class="">Habilidades: </h6>
+					<button class="btn btn-outline-info btn-sm ms-1" type="button" data-bs-toggle="modal"
+						data-bs-target="#habilidadesEditar">
+						<i class="bi bi-pencil-square"></i>
+					</button>
+				</div>
 				<div v-for="habilidad in habilidades" class="row justify-content-center">
 					<div class="rounded-2 border text-nowrap p-1 m-1 " style="width:max-content;">
 						{{ habilidad }}
@@ -57,22 +63,24 @@
 						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
 					<div class="modal-body">
-						<fUsuario :registro=false :nickname="nickname" :correo="correo"
-							:imagenPerfil="imagenPerfil" :profesion="profesion"
-							:lugar="lugar" :cuentas="cuentas">
+						<fUsuario :registro=false :nickname="nickname" :correo="correo" :imagenPerfil="imagenPerfil"
+							:profesion="profesion" :lugar="lugar" :cuentas="cuentas">
 						</fUsuario>
 					</div>
 				</div>
 			</div>
 		</div>
+		<fHabilidades id="habilidadesEditar"></fHabilidades>
 	</div>
 </template>
 <script>
 import fUsuario from "@/components/formularioUsuario.vue"
+import fHabilidades from "./formularioHabilidades.vue";
 export default {
 	name: 'fichaUsuario',
 	components: {
-		fUsuario
+		fUsuario,
+		fHabilidades,
 	},
 	props: {
 		id: String,

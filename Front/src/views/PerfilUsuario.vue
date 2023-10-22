@@ -35,7 +35,7 @@
 							<h2>
 								No tienes gigs publicados
 							</h2>
-							<h5 class="fst-italic text-decoration-underline" data-bs-toggle="modal" data-bs-target="#crearGig"> ¡Crea tu primer gig! </h5>
+							<h5 class="fst-italic text-decoration-underline" data-bs-toggle="modal" data-bs-target="#perfilEditar">¡Crea tu primer gig!</h5>
 						</div>
 						<div v-if="false" id="gigsPublicados" class="row g-0 m-1 overflow-visible justify-content-center">
 							<fichaGig class="col" v-for="g in gigs" :id=g.id :ida=g.ida :titulo=g.titulo :img1=g.img1
