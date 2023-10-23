@@ -1,6 +1,6 @@
 <template>
-	<div id="perfilCrearGigs" class="modal fade modal-xl" data-bs-backdrop="static"
-		data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	<div id="perfilCrearGigs" class="modal fade modal-xl" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+		aria-labelledby="staticBackdropLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-body">
@@ -8,7 +8,7 @@
 						<h1 class="modal-title fs-5" id="staticBackdropLabel">Crear Gigs</h1>
 						<button type="button" class="btn-close my-1" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
-					<form action="" v-on:change=actualizargig()>
+					<form action="" onsubmit="return false" v-on:change=actualizargig()>
 						<div class="border-bottom">
 							<div class="input-group">
 								<input id="fotosGigs" class="form-control w-75" type="file" placeholder="imagen"
@@ -70,37 +70,58 @@
 								<textarea class="form-control" id="descripcionGig" rows="5"></textarea>
 							</div>
 						</div>
-						<div class="row g-1 my-2 justify-content-center">
-							<div class="col-sm">
-								<label for="tentregaGigs" class="form-label">Tiempo de entrega</label>
-								<select id="tentregaGigs" class="form-select text-center"
-									aria-label="Default select example">
-									<option selected value="1">1 Dia</option>
-									<option value="3">3 Dias</option>
-									<option value="7">1 Semana</option>
-									<option value="21">3 Semanas</option>
-									<option value="30">1 Mes</option>
-								</select>
-								<label for="tentregaGigs" class="form-label">Numero de revisiones</label>
-								<select id="tentregaGigs" class="form-select text-center"
-									aria-label="Default select example">
-									<option value="1" selected>1 [Obligatorio]</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
-								</select>
-								<label for="tentregaGigs" class="form-label">Cantidad de ejemplares</label>
-								<div class="input-group">
-									<span class="input-group-text">
-										<i class="bi bi-hash"></i>
-									</span>
-									<input id="valorGig" type="number" class="form-control" step="1" min="0"
-										placeholder="Cantidad">
+						<div class="row justify-content-center">
+							<div class="col-lg m-auto">
+
+								<div class="my-1">
+									<label for="tentregaGigs" class="form-label">Tiempo de entrega</label>
+									<select id="tentregaGigs" class="form-select text-center"
+										aria-label="Default select example">
+										<option selected value="1">1 Dia</option>
+										<option value="3">3 Dias</option>
+										<option value="7">1 Semana</option>
+										<option value="21">3 Semanas</option>
+										<option value="30">1 Mes</option>
+									</select>
+								</div>
+								<div class="my-1">
+									<label for="tentregaGigs" class="form-label">Numero de revisiones</label>
+									<select id="tentregaGigs" class="form-select text-center"
+										aria-label="Default select example">
+										<option value="1" selected>1 [Obligatorio]</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+									</select>
+								</div>
+								<div class="my-1">
+									<label for="tentregaGigs" class="form-label">Cantidad de ejemplares</label>
+									<div class="input-group">
+										<span class="input-group-text">
+											<i class="bi bi-hash"></i>
+										</span>
+										<input id="valorGig" type="number" class="form-control" step="1" min="0"
+											placeholder="Cantidad">
+									</div>
 								</div>
 							</div>
-							<div class="col-sm">
-								<selecCategorias catohab="categorias" :esmodal=false :selCantidad=3 idx="gigCategoria" idy="giglistacat"/>
+							<div class="col-lg">
+								<selecCategorias catohab="categorias" :esmodal=false :selCantidad=3 idx="gigCategoria"
+									idy="giglistacat" />
+							</div>
+						</div>
+						<div class="d-flex">
+							<div class="w-25 p-1">
+								<button type="button" class="w-100 btn btn-outline-danger text-nowrap" data-bs-dismiss="modal">
+									<i class="bi bi-x-circle"></i>
+								</button>
+							</div>
+							<div class="w-75 p-1">
+								<button type="submit" class="w-100 btn btn-outline-primary text-nowrap" data-bs-dismiss="modal">
+									Guardar
+									<i class="bi bi-save"></i>
+								</button>
 							</div>
 						</div>
 					</form>

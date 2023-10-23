@@ -1,15 +1,13 @@
 <template>
 	<div>
 		<div class="container">
-			<h5 class="text-center mb-3">Selecciona hasta {{ selCantidad }} {{ catohab }}</h5>
-			<div>
-				<div class="d-flex justify-content-between w-100" role="search">
-					<input :id=idx class="form-control m-1" type="search" placeholder="Buscar habilidad"
-						v-on:keyup=buscarHab() v-on:click=buscarHab()>
-				</div>
+			<h5 class="text-center">Selecciona hasta {{ selCantidad }} {{ catohab }}</h5>
+			<div class="d-flex justify-content-between w-100" role="search">
+				<input :id=idx class="form-control m-1" type="search" placeholder="Buscar habilidad" v-on:keyup=buscarHab()
+					v-on:click=buscarHab()>
 			</div>
 			<div :id=this.idy
-				class="row justify-content-center align-content-start container overflow-y-auto overflow-x-hidden m-0 p-0 g-0"
+				class="row justify-content-center align-content-start container overflow-y-auto overflow-x-hidden"
 				style="height: 300px;">
 				<button v-for="habilidad in habilidades" type="button" class="bhabilidad btn bg-body-secondary m-1"
 					data-bs-toggle="button" style="width: max-content; height: max-content;" :value=habilidad.id
@@ -27,7 +25,7 @@
 					¡{{ selCantidad }} {{ catohab }} seleccionadas!
 				</div>
 			</div>
-			<div class="container m-1 border-top py-2 my-1 g-0">
+			<div class="container">
 				<div class="row">
 					<div class="col-sm m-1">
 						<button id="limpiarHabilidades" class="btn btn-outline-info text-nowrap w-100" type="button"
@@ -259,7 +257,6 @@ export default {
 		buscarHab() {
 			this.obtenerValor()
 			const habilidadesBotones = document.getElementById(this.idy).getElementsByClassName("bhabilidad")
-			console.log(this.filtro + "****", document.getElementById("buscarHabilidades"));
 			for (let i = 0; i < habilidadesBotones.length; i++) {
 				const habilidad = this.eliminarDiacriticosEs(habilidadesBotones[i].innerHTML)
 				if (habilidad.toUpperCase().indexOf(this.filtro) > -1) {
