@@ -55,12 +55,14 @@
 	</div>
 	<div id="busquedaResultado" class="container-xl">
 		<cargando v-if="false"></cargando>
-		<div id="busquedaBuscar" v-if="true" class="text-center m-5 text-body-tertiary fw-light" >
+		<div id="busquedaBuscar" v-if="true" class="text-center m-5 text-body-tertiary fw-light">
 			<h2>
 				Ingresa un criterio de busqueda
 			</h2>
+			<div class="spinner-grow m-2" style="width: 100px; height: 100px; animation-duration: 3s ;" role="status" >
+			</div>
 		</div>
-		<div id="busquedaNoresultados" v-if="false" class="text-center m-5 text-body-tertiary fw-light" >
+		<div id="busquedaNoresultados" v-if="false" class="text-center m-5 text-body-tertiary fw-light">
 			<h2>
 				No se encontraron resultados
 			</h2>
