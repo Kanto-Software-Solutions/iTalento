@@ -1,5 +1,5 @@
 <template>
-	<div class="modal fade" id="perfilEditar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+	<div class="modal fade modal-lg" id="perfilEditar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
 		aria-labelledby="perfilEditarLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -61,12 +61,10 @@ export default {
 			document.getElementById('buscarHabilidades').value = ""
 		},
 		buscarHab() {
-			let num = 0
+
 			const input = document.getElementById('buscarHabilidades')
 			const filter = input.value.toUpperCase()
 			const habilidadesBotones = document.getElementById("listadoHab").getElementsByClassName("bhabilidad")
-			console.log(num);
-			num++
 			for (let i = 0; i < habilidadesBotones.length; i++) {
 				const habilidad = habilidadesBotones[i].innerHTML
 				if (habilidad.toUpperCase().indexOf(filter) > -1) {
@@ -78,11 +76,9 @@ export default {
 		},
 		agregarHabilidad() {
 			const a = parseInt(event.target.value)
-			console.log(a)
 			this.habilidadesSeleccionadas.includes(a)
 			if (this.habilidadesSeleccionadas.includes(a)) {
 				this.excesoHabilidades = false
-				console.log("ya esta")
 				this.habilidadesSeleccionadas.splice(this.habilidadesSeleccionadas.indexOf(a), 1)
 			} else if (this.habilidadesSeleccionadas.length < 7) {
 				this.excesoHabilidades = false
@@ -96,7 +92,6 @@ export default {
 			} else {
 				this.completasHabilidades = false
 			}
-			console.log(this.habilidadesSeleccionadas)
 
 		},
 		limpiarHabilidades() {

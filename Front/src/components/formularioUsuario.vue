@@ -42,31 +42,31 @@
 					<div class="mb-3 row p-0 g-0 m-0">
 						<i class="bi bi-linkedin col-2 col-form-label text-center"></i>
 						<div class="col-10">
-							<input id="fLinkedin" type="url" class="form-control m-1" placeholder="Linkedin" required>
+							<input id="fLinkedin" class="form-control m-1" placeholder="Linkedin">
 						</div>
 					</div>
 					<div class="mb-3 row p-0 g-0 m-0">
 						<i class="bi bi-github col-2 col-form-label text-center"></i>
 						<div class="col-10">
-							<input id="fGitHub" type="url" class="form-control m-1" placeholder="Github" required>
+							<input id="fGitHub" class="form-control m-1" placeholder="Github">
 						</div>
 					</div>
 					<div class="mb-3 row p-0 g-0 m-0">
 						<i class="bi bi-twitter col-2 col-form-label text-center"></i>
 						<div class="col-10">
-							<input id="fTwitter" type="url" class="form-control m-1" placeholder="Twitter" required>
+							<input id="fTwitter" class="form-control m-1" placeholder="Twitter">
 						</div>
 					</div>
 					<div class="mb-3 row p-0 g-0 m-0">
 						<i class="bi bi-facebook col-2 col-form-label text-center"></i>
 						<div class="col-10">
-							<input id="fFacebook" type="url" class="form-control m-1" placeholder="Facebook" required>
+							<input id="fFacebook" class="form-control m-1" placeholder="Facebook">
 						</div>
 					</div>
 					<div class="mb-3 row p-0 g-0 m-0">
 						<i class="bi bi-instagram col-2 col-form-label text-center"></i>
 						<div class="col-10">
-							<input id="fInstagram" type="url" class="form-control m-1" placeholder="Instagram" required>
+							<input id="fInstagram" class="form-control m-1" placeholder="Instagram">
 						</div>
 					</div>
 				</div>

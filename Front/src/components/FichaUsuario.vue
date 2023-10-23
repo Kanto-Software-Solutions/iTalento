@@ -19,7 +19,7 @@
 			<div class="border-bottom my-1">
 				<div class="d-flex justify-content-between">
 					<h6 class="">Habilidades: </h6>
-					<button class="btn btn-outline-info btn-sm ms-1" type="button" data-bs-toggle="modal"
+					<button v-if=propio class="btn btn-outline-info btn-sm ms-1" type="button" data-bs-toggle="modal"
 						data-bs-target="#habilidadesEditar">
 						<i class="bi bi-pencil-square"></i>
 					</button>
@@ -30,7 +30,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="border-bottom my-1 text-center">
+			<div class=" my-1 text-center">
 				<h6>Cuentas vinculadas: </h6>
 				<button v-for="cuenta in cuentas" class=" btn" style="width:max-content;">
 					<i v-if="cuenta.redSocial == 'Twitter'" class="bi bi-github"></i>
@@ -46,8 +46,8 @@
 						
 				</button>
 			</div>
-			<div v-if="true" class="">
-				<button type="button" class="btn btn-outline-info w-100 mb-1" data-bs-toggle="modal"
+			<div v-if=propio class="border-top">
+				<button type="button" class="btn btn-outline-info w-100 my-2" data-bs-toggle="modal"
 					data-bs-target="#perfilEditar">
 					<i class="bi bi-pencil-square"></i>
 					Editar mi perfil
@@ -58,7 +58,7 @@
 				</button>
 			</div>
 		</div>
-		<div class="modal fade" id="perfilEditar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+		<div class="modal fade modal-lg" id="perfilEditar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
 			aria-labelledby="perfilEditarLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -81,12 +81,14 @@
 import fUsuario from "@/components/formularioUsuario.vue"
 import fHabilidades from "./formularioHabilidades.vue";
 export default {
+
 	name: 'fichaUsuario',
 	components: {
 		fUsuario,
 		fHabilidades,
 	},
 	props: {
+		propio: Boolean,
 		id: String,
 		nickname: String,
 		correo: String,

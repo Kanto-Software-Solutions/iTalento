@@ -5,7 +5,7 @@
 				:correo="usuario[0].correo" :edad="usuario[0].edad" :imagenPerfil="usuario[0].imagenPerfil"
 				:habilidades="usuario[0].habilidades" :nivelRecomentdacion="usuario[0].nivelRecomentdacion"
 				:lugar="usuario[0].lugar" :fechaSuscripcion="usuario[0].fechaSuscripcion" :profesion="usuario[0].profesion"
-				:cuentas="usuario[0].cuentas">
+				:cuentas="usuario[0].cuentas" :propio=propio>
 			</usuario>
 			<div id="usuarioInfo" class="col-md  ms-1">
 				<h4 class="text-center p-3 " id="usuarioTitulo">
@@ -86,6 +86,7 @@ export default {
 		fichaGig,
 	},
 	data: () => ({
+		propio: true,
 		usuario: [{
 			id: "user123",
 			nickname: "leoleguizamon97",
@@ -107,7 +108,7 @@ export default {
 				},
 				{
 					redSocial: "Instagram",
-					usuario: "@johndoe_photos"
+					usuario: "https://www.instagram.com/leoleguizamon97/"
 				},
 				{
 					redSocial: "Instagram",
