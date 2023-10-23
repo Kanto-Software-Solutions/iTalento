@@ -31,11 +31,22 @@
 				<div class="tab-content" id="usuarioTabs">
 					<div class="tab-pane fade show active" id="usuarioGigs" role="tabpanel" aria-labelledby="usuarioGigs"
 						tabindex="0">
+						<div class="d-flex justify-content-between">
+							<div class="fw-light col">
+								Cantidad de gigs: {{ gigs.length }}
+							</div>
+							<button type="button" class=" btn btn-outline-primary " data-bs-toggle="modal"
+								data-bs-target="#perfilEditar">
+								Crear Gigs
+								<i class="bi bi-plus-square"></i>
+							</button>
+						</div>
 						<div v-if="true" id="perfilNoGigs" class="text-center m-5 text-body-tertiary fw-light">
 							<h2>
 								No tienes gigs publicados
 							</h2>
-							<h5 class="fst-italic text-decoration-underline" data-bs-toggle="modal" data-bs-target="#perfilEditar">¡Crea tu primer gig!</h5>
+							<h5 class="fst-italic text-decoration-underline" data-bs-toggle="modal"
+								data-bs-target="#perfilEditar">¡Crea tu primer gig!</h5>
 						</div>
 						<div v-if="false" id="gigsPublicados" class="row g-0 m-1 overflow-visible justify-content-center">
 							<fichaGig class="col" v-for="g in gigs" :id=g.id :ida=g.ida :titulo=g.titulo :img1=g.img1
@@ -97,7 +108,15 @@ export default {
 				{
 					redSocial: "Instagram",
 					usuario: "@johndoe_photos"
-				}
+				},
+				{
+					redSocial: "Instagram",
+					usuario: "@johndoe_photos"
+				},
+				{
+					redSocial: "Instagram",
+					usuario: "@johndoe_photos"
+				},
 			]
 		}
 		],

@@ -11,10 +11,12 @@
 					<h5 class="text-center mb-3">Selecciona hasta 7 habilidades</h5>
 					<div>
 						<div class="d-flex justify-content-between w-100" role="search">
-							<input id="buscarHabilidades" class="form-control m-1" type="search" placeholder="Buscar" v-on:keydown=buscarHab()>
+							<input id="buscarHabilidades" class="form-control m-1" type="search" placeholder="Buscar"
+								v-on:keydown=buscarHab() v-on:click=buscarHab()>
 						</div>
 					</div>
-					<div id="listadoHab" class="row justify-content-center align-content-start container overflow-y-auto overflow-x-hidden m-0 p-0 g-0"
+					<div id="listadoHab"
+						class="row justify-content-center align-content-start container overflow-y-auto overflow-x-hidden m-0 p-0 g-0"
 						style="height: 300px;">
 						<button v-for="habilidad in habilidades" type="button" class="bhabilidad btn bg-body-secondary m-1"
 							data-bs-toggle="button" style="width: max-content; height: max-content;" :value=habilidad.id
@@ -32,13 +34,13 @@
 							¡7 habilidades seleccionadas!
 						</div>
 					</div>
-					<div class="modal-footer justify-content-around">
-						<button id="limpiarHabilidades" class="btn btn-outline-info d-inline w-25" type="button"
+					<div class="modal-footer justify-content-around p-0">
+						<button id="limpiarHabilidades" class="btn btn-outline-info d-inline w-25 text-nowrap" type="button"
 							v-on:click=limpiarHabilidades()>
-							Limpiar
+							{{ habilidadesSeleccionadas.length }}
 							<i class="bi bi-x-circle"></i>
 						</button>
-						<button type="button" class="btn btn-outline-primary d-inline w-50" data-bs-dismiss="modal">
+						<button type="button" class="btn btn-outline-primary d-inline w-50 text-nowrap" data-bs-dismiss="modal">
 							Guardar
 							<i class="bi bi-save"></i>
 						</button>

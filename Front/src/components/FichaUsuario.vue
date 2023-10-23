@@ -30,16 +30,20 @@
 					</div>
 				</div>
 			</div>
-			<div class="border-bottom my-1">
+			<div class="border-bottom my-1 text-center">
 				<h6>Cuentas vinculadas: </h6>
-				<button v-for="cuenta in cuentas" class="text-nowrap btn" style="width:max-content;">
+				<button v-for="cuenta in cuentas" class=" btn" style="width:max-content;">
 					<i v-if="cuenta.redSocial == 'Twitter'" class="bi bi-github"></i>
 					<i v-else-if="cuenta.redSocial == 'Instagram'" class="bi bi-instagram"></i>
 					<i v-else-if="cuenta.redSocial == 'Facebook'" class="bi bi-facebook"></i>
 					<i v-else-if="cuenta.redSocial == 'LinkedIn'" class="bi bi-linkedin"></i>
 					<i v-else-if="cuenta.redSocial == 'Github'" class="bi bi-github"></i>
 					<i v-else class="bi bi bi-at"></i>
-					{{ cuenta.redSocial }}: {{ cuenta.usuario }}
+					{{ cuenta.redSocial }}:
+					<p>
+						{{ cuenta.usuario }}
+					</p>
+						
 				</button>
 			</div>
 			<div v-if="true" class="">
