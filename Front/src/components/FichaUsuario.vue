@@ -75,7 +75,7 @@
 				</div>
 			</div>
 		</div>
-		<fHabilidades id="habilidadesEditar"></fHabilidades>
+		<fHabilidades></fHabilidades>
 	</div>
 </template>
 <script>

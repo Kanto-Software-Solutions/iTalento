@@ -1,6 +1,6 @@
 <template>
-	<div class="modal fade modal-lg" id="perfilEditar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-		aria-labelledby="perfilEditarLabel" aria-hidden="true">
+	<div class="modal fade modal-lg" id="habilidadesEditar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+		aria-labelledby="habilidadesEditarLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
