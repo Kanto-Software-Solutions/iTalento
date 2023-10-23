@@ -33,22 +33,31 @@
 						tabindex="0">
 						<div class="d-flex justify-content-between">
 							<div class="fw-light col">
-								Cantidad de gigs: {{ gigs.length }}
+								Cantidad de gigs: {{ cantidadGigs() }}
 							</div>
-							<button type="button" class=" btn btn-outline-primary " data-bs-toggle="modal"
+							<button v-if=propio type="button" class=" btn btn-outline-primary " data-bs-toggle="modal"
 								data-bs-target="#perfilEditar">
 								Crear Gigs
 								<i class="bi bi-plus-square"></i>
 							</button>
 						</div>
-						<div v-if="true" id="perfilNoGigs" class="text-center m-5 text-body-tertiary fw-light">
-							<h2>
-								No tienes gigs publicados
-							</h2>
-							<h5 class="fst-italic text-decoration-underline" data-bs-toggle="modal"
-								data-bs-target="#perfilEditar">¡Crea tu primer gig!</h5>
+						<div v-if=!cantidadGigs() id="perfilNoGigs" class="text-center m-5 text-body-tertiary fw-light">
+							<div v-if=propio>
+								<h2>
+									No tienes gigs publicados
+								</h2>
+								<h5 class="fst-italic text-decoration-underline" data-bs-toggle="modal"
+									data-bs-target="#perfilEditar">
+									¡Crea tu primer gig!
+								</h5>
+							</div>
+							<div v-if=!propio>
+								<h2>
+									El usuario {{ usuario[0].nickname }} no tiene gigs publicados
+								</h2>
+							</div>
 						</div>
-						<div v-if="false" id="gigsPublicados" class="row g-0 m-1 overflow-visible justify-content-center">
+						<div v-if=cantidadGigs() id="gigsPublicados" class="row g-0 m-1 overflow-visible justify-content-center">
 							<fichaGig class="col" v-for="g in gigs" :id=g.id :ida=g.ida :titulo=g.titulo :img1=g.img1
 								:img2=g.img2 :img3=g.img3 :fotoUsuario=g.fotoUsuario :nombreUsuario=g.nombreUsuario
 								:calificacion=g.calificacion :costo=g.costo accion="Editar" />
@@ -104,19 +113,19 @@ export default {
 			cuentas: [
 				{
 					redSocial: "Twitter",
-					usuario: "@johndoe88"
+					usuario: "johndoe88"
 				},
 				{
 					redSocial: "Instagram",
-					usuario: "https://www.instagram.com/leoleguizamon97/"
+					usuario: "leoleguizamon97"
 				},
 				{
 					redSocial: "Instagram",
-					usuario: "@johndoe_photos"
+					usuario: "johndoe_photos"
 				},
 				{
 					redSocial: "Instagram",
-					usuario: "@johndoe_photos"
+					usuario: "johndoe_photos"
 				},
 			]
 		}
@@ -221,5 +230,10 @@ export default {
 
 		]
 	}),
+	methods: {
+		cantidadGigs() {
+			return this.gigs.length;
+		},
+	},
 }
 </script>

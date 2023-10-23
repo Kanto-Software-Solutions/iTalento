@@ -18,16 +18,16 @@
 			</div>
 			<div class="col-sm">
 				<div class="d-flex justify-content-around">
-					<a class="rounded nav-link mx-1" href="https://www.facebook.com/profile.php?id=61550256754354">
+					<a class="rounded nav-link mx-1" href="https://www.facebook.com/profile.php?id=61550256754354" target="_blank" rel="noopener noreferrer">
 						<i class="bi bi-facebook"></i>
 					</a>
-					<a class="rounded nav-link mx-1" href="https://twitter.com/iTalento_">
+					<a class="rounded nav-link mx-1" href="https://twitter.com/iTalento_" target="_blank" rel="noopener noreferrer">
 						<i class="bi bi-twitter"></i>
 					</a>
-					<a class="rounded nav-link mx-1" href="https://www.instagram.com/italento_/">
+					<a class="rounded nav-link mx-1" href="https://www.instagram.com/italento_/" target="_blank" rel="noopener noreferrer">
 						<i class="bi bi-instagram"></i>
 					</a>
-					<a class="rounded nav-link mx-1" href="https://github.com/Kanto-Software-Solutions">
+					<a class="rounded nav-link mx-1" href="https://github.com/Kanto-Software-Solutions" target="_blank" rel="noopener noreferrer">
 						<i class="bi bi-github"></i>
 					</a>
 				</div>

@@ -1,11 +1,11 @@
 <template>
-	<div id="formularioRegistro" class="needs-validation" novalidate>
+	<div id="formularioRegistro" class="needs-validation">
 		<div class="container-sm" style="max-width: 600px;">
 			<form action="/palRegistro">
 				<div class="mb-3 row p-0 g-0 m-0">
 					<label for="fUsuario" class="col-sm-2 col-form-label">Usuario:</label>
 					<div class="col-sm-10">
-						<input id="fUsuario" type="" class="form-control m-1 " placeholder="@Tu_Usuario" required>
+						<input id="fUsuario" type="" class="form-control m-1 " placeholder="@Tu_Usuario" required pattern="[A-Za-z0-9._\-]{1,15}">
 					</div>
 				</div>
 				<div class="mb-3 row p-0 g-0 m-0">
@@ -15,11 +15,11 @@
 					</div>
 				</div>
 				<label for="fNombre1">Nombres:</label>
-				<input id="fNombre1" type="" class="form-control m-1" placeholder="Nombres" required>
+				<input id="fNombre1" type="" class="form-control m-1" placeholder="Nombres" required pattern="[A-Za-z0-9]{1,50}">
 				<label for="fApellido1">Apellidos:</label>
-				<input id="fApellido1" type="" class="form-control m-1" placeholder="Apellidos" required>
+				<input id="fApellido1" type="" class="form-control m-1" placeholder="Apellidos" required pattern="[A-Za-z0-9]{1,50}">
 				<label for="fProfesion">Profesión:</label>
-				<input id="fApellido1" type="" class="form-control m-1" placeholder="Profesión" required>
+				<input id="fApellido1" type="" class="form-control m-1" placeholder="Profesión" required pattern="[A-Za-z0-9]{1,50}">
 				<div class="row">
 					<div class="col-sm">
 						<label for="fNacimiento">Fecha de nacimiento:</label>
@@ -36,37 +36,37 @@
 				</div>
 				<label for="fDescripcion">Sobre mi:</label>
 				<textarea id="fDescripcion" type="text" class="form-control m-1" placeholder="Cuentanos sobre ti"
-					rows="3"></textarea>
+					rows="3" maxlength="1500"></textarea>
 				<label for="fredes">Redes:</label>
 				<div id="fredes">
 					<div class="mb-3 row p-0 g-0 m-0">
 						<i class="bi bi-linkedin col-2 col-form-label text-center"></i>
 						<div class="col-10">
-							<input id="fLinkedin" class="form-control m-1" placeholder="Linkedin">
+							<input id="fLinkedin" class="form-control m-1" placeholder="Linkedin" pattern="[A-Za-z0-9._\-]{1,30}">
 						</div>
 					</div>
 					<div class="mb-3 row p-0 g-0 m-0">
 						<i class="bi bi-github col-2 col-form-label text-center"></i>
 						<div class="col-10">
-							<input id="fGitHub" class="form-control m-1" placeholder="Github">
+							<input id="fGitHub" class="form-control m-1" placeholder="Github" pattern="[A-Za-z0-9._\-]{1,30}">
 						</div>
 					</div>
 					<div class="mb-3 row p-0 g-0 m-0">
 						<i class="bi bi-twitter col-2 col-form-label text-center"></i>
 						<div class="col-10">
-							<input id="fTwitter" class="form-control m-1" placeholder="Twitter">
+							<input id="fTwitter" class="form-control m-1" placeholder="Twitter" pattern="[A-Za-z0-9._\-]{1,30}">
 						</div>
 					</div>
 					<div class="mb-3 row p-0 g-0 m-0">
 						<i class="bi bi-facebook col-2 col-form-label text-center"></i>
 						<div class="col-10">
-							<input id="fFacebook" class="form-control m-1" placeholder="Facebook">
+							<input id="fFacebook" class="form-control m-1" placeholder="Facebook" pattern="[A-Za-z0-9._\-]{1,30}">
 						</div>
 					</div>
 					<div class="mb-3 row p-0 g-0 m-0">
 						<i class="bi bi-instagram col-2 col-form-label text-center"></i>
 						<div class="col-10">
-							<input id="fInstagram" class="form-control m-1" placeholder="Instagram">
+							<input id="fInstagram" class="form-control m-1" placeholder="Instagram"  pattern="[A-Za-z0-9._\-]{1,30}">
 						</div>
 					</div>
 				</div>
