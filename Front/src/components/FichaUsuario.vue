@@ -16,7 +16,7 @@
 				<p>{{ lugar }}</p>
 				<p>Talento desde: {{ fechaSuscripcion }}</p>
 			</div>
-			<div class="border-bottom my-1">
+			<div class="border-bottom my-1 pb-1">
 				<div class="d-flex justify-content-between">
 					<h6 class="">Habilidades: </h6>
 					<button v-if=propio class="btn btn-outline-info btn-sm ms-1" type="button" data-bs-toggle="modal"
