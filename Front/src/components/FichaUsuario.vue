@@ -30,9 +30,10 @@
 					</div>
 				</div>
 			</div>
-			<div class=" my-1 text-center">
+			<div class="my-1 text-center">
 				<h6>Cuentas vinculadas: </h6>
-				<button v-for="cuenta in cuentas" class=" btn" style="width:max-content;">
+				<a v-for="cuenta in cuentas" class=" btn" style="width:max-content;" :href=urlRedes(cuenta.redSocial,cuenta.usuario) target="_blank"
+					rel="noopener noreferrer">
 					<i v-if="cuenta.redSocial == 'Twitter'" class="bi bi-github"></i>
 					<i v-else-if="cuenta.redSocial == 'Instagram'" class="bi bi-instagram"></i>
 					<i v-else-if="cuenta.redSocial == 'Facebook'" class="bi bi-facebook"></i>
@@ -41,10 +42,10 @@
 					<i v-else class="bi bi bi-at"></i>
 					{{ cuenta.redSocial }}:
 					<p>
-						{{ cuenta.usuario }}
+						@{{ cuenta.usuario }}
 					</p>
-						
-				</button>
+
+				</a>
 			</div>
 			<div v-if=propio class="border-top">
 				<button type="button" class="btn btn-outline-info w-100 my-2" data-bs-toggle="modal"
@@ -74,15 +75,39 @@
 				</div>
 			</div>
 		</div>
-		<fHabilidades id="habilidadesEditar"></fHabilidades>
+		<fHabilidades></fHabilidades>
 	</div>
 </template>
 <script>
 import fUsuario from "@/components/formularioUsuario.vue"
 import fHabilidades from "./formularioHabilidades.vue";
 export default {
-
 	name: 'fichaUsuario',
+	methods: {
+		editarPerfil() {
+
+		},
+		urlRedes(red,usuario) {
+			if (red == "Twitter") {
+				return "https://twitter.com/" + usuario;
+			}
+			else if (red == "Instagram") {
+				return "https://www.instagram.com/" + usuario;
+			}
+			else if (red == "Facebook") {
+				return "https://www.facebook.com/" + usuario;
+			}
+			else if (red == "LinkedIn") {
+				return "https://www.linkedin.com/in/" + usuario;
+			}
+			else if (red == "Github") {
+				return "https://github.com/" + usuario;
+			}
+			else {
+				return "mailto:" + usuario;
+			}
+		},
+	},
 	components: {
 		fUsuario,
 		fHabilidades,
