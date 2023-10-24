@@ -2,21 +2,21 @@
 	<div class="container my-3" style="height:150px; width:300px;">
 		<div class="row my-2">
 			<div class="col position-relative" style="height:150px">
-					<img :src=pokemon alt="pkmn" class="position-absolute z-1"
-						style="clip-path: circle(25px); height: 40px; bottom: 5%; right: 0%;">
+					<img :src=pokemon alt="pkmn" class="position-absolute z-1 marg"
+						style="clip-path: circle(25px); height: 50px; bottom: 5%; right: 0%;">
 					<img :src=imagen alt="foto" class="position-absolute vertical-center" style="border-radius:50%; height: 120px;">
 			</div>
 			<div class="col position-relative">
 				<div class="vertical-center">
 					<h5>{{ nombre }}</h5>
 					<div>
-						<a :href=linkedin class="text-decoration-none">
+						<a :href=linkedin class="text-decoration-none" target="_blank" rel="noopener noreferrer">
 							<i class="bi bi-linkedin"></i>
 							LinkedIn
 						</a>
 					</div>
 					<div>
-						<a :href=github class="text-decoration-none">
+						<a :href=github class="text-decoration-none" target="_blank" rel="noopener noreferrer">
 							<i class="bi bi-github"></i>
 							GitHub
 						</a>
