@@ -23,33 +23,36 @@ const routes = [
 		component: () =>
 			import('../views/AboutUs.vue'),
 	},
-	/*
 	{
-		path: '/posts',
-		name: 'posts',
-		component: () => import('../views/PostsView.vue'),
+		path: '/buscar',
+		name: 'buscar',
+		component: () => import('../views/BusquedaServicios.vue'),
 	},
 	{
-		path: '/profile',
-		name: 'profile',
-		component: () => import('../views/ProfileView.vue'),
-	},
-
-	{
-		path: '/pago',
-		name: 'pago',
-		component: () => import('../views/TermsPago.vue'),
+		path: '/perfil',
+		name: 'perfil',
+		component: () => import('../views/PerfilUsuario.vue'),
 	},
 	{
-		path: '/privacidad',
-		name: 'privacidad',
-		component: () => import('../views/TermsPrivacidad.vue'),
+		path: '/perfil',
+		name: 'perfil',
+		component: () => import('../views/PerfilUsuario.vue'),
 	},
 	{
-		path: '/qa',
-		name: 'qa',
-		component: () => import('../views/QA.vue'),
-	}*/
+		path: '/costostarifas',
+		name: 'costosytarifas',
+		component: () => import('../views/Costosytarifas.vue'),
+	},
+	{
+		path: '/funcionamiento',
+		name: 'funcionamiento',
+		component: () => import('../views/ComoFunciona.vue'),
+	},
+	{
+		path: '/proximamente',
+		name: 'proximanente',
+		component: () => import('../views/Proximamente.vue'),
+	}
 ]
 
 const router = createRouter({
