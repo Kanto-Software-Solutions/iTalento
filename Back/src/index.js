@@ -1,4 +1,5 @@
 const express = require('express');
+var bodyParser = require('body-parser')
 const morgan = require('morgan');
 const mysql = require('mysql2');
 const app = express();
@@ -22,13 +23,23 @@ app.set('port', 3000);
 app.use(auth(config));
 app.use(morgan('dev'));
 app.use(express.json());
-app.use(express.urlencoded({extended: true}))
+
+// create application/json parser
+var jsonParser = bodyParser.json()
+ 
+// create application/x-www-form-urlencoded parser
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 //Rutas (Usa el router de express)
 app.use('/',require('./controllers/router'));
 
 //Static files (public)
 app.use(express.static(__dirname + "/public"));
+
+// Ruta al archivo HTML principal de Vue.js
+app.get('*', (req, res) => {
+	res.sendFile(__dirname + './public/index.html'); 
+  });
 
 //Puerto para correr
 app.listen(app.get('port'), () => {
