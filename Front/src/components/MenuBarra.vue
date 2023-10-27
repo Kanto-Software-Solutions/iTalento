@@ -14,6 +14,7 @@
 				<li><a class="dropdown-item" href="#">Programación y tecnología</a></li>
 			</ul>
 		</li>
-		<a class="nav-link" href="#">Cómo funciona</a>
+		<router-link class="nav-link text-nowrap" to="/funcionamiento">Cómo funciona </router-link>
+		<router-link class="nav-link text-nowrap" to="/costostarifas">Costos y tarifas</router-link>
 	</div>
 </template>
