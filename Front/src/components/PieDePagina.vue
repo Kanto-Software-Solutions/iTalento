@@ -11,7 +11,7 @@
 				<router-link to="/costostarifas" class="text-decoration-none text-body text-nowrap">Publicidad</router-link>
 			</div>
 			<div class="col-sm">
-				<router-link to="/proximamente" class="text-decoration-none text-body text-nowrap">Blog </router-link>
+				<router-link to="/blog" class="text-decoration-none text-body text-nowrap">Blog </router-link>
 			</div>
 			<div class="col-sm">
 				<router-link to="/proximamente" class="text-decoration-none text-body text-nowrap">Apoyo </router-link>
