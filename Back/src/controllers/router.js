@@ -33,11 +33,11 @@ router.get('/publicaciones/:id',	                    gig.getGigById);
 router.get('/publicaciones/user/:id',                   gig.getGigByUser);
 router.put('/editar/publicacion/:id',urlencodedParser,  gig.updateGig);
 router.get('/categorias',                               categoria.getAllCategories);
-router.get('/categorias/:id',                           categoria.getCategoryById)
+router.get('/categorias/:id',                           categoria.getCategoryById);
 router.get('/test',				                        crud.test);
 router.post('/order/neworder/:id',   urlencodedParser,   orden.createOrder);
 router.post('/review/newreview',     urlencodedParser,  resenia.createReview);
 router.post('/certificate/newcertificate',     urlencodedParser,  certificado.createCertificate);
 router.post('/languaje/newlanguaje',     urlencodedParser,  lenguaje.createLanguage);
-
+router.get('/gig/:id',                           gig.getAllGigsByCategory);
 
