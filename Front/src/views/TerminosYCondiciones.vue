@@ -1,11 +1,15 @@
 
 <template>
-	<div class="card m-2">
-		<div class="card-header ">
-			Terminos y condiciones i Talento
-		</div>
-		<div class="card-body">
-			<TyC />
+	<div class="container-sm dropup-center">
+		<div class="card m-2">
+			<div class="card-header text-center">
+				<h4>
+					Terminos y condiciones i Talento
+				</h4>
+			</div>
+			<div class="card-body">
+				<TyC/>
+			</div>
 		</div>
 	</div>
 </template>

@@ -12,10 +12,10 @@
 							No te preocupes, en i-Talento
 							tenemos lo que buscas para tus proyectos personales o tu empresa.
 						</p>
-						<p class="text-Justify fs-1 fw-bold" style="color: rgb(199, 199, 199)">
+						<p class="text-Justify fs-1 fw-light" style="color: rgb(199, 199, 199)">
 							Da un paso adelante y busca eso que necesitas.
 						</p>
-						<ul class="text-body">
+						<ul class="">
 							<li style="color: rgb(199, 199, 199)">Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
 							<li style="color: rgb(199, 199, 199)">Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
 							<li style="color: rgb(199, 199, 199)">Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
@@ -27,7 +27,7 @@
 						<!--Comodin de altura-->
 					</div>
 					<div class="row mx-auto my-5" style="width: 60%;">
-						<router-link class="btn router-link" type="button" to="/" style="background-color: rgba(58, 58, 58, 0.4); color: rgb(199, 199, 199);">
+						<router-link class="btn router-link" type="button" to="/buscar" style="background-color: rgba(58, 58, 58, 0.4); color: rgb(199, 199, 199);">
 							Busca Talento
 						</router-link>
 					</div>

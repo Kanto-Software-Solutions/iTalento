@@ -1,10 +1,11 @@
 const express = require('express');
-var bodyParser = require('body-parser')
 const morgan = require('morgan');
-const mysql = require('mysql2');
-const app = express();
 const { auth } = require('express-openid-connect');
+const { v2 } = require ('cloudinary');
+
 require('dotenv').config()
+
+const app = express();
 
 const config = {
     authRequired: false,
@@ -15,6 +16,19 @@ const config = {
     issuerBaseURL: process.env.ISSUER
 };
 
+v2.config({ 
+  cloud_name: process.env.CLOUD_NAME, 
+  api_key: process.env.CLOUD_APIKEY, 
+  api_secret: process.env.CLOUD_SECRET 
+});
+
+/*
+Sample Upload Cloudinary
+v2.uploader.upload("https://upload.wikimedia.org/wikipedia/commons/a/ae/Olympic_flag.jpg",
+  { public_id: "olympic_flag" }, 
+  function(error, result) {console.log(result); });
+*/
+
 //Settings
 app.set('port', 3000);
 
@@ -23,12 +37,6 @@ app.set('port', 3000);
 app.use(auth(config));
 app.use(morgan('dev'));
 app.use(express.json());
-
-// create application/json parser
-var jsonParser = bodyParser.json()
- 
-// create application/x-www-form-urlencoded parser
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 //Rutas (Usa el router de express)
 app.use('/',require('./controllers/router'));

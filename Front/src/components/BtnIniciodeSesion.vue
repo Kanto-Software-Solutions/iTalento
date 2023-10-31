@@ -4,11 +4,11 @@
 			aria-controls="buscar">
 			<i class="bi bi-search"></i>
 		</button>
-		<router-link class="router-link btn btn-outline-secondary text-nowrap d-none d-md-block" type="button" to="/login">
+		<a class="router-link btn btn-outline-secondary text-nowrap d-none d-md-block" type="button" href="/login">
 			Muestra tu talento
-		</router-link>
-		<router-link class="router-link btn btn-outline-secondary text-nowrap d-block d-md-none" type="button" to="/login">
+		</a>
+		<a class="router-link btn btn-outline-secondary text-nowrap d-block d-md-none" type="button" href="/login">
 			<i class="bi bi-person"></i>
-		</router-link>
+		</a>
 	</div>
 </template>
