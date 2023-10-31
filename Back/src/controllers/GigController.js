@@ -88,3 +88,14 @@ exports.deleteGig= (req,res) => {
 		}
 	});
 }
+
+exports.getAllGigsByCategory = (req,res) => {
+	const idCategory=req.params.idCategory;
+	conexion.query("SELECT * FROM Gig where idCategory="+ idCategory, (error,results) => {
+		if(error){
+			console.log(error);
+		}else{
+			res.json({results:results});
+		}
+	});
+};
