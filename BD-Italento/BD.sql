@@ -20,6 +20,7 @@ USE `mydb` ;
 -- -----------------------------------------------------
 -- Table `mydb`.`User`
 -- -----------------------------------------------------
+
 CREATE TABLE IF NOT EXISTS `mydb`.`User` (
   `idUser` INT NOT NULL AUTO_INCREMENT,
   `names` VARCHAR(45) NOT NULL,
@@ -31,6 +32,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`User` (
   `isFreelancer` TINYINT NOT NULL DEFAULT 0,
   `birthDate` DATE NULL,
   `country` VARCHAR(45) NULL,
+  `acceptedTerms` TINYINT NOT NULL DEFAULT 0,
+  `personalId` VARCHAR(15) NULL,
   PRIMARY KEY (`idUser`))
 ENGINE = InnoDB;
 
@@ -44,7 +47,6 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Category` (
   PRIMARY KEY (`idCategory`))
 ENGINE = InnoDB;
 
-
 -- -----------------------------------------------------
 -- Table `mydb`.`Gig`
 -- -----------------------------------------------------
@@ -53,7 +55,6 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Gig` (
   `name` VARCHAR(45) NOT NULL,
   `description` VARCHAR(45) NOT NULL,
   `createdAt` DATETIME NOT NULL,
-  `Gigcol` VARCHAR(45) NULL,
   `idCategory` INT NOT NULL,
   `idUser` INT NOT NULL,
   `price` INT NOT NULL,
@@ -61,6 +62,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Gig` (
   PRIMARY KEY (`idGig`, `idCategory`, `idUser`),
   INDEX `fk_Gig_Category_idx` (`idCategory` ASC) VISIBLE,
   INDEX `fk_Gig_User1_idx` (`idUser` ASC) VISIBLE,
+  INDEX `fk_User_Gig1_idx` (`idGig` , `idUser` ASC) VISIBLE,
   CONSTRAINT `fk_Gig_Category`
     FOREIGN KEY (`idCategory`)
     REFERENCES `mydb`.`Category` (`idCategory`)
@@ -139,7 +141,6 @@ CREATE TABLE IF NOT EXISTS `mydb`.`User_has_Ability` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
 -- -----------------------------------------------------
 -- Table `mydb`.`Review`
 -- -----------------------------------------------------
@@ -165,7 +166,6 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Review` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
 
 -- -----------------------------------------------------
 -- Table `mydb`.`Order`
@@ -205,6 +205,41 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Certificate` (
   INDEX `fk_Certificate_User1_idx` (`User_idUser` ASC) VISIBLE,
   CONSTRAINT `fk_Certificate_User1`
     FOREIGN KEY (`User_idUser`)
+    REFERENCES `mydb`.`User` (`idUser`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Image`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`Image` (
+  `idImage` INT NOT NULL,
+  `url` VARCHAR(255) NOT NULL,
+  `idGig` INT NOT NULL,
+  `idUser` INT NOT NULL,
+  PRIMARY KEY (`idImage`, `idGig`, `idUser`),
+  INDEX `fk_Image_Gig1_idx` (`idGig` ASC, `idUser` ASC) VISIBLE,
+  CONSTRAINT `fk_Image_Gig1`
+    FOREIGN KEY (`idGig` , `idUser`)
+    REFERENCES `mydb`.`Gig` (`idGig` , `idUser`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `mydb`.`SNetwork`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`SNetwork` (
+  `idSNetwork` INT NOT NULL,
+  `name` VARCHAR(60) NOT NULL,
+  `link` VARCHAR(500) NOT NULL,
+  `imgUrl` VARCHAR(500) NOT NULL,
+  `idUser` INT NOT NULL,
+  PRIMARY KEY (`idSNetwork`, `idUser`),
+  INDEX `fk_SNetwork_User1_idx` (`idUser` ASC) VISIBLE,
+  CONSTRAINT `fk_SNetwork_User1`
+    FOREIGN KEY (`idUser`)
     REFERENCES `mydb`.`User` (`idUser`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
