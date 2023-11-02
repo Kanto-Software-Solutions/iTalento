@@ -43,7 +43,7 @@ exports.getAllNetwroks = (req,res) => {
 
     const idUser = body.req.idUser;
 
-	conexion.query('SELECT * FROM SNetwork where idUser = "' + idUser +'"'+ );
+	conexion.query('SELECT * FROM SNetwork where idUser = "' + idUser +'"');
     conexion.query(query,(error,results)=>{
 		if(error){
 			console.log(error);
