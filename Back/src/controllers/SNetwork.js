@@ -26,7 +26,7 @@ exports.updateRed = (req,res) =>{
     const nombre = body.req.nombre;
     const link = body.req.link;
 
-    conexion.query('update SNetwork set SNetwork idRed =' + idRed + ' , idUser="'+ idUser+'", nombre="'+nombre );
+    conexion.query('update SNetwork set SNetwork idRed =' + idRed + ' , idUser="'+ idUser+'", nombre="'+nombre +'", link="'+link );
 	conexion.query(query,(error,results)=>{
 		if(error){
 			console.log(error);
@@ -37,3 +37,18 @@ exports.updateRed = (req,res) =>{
 	});
 
 }
+
+
+exports.getAllNetwroks = (req,res) => {
+
+    const idUser = body.req.idUser;
+
+	conexion.query('SELECT * FROM SNetwork where idUser = "' + idUser +'"'+ );
+    conexion.query(query,(error,results)=>{
+		if(error){
+			console.log(error);
+		}else{
+			res.json({results:results});
+		}
+	});
+};
