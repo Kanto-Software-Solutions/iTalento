@@ -26,6 +26,9 @@ export default {
 		};
 	},
 	methods: {
+		async toTest() {
+			router.push('/test');
+		},
 		async getTest() {
 			console.log("hola");
 			this.data = await axios.get("http://localhost:3000/cat")

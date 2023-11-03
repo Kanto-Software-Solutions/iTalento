@@ -34,11 +34,6 @@ const routes = [
 		component: () => import('../views/PerfilUsuario.vue'),
 	},
 	{
-		path: '/perfil',
-		name: 'perfil',
-		component: () => import('../views/PerfilUsuario.vue'),
-	},
-	{
 		path: '/costostarifas',
 		name: 'costosytarifas',
 		component: () => import('../views/Costosytarifas.vue'),
@@ -61,6 +56,11 @@ const routes = [
 	{
 		path: '/error/:code',
 		name: 'error',
+		component: () => import('../views/Error.vue'),
+	},
+	{
+		path: '/test',
+		name: 'Test',
 		component: () => import('../views/Error.vue'),
 	}
 ]
