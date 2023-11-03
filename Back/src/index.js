@@ -4,7 +4,13 @@ const morgan = require('morgan');
 const mysql = require('mysql2');
 const app = express();
 const { auth } = require('express-openid-connect');
+const cors = require('cors');
+
 require('dotenv').config()
+
+app.use(cors({
+	origin: 'http://localhost:8080',
+  }));
 
 const config = {
     authRequired: false,
