@@ -57,6 +57,11 @@ const routes = [
 		path: '/proximamente',
 		name: 'proximanente',
 		component: () => import('../views/Proximamente.vue'),
+	},
+	{
+		path: '/error/:code',
+		name: 'error',
+		component: () => import('../views/Error.vue'),
 	}
 ]
 
