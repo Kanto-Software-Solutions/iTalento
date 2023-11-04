@@ -40,7 +40,7 @@
 		</div>
 		<div class="row m-1 border-top border-secondary g-0">
 			<div class="col-md-10 col-sm-9 d-flex">
-				<div class="row text-center bg-danger">
+				<div class="row text-center">
 					<router-link to="/aboutUs" class="col text-decoration-none text-body m-1 text-nowrap"
 						style="font-size:small;">©2023 i-Talento</router-link>
 					<router-link to="/tyc" class="col text-decoration-none text-body m-1 text-nowrap"
