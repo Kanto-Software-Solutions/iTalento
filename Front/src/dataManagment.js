@@ -50,6 +50,13 @@ async function generica() {
 	}
 	
 }
+//Sesion
+function iniciarSesion() {
+
+}
+function cerrarSesion() {
+	
+}
 //Categorias
 async function getCategorias() {
 	let arreglo = [];

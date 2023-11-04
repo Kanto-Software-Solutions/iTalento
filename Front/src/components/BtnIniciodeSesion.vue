@@ -4,14 +4,20 @@
 			aria-controls="buscar">
 			<i class="bi bi-search"></i>
 		</button>
-		<a class="router-link btn btn-outline-secondary text-nowrap d-none d-md-block" type="button" href="/login">
-			Muestra tu talento
+		<a class="router-link btn text-nowrap d-none d-md-block" type="button" href="/login">
+			Inicia Sesión
 		</a>
-		<a class="router-link btn btn-outline-secondary text-nowrap d-block d-md-none" type="button" href="/login">
+		<div class="vr d-none d-md-block"></div>
+		<a class="router-link btn text-nowrap d-none d-md-block" type="button" href="/login">
+			Registrate
+		</a>
+		<a class="router-link btn text-nowrap d-block d-md-none" type="button" href="/login">
 			<i class="bi bi-person"></i>
 		</a>
 	</div>
 </template>
 <script>
+export default {
 
+}
 </script>

@@ -44,8 +44,8 @@ app.use(express.static(__dirname + "/public"));
 
 // Ruta al archivo HTML principal de Vue.js
 app.get('*', (req, res) => {
-	res.sendFile(__dirname + './public/index.html'); 
-  });
+	res.sendFile(__dirname + '/public/index.html'); 
+});
 
 //Puerto para correr
 app.listen(app.get('port'), () => {

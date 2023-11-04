@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
 	{
-		path: '/registro',
+		path: '/registro/:id',
 		name: 'registro',
 		component: () => import('../views/Registro.vue'),
 	},
