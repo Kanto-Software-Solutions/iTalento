@@ -52,3 +52,14 @@ exports.getAllNetwroks = (req,res) => {
 		}
 	});
 };
+
+exports.DeleteNetwroks = (req,res) => {
+	const idRed =  req.body.idRed;
+	conexion.query('delete from SNetwork where idRed = '+ idRed , (error,results) =>{
+		if(error){
+			console.log(error);
+		}else{
+			res.json({results:results});
+		}
+	});
+}
