@@ -42,10 +42,9 @@
 			</div>
 			<div class="overflow-x-scroll">
 				<div class="card-body row" style="width: max-content;">
-					<div class="col" v-for="(item, i) in elements" :key="i">
+					<div class="col" v-for="categoria in categorias">
 						<div class="col">
-							<CardCategoria :id=item.id :titulo=item.name :contenido=item.contenido :imagen=item.imagen>
-							</CardCategoria>
+							<categ :id="categoria.idCategory" :titulo=categoria.name :imagen=categoria.imgUrl :contenido=categoria.contenido />
 						</div>
 					</div>
 				</div>
@@ -103,23 +102,19 @@
 	</div>
 </template>
 <script>
-import CardCategoria from '@/components/CardCategorias.vue'
+import categ from '@/components/CardCategorias.vue'
+import datos from '@/dataManagment.js';
+
 export default {
 	name: 'LandingPage',
 	components: {
-		CardCategoria,
+		categ,
+	},
+	async created() {
+		this.categorias = await datos.getCategorias()
 	},
 	data: () => ({
-		elements: [
-			{ name: "Categoria 1", id: 1, contenido: "Lorem ipsum es texto de reyeno 1", imagen: "https://s1.significados.com/foto/tecnologia-dura-fa.jpg" },
-			{ name: "Categoria 2", id: 2, contenido: "Lorem ipsum es texto de reyeno 2", imagen: "https://s1.significados.com/foto/tecnologia-dura-fa.jpg" },
-			{ name: "Categoria 3", id: 3, contenido: "Lorem ipsum es texto de reyeno 3", imagen: "https://s1.significados.com/foto/tecnologia-dura-fa.jpg" },
-			{ name: "Categoria 4", id: 4, contenido: "Lorem ipsum es texto de reyeno 4", imagen: "https://s1.significados.com/foto/tecnologia-dura-fa.jpg" },
-			{ name: "Categoria 5", id: 5, contenido: "Lorem ipsum es texto de reyeno 5", imagen: "https://s1.significados.com/foto/tecnologia-dura-fa.jpg" },
-			{ name: "Categoria 6", id: 6, contenido: "Lorem ipsum es texto de reyeno 6", imagen: "https://s1.significados.com/foto/tecnologia-dura-fa.jpg" },
-			{ name: "Categoria 7", id: 7, contenido: "Lorem ipsum es texto de reyeno 7", imagen: "https://s1.significados.com/foto/tecnologia-dura-fa.jpg" },
-			{ name: "Categoria 8", id: 8, contenido: "Lorem ipsum es texto de reyeno 8", imagen: "https://s1.significados.com/foto/tecnologia-dura-fa.jpg" },
-		],
+		categorias: [],
 	}),
 }
 </script>

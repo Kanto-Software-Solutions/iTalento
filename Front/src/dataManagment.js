@@ -30,7 +30,7 @@ function holaMundo() {
 async function generica() {
 	let arreglo = [];
 	try {
-		const response = await axios.get("http://localhost:3000/cate");
+		const response = await axios.get(url+"/categorias");
 		arreglo = response.data.results;
 		/*
 		*	Codigo personalizado para cada request
@@ -54,11 +54,12 @@ async function generica() {
 async function getCategorias() {
 	let arreglo = [];
 	try {
-		const response = await axios.get("http://localhost:3000/cate");
+		const response = await axios.get(url+"/categorias");
 		arreglo = response.data.results;
 		arreglo.forEach(element => {
+			//element.contenido = "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 			if (element.imgUrl == null) {
-				element.imgUrl = "https://media.tenor.com/sFUpAcf_hjIAAAAd/bobo-messi.gif";
+				element.imgUrl = "./assets/default.png";
 			}
 		});
 		return arreglo;

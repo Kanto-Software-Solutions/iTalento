@@ -82,9 +82,9 @@ export default {
 </script>
 <style>
 .tarjetaGigs {
-	max-width: 500px;
-	min-width: 250px;
-	height: 300px;
+	max-width: 400px;
+	min-width: 290px;
+	height: 250px;
 	margin: 2px;
 }
 </style>

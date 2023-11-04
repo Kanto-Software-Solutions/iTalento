@@ -22,11 +22,8 @@ export default {
 	},
 	async created() {
 		this.categorias = await datos.getCategorias()
-		console.log("Categorias");
-		console.log(this.categorias);
 	},
 	methods: {
-
 	},
 	data: () => ({
 		categorias: null,
