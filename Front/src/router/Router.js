@@ -2,7 +2,11 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
 	{
-		path: '/registro/:id',
+		path: '/:pathMatch(.*)*',
+		redirect: '/error/¡Opps! Vista no disponible',
+	},
+	{
+		path: '/registro/',
 		name: 'registro',
 		component: () => import('../views/Registro.vue'),
 	},
@@ -14,8 +18,7 @@ const routes = [
 	{
 		path: '/',
 		name: 'home',
-		component: () =>
-		import('../views/LandingPage.vue'),
+		component: () => import('../views/LandingPage.vue'),
 	},
 	{
 		path: '/aboutUs',
