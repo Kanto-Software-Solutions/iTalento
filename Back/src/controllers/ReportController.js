@@ -50,3 +50,13 @@ exports.deleteReport = (req,res) => {
 	});
 }
 
+exports.getReport = (req,res) => {
+	const idReport = req.body.idReport;
+	conexion.query("SELECT * FROM Baned WHERE idOrder = " + idReport, (error,results) => {
+		if(error){
+			console.log(error);
+		}else{
+			res.json({results:results});
+		}
+	});
+};
