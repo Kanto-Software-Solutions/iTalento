@@ -2,7 +2,11 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
 	{
-		path: '/registro',
+		path: '/:pathMatch(.*)*',
+		redirect: '/error/¡Opps! Vista no disponible',
+	},
+	{
+		path: '/registro/',
 		name: 'registro',
 		component: () => import('../views/Registro.vue'),
 	},
@@ -14,8 +18,7 @@ const routes = [
 	{
 		path: '/',
 		name: 'home',
-		component: () =>
-		import('../views/LandingPage.vue'),
+		component: () => import('../views/LandingPage.vue'),
 	},
 	{
 		path: '/aboutUs',
@@ -27,11 +30,6 @@ const routes = [
 		path: '/buscar',
 		name: 'buscar',
 		component: () => import('../views/BusquedaServicios.vue'),
-	},
-	{
-		path: '/perfil',
-		name: 'perfil',
-		component: () => import('../views/PerfilUsuario.vue'),
 	},
 	{
 		path: '/perfil',
@@ -57,6 +55,16 @@ const routes = [
 		path: '/proximamente',
 		name: 'proximanente',
 		component: () => import('../views/Proximamente.vue'),
+	},
+	{
+		path: '/error/:code',
+		name: 'error',
+		component: () => import('../views/Error.vue'),
+	},
+	{
+		path: '/test',
+		name: 'Test',
+		component: () => import('../views/Test.vue'),
 	}
 ]
 

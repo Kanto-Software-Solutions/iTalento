@@ -77,12 +77,6 @@
 							Freelancer
 						</label>
 					</div>
-					<div class="form-check form-switch m-1">
-						<input id="fRolCliente" type="checkbox" class="form-check-input" role="switch" checked>
-						<label class="form-check-label" for="fRolCliente">
-							Comprador
-						</label>
-					</div>
 					<div v-if=registro class="form-check m-1">
 						<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
 						<label class="form-check-label" for="flexCheckDefault">

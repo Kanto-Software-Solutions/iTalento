@@ -7,7 +7,7 @@
 				:lugar="usuario[0].lugar" :fechaSuscripcion="usuario[0].fechaSuscripcion" :profesion="usuario[0].profesion"
 				:cuentas="usuario[0].cuentas" :propio=propio>
 			</usuario>
-			<div id="usuarioInfo" class="col-md  ms-1">
+			<div id="usuarioInfo" class="col-md ms-1">
 				<h4 class="text-center p-3 " id="usuarioTitulo">
 					{{ usuario[0].nickname }}
 				</h4>
@@ -57,7 +57,7 @@
 								</h2>
 							</div>
 						</div>
-						<div v-if=cantidadGigs() id="gigsPublicados"
+						<div v-else id="gigsPublicados"
 							class="row g-0 m-1 overflow-visible justify-content-center">
 							<fichaGig class="col" v-for="g in gigs" v-bind="g" accion="Editar" />
 						</div>
@@ -153,6 +153,87 @@ export default {
 				costo: 100000,
 				accion: "Editar",
 				estado: !true,
+			},
+			
+			{
+				idx: "res2",
+				ida: "#res2",
+				titulo: "GIGS 2",
+				portada: "./assets/charizard.jpg",
+				imagenes: [
+					"https://img.freepik.com/foto-gratis/persona-cuidando-coche-electrico_23-2149362839.jpg?w=1380",
+					"https://img.freepik.com/foto-gratis/ingenieros-ambientales-trabajando-juntos_23-2149352243.jpg?w=1380&t=st=1697665823~exp=1697666423~hmac=715d1804d7ef1f3ee8e54db8f159a54b15e093f9e4d08e34704b75d2f4b4507e",
+					"https://img.freepik.com/fotos-premium/trabajador-creando-valla-cerca-chispas-naranjas-herreria_7502-9147.jpg?w=1380",
+					"https://img.freepik.com/foto-gratis/especialista-ti-revisando-codigo-computadora-oscura-oficina-noche_1098-18699.jpg?w=1380&t=st=1697665858~exp=1697666458~hmac=d734c144c3694da222d8f1d16bb9a3793f1be350fa66aba15e85872fed5a7a6c",
+					"https://img.freepik.com/foto-gratis/novia-novio-celebrando-su-boda-playa_23-2149043965.jpg?w=740&t=st=1697665876~exp=1697666476~hmac=7765d2fa2577941aa7f53cf3f2f27600a72fa1744aa56e31a13e5853d4a9d759",
+					"https://img.freepik.com/foto-gratis/pareja-celebra-juntos-dia-san-valentin_53876-146056.jpg?w=740&t=st=1697665889~exp=1697666489~hmac=df3ea4dea88b0c062724b0b53014237bdb6dc273e66e3c7cb836c33441e80df4"
+				],
+				fotoUsuario: "https://img.freepik.com/foto-gratis/ingenieros-ambientales-trabajando-juntos_23-2149352243.jpg?w=1380&t=st=1697665823~exp=1697666423~hmac=715d1804d7ef1f3ee8e54db8f159a54b15e093f9e4d08e34704b75d2f4b4507e",
+				nombreUsuario: "Andres Leguizamon",
+				calificacion: "★★★★★",
+				costo: 100000,
+				accion: "Editar",
+				estado: true
+			},
+			{
+				idx: "res3",
+				ida: "#res3",
+				titulo: "GIGS 3",
+				portada: "./assets/blastoise.jpg",
+				imagenes: [
+					"https://img.freepik.com/foto-gratis/persona-cuidando-coche-electrico_23-2149362839.jpg?w=1380",
+					"https://img.freepik.com/foto-gratis/ingenieros-ambientales-trabajando-juntos_23-2149352243.jpg?w=1380&t=st=1697665823~exp=1697666423~hmac=715d1804d7ef1f3ee8e54db8f159a54b15e093f9e4d08e34704b75d2f4b4507e",
+					"https://img.freepik.com/fotos-premium/trabajador-creando-valla-cerca-chispas-naranjas-herreria_7502-9147.jpg?w=1380",
+					"https://img.freepik.com/foto-gratis/especialista-ti-revisando-codigo-computadora-oscura-oficina-noche_1098-18699.jpg?w=1380&t=st=1697665858~exp=1697666458~hmac=d734c144c3694da222d8f1d16bb9a3793f1be350fa66aba15e85872fed5a7a6c",
+					"https://img.freepik.com/foto-gratis/novia-novio-celebrando-su-boda-playa_23-2149043965.jpg?w=740&t=st=1697665876~exp=1697666476~hmac=7765d2fa2577941aa7f53cf3f2f27600a72fa1744aa56e31a13e5853d4a9d759",
+					"https://img.freepik.com/foto-gratis/pareja-celebra-juntos-dia-san-valentin_53876-146056.jpg?w=740&t=st=1697665889~exp=1697666489~hmac=df3ea4dea88b0c062724b0b53014237bdb6dc273e66e3c7cb836c33441e80df4"
+				],
+				fotoUsuario: "https://img.freepik.com/foto-gratis/ingenieros-ambientales-trabajando-juntos_23-2149352243.jpg?w=1380&t=st=1697665823~exp=1697666423~hmac=715d1804d7ef1f3ee8e54db8f159a54b15e093f9e4d08e34704b75d2f4b4507e",
+				nombreUsuario: "María López",
+				calificacion: "★★★★☆",
+				costo: 90000,
+				accion: "Editar",
+				estado: true
+			},
+			{
+				idx: "res4",
+				ida: "#res4",
+				titulo: "GIGS 4",
+				portada: "./assets/venusaur.jpg",
+				imagenes: [
+					"https://img.freepik.com/foto-gratis/persona-cuidando-coche-electrico_23-2149362839.jpg?w=1380",
+					"https://img.freepik.com/foto-gratis/ingenieros-ambientales-trabajando-juntos_23-2149352243.jpg?w=1380&t=st=1697665823~exp=1697666423~hmac=715d1804d7ef1f3ee8e54db8f159a54b15e093f9e4d08e34704b75d2f4b4507e",
+					"https://img.freepik.com/fotos-premium/trabajador-creando-valla-cerca-chispas-naranjas-herreria_7502-9147.jpg?w=1380",
+					"https://img.freepik.com/foto-gratis/especialista-ti-revisando-codigo-computadora-oscura-oficina-noche_1098-18699.jpg?w=1380&t=st=1697665858~exp=1697666458~hmac=d734c144c3694da222d8f1d16bb9a3793f1be350fa66aba15e85872fed5a7a6c",
+					"https://img.freepik.com/foto-gratis/novia-novio-celebrando-su-boda-playa_23-2149043965.jpg?w=740&t=st=1697665876~exp=1697666476~hmac=7765d2fa2577941aa7f53cf3f2f27600a72fa1744aa56e31a13e5853d4a9d759",
+					"https://img.freepik.com/foto-gratis/pareja-celebra-juntos-dia-san-valentin_53876-146056.jpg?w=740&t=st=1697665889~exp=1697666489~hmac=df3ea4dea88b0c062724b0b53014237bdb6dc273e66e3c7cb836c33441e80df4"
+				],
+				fotoUsuario: "https://img.freepik.com/foto-gratis/ingenieros-ambientales-trabajando-juntos_23-2149352243.jpg?w=1380&t=st=1697665823~exp=1697666423~hmac=715d1804d7ef1f3ee8e54db8f159a54b15e093f9e4d08e34704b75d2f4b4507e",
+				nombreUsuario: "Juan Pérez",
+				calificacion: "★★★★★",
+				costo: 120000,
+				accion: "Editar",
+				estado: true
+			},
+			{
+				idx: "res5",
+				ida: "#res5",
+				titulo: "GIGS 5",
+				portada: "./assets/pikachu.jpg",
+				imagenes: [
+					"https://img.freepik.com/foto-gratis/persona-cuidando-coche-electrico_23-2149362839.jpg?w=1380",
+					"https://img.freepik.com/foto-gratis/ingenieros-ambientales-trabajando-juntos_23-2149352243.jpg?w=1380&t=st=1697665823~exp=1697666423~hmac=715d1804d7ef1f3ee8e54db8f159a54b15e093f9e4d08e34704b75d2f4b4507e",
+					"https://img.freepik.com/fotos-premium/trabajador-creando-valla-cerca-chispas-naranjas-herreria_7502-9147.jpg?w=1380",
+					"https://img.freepik.com/foto-gratis/especialista-ti-revisando-codigo-computadora-oscura-oficina-noche_1098-18699.jpg?w=1380&t=st=1697665858~exp=1697666458~hmac=d734c144c3694da222d8f1d16bb9a3793f1be350fa66aba15e85872fed5a7a6c",
+					"https://img.freepik.com/foto-gratis/novia-novio-celebrando-su-boda-playa_23-2149043965.jpg?w=740&t=st=1697665876~exp=1697666476~hmac=7765d2fa2577941aa7f53cf3f2f27600a72fa1744aa56e31a13e5853d4a9d759",
+					"https://img.freepik.com/foto-gratis/pareja-celebra-juntos-dia-san-valentin_53876-146056.jpg?w=740&t=st=1697665889~exp=1697666489~hmac=df3ea4dea88b0c062724b0b53014237bdb6dc273e66e3c7cb836c33441e80df4"
+				],
+				fotoUsuario: "https://img.freepik.com/foto-gratis/ingenieros-ambientales-trabajando-juntos_23-2149352243.jpg?w=1380&t=st=1697665823~exp=1697666423~hmac=715d1804d7ef1f3ee8e54db8f159a54b15e093f9e4d08e34704b75d2f4b4507e",
+				nombreUsuario: "Laura Gómez",
+				calificacion: "★★★★☆",
+				costo: 80000,
+				accion: "Editar",
+				estado: true
 			},
 		]
 	}),

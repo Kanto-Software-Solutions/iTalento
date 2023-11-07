@@ -1,14 +1,15 @@
+import {Vue} from 'vue'
 import { createApp } from 'vue'
 import App from './App.vue'
 
-import PrimeVue from 'primevue/config';
-
-import 'primevue/resources/themes/md-light-indigo/theme.css'
+//import PrimeVue from 'primevue/config';
+//import 'primevue/resources/themes/md-light-indigo/theme.css'
+//.use(PrimeVue);
 
 import router from './router/Router'
 
 // Create a Vue 3 app instance
-const app = createApp(App).use(router).use(PrimeVue);
+const app = createApp(App)
 
-// Mount the app to the DOM
+app.use(router)
 app.mount('#app');

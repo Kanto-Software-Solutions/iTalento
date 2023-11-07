@@ -22,19 +22,19 @@ var jsonParser = bodyParser.json()
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 //Segun el metodo de la peticion, se ejecuta la funcion correspondiente
+router.put('/editar/usuario/:id',   urlencodedParser,   usuario.updateUser);
+router.put('/editar/publicacion/:id',urlencodedParser,  gig.updateGig);
 router.get('/usuarios', 		                        usuario.getAllUsers);
 router.get('/usuarios/:id',                             usuario.getUserById);
-router.post('/nuevo/usuario',       urlencodedParser,   usuario.createUser);
-router.put('/editar/usuario/:id',   urlencodedParser,   usuario.updateUser);
-router.delete('/usuarios/:id',                          usuario.deleteUser);
 router.get('/publicaciones',	                        gig.getAllGigs);
-router.post('/nuevo/publicacion',   urlencodedParser,   gig.createGig);
 router.get('/publicaciones/:id',	                    gig.getGigById);
 router.get('/publicaciones/user/:id',                   gig.getGigByUser);
-router.put('/editar/publicacion/:id',urlencodedParser,  gig.updateGig);
 router.get('/categorias',                               categoria.getAllCategories);
 router.get('/categorias/:id',                           categoria.getCategoryById)
 router.get('/test',				                        crud.test);
+router.delete('/usuarios/:id',                          usuario.deleteUser);
+router.post('/nuevo/publicacion',   urlencodedParser,   gig.createGig);
+router.post('/nuevo/usuario',       urlencodedParser,   usuario.createUser);
 router.post('/order/neworder/:id',   urlencodedParser,   orden.createOrder);
 router.post('/review/newreview',     urlencodedParser,  resenia.createReview);
 router.post('/certificate/newcertificate',     urlencodedParser,  certificado.createCertificate);

@@ -4,7 +4,13 @@ const morgan = require('morgan');
 const mysql = require('mysql2');
 const app = express();
 const { auth } = require('express-openid-connect');
+const cors = require('cors');
+
 require('dotenv').config()
+
+app.use(cors({
+	origin: 'http://localhost:8080',
+  }));
 
 const config = {
     authRequired: false,
@@ -38,8 +44,8 @@ app.use(express.static(__dirname + "/public"));
 
 // Ruta al archivo HTML principal de Vue.js
 app.get('*', (req, res) => {
-	res.sendFile(__dirname + './public/index.html'); 
-  });
+	res.sendFile(__dirname + '/public/index.html'); 
+});
 
 //Puerto para correr
 app.listen(app.get('port'), () => {
