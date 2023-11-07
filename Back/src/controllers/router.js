@@ -23,9 +23,9 @@ var jsonParser = bodyParser.json()
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 //Segun el metodo de la peticion, se ejecuta la funcion correspondiente
-router.get('/miInfo',                                   authCon.myUsuario);
 router.put('/editar/usuario/:id',   urlencodedParser,   usuario.updateUser);
 router.put('/editar/publicacion/:id',urlencodedParser,  gig.updateGig);
+router.get('/miInfo',                                   authCon.myUsuario);
 router.get('/usuarios', 		                        usuario.getAllUsers);
 router.get('/usuarios/:id',                             usuario.getUserById);
 router.get('/publicaciones',	                        gig.getAllGigs);

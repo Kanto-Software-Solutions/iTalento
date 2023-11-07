@@ -1,7 +1,3 @@
-exports.myUsuario = async (req, res) => {
-	if (!req.oidc.isAuthenticated()) {
-		res.send(false);
-	} else {
-		res.send(JSON.stringify(req.oidc.user));
-	}
+exports.myUsuario = (req, res) => {
+	res.json({estado: req.oidc.isAuthenticated() ,'usuario':[req.oidc.user]});	
 }

@@ -3,7 +3,7 @@
 		<img :src=imagen class="w-100 h-100 object-fit-cover" alt="testPic">
 		<div class="card-img-overlay bg-black bg-opacity-50">
 			<h5 class="card-title">{{ id }} - {{ titulo }}</h5>
-			<p class="card-text">{{ contenido }}</p>
+			<p class="my-5 align-bottom card-text">{{ contenido }}</p>
 		</div>
 	</div>
 </template>

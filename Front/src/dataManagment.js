@@ -5,6 +5,8 @@ const url = 'http://localhost:3000';
 
 export default {
 	holaMundo,
+	generica,
+	getSesion,
 	getCategorias,
 	getCategoria,
 	getPublicaciones,
@@ -23,8 +25,9 @@ export default {
 	editarUsuario,
 	eliminarUsuario
 }
+
 //Test
-function holaMundo() {
+async function holaMundo() {
 	console.log("Hola Mundo");
 }
 async function generica() {
@@ -51,11 +54,21 @@ async function generica() {
 	
 }
 //Sesion
-function iniciarSesion() {
-
-}
-function cerrarSesion() {
-	
+async function getSesion() {
+	let arreglo = [];
+	try {
+		const response = await axios.get(url+"/miinfo");
+		arreglo = response;
+		console.log(arreglo);
+		return arreglo;
+	} catch (error) {
+		console.log(error.status);
+		let status = error.message;
+		if (error.response) {
+			status = error.response.status + " " + error.response.statusText;
+		}
+		router.push('/error/' + status);
+	}
 }
 //Categorias
 async function getCategorias() {
@@ -64,7 +77,7 @@ async function getCategorias() {
 		const response = await axios.get(url+"/categorias");
 		arreglo = response.data.results;
 		arreglo.forEach(element => {
-			//element.contenido = "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+			element.contenido = "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 			if (element.imgUrl == null) {
 				element.imgUrl = "./assets/default.png";
 			}
@@ -79,39 +92,39 @@ async function getCategorias() {
 		router.push('/error/' + status);
 	}
 }
-function getCategoria(nombre) {
+async function getCategoria(nombre) {
 	
 }
 //Publicaciones
-function getPublicaciones() {
+async function getPublicaciones() {
 
 }
-function getPublicacion(id) {
+async function getPublicacion(id) {
 
 }
-function crearPublicacion(publicacion) {
+async function crearPublicacion(publicacion) {
 
 }
-function editarPublicacion(publicacion) {
+async function editarPublicacion(publicacion) {
 
 }
-function eliminarPublicacion(id) {
+async function eliminarPublicacion(id) {
 
 }
 //Ordenes
-function getOrdenes(idUsuario) {
+async function getOrdenes(idUsuario) {
 
 }
-function getOrden(id) {
+async function getOrden(id) {
 
 }
-function crearOrden(orden) {
+async function crearOrden(orden) {
 
 }
-function editarOrden(orden) {
+async function editarOrden(orden) {
 
 }
-function terminarOrden(id) {
+async function terminarOrden(id) {
 
 }
 
