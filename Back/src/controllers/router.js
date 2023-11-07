@@ -11,6 +11,7 @@ const orden = require('./OrderController');
 const resenia = require('./ReviewController');
 const certificado = require('./CertificateController');
 const lenguaje = require('./LanguageController');
+const ban = require('./ReportController');
 
 //Permite ser usado en otros archivos
 module.exports = router;
@@ -40,4 +41,6 @@ router.post('/review/newreview',     urlencodedParser,  resenia.createReview);
 router.post('/certificate/newcertificate',     urlencodedParser,  certificado.createCertificate);
 router.post('/languaje/newlanguaje',     urlencodedParser,  lenguaje.createLanguage);
 router.get('/gig/:id',                           gig.getAllGigsByCategory);
+router.post('/report/NewReport',     urlencodedParser,  ban.createReport);
+router.get('/report/:id',                           ban.getReport);
 
