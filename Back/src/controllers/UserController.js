@@ -68,7 +68,6 @@ exports.updateUser = (req,res) =>{
 	});
 }
 
-
 exports.deleteUser = (req,res) => {
 	const idUser = req.params.id;
 	conexion.query('delete from User where id = '+ idUser , (error,results) =>{

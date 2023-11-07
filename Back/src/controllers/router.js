@@ -11,6 +11,7 @@ const orden = require('./OrderController');
 const resenia = require('./ReviewController');
 const certificado = require('./CertificateController');
 const lenguaje = require('./LanguageController');
+const authCon = require('./AuthController');
 
 //Permite ser usado en otros archivos
 module.exports = router;
@@ -22,6 +23,7 @@ var jsonParser = bodyParser.json()
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 //Segun el metodo de la peticion, se ejecuta la funcion correspondiente
+router.get('/miInfo',                                   authCon.myUsuario);
 router.put('/editar/usuario/:id',   urlencodedParser,   usuario.updateUser);
 router.put('/editar/publicacion/:id',urlencodedParser,  gig.updateGig);
 router.get('/usuarios', 		                        usuario.getAllUsers);
