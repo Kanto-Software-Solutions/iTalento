@@ -15,7 +15,9 @@
 				<router-link to="/blog" class="text-decoration-none text-body text-nowrap">Blog </router-link>
 			</div>
 			<div class="col-sm">
-				<router-link to="/proximamente" class="text-decoration-none text-body text-nowrap">Apoyo </router-link>
+				<a class="rounded nav-link mx-1" href="https://blog.italento.shop" target="_blank" rel="noopener noreferrer">
+					blog
+				</a>
 			</div>
 			<div class="col-sm">
 				<div class="d-flex justify-content-around">
