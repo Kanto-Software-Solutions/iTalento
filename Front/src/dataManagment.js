@@ -58,8 +58,7 @@ async function getSesion() {
 	let arreglo = [];
 	try {
 		const response = await axios.get(url+"/miinfo");
-		arreglo = response;
-		console.log(arreglo);
+		arreglo = response.data;
 		return arreglo;
 	} catch (error) {
 		console.log(error.status);
