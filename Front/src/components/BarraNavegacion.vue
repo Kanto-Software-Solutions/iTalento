@@ -55,6 +55,9 @@ export default {
 	async created() {
 		let temp = await datos.getSesion();
 		//await this.$nextTick();
+		if (temp == null) {
+			return;
+		}
 		this.sesion = temp.usuario[0];
 		this.estado = temp.estado;
 		console.log(this.sesion);

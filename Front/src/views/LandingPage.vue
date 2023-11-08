@@ -113,6 +113,11 @@ export default {
 	async created() {
 		this.categorias = await datos.getCategorias()
 	},
+	methods: {
+		verificarTYC() {
+			return datos.verificarTYC()
+		},
+	},
 	data: () => ({
 		categorias: [],
 	}),

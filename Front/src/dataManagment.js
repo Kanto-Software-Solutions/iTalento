@@ -7,6 +7,7 @@ export default {
 	holaMundo,
 	generica,
 	getSesion,
+	verificarTYC,
 	getCategorias,
 	getCategoria,
 	getPublicaciones,
@@ -68,6 +69,29 @@ async function getSesion() {
 		}
 		router.push('/error/' + status);
 	}
+}
+async function verificarTYC() {
+	let arreglo = [];
+	try {
+		const response = await axios.get(url+"/");
+		arreglo = response.data.results;
+		/*
+		*	Codigo personalizado para cada request
+		*	Cambiar el get según corresponda
+		*
+		*
+		*/
+		return arreglo;
+	} catch (error) {
+		//Pagina de error
+		console.log(error.status);
+		let status = error.message;
+		if (error.response) {
+			status = error.response.status + " " + error.response.statusText;
+		}
+		router.push('/error/' + status);
+	}
+	
 }
 //Categorias
 async function getCategorias() {

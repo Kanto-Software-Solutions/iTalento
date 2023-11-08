@@ -2,24 +2,36 @@
 	<div id="formularioRegistro" class="needs-validation">
 		<div class="container-sm" style="max-width: 600px;">
 			<form action="/palRegistro">
-				<div class="mb-3 row p-0 g-0 m-0">
-					<label for="fUsuario" class="col-sm-2 col-form-label">Usuario:</label>
-					<div class="col-sm-10">
-						<input id="fUsuario" type="" class="form-control m-1 " placeholder="@Tu_Usuario" required pattern="[A-Za-z0-9._\-]{1,15}">
+				<div class="row">
+					<div class="col text-center h-100">
+						<img :src=userdata.imagenPerfil :alt=nickname class=" mx-2 object-fit-cover" style="border-radius:50%; height: 100px; width: 100px;">
 					</div>
-				</div>
-				<div class="mb-3 row p-0 g-0 m-0">
-					<label for="fCorreo" class="col-sm-2 col-form-label" >Email:</label>
-					<div class="col-sm-10">
-						<input id="fCorreo" type="email" class="m-1 form-control-plaintext" value="test@unal.edu" placeholder="Email" readonly required>
+					<div class="col-9">
+						<div class="mb-3 row p-0 g-0 m-0">
+							<label for="fUsuario" class="col-sm-2 col-form-label">Usuario:</label>
+							<div class="col-sm-10">
+								<input id="fUsuario" type="" class="form-control m-1 " placeholder="@Tu_Usuario" required
+									pattern="[A-Za-z0-9._\-]{1,15}" :value=userdata.nickname>
+							</div>
+						</div>
+						<div class="mb-3 row p-0 g-0 m-0">
+							<label for="fCorreo" class="col-sm-2 col-form-label">Email:</label>
+							<div class="col-sm-10">
+								<input id="fCorreo" type="email" class="m-1 form-control-plaintext" :value=userdata.correo
+									placeholder="Email" readonly required>
+							</div>
+						</div>
 					</div>
 				</div>
 				<label for="fNombre1">Nombres:</label>
-				<input id="fNombre1" type="" class="form-control m-1" placeholder="Nombres" required pattern="[A-Za-z0-9]{1,50}">
+				<input id="fNombre1" type="" class="form-control m-1" placeholder="Nombres" required
+					pattern="[A-Za-z0-9]{1,50}" :value=userdata.nombres>
 				<label for="fApellido1">Apellidos:</label>
-				<input id="fApellido1" type="" class="form-control m-1" placeholder="Apellidos" required pattern="[A-Za-z0-9]{1,50}">
+				<input id="fApellido1" type="" class="form-control m-1" placeholder="Apellidos" required
+					pattern="[A-Za-z0-9]{1,50}" :value=userdata.apellidos>
 				<label for="fProfesion">Profesión:</label>
-				<input id="fApellido1" type="" class="form-control m-1" placeholder="Profesión" required pattern="[A-Za-z0-9]{1,50}">
+				<input id="fApellido1" type="" class="form-control m-1" placeholder="Profesión" required
+					pattern="[A-Za-z0-9]{1,50}">
 				<div class="row">
 					<div class="col-sm">
 						<label for="fNacimiento">Fecha de nacimiento:</label>
@@ -35,38 +47,43 @@
 					</div>
 				</div>
 				<label for="fDescripcion">Sobre mi:</label>
-				<textarea id="fDescripcion" type="text" class="form-control m-1" placeholder="Cuentanos sobre ti"
-					rows="3" maxlength="1500"></textarea>
+				<textarea id="fDescripcion" type="text" class="form-control m-1" placeholder="Cuentanos sobre ti" rows="3"
+					maxlength="1500"></textarea>
 				<label for="fredes">Redes:</label>
 				<div id="fredes">
 					<div class="mb-3 row p-0 g-0 m-0">
 						<i class="bi bi-linkedin col-2 col-form-label text-center"></i>
 						<div class="col-10">
-							<input id="fLinkedin" class="form-control m-1" placeholder="Linkedin" pattern="[A-Za-z0-9._\-]{1,30}">
+							<input id="fLinkedin" class="form-control m-1" placeholder="Linkedin"
+								pattern="[A-Za-z0-9._\-]{1,30}">
 						</div>
 					</div>
 					<div class="mb-3 row p-0 g-0 m-0">
 						<i class="bi bi-github col-2 col-form-label text-center"></i>
 						<div class="col-10">
-							<input id="fGitHub" class="form-control m-1" placeholder="Github" pattern="[A-Za-z0-9._\-]{1,30}">
+							<input id="fGitHub" class="form-control m-1" placeholder="Github"
+								pattern="[A-Za-z0-9._\-]{1,30}">
 						</div>
 					</div>
 					<div class="mb-3 row p-0 g-0 m-0">
 						<i class="bi bi-twitter col-2 col-form-label text-center"></i>
 						<div class="col-10">
-							<input id="fTwitter" class="form-control m-1" placeholder="Twitter" pattern="[A-Za-z0-9._\-]{1,30}">
+							<input id="fTwitter" class="form-control m-1" placeholder="Twitter"
+								pattern="[A-Za-z0-9._\-]{1,30}">
 						</div>
 					</div>
 					<div class="mb-3 row p-0 g-0 m-0">
 						<i class="bi bi-facebook col-2 col-form-label text-center"></i>
 						<div class="col-10">
-							<input id="fFacebook" class="form-control m-1" placeholder="Facebook" pattern="[A-Za-z0-9._\-]{1,30}">
+							<input id="fFacebook" class="form-control m-1" placeholder="Facebook"
+								pattern="[A-Za-z0-9._\-]{1,30}">
 						</div>
 					</div>
 					<div class="mb-3 row p-0 g-0 m-0">
 						<i class="bi bi-instagram col-2 col-form-label text-center"></i>
 						<div class="col-10">
-							<input id="fInstagram" class="form-control m-1" placeholder="Instagram"  pattern="[A-Za-z0-9._\-]{1,30}">
+							<input id="fInstagram" class="form-control m-1" placeholder="Instagram"
+								pattern="[A-Za-z0-9._\-]{1,30}">
 						</div>
 					</div>
 				</div>
@@ -77,7 +94,7 @@
 							Freelancer
 						</label>
 					</div>
-					<div v-if=registro class="form-check m-1">
+					<div v-if=userdata.registro class="form-check m-1">
 						<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
 						<label class="form-check-label" for="flexCheckDefault">
 							Acepto los
@@ -99,22 +116,28 @@ export default {
 		ftyc,
 	},
 	props: {
-		registro: Boolean,
-		id: String,
-		nickname: String,
-		correo: String,
-		edad: String,
-		imagenPerfil: String,
-		habilidades: Array,
-		profesion: String,
-		nivelRecomentdacion: String,
-		lugar: String,
-		fechaSuscripcion: String,
-		cuentas: Array,
+		userdata: {
+			type: Object,
+			default: () => ({
+				registro: true,
+				id: "12345",
+				nombres: "Nombre Ejemplo",
+				apellidos: "Apellido Ejemplo",
+				nickname: "UsuarioEjemplo",
+				correo: "usuario@example.com",
+				imagenPerfil: "/assets/default.png",
+				habilidades: ["Programación", "Diseño Gráfico", "Inglés"],
+				profesion: "Desarrollador de Software",
+				nivelRecomendacion: "Alto",
+				lugar: "Ciudad Ejemplo",
+				fechaSuscripcion: "2023-01-15",
+				cuentas: ["Twitter", "LinkedIn", "GitHub"]
+			})
+		}
 	},
 	data: () => ({
 		usuario: '',
-		minEdad: (new Date().getFullYear() - 18) + "-" + (new Date().getMonth() + 1) + "-" + (new Date().getDate() + 1),
+		minEdad: (new Date().getFullYear() - 18) + "-" + (new Date().getMonth() + 1).toString().padStart(2, '0') + "-" + (new Date().getDate() + 1).toString().padStart(2, '0'),
 		countries: [
 			{
 				"name": "Afghanistan",
