@@ -14,9 +14,9 @@
                 <input name="signature"       type="hidden"  value="7ee7cf808ce6a39b17481c54f2c57acc"  >
                 <input name="test"            type="hidden"  value="0" >
                 <input name="buyerEmail"      type="hidden"  value="test@test.com" >
-                <input name="responseUrl"     type="hidden"  value="http://www.test.com/response" >
-                <input name="confirmationUrl" type="hidden"  value="http://www.test.com/confirmation" >
-                <input name="Submit"          type="submit"  value="Enviar" >
+                <input name="responseUrl"     type="hidden"  value="http://www.italento.shop" >
+                <input name="confirmationUrl" type="hidden"  value="http://www.italento.shop/" >
+                <input name="Submit"          type="submit"  value="Pagar" >
                 </form>
             </div>
             <div class="column"  margin: auto></div>
