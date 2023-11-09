@@ -12,13 +12,16 @@
 				<router-link to="/costostarifas" class="text-decoration-none text-body text-nowrap">Publicidad</router-link>
 			</div>
 			<div class="col-sm">
+				<router-link to="/pay" class="text-decoration-none text-body text-nowrap">Publicidad</router-link>
+			</div>
+			<div class="col-sm">
 				<a class="rounded nav-link mx-1" href="https://blog.italento.shop" target="_blank" rel="noopener noreferrer">
 					Blog
 				</a>
 			</div>
 			<div class="col-sm">
 				<a class="rounded nav-link mx-1" href="https://docs.italento.shop" target="_blank" rel="noopener noreferrer">
-					Blog
+					Documentación
 				</a>
 			</div>
 			<div class="col-sm">
