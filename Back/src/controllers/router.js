@@ -45,6 +45,6 @@ router.post('/nuevo/usuario',       urlencodedParser,   usuario.createUser);
 router.post('/nuevo/publicacion',   urlencodedParser,   gig.createGig);
 router.post('/report/NewReport',     urlencodedParser,  ban.createReport);
 router.delete('/borrar/:id',                          gig.deleteGig);
-router.delete('/usuario/borrar:id',                          usario.deleteUser);
+router.delete('/usuario/borrar:id',                          usuario.deleteUser);
 router.delete('/order/borrar:id',                          orden.deleteOrder);
 router.delete('/usuarios/:id',                          usuario.deleteUser);
