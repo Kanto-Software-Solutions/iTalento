@@ -99,3 +99,14 @@ exports.getAllGigsByCategory = (req,res) => {
 		}
 	});
 };
+
+exports.getPriceGig = (req,res) => {
+	const idGig=req.params.idGig;
+	conexion.query("SELECT price FROM Gig where idGig="+ idGig, (error,results) => {
+		if(error){
+			console.log(error);
+		}else{
+			res.json({results:results});
+		}
+	});
+};
