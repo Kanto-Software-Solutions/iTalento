@@ -96,7 +96,7 @@
 							Freelancer
 						</label>
 					</div>
-					<div v-if=userdata.registro class="form-check m-1">
+					<div v-if=!userdata.tyc class="form-check m-1">
 						<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" required>
 						<label class="form-check-label" for="flexCheckDefault">
 							Acepto los

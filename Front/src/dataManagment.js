@@ -21,7 +21,6 @@ export default {
 	crearOrden,
 	editarOrden,
 	terminarOrden,
-	getUsuarios,
 	getUsuario,
 	crearUsuario,
 	editarUsuario,
