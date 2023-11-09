@@ -47,7 +47,7 @@ exports.deleteOrder = (req,res) => {
 	});
 }
 
-exports.getOrder = (req,res) => {
+exports.getOrderById = (req,res) => {
 	const idOrder = req.body.idOrder;
 	conexion.query("SELECT * FROM Order WHERE idOrder = " + idOrder, (error,results) => {
 		if(error){
