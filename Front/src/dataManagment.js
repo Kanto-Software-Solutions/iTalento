@@ -1,7 +1,7 @@
 import axios from 'axios';
 import router from "./router/Router.js";
 
-const url = 'http://localhost:3000';
+const url = 'http://italento.shop';
 
 export default {
 	notificacion,

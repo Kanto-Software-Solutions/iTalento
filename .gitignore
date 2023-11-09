@@ -3,7 +3,6 @@ node_modules/
 dist/
 docs/_book
 test/
-front/src/public
 
 # local env files
 *.env
