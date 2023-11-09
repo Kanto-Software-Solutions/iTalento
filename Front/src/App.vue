@@ -18,8 +18,17 @@
 import BarraNavegacion from '@/components/BarraNavegacion.vue'
 import PieDePagina from '@/components/PieDePagina.vue'
 import notificacion from './components/notificacion.vue';
+import datos from './dataManagment.js';
+import router from '@/router/Router.js';
+
 export default {
 	name: 'App',
+	async created() {
+		let temp = await datos.getSesion();
+		if (temp.estado) {
+			router.push('/registro');
+		}
+	},
 	components: {
 		BarraNavegacion,
 		PieDePagina,
