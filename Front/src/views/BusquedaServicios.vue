@@ -1,14 +1,12 @@
 <template>
 	<div id="busquedaPrincipales" class="container-xl d-none d-md-block">
-		<div class="row justify-content-center">
-			<div class="row" style="width: max-content;">
-				<div class="col" v-for="(item, i) in categorias">
-					<botonBusqueda :nombre=item.name />
-				</div>
+		<div class="row">
+			<div class="col d-flex jus" v-for="item in categorias">
+				<botonBusqueda class="h-100" :nombre=item.name />
 			</div>
 		</div>
 	</div>
-	<div id="busquedaTitulo" class="container-xl">
+	<div v-if="false" id="busquedaTitulo" class="container-xl">
 		<div class="text-center m-5">
 			<h1>«/»</h1>
 		</div>
@@ -53,24 +51,23 @@
 			</div>
 		</form>
 	</div>
-	<div id="busquedaResultado" class="container-xl">
-		<cargando v-if="false"></cargando>
-		<div id="busquedaBuscar" v-if="true" class="text-center m-5 text-body-tertiary fw-light">
-			<h2>
-				Ingresa un criterio de busqueda
-			</h2>
-			<div class="spinner-grow m-2" style="width: 100px; height: 100px; animation-duration: 3s ;" role="status" >
-			</div>
-		</div>
-		<div id="busquedaNoresultados" v-if="false" class="text-center m-5 text-body-tertiary fw-light">
+	<div id="busquedaResultado" class="">
+		<cargando v-if=esCargando></cargando>
+		<div v-if="esVacio" id="busquedaNoresultados" class="text-center m-5 text-body-tertiary fw-light">
 			<h2>
 				No se encontraron resultados
 			</h2>
 		</div>
-		<div id="busquedaResultados" v-if="false" class="row g-0 m-1 overflow-visible justify-content-center">
-			<fichaGig class="col" v-for="g in gigs" :id=g.id :ida=g.ida :titulo=g.titulo :img1=g.img1 :img2=g.img2
-				:img3=g.img3 :fotoUsuario=g.fotoUsuario :nombreUsuario=g.nombreUsuario :calificacion=g.calificacion
-				:costo=g.costo accion="Mirar" />
+		<div v-else-if="gigs.length" id="busquedaResultados"
+			class="row row-cols-lg-5 g-0 overflow-hidden justify-content-center w-100">
+			<fichaGig class="col" v-for="g in gigs" v-bind="g" accion="Mirar" />
+		</div>
+		<div v-else id="busquedaBuscar" class="text-center m-5 text-body-tertiary fw-light">
+			<h2>
+				Ingresa un criterio de busqueda
+			</h2>
+			<div class="spinner-grow m-2" style="width: 100px; height: 100px; animation-duration: 3s ;" role="status">
+			</div>
 		</div>
 	</div>
 </template>
@@ -78,6 +75,8 @@
 import botonBusqueda from '@/components/BotonBusqueda.vue';
 import fichaGig from '@/components/FichaGigs.vue'
 import cargando from '@/components/Cargando.vue'
+
+import datos from '@/dataManagment.js';
 export default {
 	name: 'BusquedaServicios',
 	components: {
@@ -85,14 +84,17 @@ export default {
 		fichaGig,
 		cargando,
 	},
+	async created() {
+		let cat5 = await datos.getCategorias()
+		if(cat5){
+			this.categorias = cat5.slice(0, 5)
+		}
+	},
 	data: () => ({
-		categorias: [
-			{ name: "Categoria 1", id: 1, contenido: "Lorem ipsum es texto de reyeno 1", imagen: "https://s1.significados.com/foto/tecnologia-dura-fa.jpg" },
-			{ name: "Categoria 2", id: 2, contenido: "Lorem ipsum es texto de reyeno 2", imagen: "https://s1.significados.com/foto/tecnologia-dura-fa.jpg" },
-			{ name: "Categoria 3", id: 3, contenido: "Lorem ipsum es texto de reyeno 3", imagen: "https://s1.significados.com/foto/tecnologia-dura-fa.jpg" },
-			{ name: "Categoria 4", id: 4, contenido: "Lorem ipsum es texto de reyeno 4", imagen: "https://s1.significados.com/foto/tecnologia-dura-fa.jpg" },
-			{ name: "Categoria 5", id: 5, contenido: "Lorem ipsum es texto de reyeno 5", imagen: "https://s1.significados.com/foto/tecnologia-dura-fa.jpg" },
-		],
+		esCargando: false,
+		esVacio: false,
+		categorias: [],
+		gigs: [],
 		precios: [
 			{ name: "Sin costo", id: 0 },
 			{ name: "100.000", id: 100 },
@@ -113,6 +115,9 @@ export default {
 			{ name: "★★★★★", id: 5 },
 		],
 	}),
+	methods: {
+
+	},
 }
 </script>
 <style></style>

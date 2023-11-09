@@ -63,7 +63,7 @@
 			</div>
 			<div class="col-sm">
 				<integrante nombre="Nicolas Rojas" descripcion="Desarrollador Frontend" imagen="./assets/Nico.jpg"
-					pokemon="./assets/squirtle.jpg" github="https://github.com/nirojasm-u" linkedin="http://google.com">
+					pokemon="./assets/squirtle.jpg" github="https://github.com/nirojasm" linkedin="https://www.linkedin.com/in/nirojasm/">
 				</integrante>
 			</div>
 			<div class="col-sm">

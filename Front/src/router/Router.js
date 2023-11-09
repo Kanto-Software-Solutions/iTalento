@@ -2,7 +2,11 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
 	{
-		path: '/registro',
+		path: '/:pathMatch(.*)*',
+		redirect: '/error/¡Opps! Vista no disponible',
+	},
+	{
+		path: '/registro/',
 		name: 'registro',
 		component: () => import('../views/Registro.vue'),
 	},
@@ -14,8 +18,7 @@ const routes = [
 	{
 		path: '/',
 		name: 'home',
-		component: () =>
-		import('../views/LandingPage.vue'),
+		component: () => import('../views/LandingPage.vue'),
 	},
 	{
 		path: '/aboutUs',
@@ -34,11 +37,6 @@ const routes = [
 		component: () => import('../views/PerfilUsuario.vue'),
 	},
 	{
-		path: '/login',
-		name: 'login',
-		component: () => import('../views/PerfilUsuario.vue'),
-	},
-	{
 		path: '/costostarifas',
 		name: 'costosytarifas',
 		component: () => import('../views/Costosytarifas.vue'),
@@ -49,9 +47,29 @@ const routes = [
 		component: () => import('../views/ComoFunciona.vue'),
 	},
 	{
+		path: '/blog',
+		name: 'blog',
+		component: () => import('../views/Blog.vue'),
+	},
+	{
 		path: '/proximamente',
 		name: 'proximanente',
 		component: () => import('../views/Proximamente.vue'),
+	},
+	{
+		path: '/error/:code',
+		name: 'error',
+		component: () => import('../views/Error.vue'),
+	},
+	{
+		path: '/test',
+		name: 'Test',
+		component: () => import('../views/Test.vue'),
+	},
+	{
+		path: '/Pay',
+		name: 'pay',
+		component: () => import('../views/PayBut.vue')
 	}
 ]
 

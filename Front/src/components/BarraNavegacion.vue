@@ -15,18 +15,19 @@
 					<Titulo />
 				</router-link>
 				<div id="Funciones" class="w-25">
-					<BtnIniciodeSesion />
+					<BtnSesion v-if=estado :nickname=nickname :imgPerfil=imgPerfil />
+					<BtnIniciodeSesion v-else />
 				</div>
 			</div>
 		</nav>
 		<div id="buscar" class="collapse container-lg p-0">
 			<div id="bbuscar" class="p-0 rounded-2 my-1 mx-0" style="background-color: rgba(255, 255, 255, 0.9);">
-					<div class="d-flex justify-content-between w-100" role="search">
-						<input class="form-control m-1" type="search" placeholder="¿Que trabajo necesitas hoy?">
-						<router-link class="router-link btn m-1 btn-outline-secondary" to="/">
-							<i class="bi bi-search"></i>
-						</router-link>
-					</div>
+				<div class="d-flex justify-content-between w-100" role="search">
+					<input class="form-control m-1" type="search" placeholder="¿Que trabajo necesitas hoy?">
+					<router-link class="router-link btn m-1 btn-outline-secondary" to="/">
+						<i class="bi bi-search"></i>
+					</router-link>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -44,14 +45,37 @@
 <script>
 import MenuBarra from '@/components/MenuBarra.vue'
 import BtnIniciodeSesion from '@/components/BtnIniciodeSesion.vue';
+import BtnSesion from '@/components/BtnSesion.vue';
 import Titulo from '@/components/Titulo.vue';
+import datos from '../dataManagment.js';
+
 export default {
 	name: 'NavComp',
+
+	async created() {
+		let temp = await datos.getSesion();
+		if (temp == null) {
+			return;
+		}
+		this.sesion = temp.usuario[0];
+		this.estado = temp.estado;
+		if (this.estado) {
+			this.nickname = this.sesion.nickname;
+			this.imgPerfil = this.sesion.picture;
+		}
+	},
+
 	components: {
 		MenuBarra,
 		BtnIniciodeSesion,
 		Titulo,
-
+		BtnSesion,
 	},
+	data: () => ({
+		nickname: "Usuario",
+		imgPerfil: "../assets/default.png",
+		sesion: null,
+		estado: false,
+	}),
 }
 </script>

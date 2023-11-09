@@ -1,72 +1,91 @@
 <template>
-	<div id="formularioRegistro" class="needs-validation">
+	<cargando v-if=cargando />
+	<div v-else id="formularioRegistro" class="needs-validation">
 		<div class="container-sm" style="max-width: 600px;">
-			<form action="/palRegistro">
-				<div class="mb-3 row p-0 g-0 m-0">
-					<label for="fUsuario" class="col-sm-2 col-form-label">Usuario:</label>
-					<div class="col-sm-10">
-						<input id="fUsuario" type="" class="form-control m-1 " placeholder="@Tu_Usuario" required pattern="[A-Za-z0-9._\-]{1,15}">
+			<form v-on:submit.prevent=updateUserInfo()>
+				<div class="row">
+					<div class="col-sm-3 text-center h-100">
+						<img :src=userdata.imagenPerfil :alt=userdata.nickname class=" mx-2 object-fit-cover"
+							style="border-radius:50%; height: 100px; width: 100px;">
+					</div>
+					<div class="col">
+						<div class="mb-3 row">
+							<label for="fUsuario" class="col-sm-2 col-form-label text-nowrap">Usuario: </label>
+							<div class="col-sm-10">
+								<input id="fUsuario" type="" class="form-control m-1 " placeholder="@Tu_Usuario" required
+									pattern="[A-Za-z0-9._\-]{1,15}" :value=userdata.nickname>
+							</div>
+						</div>
+						<div class="mb-3 row p-0 g-0 m-0">
+							<label for="fCorreo" class="col-sm-2 col-form-label text-nowrap">Email:</label>
+							<div class="col-sm-10">
+								<input id="fCorreo" type="email" class="m-1 form-control-plaintext" :value=userdata.correo
+									placeholder="Email" readonly required>
+							</div>
+						</div>
 					</div>
 				</div>
-				<div class="mb-3 row p-0 g-0 m-0">
-					<label for="fCorreo" class="col-sm-2 col-form-label" >Email:</label>
-					<div class="col-sm-10">
-						<input id="fCorreo" type="email" class="m-1 form-control-plaintext" value="test@unal.edu" placeholder="Email" readonly required>
-					</div>
-				</div>
-				<label for="fNombre1">Nombres:</label>
-				<input id="fNombre1" type="" class="form-control m-1" placeholder="Nombres" required pattern="[A-Za-z0-9]{1,50}">
-				<label for="fApellido1">Apellidos:</label>
-				<input id="fApellido1" type="" class="form-control m-1" placeholder="Apellidos" required pattern="[A-Za-z0-9]{1,50}">
-				<label for="fProfesion">Profesión:</label>
-				<input id="fApellido1" type="" class="form-control m-1" placeholder="Profesión" required pattern="[A-Za-z0-9]{1,50}">
+				<label for="fNombre1" class="text-nowrap">Nombres:</label>
+				<input id="fNombre1" type="" class="form-control m-1" placeholder="Nombres" required
+					pattern="[A-Za-z0-9]{1,50}[A-Za-z0-9\s]{0,50}" :value=userdata.nombres>
+				<label for="fApellido1" class="text-nowrap">Apellidos:</label>
+				<input id="fApellido1" type="" class="form-control m-1" placeholder="Apellidos" required
+					pattern="[A-Za-z0-9]{1,50}[A-Za-z0-9\s]{0,50}" :value=userdata.apellidos>
+				<label for="fProfesion" class="text-nowrap">Profesión:</label>
+				<input id="fProfesion" type="" class="form-control m-1" placeholder="Profesión" required
+					pattern="[A-Za-z0-9\s]{1,50}">
 				<div class="row">
 					<div class="col-sm">
-						<label for="fNacimiento">Fecha de nacimiento:</label>
+						<label for="fNacimiento" class="text-nowrap">Fecha de nacimiento:</label>
 						<input id="fNacimiento" type="date" class="form-control m-1" :max=minEdad placeholder="Nacimiento"
 							required>
 					</div>
 					<div class="col-sm">
-						<label for="fLugar">Lugar de residencia:</label>
+						<label for="fLugar" class="text-nowrap">Lugar de residencia:</label>
 						<select id="fLugar" class="form-select m-1" aria-label="Default select example">
 							<option value="Colombia" selected>Colombia</option>
 							<option v-for="pais in countries" :value=pais.es_name>{{ pais.es_name }}</option>
 						</select>
 					</div>
 				</div>
-				<label for="fDescripcion">Sobre mi:</label>
-				<textarea id="fDescripcion" type="text" class="form-control m-1" placeholder="Cuentanos sobre ti"
-					rows="3" maxlength="1500"></textarea>
-				<label for="fredes">Redes:</label>
+				<label for="fDescripcion" class="text-nowrap">Sobre mi:</label>
+				<textarea id="fDescripcion" type="text" class="form-control m-1" placeholder="Cuentanos sobre ti" rows="3"
+					maxlength="1500"></textarea>
+				<label for="fredes" class="text-nowrap">Redes:</label>
 				<div id="fredes">
 					<div class="mb-3 row p-0 g-0 m-0">
 						<i class="bi bi-linkedin col-2 col-form-label text-center"></i>
 						<div class="col-10">
-							<input id="fLinkedin" class="form-control m-1" placeholder="Linkedin" pattern="[A-Za-z0-9._\-]{1,30}">
+							<input id="fLinkedin" class="form-control m-1" placeholder="Linkedin"
+								pattern="[A-Za-z0-9._\-]{1,30}">
 						</div>
 					</div>
 					<div class="mb-3 row p-0 g-0 m-0">
 						<i class="bi bi-github col-2 col-form-label text-center"></i>
 						<div class="col-10">
-							<input id="fGitHub" class="form-control m-1" placeholder="Github" pattern="[A-Za-z0-9._\-]{1,30}">
+							<input id="fGitHub" class="form-control m-1" placeholder="Github"
+								pattern="[A-Za-z0-9._\-]{1,30}">
 						</div>
 					</div>
 					<div class="mb-3 row p-0 g-0 m-0">
 						<i class="bi bi-twitter col-2 col-form-label text-center"></i>
 						<div class="col-10">
-							<input id="fTwitter" class="form-control m-1" placeholder="Twitter" pattern="[A-Za-z0-9._\-]{1,30}">
+							<input id="fTwitter" class="form-control m-1" placeholder="Twitter"
+								pattern="[A-Za-z0-9._\-]{1,30}">
 						</div>
 					</div>
 					<div class="mb-3 row p-0 g-0 m-0">
 						<i class="bi bi-facebook col-2 col-form-label text-center"></i>
 						<div class="col-10">
-							<input id="fFacebook" class="form-control m-1" placeholder="Facebook" pattern="[A-Za-z0-9._\-]{1,30}">
+							<input id="fFacebook" class="form-control m-1" placeholder="Facebook"
+								pattern="[A-Za-z0-9._\-]{1,30}">
 						</div>
 					</div>
 					<div class="mb-3 row p-0 g-0 m-0">
 						<i class="bi bi-instagram col-2 col-form-label text-center"></i>
 						<div class="col-10">
-							<input id="fInstagram" class="form-control m-1" placeholder="Instagram"  pattern="[A-Za-z0-9._\-]{1,30}">
+							<input id="fInstagram" class="form-control m-1" placeholder="Instagram"
+								pattern="[A-Za-z0-9._\-]{1,30}">
 						</div>
 					</div>
 				</div>
@@ -77,19 +96,16 @@
 							Freelancer
 						</label>
 					</div>
-					<div class="form-check form-switch m-1">
-						<input id="fRolCliente" type="checkbox" class="form-check-input" role="switch" checked>
-						<label class="form-check-label" for="fRolCliente">
-							Comprador
-						</label>
-					</div>
-					<div v-if=registro class="form-check m-1">
-						<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+					<div v-if=!userdata.tyc class="form-check m-1">
+						<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" required>
 						<label class="form-check-label" for="flexCheckDefault">
 							Acepto los
 							<a href="" data-bs-toggle="modal" data-bs-target="#ftyc">Terminos y condiciones</a>
 						</label>
 					</div>
+				</div>
+				<div v-if=!userdata.verificado class="alert alert-warning text-center" role="alert">
+					¡Por favor verifica tu correo!
 				</div>
 				<button type="submit" class="btn btn-primary m-1 w-100 mt-2">Enviar</button>
 			</form>
@@ -99,28 +115,87 @@
 </template>
 <script>
 import ftyc from '@/components/fichaTyC.vue'
+import datos from '../dataManagment.js';
+import router from '@/router/Router';
+import cargando from './Cargando.vue';
+
 export default {
 	name: 'formPerfil',
 	components: {
 		ftyc,
+		datos,
+		cargando,
+	},
+	methods: {
+		updateUserInfo(){
+			this.cargando = true;
+			this.userdata.nombres = document.getElementById("fNombre1").value;
+			this.userdata.apellidos = document.getElementById("fApellido1").value;
+			this.userdata.correo = document.getElementById("fCorreo").value;
+			//Información
+			this.userdata.profesion = document.getElementById("fProfesion").value;
+			this.userdata.fechaNacimiento = document.getElementById("fNacimiento").value;
+			this.userdata.lugar = document.getElementById("fLugar").value;
+			if (document.getElementById("fDescripcion").value) {
+				this.userdata.sobreMi = document.getElementById("fDescripcion").value;
+			} else {
+				this.userdata.sobreMi = "~(UwU)~";
+			}
+			//Redes
+			this.userdata.cuentas.twitter = document.getElementById("fTwitter").value;
+			this.userdata.cuentas.linkedIn = document.getElementById("fLinkedin").value;
+			this.userdata.cuentas.github = document.getElementById("fGitHub").value;
+			this.userdata.cuentas.facebook = document.getElementById("fFacebook").value;
+			this.userdata.cuentas.instagram = document.getElementById("fInstagram").value;
+			//Otros
+			this.userdata.freelancer = document.getElementById("fRolFreelancer").checked;
+			this.userdata.tyc = true;
+			setTimeout(this.toBD,1500)
+		},
+		toBD() {
+			if (this.userdata.registro) {
+				datos.editarUsuario(this.userdata);
+				router.push({ name: 'perfil' });
+				datos.notificacion("Usuario actualizado.");
+			} else {
+				datos.crearUsuario(this.userdata);
+				router.push({ name: 'home' });
+				datos.notificacion("¡Se ha completado el registro!");
+			}
+			return false;
+		}
 	},
 	props: {
-		registro: Boolean,
-		id: String,
-		nickname: String,
-		correo: String,
-		edad: String,
-		imagenPerfil: String,
-		habilidades: Array,
-		profesion: String,
-		nivelRecomentdacion: String,
-		lugar: String,
-		fechaSuscripcion: String,
-		cuentas: Array,
+		userdata: {
+			type: Object,
+			default: () => ({
+				registro: true,
+				verificado: false,
+				tyc: false,
+				id: "",
+				nombres: "",
+				apellidos: "",
+				nickname: "",
+				correo: "",
+				imagenPerfil: "",
+				habilidades: [],
+				profesion: "",
+				nivelRecomendacion: "",
+				lugar: "",
+				fechaNacimiento: "",
+				cuentas: [{
+					twitter: "",
+					linkedIn: "",
+					github: "",
+					facebook: "",
+					instagram: ""
+				}]
+			})
+		}
 	},
 	data: () => ({
-		usuario: '',
-		minEdad: (new Date().getFullYear() - 18) + "-" + (new Date().getMonth() + 1) + "-" + (new Date().getDate() + 1),
+		cargando: false,
+		minEdad: (new Date().getFullYear() - 18) + "-" + (new Date().getMonth() + 1).toString().padStart(2, '0') + "-" + (new Date().getDate() + 1).toString().padStart(2, '0'),
 		countries: [
 			{
 				"name": "Afghanistan",
@@ -1051,28 +1126,6 @@ export default {
 				"es_name": "Zimbabwe"
 			}
 		],
-		hab: [
-			"",
-			"Actuación",
-			"Artes plásticas",
-			"Baile",
-			"Canto",
-			"Comedia",
-			"Conducción",
-			"Deportes",
-			"Escritura",
-			"Fotografía",
-			"Modelaje",
-			"Música",
-			"Producción",
-			"Programación",
-			"Redes sociales",
-			"Stand up",
-			"Teatro",
-			"Video",
-			"Voz en off",
-			"Otra"
-		]
 	}),
 }
 </script>
