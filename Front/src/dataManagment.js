@@ -35,6 +35,22 @@ function notificacion(msj) {
 	toastLiveExample.querySelector('.toast-body').innerText = msj
 	toastBootstrap.show()
 }
+function usertuDB(user) {	
+	return data = {
+		names: user.nombres,
+		lastNames: user.apellidos,
+		email: user.correo,
+		isVerified: user.verificado,
+		nickname: user.nickname,
+		profileImage: user.imagenPerfil,
+		isFreelancer: user.registro,
+		birthDate: user.fechaNacimiento,
+		country: user.lugar,
+		acceptedTerms: user.tyc,
+		personalId: user.profesion
+	};
+}
+
 async function holaMundo() {
 	console.log("Hola Mundo");
 }
@@ -161,14 +177,8 @@ async function terminarOrden(id) {
 async function getUsuarios() {
 	let arreglo = [];
 	try {
-		const response = await axios.get(url + "/");
+		const response = await axios.get(url + "/usuarios");
 		arreglo = response.data.results;
-		/*
-		*	Codigo personalizado para cada request
-		*	Cambiar el get según corresponda
-		*
-		*
-		*/
 		return arreglo;
 	} catch (error) {
 		//Pagina de error
@@ -197,7 +207,21 @@ async function getUsuario(id) {
 	}
 }
 async function crearUsuario(usuario) {
-
+	let arreglo = [];
+	try {
+		let data = usertuDB(usuario)
+		const response = await axios.post(url + "/nuevo/usuario", data);
+		arreglo = response.data.results;
+		return arreglo;
+	} catch (error) {
+		//Pagina de error
+		console.log("ERROR: "+error.status);
+		let status = error.message;
+		if (error.response) {
+			status = error.response.status + " " + error.response.statusText;
+		}
+		router.push('/error/' + status);
+	}
 }
 async function editarUsuario(usuario) {
 

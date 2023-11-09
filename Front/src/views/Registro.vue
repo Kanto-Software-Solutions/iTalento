@@ -42,7 +42,6 @@ export default {
 			registro: false,
 			verificado: false,
 			tyc: false,
-			id: "",
 			nombres: "",
 			apellidos: "",
 			nickname: "",

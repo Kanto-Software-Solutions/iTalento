@@ -22,7 +22,6 @@ exports.getUserById = (req,res) => {
 };
 
 exports.createUser = (req,res) =>{
-	const idUser = req.body.id;
 	const names = req.body.given_name;
 	const lastNames = req.body.family_name;
 	const email = req.body.email;
@@ -34,11 +33,13 @@ exports.createUser = (req,res) =>{
 	const country = req.body.country;
 	const acceptedTerms = req.body.acceptedTerms;
 	const personalId = req.body.personalId;
-	conexion.query("INSERT INTO User (idUser,names, lastNames, email, isVerified, nickname, profileImage, isFreelancer, birthDate, country, acceptedTerms, personalId) VALUES ( '" + idUser + "' ,'" + names + "' , '" + lastNames + "' ,'" + email + "' , '" + isVerified + "' , '" + nickname + "' , " + profileImage + ", " + isFreelancer + ", " + birthDate + ", " + country + ", " + acceptedTerms + ", " + personalId + ")", (error, results) => {
+	conexion.query("INSERT INTO User (names, lastNames, email, isVerified, nickname, profileImage, isFreelancer, birthDate, country, acceptedTerms, personalId) VALUES ( '" + names + "' , '" + lastNames + "' ,'" + email + "' , '" + isVerified + "' , '" + nickname + "' , '" + profileImage + "', '" + isFreelancer + "', '" + birthDate + "', '" + country + "', '" + acceptedTerms + "', '" + personalId + "')", (error, results) => {
 		if(error){
 			console.log(error);
+			res.send(false);
 		}else{
 			console.log("Se creó el usuario: " + names + " " + lastNames);
+			res.send(true);
 		}
 	});
 }
