@@ -20,10 +20,9 @@ export default {
 		formperfil,
 		datos,
 	},
-	
-	async created(){
+
+	async created() {
 		let temp = await datos.getSesion();
-		//await this.$nextTick();
 		if (temp == null) {
 			return;
 		}
@@ -35,27 +34,32 @@ export default {
 			this.usuarioInfo.nickname = this.sesion.nickname;
 			this.usuarioInfo.correo = this.sesion.email;
 			this.usuarioInfo.imagenPerfil = this.sesion.picture;
-
+			this.usuarioInfo.verificado = this.sesion.email_verified;
 		}
 	},
-
 	data: () => ({
 		usuarioInfo: {
-			registro: true,
+			registro: false,
 			verificado: false,
-			id: "12345",
-			nombres: "Nombre Ejemplo",
-			apellidos: "Apellido Ejemplo",
-			nickname: "UsuarioEjemplo",
-			correo: "usuario@example.com",
-			imagenPerfil: "/assets/default.png",
-			habilidades: ["Programación", "Diseño Gráfico", "Inglés"],
-			profesion: "Desarrollador de Software",
-			nivelRecomendacion: "Alto",
-			lugar: "Ciudad Ejemplo",
-			fechaSuscripcion: "2023-01-15",
-			cuentas: ["Twitter", "LinkedIn", "GitHub"],
-			sobreMi: "Soy un usuario de ejemplo. Solo quieroo que todo funcione!",
+			tyc: false,
+			id: "",
+			nombres: "",
+			apellidos: "",
+			nickname: "",
+			correo: "",
+			imagenPerfil: "",
+			habilidades: [],
+			profesion: "",
+			nivelRecomendacion: "",
+			lugar: "",
+			fechaNacimiento: "",
+			cuentas: [{
+				twitter: "",
+				linkedIn: "",
+				github: "",
+				facebook: "",
+				instagram: ""
+			}],
 		},
 	}),
 }

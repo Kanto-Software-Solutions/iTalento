@@ -1,7 +1,8 @@
 <template>
-	<div id="formularioRegistro" class="needs-validation">
+	<cargando v-if=cargando />
+	<div v-else id="formularioRegistro" class="needs-validation">
 		<div class="container-sm" style="max-width: 600px;">
-			<form v-on:submit="updateUserInfo()" >
+			<form v-on:submit.prevent=updateUserInfo()>
 				<div class="row">
 					<div class="col-sm-3 text-center h-100">
 						<img :src=userdata.imagenPerfil :alt=userdata.nickname class=" mx-2 object-fit-cover"
@@ -103,7 +104,7 @@
 						</label>
 					</div>
 				</div>
-				<div class="alert alert-warning text-center" role="alert">
+				<div v-if=!userdata.verificado class="alert alert-warning text-center" role="alert">
 					¡Por favor verifica tu correo!
 				</div>
 				<button type="submit" class="btn btn-primary m-1 w-100 mt-2">Enviar</button>
@@ -115,15 +116,19 @@
 <script>
 import ftyc from '@/components/fichaTyC.vue'
 import datos from '../dataManagment.js';
+import router from '@/router/Router';
+import cargando from './Cargando.vue';
 
 export default {
 	name: 'formPerfil',
 	components: {
 		ftyc,
 		datos,
+		cargando,
 	},
 	methods: {
-		updateUserInfo() {
+		updateUserInfo(){
+			this.cargando = true;
 			this.userdata.nombres = document.getElementById("fNombre1").value;
 			this.userdata.apellidos = document.getElementById("fApellido1").value;
 			this.userdata.correo = document.getElementById("fCorreo").value;
@@ -133,7 +138,7 @@ export default {
 			this.userdata.lugar = document.getElementById("fLugar").value;
 			if (document.getElementById("fDescripcion").value) {
 				this.userdata.sobreMi = document.getElementById("fDescripcion").value;
-			}else{
+			} else {
 				this.userdata.sobreMi = "~(UwU)~";
 			}
 			//Redes
@@ -144,10 +149,20 @@ export default {
 			this.userdata.cuentas.instagram = document.getElementById("fInstagram").value;
 			//Otros
 			this.userdata.freelancer = document.getElementById("fRolFreelancer").checked;
-			this.userdata.registro = true;
 			this.userdata.tyc = true;
-			console.log('Userinfo');
-			console.log(this.userdata);
+			setTimeout(this.toBD,1500)
+		},
+		toBD() {
+			if (this.userdata.registro) {
+				datos.editarUsuario(this.userdata);
+				router.push({ name: 'perfil' });
+				datos.notificacion("Usuario actualizado.");
+			} else {
+				datos.crearUsuario(this.userdata);
+				router.push({ name: 'home' });
+				datos.notificacion("¡Se ha completado el registro!");
+			}
+			return false;
 		}
 	},
 	props: {
@@ -179,6 +194,7 @@ export default {
 		}
 	},
 	data: () => ({
+		cargando: false,
 		minEdad: (new Date().getFullYear() - 18) + "-" + (new Date().getMonth() + 1).toString().padStart(2, '0') + "-" + (new Date().getDate() + 1).toString().padStart(2, '0'),
 		countries: [
 			{
