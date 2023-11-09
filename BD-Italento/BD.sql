@@ -20,7 +20,6 @@ USE `mydb` ;
 -- -----------------------------------------------------
 -- Table `mydb`.`User`
 -- -----------------------------------------------------
-
 CREATE TABLE IF NOT EXISTS `mydb`.`User` (
   `idUser` INT NOT NULL AUTO_INCREMENT,
   `names` VARCHAR(45) NOT NULL,

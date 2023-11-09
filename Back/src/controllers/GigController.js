@@ -88,3 +88,25 @@ exports.deleteGig= (req,res) => {
 		}
 	});
 }
+
+exports.getAllGigsByCategory = (req,res) => {
+	const idCategory=req.params.idCategory;
+	conexion.query("SELECT * FROM Gig where idCategory="+ idCategory, (error,results) => {
+		if(error){
+			console.log(error);
+		}else{
+			res.json({results:results});
+		}
+	});
+};
+
+exports.getPriceGig = (req,res) => {
+	const idGig=req.params.idGig;
+	conexion.query("SELECT price FROM Gig where idGig="+ idGig, (error,results) => {
+		if(error){
+			console.log(error);
+		}else{
+			res.json({results:results});
+		}
+	});
+};
