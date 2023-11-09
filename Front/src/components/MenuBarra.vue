@@ -1,6 +1,6 @@
 <template>
 	<div class="navbar-nav">
-		<li id="CategoriasDropdown" class="dropdown d-none">
+		<li id="CategoriasDropdown" class="dropdown">
 			<a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
 				aria-expanded="false">
 				Categorías

@@ -11,21 +11,19 @@
 			<router-link class="router-link nav-link" to="/AboutUs">iTalento - 2023</router-link>
 		</div>
 	</div>
-	<notificacion/>
 </template>
 
 <script>
 import BarraNavegacion from '@/components/BarraNavegacion.vue'
 import PieDePagina from '@/components/PieDePagina.vue'
-import notificacion from './components/notificacion.vue';
 export default {
 	name: 'App',
 	components: {
 		BarraNavegacion,
 		PieDePagina,
-		notificacion,
 	},
 	data: () => ({
+
 	}),
 }
 </script>
