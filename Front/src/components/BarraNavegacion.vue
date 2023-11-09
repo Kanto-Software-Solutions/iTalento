@@ -60,8 +60,6 @@ export default {
 		}
 		this.sesion = temp.usuario[0];
 		this.estado = temp.estado;
-		console.log(this.sesion);
-		console.log(this.estado);
 		if (this.estado) {
 			this.nickname = this.sesion.nickname;
 			this.imgPerfil = this.sesion.picture;

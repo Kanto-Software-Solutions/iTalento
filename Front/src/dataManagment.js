@@ -34,7 +34,7 @@ async function holaMundo() {
 async function generica() {
 	let arreglo = [];
 	try {
-		const response = await axios.get(url+"/categorias");
+		const response = await axios.get(url+"/");
 		arreglo = response.data.results;
 		/*
 		*	Codigo personalizado para cada request
@@ -152,19 +152,57 @@ async function terminarOrden(id) {
 }
 
 //Usuarios
-function getUsuarios() {
+async function getUsuarios() {
+	let arreglo = [];
+	try {
+		const response = await axios.get(url+"/");
+		arreglo = response.data.results;
+		/*
+		*	Codigo personalizado para cada request
+		*	Cambiar el get según corresponda
+		*
+		*
+		*/
+		return arreglo;
+	} catch (error) {
+		//Pagina de error
+		console.log(error.status);
+		let status = error.message;
+		if (error.response) {
+			status = error.response.status + " " + error.response.statusText;
+		}
+		router.push('/error/' + status);
+	}
+}
+async function getUsuario(id) {
+	let arreglo = [];
+	try {
+		const response = await axios.get(url+"/");
+		arreglo = response.data.results;
+		/*
+		*	Codigo personalizado para cada request
+		*	Cambiar el get según corresponda
+		*
+		*
+		*/
+		return arreglo;
+	} catch (error) {
+		//Pagina de error
+		console.log(error.status);
+		let status = error.message;
+		if (error.response) {
+			status = error.response.status + " " + error.response.statusText;
+		}
+		router.push('/error/' + status);
+	}
+}
+async function crearUsuario(usuario) {
 
 }
-function getUsuario(id) {
+async function editarUsuario(usuario) {
 
 }
-function crearUsuario(usuario) {
-
-}
-function editarUsuario(usuario) {
-
-}
-function eliminarUsuario(id) {
+async function eliminarUsuario(id) {
 
 }
 //
