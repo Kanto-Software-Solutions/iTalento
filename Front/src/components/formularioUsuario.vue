@@ -150,7 +150,7 @@ export default {
 			//Otros
 			this.userdata.freelancer = document.getElementById("fRolFreelancer").checked;
 			this.userdata.tyc = true;
-			setTimeout(this.toBD,1500)
+			setTimeout(this.toBD,900)
 		},
 		toBD() {
 			if (this.userdata.registro) {

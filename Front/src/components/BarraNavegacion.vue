@@ -57,7 +57,7 @@ export default {
 		if (temp == null) {
 			return;
 		}
-		this.sesion = temp.usuario[0];
+		this.sesion = temp.sesion;
 		this.estado = temp.estado;
 		if (this.estado) {
 			this.nickname = this.sesion.nickname;

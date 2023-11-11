@@ -26,7 +26,7 @@ export default {
 		if (temp == null) {
 			return;
 		}
-		this.sesion = temp.usuario[0];
+		this.sesion = temp.sesion;
 		this.estado = temp.estado;
 		if (this.estado) {
 			this.usuarioInfo.nombres = this.sesion.given_name;
@@ -39,7 +39,6 @@ export default {
 	},
 	data: () => ({
 		usuarioInfo: {
-			registro: false,
 			verificado: false,
 			tyc: false,
 			nombres: "",

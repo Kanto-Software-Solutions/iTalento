@@ -12,12 +12,15 @@
 				<router-link to="/costostarifas" class="text-decoration-none text-body text-nowrap">Publicidad</router-link>
 			</div>
 			<div class="col-sm">
-				<router-link to="/blog" class="text-decoration-none text-body text-nowrap">Blog </router-link>
-			</div>
-			<div class="col-sm">
 				<a class="rounded nav-link mx-1" href="https://blog.italento.shop" target="_blank"
 					rel="noopener noreferrer">
-					blog
+					Blog
+				</a>
+			</div>
+			<div class="col-sm">
+				<a class="rounded nav-link mx-1" href="https://docs.italento.shop" target="_blank"
+					rel="noopener noreferrer">
+					Documentacion
 				</a>
 			</div>
 			<div class="col-sm">
@@ -55,7 +58,7 @@
 				</div>
 			</div>
 			<div class="col d-flex justify-content-sm-end justify-content-center">
-				<div type="btn" class="btn border-0" v-on:click=alternarTema()>
+				<div type="btn" class="btn border-0" v-on:click=cambiartema(!this.luz)>
 					<i v-if=luz class="bi bi-sun"></i>
 					<i v-else class="bi bi-moon"></i>
 				</div>
@@ -67,7 +70,6 @@
 <script>
 import { nextTick } from 'vue';
 
-
 export default {
 	methods: {
 		cambiartema(arg){
@@ -75,40 +77,30 @@ export default {
 			const barraNav = document.getElementById('BarraNav');
 			const buscar = document.getElementById('bbuscar');
 
-			if(arg == 'dark'){
-				document.documentElement.setAttribute('data-bs-theme', 'dark')
-				imagenPPagina.src = './assets/Logotipo_italentoBlanco.png'
-				barraNav.style = 'background-color: rgba(0, 0, 0, 0.7);'
-				buscar.style = 'background-color: rgba(0, 0, 0, 0.7);'
-				localStorage.setItem('modoColor', 'dark')
-				this.luz = false
-			}else{
+			if(arg){
 				document.documentElement.setAttribute('data-bs-theme', 'ligth')
 				imagenPPagina.src = './assets/Logotipo_italentoNegro.png'
 				barraNav.style = 'background-color: rgba(255, 255, 255, 0.9);'
 				buscar.style = 'background-color: rgba(255, 255, 255, 0.9);'
 				localStorage.setItem('modoColor', 'ligth')
 				this.luz = true
+			}else{
+				document.documentElement.setAttribute('data-bs-theme', 'dark')
+				imagenPPagina.src = './assets/Logotipo_italentoBlanco.png'
+				barraNav.style = 'background-color: rgba(0, 0, 0, 0.7);'
+				buscar.style = 'background-color: rgba(0, 0, 0, 0.7);'
+				localStorage.setItem('modoColor', 'dark')
+				this.luz = false
 			}
 		},
 		cargarTema() {
 			let temp = localStorage.getItem('modoColor')
-			console.log(temp);
 			if (temp == 'dark') {
-				this.cambiartema('dark')
+				this.cambiartema(false)
 			} else {
-				this.cambiartema('ligth')
+				this.cambiartema(true)
 			}
 		},
-		alternarTema() {
-			let temp = localStorage.getItem('modoColor')
-			console.log(temp);
-			if (temp == 'dark') {
-				this.cambiartema('ligth')
-			} else {
-				this.cambiartema('dark')
-			}
-		}
 	},
 	created(){
 		nextTick(() => {
