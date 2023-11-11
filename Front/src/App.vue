@@ -25,6 +25,7 @@ export default {
 	name: 'App',
 	async created() {
 		let temp = await datos.getSesion();
+		await localStorage.setItem('sesion', JSON.stringify(temp));
 		if (temp.estado) {
 			router.push('/registro');
 		}

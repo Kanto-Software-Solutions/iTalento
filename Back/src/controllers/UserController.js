@@ -11,7 +11,7 @@ exports.getAllUsers = (req,res) => {
 };
 
 exports.getUserById = (req,res) => {
-	conexion.query("SELECT * FROM User WHERE idUser =" + req.params.id, (error,results) => {
+	conexion.query("SELECT * FROM User WHERE personalId =" + req.params.id, (error,results) => {
 		if(error){
 			console.log(error);
             res.json(error);

@@ -1,5 +1,5 @@
 <template>
-	<div id="pieDepagina" class="container-md">
+	<div id="pieDepagina" class="container-xl">
 		<div class="row text-center align-items-center">
 			<div class="imgiTalento col-sm align-content-center">
 				<img class="logo" id="logoPPagina" src="../assets/img/Logotipo_italentoNegro.png" width="100"
@@ -15,7 +15,8 @@
 				<router-link to="/blog" class="text-decoration-none text-body text-nowrap">Blog </router-link>
 			</div>
 			<div class="col-sm">
-				<a class="rounded nav-link mx-1" href="https://blog.italento.shop" target="_blank" rel="noopener noreferrer">
+				<a class="rounded nav-link mx-1" href="https://blog.italento.shop" target="_blank"
+					rel="noopener noreferrer">
 					blog
 				</a>
 			</div>
@@ -42,7 +43,7 @@
 		</div>
 		<div class="row m-1 border-top border-secondary g-0">
 			<div class="col-md-10 col-sm-9 d-flex">
-				<div class="row text-center">
+				<div class="row">
 					<router-link to="/aboutUs" class="col text-decoration-none text-body m-1 text-nowrap"
 						style="font-size:small;">©2023 i-Talento</router-link>
 					<router-link to="/tyc" class="col text-decoration-none text-body m-1 text-nowrap"
@@ -53,16 +54,72 @@
 						style="font-size:small;">Campo de pruebas</router-link>
 				</div>
 			</div>
-			<div class="my-2 col d-flex justify-content-center" style="height:40px; width: max-content;">
-				<div class="btn-group" role="group">
-					<input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-blanco" autocomplete="off" checked>
-					<label class="btn" for="vbtn-blanco"><i class="bi bi-lightbulb-fill"></i></label>
-					<input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-negro" autocomplete="off">
-					<label class="btn" for="vbtn-negro"><i class="bi bi-lightbulb"></i></label>
+			<div class="col d-flex justify-content-sm-end justify-content-center">
+				<div type="btn" class="btn border-0" v-on:click=alternarTema()>
+					<i v-if=luz class="bi bi-sun"></i>
+					<i v-else class="bi bi-moon"></i>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="" style="height: 26px;"></div></template>
+	<div class="" style="height: 26px;"></div>
+</template>
+<script>
+import { nextTick } from 'vue';
+
+
+export default {
+	methods: {
+		cambiartema(arg){
+			const imagenPPagina = document.getElementById('logoPPagina');
+			const barraNav = document.getElementById('BarraNav');
+			const buscar = document.getElementById('bbuscar');
+
+			if(arg == 'dark'){
+				document.documentElement.setAttribute('data-bs-theme', 'dark')
+				imagenPPagina.src = './assets/Logotipo_italentoBlanco.png'
+				barraNav.style = 'background-color: rgba(0, 0, 0, 0.7);'
+				buscar.style = 'background-color: rgba(0, 0, 0, 0.7);'
+				localStorage.setItem('modoColor', 'dark')
+				this.luz = false
+			}else{
+				document.documentElement.setAttribute('data-bs-theme', 'ligth')
+				imagenPPagina.src = './assets/Logotipo_italentoNegro.png'
+				barraNav.style = 'background-color: rgba(255, 255, 255, 0.9);'
+				buscar.style = 'background-color: rgba(255, 255, 255, 0.9);'
+				localStorage.setItem('modoColor', 'ligth')
+				this.luz = true
+			}
+		},
+		cargarTema() {
+			let temp = localStorage.getItem('modoColor')
+			console.log(temp);
+			if (temp == 'dark') {
+				this.cambiartema('dark')
+			} else {
+				this.cambiartema('ligth')
+			}
+		},
+		alternarTema() {
+			let temp = localStorage.getItem('modoColor')
+			console.log(temp);
+			if (temp == 'dark') {
+				this.cambiartema('ligth')
+			} else {
+				this.cambiartema('dark')
+			}
+		}
+	},
+	created(){
+		nextTick(() => {
+			this.cargarTema()
+		})
+		
+	},
+	data: () => ({
+		luz: true,
+	}),
+}
+</script>
 
 
