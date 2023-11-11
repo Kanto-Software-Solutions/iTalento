@@ -1,14 +1,49 @@
 <template>
 	<div class="sticky-top">
-		<nav id="BarraNav" class="navbar navbar-expand-lg" style="background-color: rgba(255, 255, 255, 0.9);">
-			<div class="d-flex justify-content-between w-100 mx-2">
-				<div id="BtnEscondido" class="d-block d-lg-none p-0 m-0 w-25">
-					<button id="BotonToggler" class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas"
-						data-bs-target="#Menu" aria-controls="elementosOcultos" aria-expanded="false">
-						<img src="../assets/img/logo.png" height="30" img />
-					</button>
+		<nav id="BarraNav" class="navbar navbar-expand-lg p-1" style="background-color: rgba(255, 255, 255, 0.9);">
+			<div class="d-flex justify-content-between w-100">
+				<div id="BtnEscondido" class="d-md-none w-25 p-0 m-0">
+					<div class="dropdown mx-2">
+						<button class="border-0 m-0 p-0 btn" type="button" data-bs-toggle="dropdown" data-bs-target="#Menu"
+							aria-controls="elementosOcultos" aria-expanded="false" style="height: 40px;">
+							<img src="../assets/img/logo.svg" class="h-100 w-100 object-fit-cover" />
+						</button>
+						<ul class="dropdown-menu">
+							<li><router-link class="dropdown-item" to="/funcionamiento">Cómo funciona </router-link></li>
+							<li><router-link class="dropdown-item" to="/costostarifas">Costos y tarifas</router-link></li>
+							<li><router-link class="dropdown-item" to="/aboutUs">Sobre Nosotros</router-link></li>
+							<li><router-link class="dropdown-item" to="/TyC">Terminos y condiciones</router-link></li>
+							<li><router-link class="dropdown-item" to="/">Costos y tarifas</router-link></li>
+							<li>
+								<hr class="dropdown-divider">
+							</li>
+							<li>
+								<a class="dropdown-item" href="https://blog.italento.shop" target="_blank"
+									rel="noopener noreferrer">
+									Blog
+								</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="https://docs.italento.shop" target="_blank"
+									rel="noopener noreferrer">
+									Documentacion
+								</a>
+							</li>
+							<li>
+								<hr class="dropdown-divider">
+							</li>
+							<li class="px-1">
+								<a class="btn btn-primary text-nowrap " type="button" target="_blank"
+									rel="noopener noreferrer"
+									href="https://www.paypal.com/donate/?hosted_button_id=86VJ8XG8RE7E6">
+									¡Apoyanos en PayPal!
+									<i class="bi bi-paypal"></i></a>
+							</li>
+						</ul>
+					</div>
+
 				</div>
-				<div id="Menus" class="d-none d-lg-block w-25">
+				<div id="Menus" class="d-none d-md-block w-25">
 					<MenuBarra />
 				</div>
 				<router-link id="Titulo" class="text-decoration-none" to="/">
@@ -20,7 +55,7 @@
 				</div>
 			</div>
 		</nav>
-		<div id="buscar" class="collapse container-lg p-0">
+		<div id="buscar" class="collapse container-md p-0">
 			<div id="bbuscar" class="p-0 rounded-2 my-1 mx-0" style="background-color: rgba(255, 255, 255, 0.9);">
 				<div class="d-flex justify-content-between w-100" role="search">
 					<input class="form-control m-1" type="search" placeholder="¿Que trabajo necesitas hoy?">
@@ -31,15 +66,11 @@
 			</div>
 		</div>
 	</div>
-	<div id="Menu" class="offcanvas offcanvas-start">
-		<div class="offcanvas-header">
-			<h5 class="offcanvas-title" id="offcanvasNavbarLabel">I-Talento</h5>
-			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-		</div>
-		<div class="offcanvas-body">
-			<MenuBarra />
-		</div>
-	</div>
+	<ul class="dropdown-menu">
+		<li><a class="dropdown-item" href="#">Action</a></li>
+		<li><a class="dropdown-item" href="#">Another action</a></li>
+		<li><a class="dropdown-item" href="#">Something else here</a></li>
+	</ul>
 </template>
 
 <script>
