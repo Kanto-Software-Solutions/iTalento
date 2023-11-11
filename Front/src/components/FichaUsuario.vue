@@ -84,9 +84,6 @@ import fHabilidades from "./formularioHabilidades.vue";
 export default {
 	name: 'fichaUsuario',
 	methods: {
-		editarPerfil() {
-
-		},
 		urlRedes(red,usuario) {
 			if (red == "Twitter") {
 				return "https://twitter.com/" + usuario;
