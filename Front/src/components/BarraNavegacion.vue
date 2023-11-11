@@ -4,7 +4,7 @@
 			<div class="d-flex justify-content-between w-100">
 				<div id="BtnEscondido" class="d-md-none w-25 p-0 m-0">
 					<div class="dropdown mx-2">
-						<button class="border-0 m-0 p-0 btn" type="button" data-bs-toggle="dropdown" data-bs-target="#Menu"
+						<button class="border-0 btn p-1" type="button" data-bs-toggle="dropdown" data-bs-target="#Menu"
 							aria-controls="elementosOcultos" aria-expanded="false" style="height: 40px;">
 							<img src="../assets/img/logo.svg" class="h-100 w-100 object-fit-cover" />
 						</button>
