@@ -103,18 +103,20 @@ export default {
 	},
 	async created() {
 		let idUnico = this.$route.params.nickname;
-		console.log(idUnico + 'de URL');
+		console.log(idUnico + ' de URL');
 		await datos.getUsuario(idUnico).then((response) => {
 			let porfileInfo = response[0];
 			console.log(porfileInfo);
 			if(porfileInfo == undefined){
-				router.push('/error/Usuario no Encontrado');
+				console.log(JSON.parse(localStorage.getItem('registrado')));
+				if (JSON.parse(localStorage.getItem('registrado')) == false) {
+					router.push('/registro');
+				}else{
+					router.push('/error/Usuario no Encontrado');
+				}
+			}else{
+				this.pasarData(porfileInfo);
 			}
-			/*
-			if (porfileInfo.nickname == localStorage.getItem('usuario')) {
-				this.propio = true;
-			}*/
-			this.pasarData(porfileInfo);
 		});
 	},
 	data: () => ({

@@ -8,7 +8,7 @@
 			</div>
 			<ul class="dropdown-menu dropdown-menu-end">
 				<div class="dropdown-header d-block d-sm-none text-center">{{ nickname }}</div>
-				<li><router-link class="dropdown-item" to="/perfil">Perfil</router-link></li>
+				<li><router-link class="dropdown-item" :to="'/perfil/'+nickname">Perfil</router-link></li>
 				<li><router-link class="dropdown-item" to="/buscar">Buscar</router-link></li>
 				<li><router-link class="dropdown-item" to="/">Mis Compras</router-link></li>
 				<li><hr class="dropdown-divider"></li>
