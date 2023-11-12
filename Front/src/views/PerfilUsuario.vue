@@ -1,15 +1,10 @@
 <template>
 	<div class="container-xl">
 		<div class="row p-1">
-			<usuario id="usuarioFicha" class="col-md-4" :id="usuario.id" :nickname="usuario.nickname"
-				:correo="usuario.correo" :edad="usuario.edad" :imagenPerfil="usuario.imagenPerfil"
-				:habilidades="usuario.habilidades" :nivelRecomentdacion="usuario.nivelRecomentdacion" :lugar="usuario.lugar"
-				:fechaSuscripcion="usuario.fechaSuscripcion" :profesion="usuario.profesion" :cuentas="usuario.cuentas"
-				:propio=propio>
-			</usuario>
+			<usuario id="usuarioFicha" class="col-md-4" :usuario=usuario :propio=propio />
 			<div id="usuarioInfo" class="col-md ms-1">
 				<h4 class="text-center p-3 " id="usuarioTitulo">
-					{{ usuario.nombre }} {{ usuario.apellido }}
+					{{ usuario.names }} {{ usuario.lastNames }}
 				</h4>
 				<ul class="nav  justify-content-center border-bottom my-2" id="myTab" role="usuarioTablist">
 					<li class="nav-item" role="presentation">
@@ -53,7 +48,7 @@
 							</div>
 							<div v-if=!propio>
 								<h2>
-									El usuario {{ usuario.nickname }} no tiene gigs publicados
+									¡{{ usuario.nickname }} no tiene gigs publicados!
 								</h2>
 							</div>
 						</div>
@@ -64,10 +59,10 @@
 					<div class="tab-pane fade p-2" id="usuarioDescp" role="tabpanel" aria-labelledby="profile-tab"
 						tabindex="1">
 						<h4>Sobre mi:</h4>
-						<h6>{{ usuario.nombre }} {{ usuario.apellido }} - {{ usuario.profesion }}</h6>
-						<p>{{ usuario.descripcion }}</p>
+						<h6>{{ usuario.names }} {{ usuario.lastNames }} - {{ usuario.job }}</h6>
+						<p>{{ usuario.description }}</p>
 						<h4>Contacto: </h4>
-						<h6>{{ usuario.correo }}</h6>
+						<h6>{{ usuario.email }}</h6>
 					</div>
 					<div class="tab-pane fade" id="usuarioTrabajos" role="tabpanel" aria-labelledby="contact-tab"
 						tabindex="2">
@@ -80,48 +75,80 @@
 			</div>
 		</div>
 	</div>
-	<fgigs></fgigs>
+	<fgigs :usuario=usuario />
 </template>
-
-
 <script>
 import usuario from '@/components/FichaUsuario.vue';
 import fichaGig from '@/components/FichaGigs.vue';
 import fgigs from '@/components/formularioGigs.vue';
-import datos from '../dataManagment.js';
+import datos from '@/dataManagment.js';
 import router from '@/router/Router.js';
-
 export default {
 	name: 'PerfilUsuario',
-	props: {
-	},
 	components: {
 		usuario,
 		fichaGig,
 		fgigs,
 	},
 	async created() {
-		let idUnico = this.$route.params.nickname;
-		await datos.getUsuario(idUnico).then((response) => {
+		let nick = this.$route.params.nickname;
+		await datos.getUsuario(nick).then((response) => {
 			let porfileInfo = response[0];
-			console.log(porfileInfo);
 			if (porfileInfo == undefined) {
-				console.log(JSON.parse(localStorage.getItem('registrado')));
 				if (JSON.parse(localStorage.getItem('registrado')) == false) {
 					router.push('/registro');
 				} else {
 					router.push('/error/Usuario no Encontrado');
 				}
 			} else {
-				this.pasarData(porfileInfo);
+				if (localStorage.getItem('sesion') == 'undefined') {
+					this.propio = true		//false;
+				} else {
+					this.propio = true		//(porfileInfo.personalId == JSON.parse(localStorage.getItem('sesion')).sub.split('|')[1]);
+				}
+				this.usuario = porfileInfo;
+				this.usuario.cuentas = [
+					{ redSocial: "Twitter", usuario: "Usuario" },
+					{ redSocial: "LinkedIn", usuario: "Usuario", },
+					{ redSocial: "Github", usuario: "Usuario", },
+					{ redSocial: "Facebook", usuario: "Usuario", },
+					{ redSocial: "Instagram", usuario: "Usuario", },
+				];
+				this.usuario.habilidades = [
+					{ nombre: "Habilidad 1", descripcion: "Descripcion de la habilidad 1", },
+					{ nombre: "Habilidad 2", descripcion: "Descripcion de la habilidad 2", },
+					{ nombre: "Habilidad 3", descripcion: "Descripcion de la habilidad 3", },
+					{ nombre: "Habilidad 4", descripcion: "Descripcion de la habilidad 4", },
+					{ nombre: "Habilidad 5", descripcion: "Descripcion de la habilidad 5", },
+					{ nombre: "Habilidad 6", descripcion: "Descripcion de la habilidad 6", },
+					{ nombre: "Habilidad 7", descripcion: "Descripcion de la habilidad 7", },
+				];
 			}
 		});
 	},
 	data: () => ({
 		propio: false,
-		usuario: {},
+		usuario: {
+			acceptedTerms: "",
+			birthDate: "",
+			country: "",
+			creationDate: "",
+			description: "",
+			email: "",
+			idUser: "",
+			isFreelancer: "",
+			isVerified: "",
+			job: "",
+			lastNames: "",
+			location: "",
+			names: "",
+			nickname: "",
+			personalId: "",
+			profileImage: "",
+			recLevel: "",
+		},
 		gigs: [
-			{
+			/*{
 				idx: "res1",
 				ida: "#res1",
 				titulo: "GIGS 1",
@@ -134,48 +161,10 @@ export default {
 				costo: 0,
 				accion: "Editar",
 				estado: false,
-			},
+			},*/
 		]
 	}),
 	methods: {
-		getRecomendacion(temp) {
-			if (temp == 5) {
-				return "★★★★★";
-			}
-			else if (temp == 4) {
-				return "★★★★☆";
-			}
-			else if (temp == 3) {
-				return "★★★☆☆";
-			}
-			else if (temp == 2) {
-				return "★★☆☆☆";
-			}
-			else if (temp == 1) {
-				return "★☆☆☆☆";
-			}
-			else if (temp == 0) {
-				return "☆☆☆☆☆";
-			} else {
-				return "No definido";
-			}
-		},
-		pasarData(porfileInfo) {
-			this.usuario.nickname = porfileInfo.nickname;
-			this.usuario.nombre = porfileInfo.names;
-			this.usuario.apellido = porfileInfo.lastNames;
-			this.usuario.correo = porfileInfo.email;
-			this.usuario.edad = porfileInfo.birdDate;
-			this.usuario.imagenPerfil = porfileInfo.profileImage;
-			//this.usuario.profesion = porfileInfo.profession;
-			//this.usuario.habilidades = porfileInfo.habilidades;
-			this.usuario.nivelRecomentdacion = this.getRecomendacion(porfileInfo.nivelRecomentdacion)
-			//this.usuario.lugar = porfileInfo.lugar;
-			//this.usuario.fechaSuscripcion = porfileInfo.fechaSuscripcion;
-			//this.usuario.descripcion = porfileInfo.descripcion;
-			//this.usuario.cuentas = porfileInfo.cuentas;
-			this.propio = true;
-		},
 		cantidadGigs() {
 			return this.gigs.length;
 		},

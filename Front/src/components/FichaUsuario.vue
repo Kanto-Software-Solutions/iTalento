@@ -2,19 +2,19 @@
 	<div class="card rounded-4" style="height: fit-content;">
 		<div class="card-body lh-1">
 			<div class="border-bottom my-2 text-center bg-transparent">
-				<img :src=imagenPerfil class="rounded-circle object-fit-cover" alt="Imagen de perfil"
+				<img :src=usuario.profileImage class="rounded-circle object-fit-cover" alt="Imagen de perfil"
 					style="height: 100px; width: 100px;">
 				<div class="text-nowrap m-1 fs-4">
-					{{ nickname }}
+					{{ usuario.nickname }}
 				</div>
 				<div class="text-nowrap m-1 fs-4">
-					{{ nivelRecomentdacion }}
+					{{ getRecomendacion(usuario.recLevel) }}
 				</div>
 			</div>
 			<div class="border-bottom my-1">
-				<p>{{ profesion }}</p>
-				<p>{{ lugar }}</p>
-				<p>Talento desde: {{ fechaSuscripcion }}</p>
+				<p>{{ usuario.job }}</p>
+				<p>{{ usuario.location }}</p>
+				<p>Talento desde: {{ usuario.creationDate.split('T')[0] }}</p>
 			</div>
 			<div class="border-bottom my-1 pb-1">
 				<div class="d-flex justify-content-between">
@@ -24,16 +24,20 @@
 						<i class="bi bi-pencil-square"></i>
 					</button>
 				</div>
-				<div v-for="habilidad in habilidades" class="row justify-content-center">
-					<div class="rounded-2 border text-nowrap p-1 m-1 " style="width:max-content;">
-						{{ habilidad }}
+				<div class="container">
+					<div class="container">
+						<div class="row row-cols-auto justify-content-center">
+							<div v-for="habilidad in usuario.habilidades" class="col rounded-2 border text-nowrap p-1 m-1">
+								{{ habilidad.nombre }}
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 			<div class="my-1 text-center">
 				<h6>Cuentas vinculadas: </h6>
-				<a v-for="cuenta in cuentas" class=" btn" style="width:max-content;" :href=urlRedes(cuenta.redSocial,cuenta.usuario) target="_blank"
-					rel="noopener noreferrer">
+				<a v-for="cuenta in  usuario.cuentas  " class=" btn" style="width:max-content;" target="_blank"
+					rel="noopener noreferrer" :href="urlRedes(cuenta.redSocial, cuenta.usuario)">
 					<i v-if="cuenta.redSocial == 'Twitter'" class="bi bi-github"></i>
 					<i v-else-if="cuenta.redSocial == 'Instagram'" class="bi bi-instagram"></i>
 					<i v-else-if="cuenta.redSocial == 'Facebook'" class="bi bi-facebook"></i>
@@ -53,7 +57,7 @@
 					<i class="bi bi-pencil-square"></i>
 					Editar mi perfil
 				</button>
-				<button type="button" class="btn btn-outline-danger w-100 mb-1">
+				<button type="button" class="btn btn-outline-danger w-100 mb-1" disabled>
 					<i class="bi bi-gear"></i>
 					Configurar cuenta
 				</button>
@@ -68,14 +72,12 @@
 						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
 					<div class="modal-body">
-						<fUsuario :registro=false :nickname="nickname" :correo="correo" :imagenPerfil="imagenPerfil"
-							:profesion="profesion" :lugar="lugar" :cuentas="cuentas">
-						</fUsuario>
+						<fUsuario v-if="false" />
 					</div>
 				</div>
 			</div>
 		</div>
-		<fHabilidades></fHabilidades>
+		<fHabilidades/>
 	</div>
 </template>
 <script>
@@ -84,7 +86,31 @@ import fHabilidades from "./formularioHabilidades.vue";
 export default {
 	name: 'fichaUsuario',
 	methods: {
-		urlRedes(red,usuario) {
+		datosFormulario(){
+			
+			this.cargando = true;
+			//this.userdata.nickname			= this.usuario.
+			//this.userdata.nombres			= this.usuario.
+			//this.userdata.apellidos			= this.usuario.
+			//this.userdata.correo			= this.usuario.
+			//this.userdata.fechaNacimiento	= this.usuario.
+			//this.userdata.profesion			= this.usuario.
+			//this.userdata.lugar				= this.usuario.
+			//this.userdata.freelancer		= this.usuario.
+			this.userdata.tyc				= true;
+			if (document.getElementById("fDescripcion").value) {
+				//this.userdata.sobreMi		= this.usuario.
+			} else {
+				this.userdata.sobreMi		= "~(UwU)~";
+			}
+			//Redes
+			//this.userdata.cuentas.twitter	= this.usuario.
+			//this.userdata.cuentas.linkedIn	= this.usuario.
+			//this.userdata.cuentas.github	= this.usuario.
+			//this.userdata.cuentas.facebook	= this.usuario.
+			//this.userdata.cuentas.instagram	= this.usuario.
+		},
+		urlRedes(red, usuario) {
 			if (red == "Twitter") {
 				return "https://twitter.com/" + usuario;
 			}
@@ -104,25 +130,38 @@ export default {
 				return "mailto:" + usuario;
 			}
 		},
+		getRecomendacion(temp) {
+			if (temp == 5) {
+				return "★★★★★";
+			}
+			else if (temp == 4) {
+				return "★★★★☆";
+			}
+			else if (temp == 3) {
+				return "★★★☆☆";
+			}
+			else if (temp == 2) {
+				return "★★☆☆☆";
+			}
+			else if (temp == 1) {
+				return "★☆☆☆☆";
+			}
+			else if (temp == 0) {
+				return "☆☆☆☆☆";
+			} else {
+				return "No definido";
+			}
+		},
 	},
 	components: {
 		fUsuario,
 		fHabilidades,
 	},
 	props: {
+		usuario: Object,
 		propio: Boolean,
-		id: String,
-		nickname: String,
-		correo: String,
-		edad: String,
-		imagenPerfil: String,
-		habilidades: Array,
-		profesion: String,
-		nivelRecomentdacion: String,
-		lugar: String,
-		fechaSuscripcion: String,
-		cuentas: Array,
 	},
+	data: () => ({
+	}),
 }
 </script>
-<style ></style>

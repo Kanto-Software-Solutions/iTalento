@@ -79,14 +79,14 @@ export default {
 
 			if(arg){
 				document.documentElement.setAttribute('data-bs-theme', 'ligth')
-				imagenPPagina.src = './assets/Logotipo_italentoNegro.png'
+				imagenPPagina.src = 'https://res.cloudinary.com/djc2oc9nr/image/upload/v1699075889/Logotipo_italentoNegro_ahhoks.png'
 				barraNav.style = 'background-color: rgba(255, 255, 255, 0.9);'
 				buscar.style = 'background-color: rgba(255, 255, 255, 0.9);'
 				localStorage.setItem('modoColor', 'ligth')
 				this.luz = true
 			}else{
 				document.documentElement.setAttribute('data-bs-theme', 'dark')
-				imagenPPagina.src = './assets/Logotipo_italentoBlanco.png'
+				imagenPPagina.src = 'https://res.cloudinary.com/djc2oc9nr/image/upload/v1699075889/Logotipo_italentoBlanco_hniocj.png'
 				barraNav.style = 'background-color: rgba(0, 0, 0, 0.7);'
 				buscar.style = 'background-color: rgba(0, 0, 0, 0.7);'
 				localStorage.setItem('modoColor', 'dark')
