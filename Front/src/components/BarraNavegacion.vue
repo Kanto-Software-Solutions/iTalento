@@ -13,7 +13,6 @@
 							<li><router-link class="dropdown-item" to="/costostarifas">Costos y tarifas</router-link></li>
 							<li><router-link class="dropdown-item" to="/aboutUs">Sobre Nosotros</router-link></li>
 							<li><router-link class="dropdown-item" to="/TyC">Terminos y condiciones</router-link></li>
-							<li><router-link class="dropdown-item" to="/">Costos y tarifas</router-link></li>
 							<li>
 								<hr class="dropdown-divider">
 							</li>

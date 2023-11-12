@@ -47,11 +47,6 @@ const routes = [
 		component: () => import('../views/ComoFunciona.vue'),
 	},
 	{
-		path: '/blog',
-		name: 'blog',
-		component: () => import('../views/Blog.vue'),
-	},
-	{
 		path: '/proximamente',
 		name: 'proximanente',
 		component: () => import('../views/Proximamente.vue'),
