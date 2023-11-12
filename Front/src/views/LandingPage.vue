@@ -16,9 +16,9 @@
 							Da un paso adelante y busca eso que necesitas.
 						</p>
 						<ul class="">
-							<li style="color: rgb(199, 199, 199)">Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-							<li style="color: rgb(199, 199, 199)">Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-							<li style="color: rgb(199, 199, 199)">Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+							<li style="color: rgb(199, 199, 199)">Publica.</li>
+							<li style="color: rgb(199, 199, 199)">Busca.</li>
+							<li style="color: rgb(199, 199, 199)">Compra.</li>
 						</ul>
 					</div>
 				</div>
@@ -60,11 +60,8 @@
 				</div>
 				<div class="card-body">
 					<p class="">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-						labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-						laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-						voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-						non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+						Con Italento recibiras apoyo para publicitar tus Gigs y publicaciones
+						te daremos herramientas para publicitar tus gigs para que obtengas ventas.						
 					</p>
 				</div>
 			</div>
@@ -75,11 +72,10 @@
 				</div>
 				<div class="card-body">
 					<p class="">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-						labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-						laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-						voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-						non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+						Italento te ofrece una manera segura para negociar y obtener ingresos extra para
+						ti que eres un freelancer. Te ofrecemos una manera segura de forma de pago que es Payu,
+						no liberaremos el dinero a menos que ambas partes estén de acuerdo con la entrega de los
+						gigs.
 					</p>
 				</div>
 			</div>
@@ -90,11 +86,9 @@
 				</div>
 				<div class="card-body">
 					<p class="">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-						labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-						laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-						voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-						non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+						Te ofrecemos diferentes formas de crecer, no tenemos favoritismos, pero puedes publicitar tus gigs
+						para obtener mejores oportunidades de crecer, Nuestras tarifas de esto son claras y siempre te diremos
+						cuanto es lo que nos levamos, y cuanto es para tí.
 					</p>
 				</div>
 			</div>
