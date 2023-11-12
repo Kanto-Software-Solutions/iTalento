@@ -40,27 +40,27 @@ function usertoDB(user) {
 	let ver = 1;
 	let freelancer = 1;
 	let tyc = 1;
-	
+
 	if (!user.verificado) ver = 0;
 	if (!user.freelancer) freelancer = 0;
 	if (!user.tyc) tyc = 0;
 
 	let datos = {
-		names:			user.nombres,
-		lastNames:		user.apellidos,
-		email:			user.correo,
-		isVerified:		ver,
-		nickname:		user.nickname,
-		profileImage:	user.imagenPerfil,
-		isFreelancer:	freelancer,
-		birthDate:		user.fechaNacimiento,
-		country:		user.lugar,
-		acceptedTerms:	tyc,
-		personalId:		JSON.parse(localStorage.getItem('sesion')).sub.split('|')[1],
-		recLevel:		user.recLevel,
-		location:		user.lugar,
-		job:			user.profesion,
-		description:	user.sobreMi,
+		names: user.nombres,
+		lastNames: user.apellidos,
+		email: user.correo,
+		isVerified: ver,
+		nickname: user.nickname,
+		profileImage: user.imagenPerfil,
+		isFreelancer: freelancer,
+		birthDate: user.fechaNacimiento,
+		country: user.lugar,
+		acceptedTerms: tyc,
+		personalId: JSON.parse(localStorage.getItem('sesion')).sub.split('|')[1],
+		recLevel: user.recLevel,
+		location: user.lugar,
+		job: user.profesion,
+		description: user.sobreMi,
 	}
 	return datos;
 }
@@ -189,15 +189,13 @@ async function getUsuario(id) {
 async function crearUsuario(usuario) {
 	usuario.recLevel = 0;
 	let datos = usertoDB(usuario)
-
-	console.log('USUARIO');
-	console.log(usuario);
-	console.log('datos');
-	console.log(datos);
 	try {
 		const response = await axios.post(url + "/usr/new", datos);
-		console.log(response);
-		return true;
+		if (response.data) {
+			return true;
+		} else {
+			return false;
+		}
 	} catch (error) {
 		//Pagina de error
 		console.log("ERROR: " + error.status);
@@ -210,7 +208,26 @@ async function crearUsuario(usuario) {
 	}
 }
 async function editarUsuario(usuario) {
-
+	usuario.isVerified = JSON.parse(localStorage.getItem('sesion')).email_verified;
+	let datos = usertoDB(usuario)
+	try {
+		const response = await axios.put(url + "/usr/edit/" + JSON.parse(localStorage.getItem('sesion')).sub.split('|')[1] , datos);
+		if (response.data) {
+			return true;
+		} else {
+			console.log("ERROR: ");
+			return false;
+		}
+	} catch (error) {
+		//Pagina de error
+		console.log("ERROR: " + error.status);
+		let status = error.message;
+		if (error.response) {
+			status = error.response.status + " " + error.response.statusText;
+		}
+		router.push('/error/' + status);
+		return false;
+	}
 }
 async function eliminarUsuario(id) {
 

@@ -133,7 +133,6 @@ export default {
 			let nickname = document.getElementById("fUsuario").value;
 			if(nickname.length > 3){
 				if(this.userdata.registrado && (this.userdata.nickname == document.getElementById("fUsuario").value)){
-					console.log("MNismo usuario");
 					return true;
 				}else{
 					await datos.validarNickname(nickname).then((res) => {
@@ -178,24 +177,28 @@ export default {
 				console.log("Usuario no disponible");
 			}
 		},
-		toBD() {
+		async toBD() {
 			try {
 				if (this.userdata.registrado) {
-					console.log("Actualizando usuario");
-					if(datos.editarUsuario(this.userdata)){
-						datos.notificacion("Usuario actualizado.");
+					await datos.editarUsuario(this.userdata).then((res) => {
+						console.log(res);
 						this.cargando = false;
-					}else{
-						datos.notificacion("No se pudo actualizar el usuario.");
-					}
+						if (res) {
+							datos.notificacion("¡Se ha actualizado el perfil!");
+						} else {
+							datos.notificacion("Error en la actualización, intente de nuevo.");
+						}
+					});
 				} else {
-					console.log("Creando usuario");
-					if(datos.crearUsuario(this.userdata)){
-						router.push({ name: 'home' });
-						datos.notificacion("¡Se ha completado el registro!");
-					}else{
-						datos.notificacion("Error en el registro, intente de nuevo.");
-					}
+					await datos.crearUsuario(this.userdata).then((res) => {
+						this.cargando = false;
+						if (res) {
+							router.push({ name: 'home' });
+							datos.notificacion("¡Se ha creado el nuevo perfil!");
+						} else {
+							datos.notificacion("Error, intente de nuevo.");
+						}
+					});
 				}
 			} catch (error) {
 				router.push('/error/500');

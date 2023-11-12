@@ -24,8 +24,8 @@ exports.getUserById = (req, res) => {
 exports.createUser = (req, res) => {
 	let fecha = new Date();
 	let nDate = fecha.getFullYear() + "-" + (fecha.getMonth() + 1) + "-" + fecha.getDate();
-	let queryInsert = "INSERT INTO `mydb`.`User`(`names`,`lastNames`,`email`,`isVerified`,`nickname`,`profileImage`,`isFreelancer`,`birthDate`,`country`,`acceptedTerms`,`personalId`,`creationDate`,`recLevel`,`location`,`job`,`description`) VALUES (" 
-	
+	let queryInsert = "INSERT INTO `mydb`.`User`(`names`,`lastNames`,`email`,`isVerified`,`nickname`,`profileImage`,`isFreelancer`,`birthDate`,`country`,`acceptedTerms`,`personalId`,`creationDate`,`recLevel`,`location`,`job`,`description`) VALUES ("
+
 	let valores = [
 		req.body.names,			//names
 		req.body.lastNames,		//lastNames
@@ -50,8 +50,8 @@ exports.createUser = (req, res) => {
 
 	queryInsert = queryInsert.substring(0, queryInsert.length - 2);
 	queryInsert += ")";
-	
-	conexion.query( queryInsert, (error, results) => {
+
+	conexion.query(queryInsert, (error, results) => {
 		if (error) {
 			console.log(error);
 			res.send(false);
@@ -60,28 +60,33 @@ exports.createUser = (req, res) => {
 		}
 	});
 }
-
 exports.updateUser = (req, res) => {
-	const idUser = req.params.id;
-	const names = req.oidc.user.family_name;
-	const lastNames = req.oidc.user.given_name;
-	const email = req.oidc.user.email;
-	const isVerified = req.body.isVerified;
-	const nickname = req.oidc.user.nickname;
-	const profileImage = req.oidc.user.picture;
-	const isFreelancer = req.body.isFreelancer;
-	const birthDate = req.body.birthDate;
-	const country = req.body.country;
-	const acceptedTerms = req.body.acceptedTerms;
-	const personalId = req.body.personalId;
-
-	let query = ('update User set idUser =' + idUser[0] + ' , names="' + names + '",lastNames="' + lastNames + '", email = ' + email + ' , isVerified= ' + isVerified + ', nickname = ' + nickname + ', profileImage = ' + profileImage + ', isFreelancer = ' + isFreelancer + ', birthDate = ' + birthDate + ', country = ' + country + ', acceptedTerms = ' + acceptedTerms + ' personalId =' + personalId);
-	conexion.query(query, (error, results) => {
+	let queryUpdate = "UPDATE mydb.User SET "; 
+	let valores = [
+		"names = '" + 			req.body.names				+"'",	//names
+		"lastNames = '" + 		req.body.lastNames			+"'",	//lastNames
+		"isVerified = '" + 		req.body.isVerified			+"'",	//isVerified
+		"nickname = '" + 		req.body.nickname			+"'",	//nickname
+		"profileImage = '" + 	req.body.profileImage		+"'",	//profileImage
+		"isFreelancer = '" + 	req.body.isFreelancer		+"'",	//isFreelancer
+		"birthDate = '" + 		req.body.birthDate			+"'",	//birthDate
+		"country = '" + 		req.body.country			+"'",	//country
+		"acceptedTerms = '" + 	req.body.acceptedTerms		+"'",	//acceptedTerms
+		"location = '" + 		req.body.location			+"'",	//location
+		"job = '" + 			req.body.job				+"'",	//job
+		"description = '" + 	req.body.description		+"'",	//description
+	]
+	valores.forEach(val => {
+		queryUpdate += val + ", ";
+	});
+	queryUpdate = queryUpdate.substring(0, queryUpdate.length - 2);
+	queryUpdate += " WHERE personalId = '" + req.params.id + "'";
+	conexion.query(queryUpdate, (error, results) => {
 		if (error) {
 			console.log(error);
+			res.send(false);
 		} else {
-			console.log("Se actualizo el usuario: " + names + " " + lastNames);
-
+			res.send(true);
 		}
 	});
 }
