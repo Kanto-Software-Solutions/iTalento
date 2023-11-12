@@ -17,8 +17,6 @@ const ban			= require('./ReportController');
 //Permite ser usado en otros archivos
 module.exports = router;
 
-// create */json parser y */x-www-form-urlencoded parser
-var jsonParser = bodyParser.json()
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 /************************ Metodos *******************************/
@@ -65,7 +63,8 @@ router.delete(	'/odr/delete:id',						orden.deleteOrder);
 router.get(		'/odr/:id',								orden.getOrderById);
 
 //Sesion
-router.get('/sesion', authCon.myUsuario);
+router.get(		'/sesion',								authCon.myUsuario);
+router.get(		'/val/:nickname',						authCon.dispNickname);
 
 router.get('/report/:id', ban.getReport);
 router.get('/test', crud.test);

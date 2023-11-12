@@ -119,39 +119,7 @@ export default {
 	},
 	data: () => ({
 		propio: false,
-		usuario: {
-			id: "nn",
-			nickname: "nn",
-			nombre: "nn",
-			apellido: "nn",
-			correo: "nn@nn",
-			edad: "18",
-			imagenPerfil: "../assets/default.png",
-			profesion: "profesion prueba",
-			habilidades: ['Be cool'],
-			nivelRecomentdacion: "",
-			lugar: "Lugar Default",
-			fechaSuscripcion: "12/31/2000 ",
-			descripcion: "Descripcion prueba",
-			cuentas: [
-				{
-					redSocial: "Facebook",
-					usuario: "",
-				},
-				{
-					redSocial: "Instagram",
-					usuario: "",
-				},
-				{
-					redSocial: "Github",
-					usuario: "",
-				},
-				{
-					redSocial: "X",
-					usuario: "",
-				},
-			]
-		},
+		usuario: {},
 		gigs: [
 			{
 				idx: "res1",

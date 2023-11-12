@@ -6,18 +6,16 @@ exports.myUsuario = (req, res) => {
 	let estado = req.oidc.isAuthenticated();
 	let registrado = false;
 	let sesion = {};
-	let datos = {};
 
 	if (estado) {
 		id = req.oidc.user.sub.split('|')[1];
 		sesion = req.oidc.user;
-		conexion.query("CALL `mydb`.`ValidarUsuario`( '" + id + "');", (error, results) => {
+		conexion.query("CALL mydb.ValidarUsuario( '" + id + "');", (error, results) => {
 			if (error) {
 				console.log(error);
 				res.json(error);
 			} else {
 				if (results[0][0].val=='true') {
-					datos = results[0];
 					registrado = true;
 				}
 				res.json({
@@ -34,3 +32,20 @@ exports.myUsuario = (req, res) => {
 		});
 	}
 }
+
+exports.dispNickname = (req, res) => {
+	let nickname = req.params.nickname;
+	conexion.query("CALL mydb.ValidarNickname ('" + nickname + "');", (error, results) => {
+		if (error) {
+			console.log(error);
+			res.json(error);
+		} else {
+			if (results[0][0].val=='true') {
+				res.json({disponible: true});
+			} else {
+				res.json({disponible: false});
+			}
+		}
+	});
+}
+

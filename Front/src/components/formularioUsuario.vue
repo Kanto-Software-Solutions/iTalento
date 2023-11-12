@@ -13,7 +13,7 @@
 							<label for="fUsuario" class="col-sm-2 col-form-label text-nowrap">Usuario: </label>
 							<div class="col-sm-10">
 								<input id="fUsuario" type="" class="form-control m-1 " placeholder="@Tu_Usuario" required
-									pattern="[A-Za-z0-9._\-]{1,15}" :value=userdata.nickname>
+									pattern="[A-Za-z0-9._\-]{1,15}" :value=userdata.nickname v-on:change=validarNickname()>
 							</div>
 						</div>
 						<div class="mb-3 row p-0 g-0 m-0">
@@ -127,6 +127,20 @@ export default {
 		cargando,
 	},
 	methods: {
+		async validarNickname(){
+			let nickname = document.getElementById("fUsuario").value;
+			if(nickname.length > 3){
+				await datos.validarNickname(nickname).then((res) => {
+					if(res){
+						console.log("Usuario disponible: "+ res);
+					}else{
+						alert("El usuario ya esta en uso, por favor intente con otro.");
+						document.getElementById("fUsuario").value = "";
+						console.log("Usuario no disponible: "+ res)
+					}
+				});
+			}
+		},
 		updateUserInfo(){
 			this.cargando = true;
 			this.userdata.nickname			= document.getElementById("fUsuario").value;
@@ -176,8 +190,7 @@ export default {
 		}
 	},
 	props: {
-		userdata: {
-		}
+		userdata: {}
 	},
 	data: () => ({
 		cargando: false,

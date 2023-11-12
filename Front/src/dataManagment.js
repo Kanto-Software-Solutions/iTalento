@@ -25,7 +25,8 @@ export default {
 	getUsuario,
 	crearUsuario,
 	editarUsuario,
-	eliminarUsuario
+	eliminarUsuario,
+	validarNickname,
 }
 
 //Test
@@ -213,4 +214,17 @@ async function editarUsuario(usuario) {
 }
 async function eliminarUsuario(id) {
 
+}
+async function validarNickname(nick) {
+	try {
+		const response = await axios.get(url + "/val/" + nick);
+		return response.data.disponible;
+	} catch (error) {
+		console.log(error.status);
+		let status = error.message;
+		if (error.response) {
+			status = error.response.status + " " + error.response.statusText;
+		}
+		router.push('/error/' + status);
+	}
 }
