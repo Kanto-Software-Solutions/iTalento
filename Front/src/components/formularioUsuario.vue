@@ -33,65 +33,67 @@
 					pattern="[A-Za-z0-9]{1,50}[A-Za-z0-9\s]{0,50}" :value=userdata.apellidos>
 				<label for="fProfesion" class="text-nowrap">Profesión:</label>
 				<input id="fProfesion" type="" class="form-control m-1" placeholder="Profesión" required
-					pattern="[A-Za-z0-9\s]{1,50}">
+					pattern="[A-Za-z0-9\s]{1,50}" :value=userdata.profesion>
 				<div class="row">
 					<div class="col-sm">
 						<label for="fNacimiento" class="text-nowrap">Fecha de nacimiento:</label>
 						<input id="fNacimiento" type="date" class="form-control m-1" :max=minEdad placeholder="Nacimiento"
-							required>
+							:value=userdata.fechaNacimiento required >
 					</div>
 					<div class="col-sm">
 						<label for="fLugar" class="text-nowrap">Lugar de residencia:</label>
 						<select id="fLugar" class="form-select m-1" aria-label="Default select example">
-							<option value="Colombia" selected>Colombia</option>
+							<option v-if=userdata.registrado :value=userdata.lugar selected> {{ userdata.lugar }}</option>
+							<option v-else value="Colombia" selected>Colombia</option>
 							<option v-for="pais in countries" :value=pais.es_name>{{ pais.es_name }}</option>
 						</select>
 					</div>
 				</div>
 				<label for="fDescripcion" class="text-nowrap">Sobre mi:</label>
 				<textarea id="fDescripcion" type="text" class="form-control m-1" placeholder="Cuentanos sobre ti" rows="3"
-					maxlength="1500"></textarea>
+					maxlength="1500" :value=userdata.sobreMi></textarea>
 				<label for="fredes" class="text-nowrap">Redes:</label>
 				<div id="fredes">
 					<div class="mb-3 row p-0 g-0 m-0">
 						<i class="bi bi-linkedin col-2 col-form-label text-center"></i>
 						<div class="col-10">
 							<input id="fLinkedin" class="form-control m-1" placeholder="Linkedin"
-								pattern="[A-Za-z0-9._\-]{1,30}">
+								pattern="[A-Za-z0-9._\-]{1,30}" :value=this.userdata.cuentas.LinkedIn>
 						</div>
 					</div>
 					<div class="mb-3 row p-0 g-0 m-0">
 						<i class="bi bi-github col-2 col-form-label text-center"></i>
 						<div class="col-10">
 							<input id="fGitHub" class="form-control m-1" placeholder="Github"
-								pattern="[A-Za-z0-9._\-]{1,30}">
+								pattern="[A-Za-z0-9._\-]{1,30}" :value=this.userdata.cuentas.Github>
 						</div>
 					</div>
 					<div class="mb-3 row p-0 g-0 m-0">
 						<i class="bi bi-twitter col-2 col-form-label text-center"></i>
 						<div class="col-10">
 							<input id="fTwitter" class="form-control m-1" placeholder="Twitter"
-								pattern="[A-Za-z0-9._\-]{1,30}">
+								pattern="[A-Za-z0-9._\-]{1,30}" :value=this.userdata.cuentas.Twitter>
 						</div>
 					</div>
 					<div class="mb-3 row p-0 g-0 m-0">
 						<i class="bi bi-facebook col-2 col-form-label text-center"></i>
 						<div class="col-10">
 							<input id="fFacebook" class="form-control m-1" placeholder="Facebook"
-								pattern="[A-Za-z0-9._\-]{1,30}">
+								pattern="[A-Za-z0-9._\-]{1,30}" :value=this.userdata.cuentas.Facebook>
 						</div>
 					</div>
 					<div class="mb-3 row p-0 g-0 m-0">
 						<i class="bi bi-instagram col-2 col-form-label text-center"></i>
 						<div class="col-10">
 							<input id="fInstagram" class="form-control m-1" placeholder="Instagram"
-								pattern="[A-Za-z0-9._\-]{1,30}">
+								pattern="[A-Za-z0-9._\-]{1,30}" :value=this.userdata.cuentas.Instagram>
 						</div>
 					</div>
 				</div>
 				<div id="rolestyc">
 					<div class="form-check form-switch m-1">
-						<input id="fRolFreelancer" type="checkbox" class="form-check-input" role="switch">
+						<input id="fRolFreelancer" type="checkbox" class="form-check-input" role="switch" 
+						:value=userdata.freelancer :checked=userdata.freelancer>
 						<label class="form-check-label" for="fRolFreelancer">
 							Freelancer
 						</label>
@@ -130,52 +132,64 @@ export default {
 		async validarNickname(){
 			let nickname = document.getElementById("fUsuario").value;
 			if(nickname.length > 3){
-				await datos.validarNickname(nickname).then((res) => {
-					if(res){
-						console.log("Usuario disponible: "+ res);
-					}else{
-						alert("El usuario ya esta en uso, por favor intente con otro.");
-						document.getElementById("fUsuario").value = "";
-						console.log("Usuario no disponible: "+ res)
-					}
-				});
+				if(this.userdata.registrado && (this.userdata.nickname == document.getElementById("fUsuario").value)){
+					console.log("MNismo usuario");
+					return true;
+				}else{
+					await datos.validarNickname(nickname).then((res) => {
+						if(res){
+							console.log("Usuario disponible: "+ res);
+							return true;
+						}else{
+							alert("El usuario ya esta en uso, por favor intente con otro.");
+							document.getElementById("fUsuario").value = this.userdata.nickname;
+							return false;
+						}
+					});
+				}
 			}
 		},
 		updateUserInfo(){
-			this.cargando = true;
-			this.userdata.nickname			= document.getElementById("fUsuario").value;
-			this.userdata.nombres			= document.getElementById("fNombre1").value;
-			this.userdata.apellidos			= document.getElementById("fApellido1").value;
-			this.userdata.correo			= document.getElementById("fCorreo").value;
-			this.userdata.fechaNacimiento	= document.getElementById("fNacimiento").value;
-			this.userdata.profesion			= document.getElementById("fProfesion").value;
-			this.userdata.lugar				= document.getElementById("fLugar").value;
-			this.userdata.freelancer		= document.getElementById("fRolFreelancer").checked;
-			this.userdata.tyc				= true;
-			if (document.getElementById("fDescripcion").value) {
-				this.userdata.sobreMi		= document.getElementById("fDescripcion").value;
-			} else {
-				this.userdata.sobreMi		= "~(UwU)~";
+			if(this.validarNickname()){
+				this.cargando = true;
+				//User Info
+				this.userdata.nickname			= document.getElementById("fUsuario").value;
+				this.userdata.nombres			= document.getElementById("fNombre1").value;
+				this.userdata.apellidos			= document.getElementById("fApellido1").value;
+				this.userdata.correo			= document.getElementById("fCorreo").value;
+				this.userdata.fechaNacimiento	= document.getElementById("fNacimiento").value;
+				this.userdata.profesion			= document.getElementById("fProfesion").value;
+				this.userdata.lugar				= document.getElementById("fLugar").value;
+				this.userdata.freelancer		= document.getElementById("fRolFreelancer").checked;
+				this.userdata.tyc				= true;
+				if (document.getElementById("fDescripcion").value) {
+					this.userdata.sobreMi		= document.getElementById("fDescripcion").value;
+				} else {
+					this.userdata.sobreMi		= "~(UwU)~";
+				}
+				//Redes
+				this.userdata.cuentas.Twitter	= document.getElementById("fTwitter").value;
+				this.userdata.cuentas.LinkedIn	= document.getElementById("fLinkedin").value;
+				this.userdata.cuentas.Github	= document.getElementById("fGitHub").value;
+				this.userdata.cuentas.Facebook	= document.getElementById("fFacebook").value;
+				this.userdata.cuentas.Instagram	= document.getElementById("fInstagram").value;
+				setTimeout(this.toBD,500)
+			}else{
+				console.log("Usuario no disponible");
 			}
-			//Redes
-			this.userdata.cuentas.twitter	= document.getElementById("fTwitter").value;
-			this.userdata.cuentas.linkedIn	= document.getElementById("fLinkedin").value;
-			this.userdata.cuentas.github	= document.getElementById("fGitHub").value;
-			this.userdata.cuentas.facebook	= document.getElementById("fFacebook").value;
-			this.userdata.cuentas.instagram	= document.getElementById("fInstagram").value;
-			//Otros
-			setTimeout(this.toBD,500)
 		},
 		toBD() {
 			try {
-				if (this.userdata.registro) {
+				if (this.userdata.registrado) {
+					console.log("Actualizando usuario");
 					if(datos.editarUsuario(this.userdata)){
-						router.push({ name: 'perfil' });
 						datos.notificacion("Usuario actualizado.");
+						this.cargando = false;
 					}else{
 						datos.notificacion("No se pudo actualizar el usuario.");
 					}
 				} else {
+					console.log("Creando usuario");
 					if(datos.crearUsuario(this.userdata)){
 						router.push({ name: 'home' });
 						datos.notificacion("¡Se ha completado el registro!");
@@ -184,13 +198,17 @@ export default {
 					}
 				}
 			} catch (error) {
-					router.push('/error/500');
-					datos.notificacion("Error enviando informacion al servidor. Intente nuevamente");
+				router.push('/error/500');
+				datos.notificacion("Error enviando informacion al servidor. Intente nuevamente");
 			}
 		}
 	},
 	props: {
-		userdata: {}
+		userdata: {},
+		editar: {
+			type: Boolean,
+			default: false,
+		}
 	},
 	data: () => ({
 		cargando: false,

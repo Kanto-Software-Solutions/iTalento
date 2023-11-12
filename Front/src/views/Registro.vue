@@ -18,7 +18,6 @@ export default {
 	name: 'registro',
 	components: {
 		formperfil,
-		datos,
 	},
 
 	async created() {
@@ -41,7 +40,7 @@ export default {
 			this.usuarioInfo.correo			= this.sesion.email;
 			this.usuarioInfo.imagenPerfil 	= this.sesion.picture;
 			this.usuarioInfo.verificado		= this.sesion.email_verified;
-			this.usuarioInfo.registro		= temp.registrado;
+			this.usuarioInfo.registrado		= false;
 		}
 	},
 	data: () => ({

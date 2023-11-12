@@ -53,7 +53,7 @@
 			</div>
 			<div v-if=propio class="border-top">
 				<button type="button" class="btn btn-outline-info w-100 my-2" data-bs-toggle="modal"
-					data-bs-target="#perfilEditar">
+					data-bs-target="#perfilEditar" v-on:click=paraFormulario()>
 					<i class="bi bi-pencil-square"></i>
 					Editar mi perfil
 				</button>
@@ -72,12 +72,12 @@
 						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
 					<div class="modal-body">
-						<fUsuario v-if="false" />
+						<fUsuario :userdata=userdata :editar=true />
 					</div>
 				</div>
 			</div>
 		</div>
-		<fHabilidades/>
+		<fHabilidades />
 	</div>
 </template>
 <script>
@@ -86,30 +86,6 @@ import fHabilidades from "./formularioHabilidades.vue";
 export default {
 	name: 'fichaUsuario',
 	methods: {
-		datosFormulario(){
-			
-			this.cargando = true;
-			//this.userdata.nickname			= this.usuario.
-			//this.userdata.nombres			= this.usuario.
-			//this.userdata.apellidos			= this.usuario.
-			//this.userdata.correo			= this.usuario.
-			//this.userdata.fechaNacimiento	= this.usuario.
-			//this.userdata.profesion			= this.usuario.
-			//this.userdata.lugar				= this.usuario.
-			//this.userdata.freelancer		= this.usuario.
-			this.userdata.tyc				= true;
-			if (document.getElementById("fDescripcion").value) {
-				//this.userdata.sobreMi		= this.usuario.
-			} else {
-				this.userdata.sobreMi		= "~(UwU)~";
-			}
-			//Redes
-			//this.userdata.cuentas.twitter	= this.usuario.
-			//this.userdata.cuentas.linkedIn	= this.usuario.
-			//this.userdata.cuentas.github	= this.usuario.
-			//this.userdata.cuentas.facebook	= this.usuario.
-			//this.userdata.cuentas.instagram	= this.usuario.
-		},
 		urlRedes(red, usuario) {
 			if (red == "Twitter") {
 				return "https://twitter.com/" + usuario;
@@ -152,6 +128,27 @@ export default {
 				return "No definido";
 			}
 		},
+		paraFormulario() {
+			this.userdata.nickname = this.usuario.nickname
+			this.userdata.nombres = this.usuario.names
+			this.userdata.apellidos = this.usuario.lastNames
+			this.userdata.correo = this.usuario.email
+			this.userdata.fechaNacimiento = this.usuario.birthDate.split('T')[0]
+			this.userdata.profesion = this.usuario.job
+			this.userdata.lugar = this.usuario.location
+			this.userdata.freelancer = this.usuario.isFreelancer
+			this.userdata.tyc = this.usuario.acceptedTerms
+			this.userdata.sobreMi = this.usuario.description
+			this.userdata.imagenPerfil = this.usuario.profileImage
+			this.userdata.registrado = true
+			this.userdata.verificado = this.usuario.isVerified
+			//Redes
+			this.userdata.cuentas.twitter = ""
+			this.userdata.cuentas.linkedIn = ""
+			this.userdata.cuentas.github = ""
+			this.userdata.cuentas.facebook = ""
+			this.userdata.cuentas.instagram = ""
+		},
 	},
 	components: {
 		fUsuario,
@@ -162,6 +159,15 @@ export default {
 		propio: Boolean,
 	},
 	data: () => ({
+		userdata: {
+			cuentas: [{
+				Twitter: "",
+				LinkedIn: "",
+				Github: "",
+				Facebook: "",
+				Instagram: "",
+			}]
+		},
 	}),
 }
 </script>
