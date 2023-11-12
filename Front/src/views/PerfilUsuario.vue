@@ -102,9 +102,9 @@ export default {
 				}
 			} else {
 				if (localStorage.getItem('sesion') == 'undefined') {
-					this.propio = true		//false;
+					this.propio = false;
 				} else {
-					this.propio = true		//(porfileInfo.personalId == JSON.parse(localStorage.getItem('sesion')).sub.split('|')[1]);
+					this.propio = (porfileInfo.personalId == JSON.parse(localStorage.getItem('sesion')).sub.split('|')[1]);
 				}
 				this.usuario = porfileInfo;
 				this.usuario.cuentas = [
