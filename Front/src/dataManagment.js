@@ -37,13 +37,13 @@ function notificacion(msj) {
 	toastBootstrap.show()
 }
 function usertoDB(user) {
-	let ver = 0;
-	let freelancer = 0;
-	let tyc = 0;
+	let ver = 1;
+	let freelancer = 1;
+	let tyc = 1;
 	
-	if (!user.verificado) ver = 1;
-	if (!user.freelancer) freelancer = 1;
-	if (!user.tyc) tyc = 1;
+	if (!user.verificado) ver = 0;
+	if (!user.freelancer) freelancer = 0;
+	if (!user.tyc) tyc = 0;
 
 	let datos = {
 		names:			user.nombres,
