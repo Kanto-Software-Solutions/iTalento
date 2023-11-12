@@ -11,12 +11,13 @@ exports.myUsuario = (req, res) => {
 	if (estado) {
 		id = req.oidc.user.sub.split('|')[1];
 		sesion = req.oidc.user;
-		conexion.query("SELECT * FROM User WHERE personalId = '" + id + "'", (error, results) => {
+		conexion.query("CALL `mydb`.`ValidarUsuario`( '" + id + "');", (error, results) => {
 			if (error) {
 				console.log(error);
 				res.json(error);
 			} else {
-				if (results.length > 0) {
+				console.log(results[0][0].val);
+				if (results[0][0].val) {
 					datos = results[0];
 					registrado = true;
 				}
@@ -24,7 +25,6 @@ exports.myUsuario = (req, res) => {
 					estado: estado,
 					registrado: registrado,
 					sesion: sesion,
-					usuario: datos,
 				});
 			}
 		});

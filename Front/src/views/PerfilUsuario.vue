@@ -98,23 +98,21 @@ export default {
 	components: {
 		usuario,
 		fichaGig,
-		datos,
 		fgigs,
 	},
 	async created() {
 		let idUnico = this.$route.params.nickname;
-		console.log(idUnico + ' de URL');
 		await datos.getUsuario(idUnico).then((response) => {
 			let porfileInfo = response[0];
 			console.log(porfileInfo);
-			if(porfileInfo == undefined){
+			if (porfileInfo == undefined) {
 				console.log(JSON.parse(localStorage.getItem('registrado')));
 				if (JSON.parse(localStorage.getItem('registrado')) == false) {
 					router.push('/registro');
-				}else{
+				} else {
 					router.push('/error/Usuario no Encontrado');
 				}
-			}else{
+			} else {
 				this.pasarData(porfileInfo);
 			}
 		});
@@ -188,9 +186,9 @@ export default {
 			else if (temp == 1) {
 				return "★☆☆☆☆";
 			}
-			else if(temp == 0){
+			else if (temp == 0) {
 				return "☆☆☆☆☆";
-			}else{
+			} else {
 				return "No definido";
 			}
 		},

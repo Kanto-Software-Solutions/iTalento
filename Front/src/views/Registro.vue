@@ -26,6 +26,11 @@ export default {
 		if (temp == null) {
 			return;
 		}
+		if(temp.registrado){
+			console.log("Ya estas registrado");
+			console.log('/perfil/'+temp.sesion.nickname);
+			this.$router.push('/perfil/'+temp.sesion.nickname);
+		}
 		this.estado							= temp.estado;
 		if (this.estado) {
 			this.sesion = temp.sesion;
