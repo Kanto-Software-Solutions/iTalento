@@ -4,6 +4,9 @@
 		<h3 v-if="this.$route.params.code == 'Network Error'" class="text-body-secondary">
 			Parece que Nicolas no encendio la base de datos. ¡Vuelve pronto!
 		</h3>
+		<h3 v-if="this.$route.params.code == 'Usuario no Encontrado'" class="text-body-secondary">
+			¡El usuario que quieres buscar no existe!
+		</h3>
 		<h3 v-else class="text-body-secondary">
 			Parece que tenemos problemas cargando esta pagina. ¡Vuelve pronto!
 		</h3>

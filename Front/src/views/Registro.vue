@@ -18,7 +18,6 @@ export default {
 	name: 'registro',
 	components: {
 		formperfil,
-		datos,
 	},
 
 	async created() {
@@ -26,39 +25,33 @@ export default {
 		if (temp == null) {
 			return;
 		}
-		this.sesion = temp.usuario[0];
-		this.estado = temp.estado;
+		if(temp.registrado){
+			console.log("Ya estas registrado");
+			console.log('/perfil/'+temp.sesion.nickname);
+			this.$router.push('/perfil/'+temp.sesion.nickname);
+		}
+		this.estado							= temp.estado;
 		if (this.estado) {
-			this.usuarioInfo.nombres = this.sesion.given_name;
-			this.usuarioInfo.apellidos = this.sesion.family_name;
-			this.usuarioInfo.nickname = this.sesion.nickname;
-			this.usuarioInfo.correo = this.sesion.email;
-			this.usuarioInfo.imagenPerfil = this.sesion.picture;
-			this.usuarioInfo.verificado = this.sesion.email_verified;
+			this.sesion = temp.sesion;
+			
+			this.usuarioInfo.nombres		= this.sesion.given_name;
+			this.usuarioInfo.apellidos		= this.sesion.family_name;
+			this.usuarioInfo.nickname		= this.sesion.nickname;
+			this.usuarioInfo.correo			= this.sesion.email;
+			this.usuarioInfo.imagenPerfil 	= this.sesion.picture;
+			this.usuarioInfo.verificado		= this.sesion.email_verified;
+			this.usuarioInfo.registrado		= false;
 		}
 	},
 	data: () => ({
-		usuarioInfo: {
-			registro: false,
-			verificado: false,
-			tyc: false,
-			nombres: "",
-			apellidos: "",
-			nickname: "",
-			correo: "",
-			imagenPerfil: "",
-			habilidades: [],
-			profesion: "",
-			nivelRecomendacion: "",
-			lugar: "",
-			fechaNacimiento: "",
+		usuarioInfo:{
 			cuentas: [{
-				twitter: "",
-				linkedIn: "",
-				github: "",
-				facebook: "",
-				instagram: ""
-			}],
+				Twitter:	"",
+				LinkedIn:	"",
+				Github:		"",
+				Facebook:	"",
+				Instagram:	"",
+			}]
 		},
 	}),
 }

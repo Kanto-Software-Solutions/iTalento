@@ -51,7 +51,7 @@
 						<div class="row justify-content-between my-2 border-bottom">
 							<div class="col-lg text-center">
 								<p class="">Preview de Gig</p>
-								<fichaGig class="m-auto mb-2" id="gigprevia" v-bind="gigTest" />
+								<fichaGig class="m-auto mb-2" id="gigprevia" v-bind="gigTest" :fotoUsuario=usuario.profileImage	:nombreUsuario=usuario.nickname />
 							</div>
 							<div class="col-lg my-1">
 								<label for="tituloGig" class="form-label">Titulo del Servicio</label>
@@ -113,12 +113,14 @@
 						</div>
 						<div class="d-flex">
 							<div class="w-25 p-1">
-								<button type="button" class="w-100 btn btn-outline-danger text-nowrap" data-bs-dismiss="modal">
+								<button type="button" class="w-100 btn btn-outline-danger text-nowrap"
+									data-bs-dismiss="modal">
 									<i class="bi bi-x-circle"></i>
 								</button>
 							</div>
 							<div class="w-75 p-1">
-								<button type="submit" class="w-100 btn btn-outline-primary text-nowrap" data-bs-dismiss="modal">
+								<button type="submit" class="w-100 btn btn-outline-primary text-nowrap"
+									data-bs-dismiss="modal">
 									Guardar
 									<i class="bi bi-save"></i>
 								</button>
@@ -133,6 +135,7 @@
 <script>
 import fichaGig from '@/components/FichaGigs.vue';
 import selecCategorias from '@/components/seleccionHabilidades.vue';
+import { nextTick } from 'vue';
 export default {
 	name: 'formularioGigs',
 	components: {
@@ -141,7 +144,6 @@ export default {
 	},
 	methods: {
 		actualizargig() {
-			console.log("actualizar gig");
 			let titulo = document.getElementById("tituloGig").value
 			let costo = parseFloat(document.getElementById("valorGig").value)
 			let portada = this.portada
@@ -150,10 +152,10 @@ export default {
 				titulo = "Gig de prueba"
 			}
 			if (portada == "") {
-				portada = "./assets/default.png"
+				portada = this.defaultImg
 			}
 			if (imagenes.length == 0) {
-				imagenes = ["./assets/default.png"]
+				imagenes = [this.defaultImg]
 			}
 			if (isNaN(costo)) {
 				costo = 0
@@ -165,8 +167,8 @@ export default {
 				titulo: titulo,
 				portada: portada,
 				imagenes: imagenes,
-				fotoUsuario: "./assets/bullbasur.jpg",
-				nombreUsuario: "leoleguizamon",
+				fotoUsuario: this.usuario.profileImage,
+				nombreUsuario: this.usuario.nickname,
 				calificacion: "★★★★★",
 				costo: costo,
 				accion: "Previa",
@@ -193,7 +195,6 @@ export default {
 			this.imagennesPreview = []
 			this.portada = this.defaultImg
 			this.actualizargig()
-
 		},
 		verImagenes() {
 			if (this.verificarCantidadImagenes()) return
@@ -216,32 +217,27 @@ export default {
 			}
 		}
 	},
+	props: {
+		usuario: Object,
+	},
 	data: () => ({
+		defaultImg: "https://res.cloudinary.com/djc2oc9nr/image/upload/v1699075889/default_dtguag.png",
 		gigTest: {
 			idx: "test",
 			ida: "#test",
 			titulo: "Gig de prueba",
-			portada: "./assets/default.png",
-			imagenes: ["./assets/default.png"],
-			fotoUsuario: "./assets/bullbasur.jpg",
-			nombreUsuario: "leoleguizamon",
+			portada: 'https://res.cloudinary.com/djc2oc9nr/image/upload/v1699075889/default_dtguag.png',
+			imagenes: ["https://res.cloudinary.com/djc2oc9nr/image/upload/v1699075889/default_dtguag.png"],
 			calificacion: "★★★★★",
 			costo: 0,
 			accion: "Previa",
 			estado: true,
+			fotoUsuario: "",
+			nombreUsuario: "",
 		},
-		defaultImg: "./assets/default.png",
 		preImagenes: [],
 		imagennesPreview: [],
 		portada: "",
-		usuario: {
-			id: 1,
-			nombre: "Andres",
-			apellido: "Leguizamon",
-			nickname: "leoleguizamon",
-			correo: "anlleguizamongu@unal.edu.co",
-			imagenPerfil: "./assets/default.png",
-		},
 	}),
 }
 </script>

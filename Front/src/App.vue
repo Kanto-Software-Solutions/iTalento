@@ -24,10 +24,16 @@ import router from '@/router/Router.js';
 export default {
 	name: 'App',
 	async created() {
-		let temp = await datos.getSesion();
-		if (temp.estado) {
+		let info = await datos.getSesion();
+		localStorage.setItem('estado',		JSON.stringify(info.estado));
+		localStorage.setItem('registrado',	JSON.stringify(info.registrado));
+		localStorage.setItem('sesion',		JSON.stringify(info.sesion));
+		if (!info.registrado) {
 			router.push('/registro');
 		}
+	},
+	updated() {
+		console.log("App.vue updated");
 	},
 	components: {
 		BarraNavegacion,

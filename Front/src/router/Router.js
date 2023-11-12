@@ -32,7 +32,7 @@ const routes = [
 		component: () => import('../views/BusquedaServicios.vue'),
 	},
 	{
-		path: '/perfil',
+		path: '/perfil/:nickname',
 		name: 'perfil',
 		component: () => import('../views/PerfilUsuario.vue'),
 	},

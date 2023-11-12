@@ -9,6 +9,9 @@
 			</div>
 		</div>
 		<img src="https://res.cloudinary.com/djc2oc9nr/image/upload/v1699075889/Logo_orntxa.png" alt="" class="h-100">
+		<div>
+			{{ local }}
+		</div>
 	</div>
 </template>
 <script>
@@ -30,6 +33,7 @@ export default {
 	},
 	data: () => ({
 		categorias: null,
+		local: localStorage.getItem('sesion'),
 	}),
 }
 </script>

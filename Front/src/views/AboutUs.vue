@@ -37,9 +37,10 @@
 				<div class="col-sm">
 					<h3 class="card-header text-center bg-transparent">Kanto Software Solutions</h3>
 					<p class="text-center">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit officiis, veritatis quia
-						quis dolorum debitis dolorem quod laudantium eum aspernatur soluta consequuntur dicta quae assumenda
-						neque iste doloremque ullam velit?
+						El equipo de Kanto software solution es un equipo de desarrollo de aplicativos web.
+						Actualmente se encuentra finalizando el desarrollo de Italento bajo la dirección del profesor Hernando Rodriguez Gonzales.
+						Si desea desarrollar algún software con nosotros pongase en contacto con alguno de los integrantes, sus medios de contacto
+						se encuentran en la información de abajo.
 					</p>
 				</div>
 				<div class="col-sm">

@@ -6,6 +6,7 @@ const url = 'https://italento.shop';
 export default {
 	notificacion,
 	holaMundo,
+	usertoDB,
 	generica,
 	getSesion,
 	verificarTYC,
@@ -24,7 +25,8 @@ export default {
 	getUsuario,
 	crearUsuario,
 	editarUsuario,
-	eliminarUsuario
+	eliminarUsuario,
+	validarNickname,
 }
 
 //Test
@@ -34,20 +36,33 @@ function notificacion(msj) {
 	toastLiveExample.querySelector('.toast-body').innerText = msj
 	toastBootstrap.show()
 }
-function usertuDB(user) {
-	return data = {
+function usertoDB(user) {
+	let ver = 1;
+	let freelancer = 1;
+	let tyc = 1;
+
+	if (!user.verificado) ver = 0;
+	if (!user.freelancer) freelancer = 0;
+	if (!user.tyc) tyc = 0;
+
+	let datos = {
 		names: user.nombres,
 		lastNames: user.apellidos,
 		email: user.correo,
-		isVerified: user.verificado,
+		isVerified: ver,
 		nickname: user.nickname,
 		profileImage: user.imagenPerfil,
-		isFreelancer: user.registro,
+		isFreelancer: freelancer,
 		birthDate: user.fechaNacimiento,
 		country: user.lugar,
-		acceptedTerms: user.tyc,
-		personalId: user.profesion
-	};
+		acceptedTerms: tyc,
+		personalId: JSON.parse(localStorage.getItem('sesion')).sub.split('|')[1],
+		recLevel: user.recLevel,
+		location: user.lugar,
+		job: user.profesion,
+		description: user.sobreMi,
+	}
+	return datos;
 }
 
 async function holaMundo() {
@@ -172,12 +187,15 @@ async function getUsuario(id) {
 	}
 }
 async function crearUsuario(usuario) {
-	let arreglo = [];
+	usuario.recLevel = 0;
+	let datos = usertoDB(usuario)
 	try {
-		let data = usertuDB(usuario)
-		const response = await axios.post(url + "/usr/new", data);
-		arreglo = response.data.results;
-		return arreglo;
+		const response = await axios.post(url + "/usr/new", datos);
+		if (response.data) {
+			return true;
+		} else {
+			return false;
+		}
 	} catch (error) {
 		//Pagina de error
 		console.log("ERROR: " + error.status);
@@ -186,11 +204,44 @@ async function crearUsuario(usuario) {
 			status = error.response.status + " " + error.response.statusText;
 		}
 		router.push('/error/' + status);
+		return false;
 	}
 }
 async function editarUsuario(usuario) {
-
+	usuario.isVerified = JSON.parse(localStorage.getItem('sesion')).email_verified;
+	let datos = usertoDB(usuario)
+	try {
+		const response = await axios.put(url + "/usr/edit/" + JSON.parse(localStorage.getItem('sesion')).sub.split('|')[1] , datos);
+		if (response.data) {
+			return true;
+		} else {
+			console.log("ERROR: ");
+			return false;
+		}
+	} catch (error) {
+		//Pagina de error
+		console.log("ERROR: " + error.status);
+		let status = error.message;
+		if (error.response) {
+			status = error.response.status + " " + error.response.statusText;
+		}
+		router.push('/error/' + status);
+		return false;
+	}
 }
 async function eliminarUsuario(id) {
 
+}
+async function validarNickname(nick) {
+	try {
+		const response = await axios.get(url + "/val/" + nick);
+		return response.data.disponible;
+	} catch (error) {
+		console.log(error.status);
+		let status = error.message;
+		if (error.response) {
+			status = error.response.status + " " + error.response.statusText;
+		}
+		router.push('/error/' + status);
+	}
 }
