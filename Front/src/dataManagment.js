@@ -6,6 +6,7 @@ const url = 'http://localhost:3000';
 export default {
 	notificacion,
 	holaMundo,
+	usertoDB,
 	generica,
 	getSesion,
 	verificarTYC,
@@ -34,20 +35,33 @@ function notificacion(msj) {
 	toastLiveExample.querySelector('.toast-body').innerText = msj
 	toastBootstrap.show()
 }
-function usertuDB(user) {
-	return data = {
-		names: user.nombres,
-		lastNames: user.apellidos,
-		email: user.correo,
-		isVerified: user.verificado,
-		nickname: user.nickname,
-		profileImage: user.imagenPerfil,
-		isFreelancer: user.registro,
-		birthDate: user.fechaNacimiento,
-		country: user.lugar,
-		acceptedTerms: user.tyc,
-		personalId: user.profesion
-	};
+function usertoDB(user) {
+	let ver = 0;
+	let freelancer = 0;
+	let tyc = 0;
+	
+	if (!user.verificado) ver = 1;
+	if (!user.freelancer) freelancer = 1;
+	if (!user.tyc) tyc = 1;
+
+	let datos = {
+		names:			user.nombres,
+		lastNames:		user.apellidos,
+		email:			user.correo,
+		isVerified:		ver,
+		nickname:		user.nickname,
+		profileImage:	user.imagenPerfil,
+		isFreelancer:	freelancer,
+		birthDate:		user.fechaNacimiento,
+		country:		user.lugar,
+		acceptedTerms:	tyc,
+		personalId:		JSON.parse(localStorage.getItem('sesion')).sub.split('|')[1],
+		recLevel:		user.recLevel,
+		location:		user.lugar,
+		job:			user.profesion,
+		description:	user.sobreMi,
+	}
+	return datos;
 }
 
 async function holaMundo() {
@@ -172,12 +186,17 @@ async function getUsuario(id) {
 	}
 }
 async function crearUsuario(usuario) {
-	let arreglo = [];
+	usuario.recLevel = 0;
+	let datos = usertoDB(usuario)
+
+	console.log('USUARIO');
+	console.log(usuario);
+	console.log('datos');
+	console.log(datos);
 	try {
-		let data = usertuDB(usuario)
-		const response = await axios.post(url + "/usr/new", data);
-		arreglo = response.data.results;
-		return arreglo;
+		const response = await axios.post(url + "/usr/new", datos);
+		console.log(response);
+		return true;
 	} catch (error) {
 		//Pagina de error
 		console.log("ERROR: " + error.status);
@@ -186,6 +205,7 @@ async function crearUsuario(usuario) {
 			status = error.response.status + " " + error.response.statusText;
 		}
 		router.push('/error/' + status);
+		return false;
 	}
 }
 async function editarUsuario(usuario) {

@@ -11,7 +11,7 @@ exports.myUsuario = (req, res) => {
 	if (estado) {
 		id = req.oidc.user.sub.split('|')[1];
 		sesion = req.oidc.user;
-		conexion.query("SELECT * FROM User WHERE personalId =" + id, (error, results) => {
+		conexion.query("SELECT * FROM User WHERE personalId = '" + id + "'", (error, results) => {
 			if (error) {
 				console.log(error);
 				res.json(error);
@@ -31,7 +31,7 @@ exports.myUsuario = (req, res) => {
 	} else {
 		res.json({
 			estado: estado,
-			registrado: registrado,
+			registrado: true,
 		});
 	}
 }

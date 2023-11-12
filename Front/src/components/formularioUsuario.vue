@@ -115,82 +115,68 @@
 </template>
 <script>
 import ftyc from '@/components/fichaTyC.vue'
-import datos from '../dataManagment.js';
-import router from '@/router/Router';
 import cargando from './Cargando.vue';
+
+import datos from '../dataManagment.js';
+import router from '@/router/Router.js';
 
 export default {
 	name: 'formPerfil',
 	components: {
 		ftyc,
-		datos,
 		cargando,
 	},
 	methods: {
 		updateUserInfo(){
 			this.cargando = true;
-			this.userdata.nombres = document.getElementById("fNombre1").value;
-			this.userdata.apellidos = document.getElementById("fApellido1").value;
-			this.userdata.correo = document.getElementById("fCorreo").value;
-			//Información
-			this.userdata.profesion = document.getElementById("fProfesion").value;
-			this.userdata.fechaNacimiento = document.getElementById("fNacimiento").value;
-			this.userdata.lugar = document.getElementById("fLugar").value;
+			this.userdata.nickname			= document.getElementById("fUsuario").value;
+			this.userdata.nombres			= document.getElementById("fNombre1").value;
+			this.userdata.apellidos			= document.getElementById("fApellido1").value;
+			this.userdata.correo			= document.getElementById("fCorreo").value;
+			this.userdata.fechaNacimiento	= document.getElementById("fNacimiento").value;
+			this.userdata.profesion			= document.getElementById("fProfesion").value;
+			this.userdata.lugar				= document.getElementById("fLugar").value;
+			this.userdata.freelancer		= document.getElementById("fRolFreelancer").checked;
+			this.userdata.tyc				= true;
 			if (document.getElementById("fDescripcion").value) {
-				this.userdata.sobreMi = document.getElementById("fDescripcion").value;
+				this.userdata.sobreMi		= document.getElementById("fDescripcion").value;
 			} else {
-				this.userdata.sobreMi = "~(UwU)~";
+				this.userdata.sobreMi		= "~(UwU)~";
 			}
 			//Redes
-			this.userdata.cuentas.twitter = document.getElementById("fTwitter").value;
-			this.userdata.cuentas.linkedIn = document.getElementById("fLinkedin").value;
-			this.userdata.cuentas.github = document.getElementById("fGitHub").value;
-			this.userdata.cuentas.facebook = document.getElementById("fFacebook").value;
-			this.userdata.cuentas.instagram = document.getElementById("fInstagram").value;
+			this.userdata.cuentas.twitter	= document.getElementById("fTwitter").value;
+			this.userdata.cuentas.linkedIn	= document.getElementById("fLinkedin").value;
+			this.userdata.cuentas.github	= document.getElementById("fGitHub").value;
+			this.userdata.cuentas.facebook	= document.getElementById("fFacebook").value;
+			this.userdata.cuentas.instagram	= document.getElementById("fInstagram").value;
 			//Otros
-			this.userdata.freelancer = document.getElementById("fRolFreelancer").checked;
-			this.userdata.tyc = true;
-			setTimeout(this.toBD,900)
+			setTimeout(this.toBD,500)
 		},
 		toBD() {
-			if (this.userdata.registro) {
-				datos.editarUsuario(this.userdata);
-				router.push({ name: 'perfil' });
-				datos.notificacion("Usuario actualizado.");
-			} else {
-				datos.crearUsuario(this.userdata);
-				router.push({ name: 'home' });
-				datos.notificacion("¡Se ha completado el registro!");
+			try {
+				if (this.userdata.registro) {
+					if(datos.editarUsuario(this.userdata)){
+						router.push({ name: 'perfil' });
+						datos.notificacion("Usuario actualizado.");
+					}else{
+						datos.notificacion("No se pudo actualizar el usuario.");
+					}
+				} else {
+					if(datos.crearUsuario(this.userdata)){
+						router.push({ name: 'home' });
+						datos.notificacion("¡Se ha completado el registro!");
+					}else{
+						datos.notificacion("Error en el registro, intente de nuevo.");
+					}
+				}
+			} catch (error) {
+					router.push('/error/500');
+					datos.notificacion("Error enviando informacion al servidor. Intente nuevamente");
 			}
-			return false;
 		}
 	},
 	props: {
 		userdata: {
-			type: Object,
-			default: () => ({
-				registro: true,
-				verificado: false,
-				tyc: false,
-				id: "",
-				nombres: "",
-				apellidos: "",
-				nickname: "",
-				correo: "",
-				imagenPerfil: "",
-				habilidades: [],
-				profesion: "",
-				nivelRecomendacion: "",
-				lugar: "",
-				fechaNacimiento: "",
-				cuentas: [{
-					twitter: "",
-					linkedIn: "",
-					github: "",
-					facebook: "",
-					instagram: ""
-				}]
-			})
 		}
 	},
 	data: () => ({

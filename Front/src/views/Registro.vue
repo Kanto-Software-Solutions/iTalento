@@ -26,38 +26,28 @@ export default {
 		if (temp == null) {
 			return;
 		}
-		this.sesion = temp.sesion;
-		this.estado = temp.estado;
+		this.estado							= temp.estado;
 		if (this.estado) {
-			this.usuarioInfo.nombres = this.sesion.given_name;
-			this.usuarioInfo.apellidos = this.sesion.family_name;
-			this.usuarioInfo.nickname = this.sesion.nickname;
-			this.usuarioInfo.correo = this.sesion.email;
-			this.usuarioInfo.imagenPerfil = this.sesion.picture;
-			this.usuarioInfo.verificado = this.sesion.email_verified;
+			this.sesion = temp.sesion;
+			
+			this.usuarioInfo.nombres		= this.sesion.given_name;
+			this.usuarioInfo.apellidos		= this.sesion.family_name;
+			this.usuarioInfo.nickname		= this.sesion.nickname;
+			this.usuarioInfo.correo			= this.sesion.email;
+			this.usuarioInfo.imagenPerfil 	= this.sesion.picture;
+			this.usuarioInfo.verificado		= this.sesion.email_verified;
+			this.usuarioInfo.registro		= temp.registrado;
 		}
 	},
 	data: () => ({
-		usuarioInfo: {
-			verificado: false,
-			tyc: false,
-			nombres: "",
-			apellidos: "",
-			nickname: "",
-			correo: "",
-			imagenPerfil: "",
-			habilidades: [],
-			profesion: "",
-			nivelRecomendacion: "",
-			lugar: "",
-			fechaNacimiento: "",
+		usuarioInfo:{
 			cuentas: [{
-				twitter: "",
-				linkedIn: "",
-				github: "",
-				facebook: "",
-				instagram: ""
-			}],
+				Twitter:	"",
+				LinkedIn:	"",
+				Github:		"",
+				Facebook:	"",
+				Instagram:	"",
+			}]
 		},
 	}),
 }
