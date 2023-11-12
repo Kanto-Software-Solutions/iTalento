@@ -16,8 +16,7 @@ exports.myUsuario = (req, res) => {
 				console.log(error);
 				res.json(error);
 			} else {
-				console.log(results[0][0].val);
-				if (results[0][0].val) {
+				if (results[0][0].val=='true') {
 					datos = results[0];
 					registrado = true;
 				}
