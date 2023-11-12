@@ -25,10 +25,10 @@ export default {
 	name: 'App',
 	async created() {
 		let info = await datos.getSesion();
-		localStorage.setItem('estado', JSON.stringify(info.estado));
-		localStorage.setItem('registrado', JSON.stringify(info.registrado));
-		localStorage.setItem('sesion', JSON.stringify(info.sesion));
-		localStorage.setItem('usuario', JSON.stringify(info.usuario));
+		localStorage.setItem('estado',		JSON.stringify(info.estado));
+		localStorage.setItem('registrado',	JSON.stringify(info.registrado));
+		localStorage.setItem('sesion',		JSON.stringify(info.sesion));
+		localStorage.setItem('usuario',		JSON.stringify(info.usuario));
 		if (!info.registrado) {
 			router.push('/registro');
 		}
