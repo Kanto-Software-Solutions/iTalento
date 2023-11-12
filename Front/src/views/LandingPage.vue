@@ -16,9 +16,9 @@
 							Da un paso adelante y busca eso que necesitas.
 						</p>
 						<ul class="">
-							<li style="color: rgb(199, 199, 199)">Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-							<li style="color: rgb(199, 199, 199)">Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-							<li style="color: rgb(199, 199, 199)">Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+							<li style="color: rgb(199, 199, 199)">Publica.</li>
+							<li style="color: rgb(199, 199, 199)">Busca.</li>
+							<li style="color: rgb(199, 199, 199)">Compra.</li>
 						</ul>
 					</div>
 				</div>
