@@ -75,7 +75,7 @@
 					</div>
 				</div>
 			</div>
-			<tablaCostos></tablaCostos>
+			<tablaCostos v-if="false"></tablaCostos>
 			<div class="text-center m-1">
 				Adicional puede revisar los:
 				<router-link to="/tyc">Terminos y condiciones</router-link>
