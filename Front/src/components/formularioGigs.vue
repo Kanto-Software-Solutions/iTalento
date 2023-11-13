@@ -135,7 +135,7 @@
 <script>
 import fichaGig from '@/components/FichaGigs.vue';
 import selecCategorias from '@/components/seleccionHabilidades.vue';
-import { nextTick } from 'vue';
+
 export default {
 	name: 'formularioGigs',
 	components: {
@@ -215,6 +215,9 @@ export default {
 			} else {
 				this.inicializarVitrina()
 			}
+		},
+		crearGigi(){
+			console.log("crear gig")
 		}
 	},
 	props: {
