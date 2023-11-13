@@ -12,7 +12,9 @@
 							¿Como Funciona?
 						</p>
 						<p class="text-justify fs-3 fw-light">
-							Registrate, llena tus datos personales y listo!, ya eres parte de iTalento, puedes comenzar a buscar freelancers o a ser un freelancer y lograr tu independencia económica!.
+							Italento ofrece dos roles, un rol de Freelancer y de comprador.
+							Como comprador te da la posibilidad de comprar gigs ofrecidos por los freelancers.
+							Como freelancer puedes crear gigs para obtener ingresos extra.
 						</p>
 					</div>
 				</div>
@@ -53,9 +55,9 @@
 							¡Anuncia los trabajos que quieras!
 						</p>
 						<p class="text-justify fs-4 fw-light">
-							Eres un programador?, diseñador?, escritor?, traductor?, no importa!, en iTalento siempre encontrarás
-							a alguien que necesite tus habilidades para completar sus proyectos, publica tus habilidades y tu trabajo ideal
-							y espera a que las ofertas lluevan!.
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. At eligendi alias ipsam non pariatur
+							natus libero exercitationem officia eos et sunt, sapiente unde quisquam, dolorem illo corrupti
+							nulla quibusdam! Dignissimos.
 						</p>
 						<router-link class="btn router-link w-100" type="button" to="/buscar" style="background-color: rgba(58, 58, 58, 0.4);">
 							Busca Talento
@@ -70,8 +72,9 @@
 							Habla con los mejores talentos disponibles
 						</p>
 						<p class="text-justify fs-4 fw-light">
-							Independientemente del trabajo que necesites en iTalento siempre encontrarás a alguien con las habilidades
-							necesarias para ayudarte con lo que necesites.
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. At eligendi alias ipsam non pariatur
+							natus libero exercitationem officia eos et sunt, sapiente unde quisquam, dolorem illo corrupti
+							nulla quibusdam! Dignissimos.
 						</p>
 
 					</div>
@@ -90,8 +93,9 @@
 							Presta tu servicios a quien lo requiera
 						</p>
 						<p class="text-justify fs-4 fw-light">
-							Tienes total libertad para aceptar las ofertas que quieras, en iTalento lo unico importante es 
-							que cumplas con los criterios de calidad que esperamos de un trabajor ideal, a tu ritmo.
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. At eligendi alias ipsam non pariatur
+							natus libero exercitationem officia eos et sunt, sapiente unde quisquam, dolorem illo corrupti
+							nulla quibusdam! Dignissimos.
 						</p>
 						<router-link class="btn router-link w-100" type="button" to="/registro" style="background-color: rgba(58, 58, 58, 0.4);">
 								Registrate
