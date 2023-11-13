@@ -55,10 +55,9 @@
 							¡Anuncia los trabajos que quieras!
 						</p>
 						<p class="text-justify fs-4 fw-light">
-							Anuncia tus trabajos para obtener mejor visibilidad de tus trabajos.
-							Tus anuncios serán vistos primero.
-							Si tus anuncios son vistos primero te da la posibilidad de tener mejores
-							ofertas
+							Eres un programador?, diseñador?, escritor?, traductor?, no importa!, en iTalento siempre encontrarás
+							a alguien que necesite tus habilidades para completar sus proyectos, publica tus habilidades y tu trabajo ideal
+							y espera a que las ofertas lluevan!.
 						</p>
 						<router-link class="btn router-link w-100" type="button" to="/buscar" style="background-color: rgba(58, 58, 58, 0.4);">
 							Busca Talento
@@ -73,8 +72,8 @@
 							Habla con los mejores talentos disponibles
 						</p>
 						<p class="text-justify fs-4 fw-light">
-							Italento ofrece los mejores talentos disponibles en la categoria.
-							Ofrecemos talentos de calidad, para que obtengas lo mejor por lo que pagas.
+							Independientemente del trabajo que necesites en iTalento siempre encontrarás a alguien con las habilidades
+							necesarias para ayudarte con lo que necesites.
 						</p>
 
 					</div>
@@ -93,8 +92,8 @@
 							Presta tu servicios a quien lo requiera
 						</p>
 						<p class="text-justify fs-4 fw-light">
-							Con italento puedes prestar tus servicios a quienes requieras,
-							ten en cuenta que si prestas un servicio es bajo tu responsabilidad.
+							Tienes total libertad para aceptar las ofertas que quieras, en iTalento lo unico importante es 
+							que cumplas con los criterios de calidad que esperamos de un trabajor ideal, a tu ritmo.
 						</p>
 						<router-link class="btn router-link w-100" type="button" to="/registro" style="background-color: rgba(58, 58, 58, 0.4);">
 								Registrate
