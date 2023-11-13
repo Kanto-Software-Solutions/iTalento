@@ -108,8 +108,8 @@ async function getCategorias() {
 		const response = await axios.get(url + "/cat/all");
 		arreglo = response.data.results;
 		arreglo.forEach(element => {
-			if (element.contenido == null) {
-				element.contenido = "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+			if (element.descripcion == null) {
+				element.descripcion = "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 			}
 			if (element.imgUrl == null) {
 				element.imgUrl = "./assets/default.png";

@@ -44,7 +44,7 @@
 				<div class="card-body row" style="width: max-content;">
 					<div class="col" v-for="categoria in categorias">
 						<div class="col">
-							<categ :id="categoria.idCategory" :titulo=categoria.name :imagen=categoria.imgUrl :contenido=categoria.contenido />
+							<categ :id="categoria.idCategory" :titulo=categoria.name :imagen=categoria.imgUrl :descripcion=categoria.descripcion />
 						</div>
 					</div>
 				</div>

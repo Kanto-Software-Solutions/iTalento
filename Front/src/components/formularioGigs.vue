@@ -68,7 +68,7 @@
 									</div>
 								</div>
 								<label for="descripcionGig" class="form-label">Descripcion del servicio</label>
-								<textarea class="form-control" id="descripcionGig" rows="5"></textarea>
+								<textarea class="form-control" id="descripcionGig" rows="5" required></textarea>
 							</div>
 						</div>
 						<div class="row justify-content-center">
