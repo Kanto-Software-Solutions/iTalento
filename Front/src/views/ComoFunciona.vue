@@ -55,7 +55,7 @@
 							¡Anuncia los trabajos que quieras!
 						</p>
 						<p class="text-justify fs-4 fw-light">
-							Anuncaia tus trabajos para obtener mejor visibilidad de tus trabajos.
+							Anuncia tus trabajos para obtener mejor visibilidad de tus trabajos.
 							Tus anuncios serán vistos primero.
 							Si tus anuncios son vistos primero te da la posibilidad de tener mejores
 							ofertas
