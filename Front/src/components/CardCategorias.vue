@@ -1,10 +1,14 @@
 <template>
 	<div :id=id class="card text-bg-secondary overflow-hidden" style="height:500px ; width: 250px;">
 		<img :src=imagen class="w-100 h-100 object-fit-cover" alt="testPic">
-		<div class="card-img-overlay bg-black bg-opacity-25 text-center">
-			<h5 class="h-25" >{{ id }} : {{ titulo }}</h5>
-			<div class="d-flex align-items-end h-75">
-				<p class="card-text">{{ descripcion }}</p>
+		<div class="card-img-overlay bg-black bg-opacity-25 p-0">
+			<div class="h-25 p-3">
+				<h5>{{ id }} : {{ titulo }}</h5>
+			</div>
+			<div class="d-flex align-items-end w-100 h-75">
+				<div class="d-flex align-items-center w-100 bg-black opacity-50 h-25 p-1">
+					<p class="card-text">{{ descripcion }}</p>
+				</div>
 			</div>
 		</div>
 	</div>
