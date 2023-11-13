@@ -95,9 +95,9 @@
 							Tienes total libertad para aceptar las ofertas que quieras, en iTalento lo unico importante es 
 							que cumplas con los criterios de calidad que esperamos de un trabajor ideal, a tu ritmo.
 						</p>
-						<router-link class="btn router-link w-100" type="button" to="/registro" style="background-color: rgba(58, 58, 58, 0.4);">
+						<a class="btn router-link w-100" type="button" style="background-color: rgba(58, 58, 58, 0.4);" href="/login">
 								Registrate
-							</router-link>
+							</a>
 					</div>
 				</div>
 			</div>
