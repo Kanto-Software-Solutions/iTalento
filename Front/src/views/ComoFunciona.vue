@@ -12,10 +12,9 @@
 							¿Como Funciona?
 						</p>
 						<p class="text-justify fs-3 fw-light">
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. At eligendi alias ipsam non pariatur
-							natus
-							libero exercitationem officia eos et sunt, sapiente unde quisquam, dolorem illo corrupti nulla
-							quibusdam! Dignissimos.
+							Italento ofrece dos roles, un rol de Freelancer y de comprador.
+							Como comprador te da la posibilidad de comprar gigs ofrecidos por los freelancers.
+							Como freelancer puedes crear gigs para obtener ingresos extra.
 						</p>
 					</div>
 				</div>
