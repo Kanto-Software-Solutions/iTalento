@@ -29,6 +29,13 @@ const routes = [
 	{
 		path: '/buscar',
 		name: 'buscar',
+		children: [
+			{
+				path: 'categoria/:categoria',
+				name: 'categoria',
+				component: () => import('../views/BusquedaServicios.vue'),
+			},
+		],
 		component: () => import('../views/BusquedaServicios.vue'),
 	},
 	{
