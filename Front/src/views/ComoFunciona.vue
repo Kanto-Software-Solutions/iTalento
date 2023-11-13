@@ -72,9 +72,8 @@
 							Habla con los mejores talentos disponibles
 						</p>
 						<p class="text-justify fs-4 fw-light">
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. At eligendi alias ipsam non pariatur
-							natus libero exercitationem officia eos et sunt, sapiente unde quisquam, dolorem illo corrupti
-							nulla quibusdam! Dignissimos.
+							Italento ofrece los mejores talentos disponibles en la categoria.
+							Ofrecemos talentos de calidad, para que obtengas lo mejor por lo que pagas.
 						</p>
 
 					</div>
