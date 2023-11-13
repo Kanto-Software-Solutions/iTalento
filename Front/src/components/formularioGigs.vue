@@ -5,14 +5,14 @@
 			<div class="modal-content">
 				<div class="modal-body">
 					<div class="justify-content-between d-flex mb-2">
-						<h1 class="modal-title fs-5" id="staticBackdropLabel">Crear Gigs</h1>
+						<h1 class="modal-title fs-5" id="staticBackdropLabel">{{ titulo }}</h1>
 						<button type="button" class="btn-close my-1" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
-					<form action="" onsubmit="return false" v-on:change=actualizargig()>
+					<form v-on:submit.prevent=crearGig() v-on:change=actualizargig()>
 						<div class="border-bottom">
 							<div class="input-group">
 								<input id="fotosGigs" class="form-control w-75" type="file" placeholder="imagen"
-									accept="image/png, image/jpeg" v-on:change=verImagenes() multiple size="3">
+									accept="image/png, image/jpeg" v-on:change=verImagenes() multiple>
 								<span class="btn btn-outline-info" v-on:click=inicializarVitrina()>
 									<i class="bi bi-stars"></i>
 								</span>
@@ -51,19 +51,20 @@
 						<div class="row justify-content-between my-2 border-bottom">
 							<div class="col-lg text-center">
 								<p class="">Preview de Gig</p>
-								<fichaGig class="m-auto mb-2" id="gigprevia" v-bind="gigTest" :fotoUsuario=usuario.profileImage	:nombreUsuario=usuario.nickname />
+								<fichaGig class="m-auto mb-2" id="gigprevia" v-bind="gigTest"
+									:fotoUsuario=usuario.profileImage :nombreUsuario=usuario.nickname />
 							</div>
 							<div class="col-lg my-1">
 								<label for="tituloGig" class="form-label">Titulo del Servicio</label>
-								<input id="tituloGig" type="text" class="form-control" placeholder="Titulo del gig"
-									v-on:keyup=actualizargig()>
+								<input id="tituloGig" type="text" class="form-control form-control"
+									placeholder="Titulo del gig" v-on:keyup=actualizargig() required>
 								<div class="my-1">
 									<label for="valorGig" class="form-label">Costo del servicio</label>
 									<div class="input-group">
 										<span class="input-group-text">$ USD</span>
-										<input id="valorGig" type="number" class="form-control"
+										<input id="valorGig" type="number" class="form-control form-control"
 											aria-label="Costo en dolares" step="0.1" min="1"
-											placeholder="Valor del servicio" v-on:keyup=actualizargig()>
+											placeholder="Valor del servicio" v-on:keyup=actualizargig() required>
 									</div>
 								</div>
 								<label for="descripcionGig" class="form-label">Descripcion del servicio</label>
@@ -72,12 +73,11 @@
 						</div>
 						<div class="row justify-content-center">
 							<div class="col-lg m-auto">
-
 								<div class="my-1">
 									<label for="tentregaGigs" class="form-label">Tiempo de entrega</label>
-									<select id="tentregaGigs" class="form-select text-center"
-										aria-label="Default select example">
-										<option selected value="1">1 Dia</option>
+									<select id="tentregaGigs" class="form-select text-center" required>
+										<option selected disabled value="">-</option>
+										<option value="1">1 Dia</option>
 										<option value="3">3 Dias</option>
 										<option value="7">1 Semana</option>
 										<option value="21">3 Semanas</option>
@@ -86,9 +86,9 @@
 								</div>
 								<div class="my-1">
 									<label for="tentregaGigs" class="form-label">Numero de revisiones</label>
-									<select id="tentregaGigs" class="form-select text-center"
-										aria-label="Default select example">
-										<option value="1" selected>1 [Obligatorio]</option>
+									<select id="tentregaGigs" class="form-select text-center" required>
+										<option selected disabled value="">-</option>
+										<option value="1">1</option>
 										<option value="2">2</option>
 										<option value="3">3</option>
 										<option value="4">4</option>
@@ -101,8 +101,8 @@
 										<span class="input-group-text">
 											<i class="bi bi-hash"></i>
 										</span>
-										<input id="valorGig" type="number" class="form-control" step="1" min="0"
-											placeholder="Cantidad">
+										<input id="valorGig" type="number" class="form-control form-control" step="1"
+											min="0" placeholder="Cantidad" required>
 									</div>
 								</div>
 							</div>
@@ -119,10 +119,8 @@
 								</button>
 							</div>
 							<div class="w-75 p-1">
-								<button type="submit" class="w-100 btn btn-outline-primary text-nowrap"
-									data-bs-dismiss="modal">
-									Guardar
-									<i class="bi bi-save"></i>
+								<button type="submit" class="w-100 btn btn-outline-primary text-nowrap">Guardar<i
+										class="bi bi-save"></i>
 								</button>
 							</div>
 						</div>
@@ -216,12 +214,13 @@ export default {
 				this.inicializarVitrina()
 			}
 		},
-		crearGigi(){
+		crearGig() {
 			console.log("crear gig")
 		}
 	},
 	props: {
 		usuario: Object,
+		titulo: String,
 	},
 	data: () => ({
 		defaultImg: "https://res.cloudinary.com/djc2oc9nr/image/upload/v1699075889/default_dtguag.png",
