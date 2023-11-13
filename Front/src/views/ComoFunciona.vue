@@ -55,9 +55,10 @@
 							¡Anuncia los trabajos que quieras!
 						</p>
 						<p class="text-justify fs-4 fw-light">
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. At eligendi alias ipsam non pariatur
-							natus libero exercitationem officia eos et sunt, sapiente unde quisquam, dolorem illo corrupti
-							nulla quibusdam! Dignissimos.
+							Anuncaia tus trabajos para obtener mejor visibilidad de tus trabajos.
+							Tus anuncios serán vistos primero.
+							Si tus anuncios son vistos primero te da la posibilidad de tener mejores
+							ofertas
 						</p>
 						<router-link class="btn router-link w-100" type="button" to="/buscar" style="background-color: rgba(58, 58, 58, 0.4);">
 							Busca Talento
@@ -92,9 +93,8 @@
 							Presta tu servicios a quien lo requiera
 						</p>
 						<p class="text-justify fs-4 fw-light">
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. At eligendi alias ipsam non pariatur
-							natus libero exercitationem officia eos et sunt, sapiente unde quisquam, dolorem illo corrupti
-							nulla quibusdam! Dignissimos.
+							Con italento puedes prestar tus servicios a quienes requieras,
+							ten en cuenta que si prestas un servicio es bajo tu responsabilidad.
 						</p>
 						<router-link class="btn router-link w-100" type="button" to="/registro" style="background-color: rgba(58, 58, 58, 0.4);">
 								Registrate
