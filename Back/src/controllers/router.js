@@ -21,16 +21,14 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 /************************ Metodos *******************************/
 //Usuario
-	//all
 router.get(		'/usr/all', 							usuario.getAllUsers);
 
 router.post(	'/usr/new',			urlencodedParser,	usuario.createUser);
 router.put(		'/usr/edit/:id',	urlencodedParser,	usuario.updateUser);
-router.delete(	'/usr/delete/:id',						usuario.deleteUser);
+router.delete(	'/usr/delete/:id',						usuario.deleteUser);	//No verificado
 router.get(		'/usr/:id',								usuario.getUserById);
 
 //Gig
-	//all
 router.get(		'/gig/all',								gig.getAllGigs);
 router.get(		'/gig/usr/:id',							gig.getGigByUser);
 router.get(		'/gig/cat/:id',							gig.getAllGigsByCategory);
@@ -41,7 +39,6 @@ router.delete(	'/gig/delete:id',						gig.deleteGig);
 router.get(		'/gig/:id',								gig.getGigById);
 
 //Categorias
-	//all
 router.get(		'/cat/all',								categoria.getAllCategories);
 //router.get(	'/cat/usr/:id',							categoria.getAllCategoriesByUser);
 //router.get(	'/cat/gig/:id',							categoria.getAllCategoriesByGig);
@@ -53,7 +50,6 @@ router.delete(	'/cat/delete:id',						categoria.deleteCategory);
 router.get(		'/cat/:id',								categoria.getCategoryById);
 
 //Orden
-	//all
 //router.get(	'/odr/usr/:id',							orden.getAllOrdersByUser);
 //router.get(	'/odr/gig/:id',							orden.getAllOrdersByGig);
 

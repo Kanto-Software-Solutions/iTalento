@@ -4,7 +4,7 @@
 		<div class="card m-2">
 			<div class="card-header text-center">
 				<h4>
-					Terminos y condiciones i Talento
+					Terminos y condiciones iTalento
 				</h4>
 			</div>
 			<div class="card-body">

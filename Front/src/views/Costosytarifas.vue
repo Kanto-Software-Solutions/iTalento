@@ -11,11 +11,10 @@
 					<div class="col">
 						<h5 class="card-title">Tarifas</h5>
 						<p class="card-text">
-							Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe fuga iste eum veniam officiis
-							consectetur ipsa atque explicabo voluptatibus nostrum rem suscipit excepturi illum perspiciatis
-							nobis reiciendis ut, quam dolorum. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-							Magnam perspiciatis dignissimos ipsa nihil ut eum porro esse, recusandae molestias beatae iste.
-							Architecto culpa temporibus dignissimos odit, ex magni repellat nostrum!
+							Te invitamos a conocer nuestras tairfas de publicidad.
+							Los costos varian dependiendo del plan. Cada plan incluye un tipo de publicidad e incluye
+							la capacidad de tener más alcance con tus gigs. También incluye atención prioritaria en el
+							soporte de la aplicación.
 						</p>
 					</div>
 				</div>
@@ -76,7 +75,7 @@
 					</div>
 				</div>
 			</div>
-			<tablaCostos></tablaCostos>
+			<tablaCostos v-if="false"></tablaCostos>
 			<div class="text-center m-1">
 				Adicional puede revisar los:
 				<router-link to="/tyc">Terminos y condiciones</router-link>

@@ -9,7 +9,6 @@ export default {
 	usertoDB,
 	generica,
 	getSesion,
-	verificarTYC,
 	getCategorias,
 	getCategoria,
 	getPublicaciones,
@@ -69,17 +68,13 @@ async function holaMundo() {
 	console.log("Hola Mundo");
 }
 async function generica() {
-	let arreglo = [];
 	try {
 		const response = await axios.get(url + "/");
-		arreglo = response.data.results;
-		/*
-		*	Codigo personalizado para cada request
-		*	Cambiar el get según corresponda
-		*
-		*
-		*/
-		return arreglo;
+		if (response.data) {
+			return true;
+		} else {
+			return false;
+		}
 	} catch (error) {
 		//Pagina de error
 		console.log(error.status);
@@ -106,9 +101,6 @@ async function getSesion() {
 		router.push('/error/' + status);
 	}
 }
-async function verificarTYC() {
-
-}
 //Categorias
 async function getCategorias() {
 	let arreglo = [];
@@ -116,8 +108,8 @@ async function getCategorias() {
 		const response = await axios.get(url + "/cat/all");
 		arreglo = response.data.results;
 		arreglo.forEach(element => {
-			if (element.contenido == null) {
-				element.contenido = "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+			if (element.descripcion == null) {
+				element.descripcion = "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 			}
 			if (element.imgUrl == null) {
 				element.imgUrl = "./assets/default.png";
@@ -152,6 +144,7 @@ async function editarPublicacion(publicacion) {
 async function eliminarPublicacion(id) {
 
 }
+
 //Ordenes
 async function getOrdenes(idUsuario) {
 
@@ -230,7 +223,24 @@ async function editarUsuario(usuario) {
 	}
 }
 async function eliminarUsuario(id) {
-
+	let arreglo = [];
+	try {
+		const response = await axios.delete(url + "/usr/delete/"+id);
+		if (response.data) {
+			return true;
+		} else {
+			console.log("ERROR: Eliminando usuario");
+			return false;
+		}
+	} catch (error) {
+		//Pagina de error
+		console.log(error.status);
+		let status = error.message;
+		if (error.response) {
+			status = error.response.status + " " + error.response.statusText;
+		}
+		router.push('/error/' + status);
+	}
 }
 async function validarNickname(nick) {
 	try {
