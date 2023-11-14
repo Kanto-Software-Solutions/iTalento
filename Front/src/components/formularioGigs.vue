@@ -12,7 +12,7 @@
 						<div class="border-bottom">
 							<div class="input-group">
 								<input id="fotosGigs" class="form-control w-75" type="file" placeholder="imagen"
-									accept="image/png, image/jpeg" v-on:change=verImagenes() multiple>
+									accept="image/png, image/jpeg" v-on:change=verImagenes() multiple required>
 								<span class="btn btn-outline-info" v-on:click=inicializarVitrina()>
 									<i class="bi bi-stars"></i>
 								</span>
@@ -85,8 +85,8 @@
 									</select>
 								</div>
 								<div class="my-1">
-									<label for="tentregaGigs" class="form-label">Numero de revisiones</label>
-									<select id="tentregaGigs" class="form-select text-center" required>
+									<label for="nRevisionesGigs" class="form-label">Numero de revisiones</label>
+									<select id="nRevisionesGigs" class="form-select text-center" required>
 										<option selected disabled value="">-</option>
 										<option value="1">1</option>
 										<option value="2">2</option>
@@ -101,7 +101,7 @@
 										<span class="input-group-text">
 											<i class="bi bi-hash"></i>
 										</span>
-										<input id="valorGig" type="number" class="form-control form-control" step="1"
+										<input id="nproductosGig" type="number" class="form-control form-control" step="1"
 											min="0" placeholder="Cantidad" required>
 									</div>
 								</div>
@@ -215,7 +215,21 @@ export default {
 			}
 		},
 		crearGig() {
+			//Falta validacion para categorias
 			console.log("crear gig")
+			this.datosGigs = {
+				user:			JSON.parse(localStorage.getItem('sesion')).sub.split('|')[1],
+				titulo: 		document.getElementById("tituloGig").value,
+				descripcion:	document.getElementById("descripcionGig").value,
+				costo:			parseFloat(document.getElementById("valorGig").value),
+				tiempoEntrega:	parseInt(document.getElementById("tentregaGigs").value),
+				revisiones:		parseInt(document.getElementById("nRevisionesGigs").value),
+				cantidad:		parseInt(document.getElementById("nproductosGig").value),
+				//categorias:		document.getElementById("giglistacat").value,
+				imagenes:		this.imagennesPreview,
+				portada:		this.portada,
+			}
+			console.log(this.datosGigs);
 		}
 	},
 	props: {
@@ -223,6 +237,7 @@ export default {
 		titulo: String,
 	},
 	data: () => ({
+		datosGigs:{},
 		defaultImg: "https://res.cloudinary.com/djc2oc9nr/image/upload/v1699075889/default_dtguag.png",
 		gigTest: {
 			idx: "test",
