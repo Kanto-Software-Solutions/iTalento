@@ -55,7 +55,7 @@
 							¡Anuncia los trabajos que quieras!
 						</p>
 						<p class="text-justify fs-4 fw-light">
-							Eres un programador?, diseñador?, escritor?, traductor?, no importa!, en iTalento siempre encontrarás
+							¿Eres un programador?, ¿diseñador?, ¿escritor?, ¿traductor?, ¡no importa!, en iTalento siempre encontrarás
 							a alguien que necesite tus habilidades para completar sus proyectos, publica tus habilidades y tu trabajo ideal
 							y espera a que las ofertas lluevan!.
 						</p>
@@ -96,7 +96,7 @@
 							que cumplas con los criterios de calidad que esperamos de un trabajor ideal, a tu ritmo.
 						</p>
 						<a class="btn router-link w-100" type="button" style="background-color: rgba(58, 58, 58, 0.4);" href="/login">
-								Registrate
+								Regístrate
 							</a>
 					</div>
 				</div>
