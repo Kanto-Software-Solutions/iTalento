@@ -107,7 +107,7 @@
 								</div>
 							</div>
 							<div class="col-lg">
-								<selecCategorias catohab="categorias" :esmodal=false :selCantidad=3 idx="gigCategoria"
+								<selecCategorias catohab="categorias" :esmodal=false :selCantidad=1 idx="gigCategoria"
 									idy="giglistacat" />
 							</div>
 						</div>
