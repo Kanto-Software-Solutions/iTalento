@@ -21,6 +21,7 @@ exports.getCategoryById = (req, res) => {
 			}
 		});
 };
+;
 
 exports.createCategory = (req, res) => {
 	conexion.query("INSERT INTO Category (name) values ( " + req.body.name + " )", (error, results) => {
@@ -44,3 +45,14 @@ exports.deleteCategory = (req, res) => {
 		}
 	});
 }
+
+
+exports.updateCategory = (req, res) => {
+	conexion.query("update  Category (name) set values ( " + req.body.name + " )", (error, results) => {
+		if (error) {
+			console.log(error);
+		} else {
+			res.json({ results: results });
+		}
+	});
+};
