@@ -57,3 +57,25 @@ exports.getOrderById = (req,res) => {
 		}
 	});
 };
+
+exports.getAllOrdersByUser = (req,res) => {
+	const idUser = req.body.idUser;
+	conexion.query("SELECT * FROM Order WHERE idUser = " + idUser, (error,results) => {
+		if(error){
+			console.log(error);
+		}else{
+			res.json({results:results});
+		}
+	});
+};
+
+exports.getAllOrdersByGig = (req,res) => {
+	const idGig = req.body.idGig;
+	conexion.query("SELECT * FROM Order WHERE idGig = " + idGig, (error,results) => {
+		if(error){
+			console.log(error);
+		}else{
+			res.json({results:results});
+		}
+	});
+};
