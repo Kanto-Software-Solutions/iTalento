@@ -88,6 +88,13 @@
 			"En Kanto Software Solutions siempre estamos buscando más talento para ayudarnos a cumplir nuestra misión de servir y proveer a latinoamerica, si quieres ayudarnos en esta
 			gran labor, te invitamos a escribirnos por LinkedIn con tu hoja de vida para que encontremos un trabajo para tí!."
 		</p>
+	</div >
+		
+	<div >
+		<h4 class="card-body d-flex justify-content-center">
+			Misión
+
+		</h4>
 	</div>
 </template>
 <script>
