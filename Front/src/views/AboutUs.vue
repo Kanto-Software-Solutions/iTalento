@@ -93,7 +93,20 @@
 	<div >
 		<h4 class="card-body d-flex justify-content-center">
 			Misión
-
+		</h4>
+		<p class="text-center">
+			Con nuestra plataforma en línea buscamos potenciar a los freelancers latinoamericanos brindando el espacio accesible y asequible para ofertar su trabajo y experiencia en línea.
+		</p>
+		<h4 class="card-body d-flex justify-content-center">
+			Visión
+		</h4>
+		<p class="text-center">
+			Para el 2028 lograremos una cuota de mercado del 20%, posicionándonos entre las principales plataformas de freelance.
+		</p>
+	</div>
+	<div >
+		<h4 class="card-body d-flex justify-content-center">
+		Talento latinoamericano para el mundo.
 		</h4>
 	</div>
 </template>
