@@ -23,54 +23,16 @@
 				<div class="col">
 					<div class="card mb-4 rounded-3 shadow-sm">
 						<div class="card-header py-3">
-							<h4 class="my-0 fw-normal">Free</h4>
+							<h4 class="my-0 fw-normal">Gratis</h4>
 						</div>
 						<div class="card-body">
-							<h1 class="card-title ">$0<small
-									class="text-body-secondary fw-light">/mo</small></h1>
+							<h1 class="card-title ">Gratis</h1>
 							<ul class="list-unstyled mt-3 mb-4">
-								<li>10 users included</li>
-								<li>2 GB of storage</li>
-								<li>Email support</li>
-								<li>Help center access</li>
+								<li>15% de Comisión por trabajo</li>
+								<li>Acceso a Soporte</li>
+								<li>Garantías de Pago</li>
 							</ul>
-							<button type="button" class="w-100 btn btn-lg btn-primary">Sign up for free</button>
-						</div>
-					</div>
-				</div>
-				<div class="col">
-					<div class="card mb-4 rounded-3 shadow-sm">
-						<div class="card-header py-3">
-							<h4 class="my-0 fw-normal">Pro</h4>
-						</div>
-						<div class="card-body">
-							<h1 class="card-title pricing-card-title">$15<small
-									class="text-body-secondary fw-light">/mo</small></h1>
-							<ul class="list-unstyled mt-3 mb-4">
-								<li>20 users included</li>
-								<li>10 GB of storage</li>
-								<li>Priority email support</li>
-								<li>Help center access</li>
-							</ul>
-							<button type="button" class="w-100 btn btn-lg btn-primary">Get started</button>
-						</div>
-					</div>
-				</div>
-				<div class="col">
-					<div class="card mb-4 rounded-3 shadow-sm border-primary">
-						<div class="card-header py-3 text-bg-primary border-primary">
-							<h4 class="my-0 fw-normal">Enterprise</h4>
-						</div>
-						<div class="card-body">
-							<h1 class="card-title pricing-card-title">$29<small
-									class="text-body-secondary fw-light">/mo</small></h1>
-							<ul class="list-unstyled mt-3 mb-4">
-								<li>30 users included</li>
-								<li>15 GB of storage</li>
-								<li>Phone and email support</li>
-								<li>Help center access</li>
-							</ul>
-							<button type="button" class="w-100 btn btn-lg btn-primary">Contact us</button>
+							<button type="button" class="w-100 btn btn-lg btn-primary">Regístrate</button>
 						</div>
 					</div>
 				</div>
@@ -78,7 +40,7 @@
 			<tablaCostos v-if="false"></tablaCostos>
 			<div class="text-center m-1">
 				Adicional puede revisar los:
-				<router-link to="/tyc">Terminos y condiciones</router-link>
+				<router-link to="/tyc">Términos y Condiciones</router-link>
 			</div>
 		</div>
 	</div>
