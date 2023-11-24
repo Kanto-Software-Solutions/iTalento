@@ -130,7 +130,25 @@ async function getCategoria(nombre) {
 }
 //Publicaciones
 async function getPublicaciones() {
+	let array = [];
 
+	try {
+		const response = await axios.get(url + "/gig/all");
+		array = response.data.results;
+		array.forEach(element => {
+			if (element.description == null) {
+				element.descripcion = "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+			}
+		});
+		return array;
+	} catch (error) {
+		console.log(error.status);
+		let status = error.message;
+		if (error.response) {
+			status = error.response.status + " " + error.response.statusText;
+		}
+		router.push('/error/' + status);
+	}
 }
 async function getPublicacion(id) {
 
