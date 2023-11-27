@@ -17,7 +17,7 @@
 				<div class="col-md">
 					<div class="row g-1">
 						<div class="col-sm">
-							<select class="form-select" aria-label="Categoria">
+							<select id="oCategory" class="form-select" aria-label="Categoria">
 								<option selected class="text-center" value="-1">Categoria</option>
 								<option v-for="(item, i) in categorias" class="text-center" :value=item.id>
 									{{ item.name }}
@@ -25,7 +25,7 @@
 							</select>
 						</div>
 						<div class="col-sm">
-							<select class="form-select" aria-label="Calificacion">
+							<select id="oRating" class="form-select" aria-label="Calificacion">
 								<option selected class="text-center" value="-1">Calificacion</option>
 								<option v-for="(item, i) in calificacion" class="text-center" :value=item.id>
 									{{ item.name }}
@@ -33,7 +33,7 @@
 							</select>
 						</div>
 						<div class="col-sm">
-							<select class="form-select" aria-label="Precio">
+							<select id="oPrice" class="form-select" aria-label="Precio">
 								<option selected class="text-center" value="-1">Precio</option>
 								<option v-for="(item, i) in precios" class="text-center" :value=item.id>
 									$ {{ item.name }}
@@ -43,7 +43,7 @@
 					</div>
 				</div>
 				<div class="col-md d-flex">
-					<input class="form-control me-1" type="search" placeholder="¿Que trabajo necesitas hoy?">
+					<input id="criterio" class="form-control me-1" type="search" placeholder="¿Que trabajo necesitas hoy?">
 					<button v-on:click.prevent="buscarGigs()" class="btn btn-outline-secondary">
 						<i class="bi bi-search"></i>
 					</button>
@@ -92,25 +92,30 @@ export default {
 		}
 	},
 	methods: {
+		test(){
+			console.log("asdf");
+		},
 		async buscarGigs() {
-		await datos.getPublicaciones().then((response) => {
-			if(response == undefined){
-				router.push('/error/Gig no Encontrado');
-			}else{
-				response.forEach(element => {
-					console.log(element);
-					/*
-					NOTA NO FUNCIONAL, TOCA SACAR LAS OPCIONES INCLUIDAS EN EL FRONT, ESTA ES LA LÓGICA SIMPLE DEL FILTRADO
-					if(element.name.match(option.busqueda) && element.categoria == option.categoria && element.precio <= option.precio){
-						this.gigs.concat([element]);
-					}else if(element.name.match(option.busqueda)){
-						this.gigs.concat([element]);
-					}else if(element.categoria == option.categoria){
-						this.gigs.concat([element]);
-					};*/ 
-				});
-			}	
-		});
+			console.log(document.getElementById("criterio").value);
+			console.log(document.getElementById("oRating").value);
+			await datos.getPublicaciones().then((response) => {
+				if(response == undefined){
+					router.push('/error/Gig no Encontrado');
+				}else{
+					response.forEach(element => {
+						console.log(element);
+						/*
+						NOTA NO FUNCIONAL, TOCA SACAR LAS OPCIONES INCLUIDAS EN EL FRONT, ESTA ES LA LÓGICA SIMPLE DEL FILTRADO
+						if(element.name.match(document.searchbyId("criterio").busqueda) && element.categoria == option.categoria && element.precio <= option.precio && element.rating <= Document.searchbyId("oRating")){
+							this.gigs.concat([element]);
+						}else if(element.name.match(option.busqueda)){
+							this.gigs.concat([element]);
+						}else if(element.categoria == option.categoria){
+							this.gigs.concat([element]);
+						};*/ 
+					});
+				}	
+			});
 		},
 	},
 	data: () => ({
