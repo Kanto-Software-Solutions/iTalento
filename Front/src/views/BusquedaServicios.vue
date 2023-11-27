@@ -2,7 +2,7 @@
 	<div id="busquedaPrincipales" class="container-xl d-none d-md-block">
 		<div class="row">
 			<div class="col d-flex jus" v-for="item in categorias">
-				<botonBusqueda onclick="buscarGigs()" class="h-100" :nombre=item.name />
+				<botonBusqueda class="h-100" :nombre=item.name />
 			</div>
 		</div>
 	</div>
@@ -44,9 +44,9 @@
 				</div>
 				<div class="col-md d-flex">
 					<input class="form-control me-1" type="search" placeholder="¿Que trabajo necesitas hoy?">
-					<router-link class="router-link btn btn-outline-secondary" to="/buscar">
+					<button v-on:click.prevent="buscarGigs()" class="btn btn-outline-secondary">
 						<i class="bi bi-search"></i>
-					</router-link>
+					</button>
 				</div>
 			</div>
 		</form>
@@ -85,12 +85,18 @@ export default {
 		fichaGig,
 		cargando,
 	},
-	methods:{
+	async created() {
+		let cat5 = await datos.getCategorias()
+		if(cat5){
+			this.categorias = cat5.slice(0, 5)
+		}
+	},
+	methods: {
 		async buscarGigs() {
-			await datos.getPublicaciones().then((response) => {
-				if(response = undefined){
-					router.push('/error/Gig no Encontrado')
-				}
+		await datos.getPublicaciones().then((response) => {
+			if(response == undefined){
+				router.push('/error/Gig no Encontrado');
+			}else{
 				response.forEach(element => {
 					console.log(element);
 					/*
@@ -103,14 +109,9 @@ export default {
 						this.gigs.concat([element]);
 					};*/ 
 				});
-			});
-		}
-	},
-	async created() {
-		let cat5 = await datos.getCategorias()
-		if(cat5){
-			this.categorias = cat5.slice(0, 5)
-		}
+			}	
+		});
+		},
 	},
 	data: () => ({
 		esCargando: false,
@@ -137,9 +138,6 @@ export default {
 			{ name: "★★★★★", id: 5 },
 		],
 	}),
-	methods: {
-
-	},
 }
 </script>
 <style></style>
