@@ -2,7 +2,7 @@
 	<div id="busquedaPrincipales" class="container-xl d-none d-md-block">
 		<div class="row">
 			<div class="col d-flex jus" v-for="item in categorias">
-				<botonBusqueda class="h-100" :nombre=item.name />
+				<botonBusqueda onclick="buscarGigs()" class="h-100" :nombre=item.name />
 			</div>
 		</div>
 	</div>
@@ -77,12 +77,34 @@ import fichaGig from '@/components/FichaGigs.vue'
 import cargando from '@/components/Cargando.vue'
 
 import datos from '@/dataManagment.js';
+import router from '@/router/Router';
 export default {
 	name: 'BusquedaServicios',
 	components: {
 		botonBusqueda,
 		fichaGig,
 		cargando,
+	},
+	methods:{
+		async buscarGigs() {
+			await datos.getPublicaciones().then((response) => {
+				if(response = undefined){
+					router.push('/error/Gig no Encontrado')
+				}
+				response.forEach(element => {
+					console.log(element);
+					/*
+					NOTA NO FUNCIONAL, TOCA SACAR LAS OPCIONES INCLUIDAS EN EL FRONT, ESTA ES LA LÓGICA SIMPLE DEL FILTRADO
+					if(element.name.match(option.busqueda) && element.categoria == option.categoria && element.precio <= option.precio){
+						this.gigs.concat([element]);
+					}else if(element.name.match(option.busqueda)){
+						this.gigs.concat([element]);
+					}else if(element.categoria == option.categoria){
+						this.gigs.concat([element]);
+					};*/ 
+				});
+			});
+		}
 	},
 	async created() {
 		let cat5 = await datos.getCategorias()
