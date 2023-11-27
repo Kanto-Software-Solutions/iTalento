@@ -98,22 +98,24 @@ export default {
 		async buscarGigs() {
 			console.log(document.getElementById("criterio").value);
 			console.log(document.getElementById("oRating").value);
+			console.log(document.getElementById("oCategory").value);
+			console.log(document.getElementById("oPrice").value);
 			await datos.getPublicaciones().then((response) => {
 				if(response == undefined){
 					router.push('/error/Gig no Encontrado');
 				}else{
-					response.forEach(element => {
-						console.log(element);
-						/*
-						NOTA NO FUNCIONAL, TOCA SACAR LAS OPCIONES INCLUIDAS EN EL FRONT, ESTA ES LA LÓGICA SIMPLE DEL FILTRADO
-						if(element.name.match(document.searchbyId("criterio").busqueda) && element.categoria == option.categoria && element.precio <= option.precio && element.rating <= Document.searchbyId("oRating")){
+					/*response.forEach(element => {
+						if(document.searchbyId("criterio").value.length == 0){
+
+						}
+						if(element.name.match(document.searchbyId("criterio").value) && element.categoria == option.categoria && element.precio <= option.precio && element.rating <= Document.searchbyId("oRating")){
 							this.gigs.concat([element]);
 						}else if(element.name.match(option.busqueda)){
 							this.gigs.concat([element]);
 						}else if(element.categoria == option.categoria){
 							this.gigs.concat([element]);
-						};*/ 
-					});
+						};
+					});*/
 				}	
 			});
 		},
