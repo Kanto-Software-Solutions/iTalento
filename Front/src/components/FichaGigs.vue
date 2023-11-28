@@ -77,6 +77,9 @@ export default {
 			this.accion = accion;
 			this.estado = estado;
 		},
+		convertToMD5(costo){
+			var strHash = md5('4Vj8eK4rloUd272L48hsrarnUA'+'~'+'508029'+'~'+'TestPayU'+'~'+this.costo+'~'+'COP');
+		}
 	},
 }
 </script>
