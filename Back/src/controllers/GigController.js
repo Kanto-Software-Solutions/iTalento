@@ -35,11 +35,10 @@ exports.getGigByUser = (req, res) => {
 };
 
 exports.createGig = (req,res) =>{
-	const idGig = req.body.idGig;
-	const name = req.body.name;
-	const description = req.body.description;
+	const name = req.body.titulo;
+	const description = req.body.descripcion;
 	var createdAt = dayjs().format('YYYY-MM-DD HH:mm:ss');
-	const idCategory = req.body.idCategory;
+	//const idCategory = req.body.idCategory;
 	const idUser = req.body.idUser;
 	const price = req.body.price;
 	const deliveryDays = req.body.deliveryDays;
