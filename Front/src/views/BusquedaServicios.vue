@@ -64,7 +64,7 @@
 		</div>
 		<div v-else id="busquedaBuscar" class="text-center m-5 text-body-tertiary fw-light">
 			<h2>
-				Ingresa un criterio de busqueda
+				Ingresa un criterio de búsqueda
 			</h2>
 			<div class="spinner-grow m-2" style="width: 100px; height: 100px; animation-duration: 3s ;" role="status">
 			</div>
@@ -96,6 +96,7 @@ export default {
 			console.log("asdf");
 		},
 		async buscarGigs() {
+			this.gigs = []
 			console.log(document.getElementById("criterio").value);
 			console.log(document.getElementById("oRating").value);
 			console.log(document.getElementById("oCategory").value);
@@ -104,9 +105,11 @@ export default {
 				if(response == undefined){
 					router.push('/error/Gig no Encontrado');
 				}else{
-					/*response.forEach(element => {
-						if(document.searchbyId("criterio").value.length == 0){
-
+					response.forEach(element => {
+						this.gigs.concat([element]);
+						console.log(gigs);
+						/*if(document.searchbyId("criterio").value.length == 0){
+							
 						}
 						if(element.name.match(document.searchbyId("criterio").value) && element.categoria == option.categoria && element.precio <= option.precio && element.rating <= Document.searchbyId("oRating")){
 							this.gigs.concat([element]);
@@ -114,8 +117,8 @@ export default {
 							this.gigs.concat([element]);
 						}else if(element.categoria == option.categoria){
 							this.gigs.concat([element]);
-						};
-					});*/
+						};*/
+					});
 				}	
 			});
 		},
