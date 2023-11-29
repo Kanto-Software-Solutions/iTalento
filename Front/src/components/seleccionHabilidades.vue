@@ -128,6 +128,7 @@ export default {
 			}
 			if (this.habilidadesSeleccionadas.length == this.selCantidad) {
 				this.completasHabilidades = true
+				this.$emit('habSeleccionadas', this.habilidadesSeleccionadas)
 			} else {
 				this.completasHabilidades = false
 			}

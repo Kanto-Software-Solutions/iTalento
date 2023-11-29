@@ -46,7 +46,7 @@
 					</div>
 				</div>
 				<div class="row align-content-center">
-					<button id="fgigAccion" type="button" class="btn btn-secondary" :disabled=estado>
+					<button id="fgigAccion" type="button" class="btn btn-secondary" :disabled=estado v-on:click=test>
 						{{ accion }}
 					</button>
 				</div>
@@ -55,6 +55,7 @@
 	</div>
 </template>
 <script>
+import vista from '@/components/VistaGigis.vue'
 export default {
 	props: {
 		idx: String,
@@ -70,6 +71,12 @@ export default {
 		estado: Boolean,
 	},
 	methods: {
+		components: {
+			vista
+		},
+		test() {
+			console.log(this.idx);
+		},
 		actualizarValoresGig(titulo, imagenes, costo, accion, estado) {
 			this.titulo = titulo;
 			this.imagenes = imagenes;
@@ -77,8 +84,8 @@ export default {
 			this.accion = accion;
 			this.estado = estado;
 		},
-		convertToMD5(costo){
-			var strHash = md5('4Vj8eK4rloUd272L48hsrarnUA'+'~'+'508029'+'~'+'TestPayU'+'~'+this.costo+'~'+'COP');
+		convertToMD5(costo) {
+			var strHash = md5('4Vj8eK4rloUd272L48hsrarnUA' + '~' + '508029' + '~' + 'TestPayU' + '~' + this.costo + '~' + 'COP');
 		}
 	},
 }

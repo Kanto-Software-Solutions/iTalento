@@ -108,7 +108,7 @@
 							</div>
 							<div class="col-lg">
 								<selecCategorias catohab="categorias" :esmodal=false :selCantidad=1 idx="gigCategoria"
-									idy="giglistacat" />
+									idy="giglistacat" v-on:habSeleccionadas=saveHabilidades />
 							</div>
 						</div>
 						<div class="d-flex">
@@ -133,6 +133,7 @@
 <script>
 import fichaGig from '@/components/FichaGigs.vue';
 import selecCategorias from '@/components/seleccionHabilidades.vue';
+import datos from '../dataManagment.js';
 
 export default {
 	name: 'formularioGigs',
@@ -141,11 +142,15 @@ export default {
 		selecCategorias,
 	},
 	methods: {
+		saveHabilidades(habilidades) {
+			console.log(habilidades)
+			this.habilidadesSeleccionadas = habilidades
+		},
 		actualizargig() {
 			let titulo = document.getElementById("tituloGig").value
 			let costo = parseFloat(document.getElementById("valorGig").value)
 			let portada = this.portada
-			let imagenes = this.imagennesPreview
+			let imagenes = this.imagenesPreview
 			if (titulo == "") {
 				titulo = "Gig de prueba"
 			}
@@ -190,7 +195,7 @@ export default {
 			}
 			document.getElementById("fotosGigs").value = ""
 			this.preImagenes = []
-			this.imagennesPreview = []
+			this.imagenesPreview = []
 			this.portada = this.defaultImg
 			this.actualizargig()
 		},
@@ -209,27 +214,33 @@ export default {
 					vitrina[i].src = urlImg
 				}
 				this.portada = this.preImagenes[0]
-				this.imagennesPreview = this.preImagenes.slice(1)
+				this.imagenesPreview = this.preImagenes.slice(1)
 			} else {
 				this.inicializarVitrina()
 			}
 		},
 		crearGig() {
 			//Falta validacion para categorias
-			console.log("crear gig")
-			this.datosGigs = {
-				user:			JSON.parse(localStorage.getItem('sesion')).sub.split('|')[1],
-				titulo: 		document.getElementById("tituloGig").value,
-				descripcion:	document.getElementById("descripcionGig").value,
-				costo:			parseFloat(document.getElementById("valorGig").value),
-				tiempoEntrega:	parseInt(document.getElementById("tentregaGigs").value),
-				revisiones:		parseInt(document.getElementById("nRevisionesGigs").value),
-				cantidad:		parseInt(document.getElementById("nproductosGig").value),
-				//categorias:		document.getElementById("giglistacat").value,
-				imagenes:		this.imagennesPreview,
-				portada:		this.portada,
+			if (this.habilidadesSeleccionadas.length == 0) {
+				alert("Seleccione al menos una categoria")
+				return
+			} else {
+				console.log("crear gig")
+				console.log(JSON.parse(localStorage.getItem('sesion')).idUser)
+				this.datosGigs = {
+					idUser: JSON.parse(localStorage.getItem('sesion')).idUser,
+					titulo: document.getElementById("tituloGig").value,
+					descripcion: document.getElementById("descripcionGig").value,
+					costo: parseFloat(document.getElementById("valorGig").value),
+					tiempoEntrega: parseInt(document.getElementById("tentregaGigs").value),
+					revisiones: parseInt(document.getElementById("nRevisionesGigs").value),
+					cantidad: parseInt(document.getElementById("nproductosGig").value),
+					categoria: this.habilidadesSeleccionadas,
+					imagenes: this.imagenesPreview,
+					portada: this.portada,
+				}
+				datos.crearPublicacion(this.datosGigs)
 			}
-			console.log(this.datosGigs);
 		}
 	},
 	props: {
@@ -237,7 +248,8 @@ export default {
 		titulo: String,
 	},
 	data: () => ({
-		datosGigs:{},
+		datosGigs: {},
+		habilidadesSeleccionadas: [],
 		defaultImg: "https://res.cloudinary.com/djc2oc9nr/image/upload/v1699075889/default_dtguag.png",
 		gigTest: {
 			idx: "test",
@@ -253,7 +265,7 @@ export default {
 			nombreUsuario: "",
 		},
 		preImagenes: [],
-		imagennesPreview: [],
+		imagenesPreview: [],
 		portada: "",
 	}),
 }

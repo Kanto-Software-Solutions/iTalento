@@ -154,7 +154,23 @@ async function getPublicacion(id) {
 
 }
 async function crearPublicacion(publicacion) {
-
+	console.log(publicacion);
+	try {
+		const response = await axios.post(url + "/gig/new", publicacion);
+		if (response.data) {
+			return true;
+		} else {
+			return false;
+		}
+	} catch (error) {
+		//Pagina de error
+		console.log(error.status);
+		let status = error.message;
+		if (error.response) {
+			status = error.response.status + " " + error.response.statusText;
+		}
+		router.push('/error/' + status);
+	}
 }
 async function editarPublicacion(publicacion) {
 

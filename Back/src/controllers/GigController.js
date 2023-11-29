@@ -35,15 +35,17 @@ exports.getGigByUser = (req, res) => {
 };
 
 exports.createGig = (req,res) =>{
-	const name = req.body.titulo;
+	const idUser = req.body.idUser;
+	const titulo = req.body.titulo;
 	const description = req.body.descripcion;
 	var createdAt = dayjs().format('YYYY-MM-DD HH:mm:ss');
-	//const idCategory = req.body.idCategory;
-	const idUser = req.body.idUser;
-	const price = req.body.price;
-	const deliveryDays = req.body.deliveryDays;
-
-	conexion.query("INSERT INTO Gig (idGig, name, description,createdAt,idCategory,idUser,price,deliveryDays) VALUES ( '" + idGig + "' ,'" + name + "' ,'" + description + "' ,'" + createdAt + "' ,'" + idCategory + "' ,'" + idUser + "' ,'" + price + "' ,'" + deliveryDays + "' )", (error, results) => {
+	const idCategory = req.body.categoria[0];
+	const price = req.body.costo;
+	const deliveryDays = req.body.tiempoEntrega;
+	const revisiones = req.body.revisiones;
+	const cantidad = req.body.cantidad;
+	var cadena = "INSERT INTO `mydb`.`Gig` (`name`,`description`,`createdAt`,`idCategory`,`idUser`,`price`,`deliveryDays`,`revisiones`,`cantidad`) VALUES "
+	conexion.query( cadena + "('" + titulo + "' ,'" + description + "' ,'" + createdAt + "' ,'" + idCategory + "' ,'" + idUser + "' ,'" + price + "' ,'" + deliveryDays + "' ,'" + revisiones + "' ,'" + cantidad + "' )", (error, results) => {
 		if(error){
 			console.log(error);
 			res.sendStatus(400);
