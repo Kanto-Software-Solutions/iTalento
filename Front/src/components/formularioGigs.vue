@@ -143,7 +143,6 @@ export default {
 	},
 	methods: {
 		saveHabilidades(habilidades) {
-			console.log(habilidades)
 			this.habilidadesSeleccionadas = habilidades
 		},
 		actualizargig() {
@@ -225,8 +224,6 @@ export default {
 				alert("Seleccione al menos una categoria")
 				return
 			} else {
-				console.log("crear gig")
-				console.log(JSON.parse(localStorage.getItem('sesion')).idUser)
 				this.datosGigs = {
 					idUser: JSON.parse(localStorage.getItem('sesion')).idUser,
 					titulo: document.getElementById("tituloGig").value,

@@ -154,7 +154,6 @@ async function getPublicacion(id) {
 
 }
 async function crearPublicacion(publicacion) {
-	console.log(publicacion);
 	try {
 		const response = await axios.post(url + "/gig/new", publicacion);
 		if (response.data) {

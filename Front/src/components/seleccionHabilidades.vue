@@ -51,7 +51,6 @@ export default {
 		fetch("http://localhost:3000/cat/all")
 			.then(response => response.json())
 			.then(data => {
-				console.log(data.results);
 				this.habilidades = data.results
 			})
 	},
