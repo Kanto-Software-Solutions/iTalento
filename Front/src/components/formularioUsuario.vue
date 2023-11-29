@@ -178,6 +178,9 @@ export default {
 			}
 		},
 		async toBD() {
+			var myModalEl = document.getElementById('perfilEditar');
+			var modal = bootstrap.Modal.getInstance(myModalEl)
+			modal.hide();
 			try {
 				if (this.userdata.registrado) {
 					await datos.editarUsuario(this.userdata).then((res) => {

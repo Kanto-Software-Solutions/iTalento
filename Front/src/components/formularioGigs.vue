@@ -3,7 +3,8 @@
 		aria-labelledby="staticBackdropLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<div class="modal-body">
+				<cargando v-if=cargando />
+				<div v-if=!cargando class="modal-body">
 					<div class="justify-content-between d-flex mb-2">
 						<h1 class="modal-title fs-5" id="staticBackdropLabel">{{ titulo }}</h1>
 						<button type="button" class="btn-close my-1" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -134,12 +135,14 @@
 import fichaGig from '@/components/FichaGigs.vue';
 import selecCategorias from '@/components/seleccionHabilidades.vue';
 import datos from '../dataManagment.js';
+import cargando from './Cargando.vue';
 
 export default {
 	name: 'formularioGigs',
 	components: {
 		fichaGig,
 		selecCategorias,
+		cargando,
 	},
 	methods: {
 		saveHabilidades(habilidades) {
@@ -218,12 +221,37 @@ export default {
 				this.inicializarVitrina()
 			}
 		},
+		async toBD() {
+			var myModalEl = document.getElementById('perfilCrearGigs');
+			var modal = bootstrap.Modal.getInstance(myModalEl)
+			modal.hide();
+			try {
+				await datos.crearPublicacion(this.datosGigs).then((res) => {
+					this.cargando = false;
+					if (res == false) {
+						datos.notificacion("Error en la creacion, intente de nuevo.");
+					} else {
+						if (res.upload == true) {
+							datos.notificacion("¡Se ha creado el GIG!");
+						} else {
+							datos.notificacion("Se ha creado el GIG, pero hubo un error con las imagenes, por favor revisa la publicacion.");
+						}
+					}
+				})
+			} catch (error) {
+				this.cargando = false;
+				router.push('/error/500');
+				datos.notificacion("Error enviando informacion al servidor. Intente nuevamente");
+			}
+			this.inicializarVitrina()
+		},
 		crearGig() {
 			//Falta validacion para categorias
 			if (this.habilidadesSeleccionadas.length == 0) {
 				alert("Seleccione al menos una categoria")
 				return
 			} else {
+				this.cargando = true;
 				this.datosGigs = {
 					idUser: JSON.parse(localStorage.getItem('sesion')).idUser,
 					titulo: document.getElementById("tituloGig").value,
@@ -236,7 +264,7 @@ export default {
 					imagenes: this.imagenesPreview,
 					portada: this.portada,
 				}
-				datos.crearPublicacion(this.datosGigs)
+				setTimeout(this.toBD, 250)
 			}
 		}
 	},
@@ -245,6 +273,7 @@ export default {
 		titulo: String,
 	},
 	data: () => ({
+		cargando: false,
 		datosGigs: {},
 		habilidadesSeleccionadas: [],
 		defaultImg: "https://res.cloudinary.com/djc2oc9nr/image/upload/v1699075889/default_dtguag.png",
