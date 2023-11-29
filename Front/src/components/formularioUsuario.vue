@@ -172,7 +172,7 @@ export default {
 				this.userdata.cuentas.Github	= document.getElementById("fGitHub").value;
 				this.userdata.cuentas.Facebook	= document.getElementById("fFacebook").value;
 				this.userdata.cuentas.Instagram	= document.getElementById("fInstagram").value;
-				setTimeout(this.toBD,500)
+				setTimeout(this.toBD,250)
 			}else{
 				console.log("Usuario no disponible");
 			}
@@ -181,7 +181,6 @@ export default {
 			try {
 				if (this.userdata.registrado) {
 					await datos.editarUsuario(this.userdata).then((res) => {
-						console.log(res);
 						this.cargando = false;
 						if (res) {
 							datos.notificacion("¡Se ha actualizado el perfil!");
@@ -201,6 +200,7 @@ export default {
 					});
 				}
 			} catch (error) {
+				this.cargando = false;
 				router.push('/error/500');
 				datos.notificacion("Error enviando informacion al servidor. Intente nuevamente");
 			}
