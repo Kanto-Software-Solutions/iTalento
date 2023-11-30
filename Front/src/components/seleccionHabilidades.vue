@@ -48,7 +48,7 @@
 <script>
 export default {
 	beforeCreate() {
-		fetch("http://localhost:3000/cat/all")
+		fetch("http://italento.shop/cat/all")
 			.then(response => response.json())
 			.then(data => {
 				this.habilidades = data.results
