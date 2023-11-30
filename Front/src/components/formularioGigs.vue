@@ -201,11 +201,11 @@ export default {
 			this.portada = this.defaultImg
 			this.actualizargig()
 		},
-		valTamaño(){
+		valTamaño() {
 			const imagenes = document.getElementById("fotosGigs").files
 			for (let i = 0; i < imagenes.length; i++) {
-				if(imagenes[i].size > 10000000){
-					alert("El tamaño de las imagenes no puede superar los 10MB\n Imagen #"+(i+1)+" supera el tamaño permitido")
+				if (imagenes[i].size > 10000000) {
+					alert("El tamaño de las imagenes no puede superar los 10MB\n Imagen #" + (i + 1) + " supera el tamaño permitido")
 					document.getElementById("fotosGigs").value = ""
 					return false
 				}
@@ -217,7 +217,7 @@ export default {
 			const vitrina = document.getElementById("vitrina").getElementsByTagName("img")
 			document.getElementById("anuncioImagenes").style.display = "none"
 
-			if(!this.valTamaño()) return
+			if (!this.valTamaño()) return
 
 			this.preImagenes = []
 			if (event.target.files.length > 0) {
@@ -259,10 +259,11 @@ export default {
 			}
 			this.inicializarVitrina()
 		},
-		uploadCloud() {
+		async uploadCloud() {
 			const url = "https://api.cloudinary.com/v1_1/djc2oc9nr/image/upload";
 			const files = this.datosGigs.imagenes;
 			const formData = new FormData();
+			var datos = [];
 
 			for (let i = 0; i < files.length; i++) {
 				let file = files[i];
@@ -275,14 +276,13 @@ export default {
 				fetch(url, {
 					method: "POST",
 					body: formData
+				}).then((response) => {
+					datos.push(response.text());
 				})
-					.then((response) => {
-						return response.text();
-					})
 			}
+			return datos;
 		},
-		crearGig() {
-			//Falta validacion para categorias
+		async crearGig() {
 			if (this.habilidadesSeleccionadas.length == 0) {
 				alert("Seleccione al menos una categoria")
 				return
@@ -297,12 +297,11 @@ export default {
 					revisiones: parseInt(document.getElementById("nRevisionesGigs").value),
 					cantidad: parseInt(document.getElementById("nproductosGig").value),
 					categoria: this.habilidadesSeleccionadas,
-					imagenes: document.getElementById("fotosGigs").files ,
+					imagenes: document.getElementById("fotosGigs").files,
 				}
 				try {
-					this.uploadCloud().then((res) => {
-						console.log(res);
-					});
+					var imagenes = await this.uploadCloud()
+					console.log(imagenes)
 				} catch (error) {
 					console.log(error);
 				}

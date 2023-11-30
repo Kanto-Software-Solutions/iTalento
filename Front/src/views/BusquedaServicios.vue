@@ -107,25 +107,26 @@ export default {
 			await datos.getPublicaciones().then((nuevosgigs) => {
 				if (nuevosgigs == undefined) {
 					router.push('/error/Gig no Encontrado');
-				}else{
-					if(busqueda.length == 0 && rating < 0 && categoria < 0 && precio < 0){
-							nuevosgigs.forEach(gig => {
+				} else {
+					if (busqueda.length == 0 && rating < 0 && categoria < 0 && precio < 0) {
+						nuevosgigs.forEach(gig => {
 							console.log(gig);
 							this.gigs.push(gig);
 							console.log(this.gigs);
-							});
-						}else if(busqueda.length == 0){
-							console.log (nuevosgigs.filter(element =>{
-								element.calificacion === rating && element.costo >= precio;
-							}));
-						}
-						else {
-							console.log (nuevosgigs.filter(element =>{
-								element.calificacion === rating && element.costo >= precio && element.titulo.match(busqueda);
-							}));
-						}
+						});
+					} else if (busqueda.length == 0) {
+						console.log(nuevosgigs.filter(element => {
+							element.calificacion === rating && element.costo >= precio;
+						}));
 					}
-				});
+					else {
+						console.log(nuevosgigs.filter(element => {
+							element.calificacion === rating && element.costo >= precio && element.titulo.match(busqueda);
+						}));
+					}
+				}
+			});
+			this.esCargando = false;
 		},
 	},
 	data: () => ({
