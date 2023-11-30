@@ -110,24 +110,25 @@ export default {
 				}else{
 					if(busqueda.length == 0 && rating < 0 && categoria < 0 && precio < 0){
 							nuevosgigs.forEach(gig => {
-								console.log(gig);
 								this.gigs.push(gig);
-								console.log(this.gigs);
 							});
 						}else if(precio < 0){
-							console.log (nuevosgigs.filter(element =>{
+							var gig = (nuevosgigs.filter(element =>{
 								element.calificacion.length == rating;
 							}));
+							this.gigs.push(gig);
 						}
 						else if(busqueda.length == 0){
-							console.log (nuevosgigs.filter(element =>{
+							var gig = (nuevosgigs.filter(element =>{
 								element.calificacion.length == rating  && element.costo >= precio;
 							}));
+							this.gigs.push(gig);
 						}
 						else {
-							console.log (nuevosgigs.filter(element =>{
+							var gig = (nuevosgigs.filter(element =>{
 								element.calificacion.length == rating && element.costo >= precio && element.titulo.match(busqueda);
 							}));
+							this.gigs.push(gig);
 						}
 					}
 				});
