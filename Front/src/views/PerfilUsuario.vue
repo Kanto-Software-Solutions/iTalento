@@ -125,6 +125,12 @@ export default {
 				];
 			}
 		});
+		let idUser = JSON.parse(localStorage.getItem('sesion')).idUser;
+		await datos.getPublicacion(idUser).then((response) => {
+			response.forEach(gig =>{
+				this.gigs.push(gig);
+			});
+		});
 	},
 	data: () => ({
 		propio: false,

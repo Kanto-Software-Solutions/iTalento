@@ -11,6 +11,7 @@ const orden			= require('./OrderController');
 const resenia		= require('./ReviewController');
 const certificado	= require('./CertificateController');
 const lenguaje		= require('./LanguageController');
+const imagen        = require('./ImageController');
 const authCon		= require('./AuthController');
 const ban			= require('./ReportController');
 
@@ -26,7 +27,8 @@ router.get(		'/usr/all', 							usuario.getAllUsers);
 router.post(	'/usr/new',			urlencodedParser,	usuario.createUser);
 router.put(		'/usr/edit/:id',	urlencodedParser,	usuario.updateUser);
 router.delete(	'/usr/delete/:id',						usuario.deleteUser);	//No verificado
-router.get(		'/usr/:id',								usuario.getUserById);
+router.get(		'/usr/:id',								usuario.getUserByNick);
+router.get(		'/usr/id/:id',							usuario.getUserById);
 
 //Gig
 router.get(		'/gig/all',								gig.getAllGigs);
@@ -48,6 +50,10 @@ router.post(	'/cat/new',			urlencodedParser,	categoria.createCategory);
 //router.put(	'/cat/edit/:id',	urlencodedParser,	categoria.updateCategory);
 router.delete(	'/cat/delete:id',						categoria.deleteCategory);
 router.get(		'/cat/:id',								categoria.getCategoryById);
+
+//Imagen
+router.get(     '/imagen/all',                             imagen.getAllImages);
+router.get(     '/imagen/:idGig',                          imagen.getImageByGig);
 
 //Orden
 router.get(	'/odr/usr/:id',							orden.getAllOrdersByUser);

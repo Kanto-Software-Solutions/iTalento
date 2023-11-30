@@ -10,8 +10,19 @@ exports.getAllUsers = (req, res) => {
 	});
 };
 
-exports.getUserById = (req, res) => {
+exports.getUserByNick = (req, res) => {
 	conexion.query("SELECT * FROM User WHERE nickname = '" + req.params.id + "'", (error, results) => {
+		if (error) {
+			console.log(error);
+			res.json(error);
+		} else {
+			res.json({ results: results });
+		}
+	});
+};
+
+exports.getUserById= (req, res) => {
+	conexion.query("SELECT * FROM User WHERE idUser = '" + req.params.id + "'", (error, results) => {
 		if (error) {
 			console.log(error);
 			res.json(error);
