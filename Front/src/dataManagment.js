@@ -4,7 +4,6 @@ import router from "./router/Router.js";
 const url = 'http://localhost:3000';
 
 export default {
-	blobToBase64,
 	notificacion,
 	holaMundo,
 	usertoDB,
