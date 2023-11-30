@@ -29,7 +29,17 @@ exports.agregarimagenGig = (req, res) => {
 };
 
 exports.getImageByGig = (req, res) => {
-	conexion.query("SELECT * FROM Image WHERE gigId = " + req.params.id, (error, results) => {
+	conexion.query("SELECT * FROM mydb.Image WHERE idGig = " + req.params.idGig, (error, results) => {
+		if (error) {
+			console.log(error);
+		} else {
+			res.json({ results: results });
+		}
+	});
+};
+
+exports.getAllImages = (req, res) => {
+	conexion.query("SELECT * FROM mydb.Image", (error, results) => {
 		if (error) {
 			console.log(error);
 		} else {

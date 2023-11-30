@@ -97,22 +97,19 @@ export default {
 		},
 		async buscarGigs() {
 			this.gigs = []
-			console.log(document.getElementById("criterio").value);
-			console.log(document.getElementById("oRating").value);
-			console.log(document.getElementById("oCategory").value);
-			console.log(document.getElementById("oPrice").value);
-			await datos.getPublicaciones().then((response) => {
-				if(response == undefined){
+			await datos.getPublicaciones().then((nuevosgigs) => {
+				if(nuevosgigs == undefined){
 					router.push('/error/Gig no Encontrado');
 				}else{
 					if(document.getElementById("criterio").value.length == 0){
 						if(document.getElementById("oRating").value < 0){
 							if(document.getElementById("oCategory").value < 0){
 								if(document.getElementById("oPrice").value < 0){
-									response.forEach(element => {
-										this.gigs.concat([element]);
+									nuevosgigs.forEach(gig => {
+										console.log(gig);
+										this.gigs.push(gig);
 										console.log(this.gigs);
-									});
+									})
 								}
 							}
 						}
