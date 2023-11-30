@@ -101,7 +101,7 @@ export default {
 			this.esCargando = true;
 			this.gigs = []
 			var busqueda = document.getElementById("criterio").value;
-			var rating = document.getElementById("oRating").name;
+			var rating = document.getElementById("oRating").value;
 			var categoria = document.getElementById("oCategory").value;
 			var precio = document.getElementById("oPrice").value;
 			await datos.getPublicaciones().then((nuevosgigs) => {
@@ -110,22 +110,28 @@ export default {
 				}else{
 					if(busqueda.length == 0 && rating < 0 && categoria < 0 && precio < 0){
 							nuevosgigs.forEach(gig => {
-							console.log(gig);
-							this.gigs.push(gig);
-							console.log(this.gigs);
+								console.log(gig);
+								this.gigs.push(gig);
+								console.log(this.gigs);
 							});
-						}else if(busqueda.length == 0){
+						}else if(precio < 0){
 							console.log (nuevosgigs.filter(element =>{
-								element.calificacion === rating && element.costo >= precio;
+								element.calificacion.length == rating;
+							}));
+						}
+						else if(busqueda.length == 0){
+							console.log (nuevosgigs.filter(element =>{
+								element.calificacion.length == rating  && element.costo >= precio;
 							}));
 						}
 						else {
 							console.log (nuevosgigs.filter(element =>{
-								element.calificacion === rating && element.costo >= precio && element.titulo.match(busqueda);
+								element.calificacion.length == rating && element.costo >= precio && element.titulo.match(busqueda);
 							}));
 						}
 					}
 				});
+			this.esCargando = false;
 		},
 	},
 	data: () => ({
