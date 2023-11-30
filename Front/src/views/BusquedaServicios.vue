@@ -105,11 +105,31 @@ export default {
 				if(response == undefined){
 					router.push('/error/Gig no Encontrado');
 				}else{
-					response.forEach(element => {
-						this.gigs.concat([element]);
-						console.log(gigs);
-						/*if(document.searchbyId("criterio").value.length == 0){
-							
+					if(document.getElementById("criterio").value.length == 0){
+						if(document.getElementById("oRating").value < 0){
+							if(document.getElementById("oCategory").value < 0){
+								if(document.getElementById("oPrice").value < 0){
+									response.forEach(element => {
+										this.gigs.concat([element]);
+										console.log(this.gigs);
+									});
+								}
+							}
+						}
+					}
+				}
+					//response.forEach(element => {
+						//console.log(element);
+						//console.log(this.gigs);
+						/*if(document.getElementById("criterio").value.length == 0){
+							if(document.getElementById("oRating").value) < 0{
+								if(document.getElementById("oCategory").value < 0){
+									if(document.getElementById("oPrice").value < 0){
+
+									}
+								}
+							}
+
 						}
 						if(element.name.match(document.searchbyId("criterio").value) && element.categoria == option.categoria && element.precio <= option.precio && element.rating <= Document.searchbyId("oRating")){
 							this.gigs.concat([element]);
@@ -118,9 +138,7 @@ export default {
 						}else if(element.categoria == option.categoria){
 							this.gigs.concat([element]);
 						};*/
-					});
-				}	
-			});
+				});
 		},
 	},
 	data: () => ({
