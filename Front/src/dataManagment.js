@@ -22,6 +22,10 @@ export default {
 	editarOrden,
 	terminarOrden,
 	getUsuario,
+	getUsuarioId,
+	recuperarDatos,
+	conversionGig,
+	getImages,
 	crearUsuario,
 	editarUsuario,
 	eliminarUsuario,
@@ -129,14 +133,105 @@ async function getCategoria(nombre) {
 
 }
 //Publicaciones
-async function getPublicaciones() {
+function conversionGig(gig, user, images){
 
+	let cover = "https://res.cloudinary.com/djc2oc9nr/image/upload/v1699075889/default_dtguag.png";
+
+	images.forEach(img => {
+		if(img.portada == 1){
+			cover = img.url;
+		}
+	});
+
+	let state = 0;
+
+	let datos = {
+		idx: gig.idGig,
+		ida: '#' + gig.idGig,
+		titulo: gig.name,
+		portada: cover,
+		imagenes: images,
+		fotoUsuario: user[0].profileImage,
+		nombreUsuario: user[0].nickname,
+		calificacion: "★★★",
+		categoria: gig.idCategory,
+		costo: gig.price,
+		accion: "Editar",
+		estado: state,
+		descripcion: gig.description,
+		delivery: gig.deliveryDays,
+		revisiones: gig.revisiones,
+		cantidad: gig.cantidad,
+	}
+	return datos;
 }
-async function getPublicacion(id) {
 
+async function getPublicaciones() {
+	let array = [];
+	let nuevosgigs = [];
+
+	var elemento;
+
+	try {
+		const response = await axios.get(url + "/gig/all");
+		array = response.data.results;
+
+		for(var i=0; i < array.length; i++){
+			elemento = await recuperarDatos(array[i]);
+			nuevosgigs.push(elemento);
+		}
+		return nuevosgigs;
+	
+	}catch (error) {
+		console.log(error.status);
+		let status = error.message;
+		if (error.response) {
+			status = error.response.status + " " + error.response.statusText;
+		}
+		router.push('/error/' + status);
+	}
+}
+async function recuperarDatos(elemento){
+	let user =  await getUsuarioId(elemento.idUser);
+			
+	let images =  await getImages(elemento.idGig);
+
+	let element = conversionGig(elemento, user, images);
+
+	return element
+}
+
+async function getPublicacion(id) {
+	let array = [];
+	let nuevosgigs = [];
+
+	var elemento;
+		const response = await axios.get(url + "/gig/usr/" + id + '');
+		array = response.data.results;
+
+		for(var i=0; i < array.length; i++){
+			elemento = await recuperarDatos(array[i]);
+			nuevosgigs.push(elemento);
+		}
+		return nuevosgigs;
 }
 async function crearPublicacion(publicacion) {
-
+	try {
+		const response = await axios.post(url + "/gig/new", publicacion);
+		if (response.data) {
+			return response.data;
+		} else {
+			return false;
+		}
+	} catch (error) {
+		//Pagina de error
+		console.log(error.status);
+		let status = error.message;
+		if (error.response) {
+			status = error.response.status + " " + error.response.statusText;
+		}
+		router.push('/error/' + status);
+	}
 }
 async function editarPublicacion(publicacion) {
 
@@ -171,14 +266,32 @@ async function getUsuario(id) {
 		return arreglo;
 	} catch (error) {
 		//Pagina de error
-		console.log(error.status);
 		let status = error.message;
+		console.log(error.status);
 		if (error.response) {
 			status = error.response.status + " " + error.response.statusText;
 		}
 		router.push('/error/' + status);
 	}
 }
+
+async function getUsuarioId(id) {
+	let arreglo = [];
+	try {
+		const response = await axios.get(url + "/usr/id/" + id + "");
+		arreglo = response.data.results;
+		return arreglo;
+	} catch (error) {
+		//Pagina de error
+		let status = error.message;
+		console.log(error.status);
+		if (error.response) {
+			status = error.response.status + " " + error.response.statusText;
+		}
+		router.push('/error/' + status);
+	}
+}
+
 async function crearUsuario(usuario) {
 	usuario.recLevel = 0;
 	let datos = usertoDB(usuario)
@@ -204,7 +317,7 @@ async function editarUsuario(usuario) {
 	usuario.isVerified = JSON.parse(localStorage.getItem('sesion')).email_verified;
 	let datos = usertoDB(usuario)
 	try {
-		const response = await axios.put(url + "/usr/edit/" + JSON.parse(localStorage.getItem('sesion')).sub.split('|')[1] , datos);
+		const response = await axios.put(url + "/usr/edit/" + JSON.parse(localStorage.getItem('sesion')).sub.split('|')[1], datos);
 		if (response.data) {
 			return true;
 		} else {
@@ -225,7 +338,7 @@ async function editarUsuario(usuario) {
 async function eliminarUsuario(id) {
 	let arreglo = [];
 	try {
-		const response = await axios.delete(url + "/usr/delete/"+id);
+		const response = await axios.delete(url + "/usr/delete/" + id);
 		if (response.data) {
 			return true;
 		} else {
@@ -254,4 +367,23 @@ async function validarNickname(nick) {
 		}
 		router.push('/error/' + status);
 	}
+}
+
+async function getImages(gigId){
+	try {
+		const response = await axios.get(url + "/imagen/" + gigId + "");
+		return response.data.results;
+	} catch (error) {
+		//Pagina de error
+		let status = error.message;
+		console.log(error.status);
+		if (error.response) {
+			status = error.response.status + " " + error.response.statusText;
+		}
+		router.push('/error/' + status);
+	}
+}
+
+function getRandomInt(max) {
+	return Math.floor(Math.random() * max);
 }

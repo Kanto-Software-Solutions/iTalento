@@ -10,12 +10,14 @@ exports.myUsuario = (req, res) => {
 	if (estado) {
 		id = req.oidc.user.sub.split('|')[1];
 		sesion = req.oidc.user;
+		sesion.idUser = '';
 		conexion.query("CALL mydb.ValidarUsuario( '" + id + "');", (error, results) => {
 			if (error) {
 				console.log(error);
 				res.json(error);
 			} else {
 				if (results[0][0].val=='true') {
+					sesion.idUser = results[0][0].user_id;
 					registrado = true;
 				}
 				res.json({

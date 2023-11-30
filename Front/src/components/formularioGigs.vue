@@ -3,7 +3,8 @@
 		aria-labelledby="staticBackdropLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<div class="modal-body">
+				<cargando v-if=cargando />
+				<div v-if=!cargando class="modal-body">
 					<div class="justify-content-between d-flex mb-2">
 						<h1 class="modal-title fs-5" id="staticBackdropLabel">{{ titulo }}</h1>
 						<button type="button" class="btn-close my-1" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -108,7 +109,7 @@
 							</div>
 							<div class="col-lg">
 								<selecCategorias catohab="categorias" :esmodal=false :selCantidad=1 idx="gigCategoria"
-									idy="giglistacat" />
+									idy="giglistacat" v-on:habSeleccionadas=saveHabilidades />
 							</div>
 						</div>
 						<div class="d-flex">
@@ -133,19 +134,25 @@
 <script>
 import fichaGig from '@/components/FichaGigs.vue';
 import selecCategorias from '@/components/seleccionHabilidades.vue';
+import datos from '../dataManagment.js';
+import cargando from './Cargando.vue';
 
 export default {
 	name: 'formularioGigs',
 	components: {
 		fichaGig,
 		selecCategorias,
+		cargando,
 	},
 	methods: {
+		saveHabilidades(habilidades) {
+			this.habilidadesSeleccionadas = habilidades
+		},
 		actualizargig() {
 			let titulo = document.getElementById("tituloGig").value
 			let costo = parseFloat(document.getElementById("valorGig").value)
 			let portada = this.portada
-			let imagenes = this.imagennesPreview
+			let imagenes = this.imagenesPreview
 			if (titulo == "") {
 				titulo = "Gig de prueba"
 			}
@@ -190,14 +197,28 @@ export default {
 			}
 			document.getElementById("fotosGigs").value = ""
 			this.preImagenes = []
-			this.imagennesPreview = []
+			this.imagenesPreview = []
 			this.portada = this.defaultImg
 			this.actualizargig()
+		},
+		valTamaño() {
+			const imagenes = document.getElementById("fotosGigs").files
+			for (let i = 0; i < imagenes.length; i++) {
+				if (imagenes[i].size > 10000000) {
+					alert("El tamaño de las imagenes no puede superar los 10MB\n Imagen #" + (i + 1) + " supera el tamaño permitido")
+					document.getElementById("fotosGigs").value = ""
+					return false
+				}
+			}
+			return true
 		},
 		verImagenes() {
 			if (this.verificarCantidadImagenes()) return
 			const vitrina = document.getElementById("vitrina").getElementsByTagName("img")
 			document.getElementById("anuncioImagenes").style.display = "none"
+
+			if (!this.valTamaño()) return
+
 			this.preImagenes = []
 			if (event.target.files.length > 0) {
 				for (let i = 0; i < vitrina.length; i++) {
@@ -209,27 +230,81 @@ export default {
 					vitrina[i].src = urlImg
 				}
 				this.portada = this.preImagenes[0]
-				this.imagennesPreview = this.preImagenes.slice(1)
+				this.imagenesPreview = this.preImagenes.slice(1)
 			} else {
 				this.inicializarVitrina()
 			}
 		},
-		crearGig() {
-			//Falta validacion para categorias
-			console.log("crear gig")
-			this.datosGigs = {
-				user:			JSON.parse(localStorage.getItem('sesion')).sub.split('|')[1],
-				titulo: 		document.getElementById("tituloGig").value,
-				descripcion:	document.getElementById("descripcionGig").value,
-				costo:			parseFloat(document.getElementById("valorGig").value),
-				tiempoEntrega:	parseInt(document.getElementById("tentregaGigs").value),
-				revisiones:		parseInt(document.getElementById("nRevisionesGigs").value),
-				cantidad:		parseInt(document.getElementById("nproductosGig").value),
-				//categorias:		document.getElementById("giglistacat").value,
-				imagenes:		this.imagennesPreview,
-				portada:		this.portada,
+		async toBD() {
+			var myModalEl = document.getElementById('perfilCrearGigs');
+			var modal = bootstrap.Modal.getInstance(myModalEl)
+			modal.hide();
+			try {
+				await datos.crearPublicacion(this.datosGigs).then((res) => {
+					this.cargando = false;
+					if (res == false) {
+						datos.notificacion("Error en la creacion, intente de nuevo.");
+					} else {
+						if (res.upload == true) {
+							datos.notificacion("¡Se ha creado el GIG!");
+						} else {
+							datos.notificacion("Se ha creado el GIG, pero hubo un error con las imagenes, por favor revisa la publicacion.");
+						}
+					}
+				})
+			} catch (error) {
+				this.cargando = false;
+				router.push('/error/500');
+				datos.notificacion("Error enviando informacion al servidor. Intente nuevamente");
 			}
-			console.log(this.datosGigs);
+			this.inicializarVitrina()
+		},
+		async uploadCloud() {
+			const url = "https://api.cloudinary.com/v1_1/djc2oc9nr/image/upload";
+			const files = this.datosGigs.imagenes;
+			const formData = new FormData();
+			var datos = [];
+
+			for (let i = 0; i < files.length; i++) {
+				let file = files[i];
+				formData.append("file", file);
+				formData.append("upload_preset", "usergig");
+				
+				await fetch(url, {
+					method: "POST",
+					body: formData
+				})
+				.then((res) => res.json())
+				.then((file) => { datos.push(file.secure_url)});
+			}
+			return datos;
+		},
+		async crearGig() {
+			if (this.habilidadesSeleccionadas.length == 0) {
+				alert("Seleccione al menos una categoria")
+				return
+			} else {
+				this.cargando = true;
+				this.datosGigs = {
+					idUser: JSON.parse(localStorage.getItem('sesion')).idUser,
+					titulo: document.getElementById("tituloGig").value,
+					descripcion: document.getElementById("descripcionGig").value,
+					costo: parseFloat(document.getElementById("valorGig").value),
+					tiempoEntrega: parseInt(document.getElementById("tentregaGigs").value),
+					revisiones: parseInt(document.getElementById("nRevisionesGigs").value),
+					cantidad: parseInt(document.getElementById("nproductosGig").value),
+					categoria: this.habilidadesSeleccionadas,
+					imagenes: document.getElementById("fotosGigs").files,
+				}
+				try {
+					var imagenes = await this.uploadCloud()
+					console.log(imagenes)
+				} catch (error) {
+					console.log(error);
+				}
+				this.datosGigs.imagenes = imagenes;
+				setTimeout(this.toBD, 250)
+			}
 		}
 	},
 	props: {
@@ -237,7 +312,9 @@ export default {
 		titulo: String,
 	},
 	data: () => ({
-		datosGigs:{},
+		cargando: false,
+		datosGigs: {},
+		habilidadesSeleccionadas: [],
 		defaultImg: "https://res.cloudinary.com/djc2oc9nr/image/upload/v1699075889/default_dtguag.png",
 		gigTest: {
 			idx: "test",
@@ -253,7 +330,7 @@ export default {
 			nombreUsuario: "",
 		},
 		preImagenes: [],
-		imagennesPreview: [],
+		imagenesPreview: [],
 		portada: "",
 	}),
 }

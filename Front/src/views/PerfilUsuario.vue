@@ -36,24 +36,27 @@
 								<i class="bi bi-plus-square"></i>
 							</button>
 						</div>
-						<div v-if=!cantidadGigs() id="perfilNoGigs" class="text-center m-5 text-body-tertiary fw-light">
-							<div v-if=propio>
-								<h2>
-									No tienes gigs publicados
-								</h2>
-								<h5 class="fst-italic text-decoration-underline" data-bs-toggle="modal"
-									data-bs-target="#perfilCrearGigs">
-									¡Crea tu primer gig!
-								</h5>
+						<cargando v-if=esCargando />
+						<div v-else>
+							<div v-if=!cantidadGigs() id="perfilNoGigs" class="text-center m-5 text-body-tertiary fw-light">
+								<div v-if=propio>
+									<h2>
+										No tienes gigs publicados
+									</h2>
+									<h5 class="fst-italic text-decoration-underline" data-bs-toggle="modal"
+										data-bs-target="#perfilCrearGigs">
+										¡Crea tu primer gig!
+									</h5>
+								</div>
+								<div v-if=!propio>
+									<h2>
+										¡{{ usuario.nickname }} no tiene gigs publicados!
+									</h2>
+								</div>
 							</div>
-							<div v-if=!propio>
-								<h2>
-									¡{{ usuario.nickname }} no tiene gigs publicados!
-								</h2>
+							<div v-else id="gigsPublicados" class="row g-0 m-1 overflow-visible justify-content-center">
+								<fichaGig class="col" v-for="g in gigs" v-bind="g" accion="Editar" />
 							</div>
-						</div>
-						<div v-else id="gigsPublicados" class="row g-0 m-1 overflow-visible justify-content-center">
-							<fichaGig class="col" v-for="g in gigs" v-bind="g" accion="Editar" />
 						</div>
 					</div>
 					<div class="tab-pane fade p-2" id="usuarioDescp" role="tabpanel" aria-labelledby="profile-tab"
@@ -83,12 +86,15 @@ import fichaGig from '@/components/FichaGigs.vue';
 import fgigs from '@/components/formularioGigs.vue';
 import datos from '@/dataManagment.js';
 import router from '@/router/Router.js';
+import cargando from '@/components/Cargando.vue';
+
 export default {
 	name: 'PerfilUsuario',
 	components: {
 		usuario,
 		fichaGig,
 		fgigs,
+		cargando,
 	},
 	async created() {
 		let nick = this.$route.params.nickname;
@@ -125,8 +131,12 @@ export default {
 				];
 			}
 		});
+		let idUser = JSON.parse(localStorage.getItem('sesion')).idUser;
+		await this.retornarGigs(idUser);
+		this.esCargando = false;
 	},
 	data: () => ({
+		esCargando: true,
 		propio: false,
 		usuario: {
 			acceptedTerms: "",
@@ -168,6 +178,13 @@ export default {
 		cantidadGigs() {
 			return this.gigs.length;
 		},
+		async retornarGigs(idUser) {
+			await datos.getPublicacion(idUser).then((response) => {
+				response.forEach(gig =>{
+					this.gigs.push(gig);
+				});
+			});
+		}
 	},
 }
 </script>

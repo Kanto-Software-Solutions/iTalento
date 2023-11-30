@@ -4,10 +4,10 @@
 			<div class="col position-relative" style="height:150px">
 					<img :src=pokemon alt="pkmn" class="position-absolute z-1 marg"
 						style="clip-path: circle(25px); height: 50px; bottom: 5%; right: 0%;">
-					<img :src=imagen alt="foto" class="position-absolute vertical-center" style="border-radius:50%; height: 120px;">
+					<img :src=imagen alt="foto" class="position-absolute vcenter" style="border-radius:50%; height: 120px;">
 			</div>
 			<div class="col position-relative">
-				<div class="vertical-center">
+				<div class="vcenter">
 					<h5>{{ nombre }}</h5>
 					<div>
 						<a :href=linkedin class="text-decoration-none" target="_blank" rel="noopener noreferrer">
@@ -40,7 +40,7 @@ export default {
 }
 </script>
 <style>
-.vertical-center {
+.vcenter {
   margin: 0;
   position: absolute;
   top: 50%;

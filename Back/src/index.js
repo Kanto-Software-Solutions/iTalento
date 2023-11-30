@@ -3,7 +3,14 @@ const morgan = require('morgan');
 const cors = require('cors');
 
 const { auth } = require('express-openid-connect');
-const { v2 } = require('cloudinary');
+const cloudinary = require('cloudinary');
+
+cloudinary.v2.config({
+	cloud_name: process.env.CLOUD_NAME,
+	api_key: process.env.CLOUD_APIKEY,
+	api_secret: process.env.CLOUD_SECRET,
+	secure: true,
+});
 
 require('dotenv').config()
 
@@ -17,13 +24,6 @@ const config = {
 	authRequired: false,
 	auth0Logout: true,
 };
-
-v2.config({
-	cloud_name: process.env.CLOUD_NAME,
-	api_key: process.env.CLOUD_APIKEY,
-	api_secret: process.env.CLOUD_SECRET,
-});
-
 
 //Settings
 app.set('port', 3000);
