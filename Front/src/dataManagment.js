@@ -154,6 +154,7 @@ function conversionGig(gig, user, images){
 		fotoUsuario: user[0].profileImage,
 		nombreUsuario: user[0].nickname,
 		calificacion: "★★★",
+		categoria: gig.idCategory,
 		costo: gig.price,
 		accion: "Editar",
 		estado: state,

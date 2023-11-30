@@ -112,23 +112,56 @@ export default {
 							nuevosgigs.forEach(gig => {
 								this.gigs.push(gig);
 							});
-						}else if(precio < 0){
-							var gig = (nuevosgigs.filter(element =>{
-								element.calificacion.length == rating;
-							}));
-							this.gigs.push(gig);
+						}else if(precio < 0 && rating < 0){
+							nuevosgigs.forEach(gig => {
+								if(categoria = "Diseño de Logos" && gig.categoria == 1){
+									this.gigs.push(gig);
+								}else if (categoria = "Escritura y Traducción" && gig.categoria == 2){
+									this.gigs.push(gig);
+								}else if (categoria = "Ilustraciones" && gig.categoria == 3){
+									this.gigs.push(gig);
+								}else if (categoria = "Aplicaciones Web" && gig.categoria == 4){
+									this.gigs.push(gig);
+								}else if (categoria = "E-Commerce" && gig.categoria == 5){
+									this.gigs.push(gig);
+								}
+							});
+						}
+						else if(categoria < 0 && rating < 0){
+							nuevosgigs.forEach(gig => {
+								if(gig.costo >= (precio / 1000)){
+									this.gigs.push(gig);
+								}
+							});
+						}
+						else if(categoria < 0 && precio < 0){
+							nuevosgigs.forEach(gig => {
+								if(gig.calificacion.length == rating){
+									this.gigs.push(gig);
+								}
+							});
 						}
 						else if(busqueda.length == 0){
-							var gig = (nuevosgigs.filter(element =>{
-								element.calificacion.length == rating  && element.costo >= precio;
-							}));
-							this.gigs.push(gig);
+							nuevosgigs.forEach(gig => {
+								if(categoria = "Diseño de Logos" && gig.categoria == 1 && gig.calificacion.length == rating && categoria < 0 && precio < 0){
+									this.gigs.push(gig);
+								}else if (categoria = "Escritura y Traducción" && gig.categoria == 2 && gig.calificacion.length == rating && categoria < 0 && precio < 0){
+									this.gigs.push(gig);
+								}else if (categoria = "Ilustraciones" && gig.categoria == 3 && gig.calificacion.length == rating && categoria < 0 && precio < 0){
+									this.gigs.push(gig);
+								}else if (categoria = "Aplicaciones Web" && gig.categoria == 4 && gig.calificacion.length == rating && categoria < 0 && precio < 0){
+									this.gigs.push(gig);
+								}else if (categoria = "E-Commerce" && gig.categoria == 5 && gig.calificacion.length == rating && categoria < 0 && precio < 0){
+									this.gigs.push(gig);
+								}
+							});
 						}
 						else {
-							var gig = (nuevosgigs.filter(element =>{
-								element.calificacion.length == rating && element.costo >= precio && element.titulo.match(busqueda);
-							}));
-							this.gigs.push(gig);
+							nuevosgigs.forEach(gig => {
+								if(gig.titulo.match(busqueda).length != 0){
+									this.gigs.push(gig);
+								}
+							});
 						}
 					}
 				});
