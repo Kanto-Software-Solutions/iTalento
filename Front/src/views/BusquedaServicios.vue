@@ -53,20 +53,22 @@
 	</div>
 	<div id="busquedaResultado" class="">
 		<cargando v-if=esCargando></cargando>
-		<div v-if="esVacio" id="busquedaNoresultados" class="text-center m-5 text-body-tertiary fw-light">
-			<h2>
-				No se encontraron resultados
-			</h2>
-		</div>
-		<div v-else-if="gigs.length" id="busquedaResultados"
-			class="row row-cols-lg-5 g-0 overflow-hidden justify-content-center w-100">
-			<fichaGig class="col" v-for="g in gigs" v-bind="g" accion="Mirar" />
-		</div>
-		<div v-else id="busquedaBuscar" class="text-center m-5 text-body-tertiary fw-light">
-			<h2>
-				Ingresa un criterio de búsqueda
-			</h2>
-			<div class="spinner-grow m-2" style="width: 100px; height: 100px; animation-duration: 3s ;" role="status">
+		<div v-else>
+			<div v-if="esVacio" id="busquedaNoresultados" class="text-center m-5 text-body-tertiary fw-light">
+				<h2>
+					No se encontraron resultados
+				</h2>
+			</div>
+			<div v-else-if="gigs.length" id="busquedaResultados"
+				class="row row-cols-lg-5 g-0 overflow-hidden justify-content-center w-100">
+				<fichaGig class="col" v-for="g in gigs" v-bind="g" accion="Mirar" />
+			</div>
+			<div v-else id="busquedaBuscar" class="text-center m-5 text-body-tertiary fw-light">
+				<h2>
+					Ingresa un criterio de búsqueda
+				</h2>
+				<div class="spinner-grow m-2" style="width: 100px; height: 100px; animation-duration: 3s ;" role="status">
+				</div>
 			</div>
 		</div>
 	</div>
@@ -87,22 +89,23 @@ export default {
 	},
 	async created() {
 		let cat5 = await datos.getCategorias()
-		if(cat5){
+		if (cat5) {
 			this.categorias = cat5.slice(0, 5)
 		}
 	},
 	methods: {
-		test(){
+		test() {
 			console.log("asdf");
 		},
 		async buscarGigs() {
+			this.esCargando = true;
 			this.gigs = []
 			var busqueda = document.getElementById("criterio").value;
 			var rating = document.getElementById("oRating").value;
 			var categoria = document.getElementById("oCategory").value;
 			var precio = document.getElementById("oPrice").value;
 			await datos.getPublicaciones().then((nuevosgigs) => {
-				if(nuevosgigs == undefined){
+				if (nuevosgigs == undefined) {
 					router.push('/error/Gig no Encontrado');
 				}else{
 					if(busqueda.length == 0 && rating < 0 && categoria < 0 && precio < 0){
