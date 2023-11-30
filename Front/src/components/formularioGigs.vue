@@ -201,10 +201,24 @@ export default {
 			this.portada = this.defaultImg
 			this.actualizargig()
 		},
+		valTamaño(){
+			const imagenes = document.getElementById("fotosGigs").files
+			for (let i = 0; i < imagenes.length; i++) {
+				if(imagenes[i].size > 10000000){
+					alert("El tamaño de las imagenes no puede superar los 10MB\n Imagen #"+(i+1)+" supera el tamaño permitido")
+					document.getElementById("fotosGigs").value = ""
+					return false
+				}
+			}
+			return true
+		},
 		verImagenes() {
 			if (this.verificarCantidadImagenes()) return
 			const vitrina = document.getElementById("vitrina").getElementsByTagName("img")
 			document.getElementById("anuncioImagenes").style.display = "none"
+
+			if(!this.valTamaño()) return
+
 			this.preImagenes = []
 			if (event.target.files.length > 0) {
 				for (let i = 0; i < vitrina.length; i++) {
@@ -245,6 +259,28 @@ export default {
 			}
 			this.inicializarVitrina()
 		},
+		uploadCloud() {
+			const url = "https://api.cloudinary.com/v1_1/djc2oc9nr/image/upload";
+			const files = this.datosGigs.imagenes;
+			const formData = new FormData();
+
+			for (let i = 0; i < files.length; i++) {
+				let file = files[i];
+				console.log('FILE: ');
+				console.log(file);
+
+				formData.append("file", file);
+				formData.append("upload_preset", "usergig");
+
+				fetch(url, {
+					method: "POST",
+					body: formData
+				})
+					.then((response) => {
+						return response.text();
+					})
+			}
+		},
 		crearGig() {
 			//Falta validacion para categorias
 			if (this.habilidadesSeleccionadas.length == 0) {
@@ -261,19 +297,15 @@ export default {
 					revisiones: parseInt(document.getElementById("nRevisionesGigs").value),
 					cantidad: parseInt(document.getElementById("nproductosGig").value),
 					categoria: this.habilidadesSeleccionadas,
-					imagenes: this.preImagenes,
+					imagenes: document.getElementById("fotosGigs").files ,
 				}
-				var temp = {}
-				/*
-				this.datosGigs.imagenes.push(this.portada);
-				this.datosGigs.imagenes.forEach(element => {
-					datos.blobToBase64(element).then((res) => {
-						element = res;
-						temp.push(element);
-					})
-				});
-				*/
-				console.log(this.datosGigs.imagenes);
+				try {
+					this.uploadCloud().then((res) => {
+						console.log(res);
+					});
+				} catch (error) {
+					console.log(error);
+				}
 				setTimeout(this.toBD, 250)
 			}
 		}

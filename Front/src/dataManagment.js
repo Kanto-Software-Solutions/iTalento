@@ -73,6 +73,7 @@ function blobToBase64(blob) {
 	reader.readAsDataURL(blob);
 	return new Promise(resolve => {
 		reader.onloadend = () => {
+			console.log(reader.result);
 			resolve(reader.result);
 		};
 	});
