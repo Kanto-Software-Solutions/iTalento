@@ -267,18 +267,15 @@ export default {
 
 			for (let i = 0; i < files.length; i++) {
 				let file = files[i];
-				console.log('FILE: ');
-				console.log(file);
-
 				formData.append("file", file);
 				formData.append("upload_preset", "usergig");
-
-				fetch(url, {
+				
+				await fetch(url, {
 					method: "POST",
 					body: formData
-				}).then((response) => {
-					datos.push(response.text());
 				})
+				.then((res) => res.json())
+				.then((file) => { datos.push(file.secure_url)});
 			}
 			return datos;
 		},
@@ -305,6 +302,7 @@ export default {
 				} catch (error) {
 					console.log(error);
 				}
+				this.datosGigs.imagenes = imagenes;
 				setTimeout(this.toBD, 250)
 			}
 		}
