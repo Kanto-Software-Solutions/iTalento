@@ -110,7 +110,8 @@ export default {
 							if(document.getElementById("oCategory").value < 0){
 								if(document.getElementById("oPrice").value < 0){
 									response.forEach(element => {
-										this.gigs.concat([element]);
+										console.log(element);
+										this.gigs.concat(element);
 										console.log(this.gigs);
 									});
 								}
