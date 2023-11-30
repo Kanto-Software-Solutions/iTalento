@@ -1,7 +1,5 @@
 <template>
-	<div>
 
-	</div>
 </template>
 <script>
 export default {
@@ -17,6 +15,10 @@ export default {
 		costo: Number,
 		accion: String,
 		estado: Boolean,
+		descripcion: String,
+		delivery: String,
+		revisiones: String,
+		cantidad: String,
 	},
 	methods: {
 

@@ -158,6 +158,10 @@ function conversionGig(gig, user, images){
 		costo: gig.price,
 		accion: "Editar",
 		estado: state,
+		descripcion: gig.description,
+		delivery: gig.deliveryDays,
+		revisiones: gig.revisiones,
+		cantidad: gig.cantidad,
 	}
 	return datos;
 }
