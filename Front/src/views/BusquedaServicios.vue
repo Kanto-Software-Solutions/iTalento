@@ -101,31 +101,37 @@ export default {
 			this.esCargando = true;
 			this.gigs = []
 			var busqueda = document.getElementById("criterio").value;
-			var rating = document.getElementById("oRating").name;
+			var rating = document.getElementById("oRating").value;
 			var categoria = document.getElementById("oCategory").value;
 			var precio = document.getElementById("oPrice").value;
 			await datos.getPublicaciones().then((nuevosgigs) => {
 				if (nuevosgigs == undefined) {
 					router.push('/error/Gig no Encontrado');
-				} else {
-					if (busqueda.length == 0 && rating < 0 && categoria < 0 && precio < 0) {
-						nuevosgigs.forEach(gig => {
-							console.log(gig);
+				}else{
+					if(busqueda.length == 0 && rating < 0 && categoria < 0 && precio < 0){
+							nuevosgigs.forEach(gig => {
+								this.gigs.push(gig);
+							});
+						}else if(precio < 0){
+							var gig = (nuevosgigs.filter(element =>{
+								element.calificacion.length == rating;
+							}));
 							this.gigs.push(gig);
-							console.log(this.gigs);
-						});
-					} else if (busqueda.length == 0) {
-						console.log(nuevosgigs.filter(element => {
-							element.calificacion === rating && element.costo >= precio;
-						}));
+						}
+						else if(busqueda.length == 0){
+							var gig = (nuevosgigs.filter(element =>{
+								element.calificacion.length == rating  && element.costo >= precio;
+							}));
+							this.gigs.push(gig);
+						}
+						else {
+							var gig = (nuevosgigs.filter(element =>{
+								element.calificacion.length == rating && element.costo >= precio && element.titulo.match(busqueda);
+							}));
+							this.gigs.push(gig);
+						}
 					}
-					else {
-						console.log(nuevosgigs.filter(element => {
-							element.calificacion === rating && element.costo >= precio && element.titulo.match(busqueda);
-						}));
-					}
-				}
-			});
+				});
 			this.esCargando = false;
 		},
 	},
