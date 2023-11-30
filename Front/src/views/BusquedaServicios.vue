@@ -101,7 +101,7 @@ export default {
 			this.esCargando = true;
 			this.gigs = []
 			var busqueda = document.getElementById("criterio").value;
-			var rating = document.getElementById("oRating").value;
+			var rating = document.getElementById("oRating").name;
 			var categoria = document.getElementById("oCategory").value;
 			var precio = document.getElementById("oPrice").value;
 			await datos.getPublicaciones().then((nuevosgigs) => {
