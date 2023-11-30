@@ -47,14 +47,14 @@
 				</div>
 				<div class="row align-content-center">
 					<button id="fgigAccion" type="button" class="btn btn-secondary" :disabled=estado v-on:click=test
-						data-bs-toggle="modal" data-bs-target="#vistagig">
+						data-bs-toggle="modal" :data-bs-target="'#vistagig'+idx">
 						{{ accion }}
 					</button>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="modal fade" tabindex="-1" id="vistagig">
+	<div class="modal fade" tabindex="-1" :id="'vistagig'+idx">
 		<div class="modal-dialog modal-xl">
 			<div class="modal-content">
 				<div class="modal-header">
