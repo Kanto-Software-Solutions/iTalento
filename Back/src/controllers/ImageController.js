@@ -1,31 +1,39 @@
-const conexion	= require('../database/db');
+const conexion = require('../database/db');
+const cloudinary = require('cloudinary');
 
-exports.agregarimagenGig = (req,res) => {
+cloudinary.v2.config({
+	cloud_name: process.env.CLOUD_NAME,
+	api_key: process.env.CLOUD_APIKEY,
+	api_secret: process.env.CLOUD_SECRET,
+	secure: true,
+});
+
+exports.agregarimagenGig = (req, res) => {
 	//const
-	const id = req.params.id;
-	const imagenes = req.body.imagenes;
-	const portada = req.body.portada;
-	//Subir a cloudinary
-	
-	//Agregar a la base de datos
-
-
-	conexion.query("", (error,results) => {
-		if(error){
+	console.log(req);
+	const id = req.id;
+	const imagenes = req.imagenes;
+	console.log(imagenes);
+	//Subir a cloudinary	
+	imagenes.forEach(async imagen => {
+		console.log("Subiendo imagenes a cloudinary");
+		try {
+			const resultado = await cloudinary.v2.uploader.upload(imagen, { folder: "Gigs",tags: [id] })
+			console.log(resultado);
+		} catch (error) {
 			console.log(error);
-			res.sendStatus(400);
-		}else{
-			res.json({results:results});
+			throw error;
 		}
 	});
+	//Agregar a la base de datos
 };
 
-exports.getImageByGig = (req,res) => {
-	conexion.query("SELECT * FROM Image WHERE gigId = " + req.params.id, (error,results) => {
-		if(error){
+exports.getImageByGig = (req, res) => {
+	conexion.query("SELECT * FROM Image WHERE gigId = " + req.params.id, (error, results) => {
+		if (error) {
 			console.log(error);
-		}else{
-			res.json({results:results});
+		} else {
+			res.json({ results: results });
 		}
 	});
 };

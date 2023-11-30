@@ -4,6 +4,7 @@ import router from "./router/Router.js";
 const url = 'http://localhost:3000';
 
 export default {
+	blobToBase64,
 	notificacion,
 	holaMundo,
 	usertoDB,
@@ -63,6 +64,15 @@ function usertoDB(user) {
 	}
 	return datos;
 }
+function blobToBase64(blob) {
+	const reader = new FileReader();
+	reader.readAsDataURL(blob);
+	return new Promise(resolve => {
+		reader.onloadend = () => {
+			resolve(reader.result);
+		};
+	});
+};
 
 async function holaMundo() {
 	console.log("Hola Mundo");
@@ -237,7 +247,7 @@ async function editarUsuario(usuario) {
 	usuario.isVerified = JSON.parse(localStorage.getItem('sesion')).email_verified;
 	let datos = usertoDB(usuario)
 	try {
-		const response = await axios.put(url + "/usr/edit/" + JSON.parse(localStorage.getItem('sesion')).sub.split('|')[1] , datos);
+		const response = await axios.put(url + "/usr/edit/" + JSON.parse(localStorage.getItem('sesion')).sub.split('|')[1], datos);
 		if (response.data) {
 			return true;
 		} else {
@@ -258,7 +268,7 @@ async function editarUsuario(usuario) {
 async function eliminarUsuario(id) {
 	let arreglo = [];
 	try {
-		const response = await axios.delete(url + "/usr/delete/"+id);
+		const response = await axios.delete(url + "/usr/delete/" + id);
 		if (response.data) {
 			return true;
 		} else {

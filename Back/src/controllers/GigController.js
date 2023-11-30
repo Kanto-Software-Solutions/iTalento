@@ -46,9 +46,8 @@ exports.createGig = (req, res) => {
 	const revisiones = req.body.revisiones;
 	const cantidad = req.body.cantidad;
 	const imagenes = req.body.imagenes;
-	const portada = req.body.portada;
 
-	console.log("Se recibio el gig: " + titulo + " " + description + " " + createdAt + " " + idCategory + " " + idUser + " " + price + " " + deliveryDays + " " + revisiones + " " + cantidad + " " + imagenes + " " + portada);
+	console.log("Se recibio el gig: " + titulo + " " + description + " " + createdAt + " " + idCategory + " " + idUser + " " + price + " " + deliveryDays + " " + revisiones + " " + cantidad + " " + imagenes);
 
 	var cadena = "INSERT INTO `mydb`.`Gig` (`name`,`description`,`createdAt`,`idCategory`,`idUser`,`price`,`deliveryDays`,`revisiones`,`cantidad`) VALUES "
 	conexion.query(cadena + "('" + titulo + "' ,'" + description + "' ,'" + createdAt + "' ,'" + idCategory + "' ,'" + idUser + "' ,'" + price + "' ,'" + deliveryDays + "' ,'" + revisiones + "' ,'" + cantidad + "' )", (error, results) => {
@@ -58,9 +57,14 @@ exports.createGig = (req, res) => {
 		} else {
 			console.log("Se agregó el gig ");
 			try {
-				imagenCnt.agregarimagenGig(results.insertId, imagenes, portada)
+				var datos = {
+					id: results.insertId,
+					imagenes: imagenes
+				}
+				imagenCnt.agregarimagenGig(datos)
 				res.json({ upload: true, gigID: results.insertId });
 			} catch (error) {
+				console.log(error);
 				res.json({ upload: false, gigID: results.insertId });	
 			}
 		}

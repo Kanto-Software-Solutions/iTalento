@@ -261,9 +261,19 @@ export default {
 					revisiones: parseInt(document.getElementById("nRevisionesGigs").value),
 					cantidad: parseInt(document.getElementById("nproductosGig").value),
 					categoria: this.habilidadesSeleccionadas,
-					imagenes: this.imagenesPreview,
-					portada: this.portada,
+					imagenes: this.preImagenes,
 				}
+				var temp = {}
+				/*
+				this.datosGigs.imagenes.push(this.portada);
+				this.datosGigs.imagenes.forEach(element => {
+					datos.blobToBase64(element).then((res) => {
+						element = res;
+						temp.push(element);
+					})
+				});
+				*/
+				console.log(this.datosGigs.imagenes);
 				setTimeout(this.toBD, 250)
 			}
 		}
