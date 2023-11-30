@@ -133,6 +133,7 @@ export default {
 					}
 				});
 			this.esCargando = false;
+			console.log(this.gigs);
 		},
 	},
 	data: () => ({

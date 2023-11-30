@@ -24,7 +24,7 @@
 					<img :src=portada class="w-100 h-100 object-fit-cover" alt="Error Cargando Imagen">
 				</div>
 				<div v-for="(imagen, index) in imagenes" :key=index class="carousel-item h-100 w-100">
-					<img :src=imagen class="w-100 h-100 object-fit-cover" alt="Error Cargando Imagen">
+					<img :src=imagen.url class="w-100 h-100 object-fit-cover" alt="Error Cargando Imagen">
 				</div>
 			</div>
 		</div>
