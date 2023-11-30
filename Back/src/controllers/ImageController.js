@@ -5,8 +5,21 @@ exports.agregarimagenGig = (req, res) => {
 	console.log(req);
 	const id = req.id;
 	const imagenes = req.imagenes;
-	console.log(imagenes);
-	//Agregar a la base de datos
+	var i = 1;
+
+	imagenes.forEach(element => {
+		conexion.query("INSERT INTO `mydb`.`Image` (`url`,`idGig`,`portada`) VALUES ( '" + element + "','" + id + "','" + i + "')", (error, results) => {
+			if (i == 1) {
+				i = 0;
+			}
+			if (error) {
+				console.log(error);
+			} else {
+				console.log("Se agregó la imagen");
+			}
+		});
+	});
+	return res.json({ message: "Exito" });
 };
 
 exports.getImageByGig = (req, res) => {
