@@ -126,11 +126,7 @@ export default {
 			}
 		});
 		let idUser = JSON.parse(localStorage.getItem('sesion')).idUser;
-		await datos.getPublicacion(idUser).then((response) => {
-			response.forEach(gig =>{
-				this.gigs.push(gig);
-			});
-		});
+		await this.retornarGigs(idUser);
 	},
 	data: () => ({
 		propio: false,
@@ -174,6 +170,13 @@ export default {
 		cantidadGigs() {
 			return this.gigs.length;
 		},
+		async retornarGigs(idUser) {
+			await datos.getPublicacion(idUser).then((response) => {
+				response.forEach(gig =>{
+					this.gigs.push(gig);
+				});
+			});
+		}
 	},
 }
 </script>
