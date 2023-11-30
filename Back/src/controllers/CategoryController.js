@@ -44,3 +44,4 @@ exports.deleteCategory = (req, res) => {
 		}
 	});
 }
+

@@ -50,8 +50,8 @@ router.delete(	'/cat/delete:id',						categoria.deleteCategory);
 router.get(		'/cat/:id',								categoria.getCategoryById);
 
 //Orden
-//router.get(	'/odr/usr/:id',							orden.getAllOrdersByUser);
-//router.get(	'/odr/gig/:id',							orden.getAllOrdersByGig);
+router.get(	'/odr/usr/:id',							orden.getAllOrdersByUser);
+router.get(	'/odr/gig/:id',							orden.getAllOrdersByGig);
 
 router.post(	'/odr/new',			urlencodedParser,	orden.createOrder);
 router.put(		'/odr/edit/:id',	urlencodedParser,	orden.updateOrder);

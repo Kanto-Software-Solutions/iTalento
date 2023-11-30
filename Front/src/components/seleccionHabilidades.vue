@@ -10,9 +10,9 @@
 				class="row justify-content-center align-content-start container overflow-y-auto overflow-x-hidden"
 				style="height: 300px;">
 				<button v-for="habilidad in habilidades" type="button" class="bhabilidad btn bg-body-secondary m-1"
-					data-bs-toggle="button" style="width: max-content; height: max-content;" :value=habilidad.id
+					data-bs-toggle="button" style="width: max-content; height: max-content;" :value=habilidad.idCategory
 					v-on:click=agregarHabilidad()>
-					{{ habilidad.nombre }}
+					{{ habilidad.name }}
 				</button>
 			</div>
 			<div v-if=excesoHabilidades>
@@ -47,6 +47,14 @@
 </template>
 <script>
 export default {
+	beforeCreate() {
+		fetch("http://localhost:3000/cat/all")
+			.then(response => response.json())
+			.then(data => {
+				console.log(data.results);
+				this.habilidades = data.results
+			})
+	},
 	data: () => ({
 		filtro: "",
 		completasHabilidades: false,
