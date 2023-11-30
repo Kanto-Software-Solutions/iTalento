@@ -109,9 +109,7 @@ export default {
 							if (document.getElementById("oCategory").value < 0) {
 								if (document.getElementById("oPrice").value < 0) {
 									nuevosgigs.forEach(gig => {
-										console.log(gig);
 										this.gigs.push(gig);
-										console.log(this.gigs);
 									})
 								}
 							}

@@ -68,16 +68,6 @@ function usertoDB(user) {
 	}
 	return datos;
 }
-function blobToBase64(blob) {
-	const reader = new FileReader();
-	reader.readAsDataURL(blob);
-	return new Promise(resolve => {
-		reader.onloadend = () => {
-			console.log(reader.result);
-			resolve(reader.result);
-		};
-	});
-};
 
 async function holaMundo() {
 	console.log("Hola Mundo");
@@ -146,8 +136,6 @@ async function getCategoria(nombre) {
 //Publicaciones
 function conversionGig(gig, user, images){
 
-	console.log(user);
-
 	let cover = "https://res.cloudinary.com/djc2oc9nr/image/upload/v1699075889/default_dtguag.png";
 
 	images.forEach(img => {
@@ -188,7 +176,6 @@ async function getPublicaciones() {
 			elemento = await recuperarDatos(array[i]);
 			nuevosgigs.push(elemento);
 		}
-		console.log(nuevosgigs);
 		return nuevosgigs;
 	
 	}catch (error) {
@@ -215,8 +202,6 @@ async function getPublicacion(id) {
 	let nuevosgigs = [];
 
 	var elemento;
-
-	// try {
 		const response = await axios.get(url + "/gig/usr/" + id + '');
 		array = response.data.results;
 
@@ -224,7 +209,6 @@ async function getPublicacion(id) {
 			elemento = await recuperarDatos(array[i]);
 			nuevosgigs.push(elemento);
 		}
-		console.log(nuevosgigs);
 		return nuevosgigs;
 }
 async function crearPublicacion(publicacion) {
